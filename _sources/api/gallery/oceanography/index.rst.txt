@@ -1,0 +1,342 @@
+:orphan:
+
+.. include:: /_generated/nav/oceanography.rst
+
+Oceanography examples
+=====================
+
+One executed example per breakthrough in :doc:`/history/oceanography_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/oceanography` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Isaac Newton explained the tides as the difference between the Moon&#x27;s (and the Sun&#x27;s) attraction across the Earth. An ocean in equilibrium with that field bulges by (3/4) (M/E) (R/d)3 R in each semidiurnal constituent at the equator, about 27 cm for the Moon and 12 cm for the Sun. The two constituents beat into spring and neap tides every 14.8 days.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_01_newton_equilibrium_tide_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_01_newton_equilibrium_tide`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Newton's equilibrium tide (1687)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pierre-Simon Laplace replaced Newton&#x27;s static bulge with the dynamics of a thin ocean on a rotating Earth. Long waves in that ocean travel at sqrt(g h). To keep pace with the Moon&#x27;s bulge at the equator the ocean would have to be about 22 km deep; the real ocean, about 4 km deep, cannot follow it, so real tides are a forced dynamic response, not an equilibrium.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_02_laplace_tidal_equations_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_02_laplace_tidal_equations`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Laplace's tidal equations (1776)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Franz Josef von Gerstner found the first exact nonlinear water wave. Each particle moves on a circle whose radius shrinks as exp(-k b) with its depth b, and the free surface is a trochoid with sharp crests and flat troughs. Because the crests are narrow, the mean surface lies k a2 / 2 below the level of the orbit centres. The wave travels at the deep-water speed sqrt(g / k).">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_03_gerstner_trochoidal_wave_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_03_gerstner_trochoidal_wave`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gerstner's trochoidal wave (1802)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Gabriel Stokes worked out oscillatory waves of small and finite height. The dispersion relation omega2 = g k tanh(k h) makes long waves travel faster than short ones. In deep water the energy travels at the group speed, half the speed of the crests, which is why the swell from a distant storm arrives longest waves first.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_04_stokes_deep_water_waves_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_04_stokes_deep_water_waves`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stokes's deep-water waves (1847)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="HMS Challenger&#x27;s expedition of 1872-1876 made the first systematic soundings of the deep ocean and in 1875 found 4475 fathoms (8184 m) in the Mariana Trench. Pressure in the water grows by about one atmosphere every 10 m, so the instruments at that depth had to survive more than 800 atmospheres.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_05_challenger_soundings_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_05_challenger_soundings`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The Challenger soundings (1872)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Martin Knudsen, with Carl Forch and Søren Sørensen, measured seawater density against temperature and salinity and published the Hydrographical Tables used for the next 70 years. Near a reference state the density is linear in both: warming makes water lighter and salt makes it heavier, so lines of equal density in the temperature-salinity plane have slope alpha / beta.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_06_knudsen_equation_of_state_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_06_knudsen_equation_of_state`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Knudsen's equation of state (1901)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Johan Sandström and Bjørn Helland-Hansen showed how to compute currents from temperature and salinity alone. Light water stands higher than dense water, so the sea surface above a warm station rises relative to a cold one until the pressure at a deep level of no motion is the same under both. The surface slope then drives a geostrophic current.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_07_sandstrom_helland_hansen_dynamic_method_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_07_sandstrom_helland_hansen_dynamic_method`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sandström and Helland-Hansen's dynamic method (1903)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="On Nansen&#x27;s Fram expedition the ship slowed to a crawl in fjords where a thin layer of meltwater lay over salty sea water. Vagn Walfrid Ekman showed that the ship was making waves on the hidden density jump. Those internal waves travel at about sqrt(g&#x27; h) with the reduced gravity g&#x27; = g d_rho / rho, a few tens of centimetres per second, so a slow ship pours its energy into them.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_08_ekman_dead_water_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_08_ekman_dead_water`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ekman's dead water (1904)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Nansen saw that drifting Arctic ice moved 20-40 degrees to the right of the wind. Ekman explained it: friction carries the wind&#x27;s stress down through a rotating ocean, and each layer drags the one below, turned further to the right and slower. The surface current is 45 degrees to the right of the wind, and the net transport is at right angles to it.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_09_ekman_spiral_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_09_ekman_spiral`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ekman's spiral (1905)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Torsten Gustafson and Börje Kullenberg moored current meters in the Baltic off Gotland and found currents turning clockwise with a period of about 14 hours. That is the inertial period 2 pi / f at 57.8 N: once the wind stops, water keeps moving and the Coriolis force turns it in circles that friction slowly damps.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_10_gustafson_kullenberg_inertial_oscillations_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_10_gustafson_kullenberg_inertial_oscillations`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gustafson and Kullenberg's inertial oscillations (1936)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Carl-Gustaf Rossby asked what happens when a disturbance in a rotating fluid is released. Gravity waves carry the imbalance away, but rotation stops them after a distance equal to the wave speed divided by f: the deformation radius. In the stratified ocean the first baroclinic radius is a few tens of kilometres at mid-latitudes, the size of ocean eddies, and grows toward the equator.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_11_rossby_adjustment_radius_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_11_rossby_adjustment_radius`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rossby's adjustment radius (1938)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harald Sverdrup showed that in the ocean interior the curl of the wind stress is balanced by flow across lines of latitude, where the planetary vorticity changes at the rate beta. Under the westerlies and trade winds of a subtropical gyre the whole interior drifts equatorward by tens of Sverdrups, and a narrow current on one boundary must carry it back.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_12_sverdrup_balance_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_12_sverdrup_balance`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sverdrup's balance (1947)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Henry Stommel asked why the strongest currents, like the Gulf Stream and the Kuroshio, run along the western sides of ocean basins. On a uniformly rotating Earth his wind-driven gyre is symmetric. Once the Coriolis parameter increases northward, the return flow crowds into a western boundary layer of width friction / beta while the interior obeys Sverdrup&#x27;s balance.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_13_stommel_western_intensification_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_13_stommel_western_intensification`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stommel's western intensification (1948)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stommel connected a warm, salty equatorial box with a cold polar box. Heat makes the polar water dense and drives sinking there; salt works against it. For moderate freshwater forcing the boxes have two stable states, a strong thermal overturning and a weak reversed haline one, and which one the ocean settles in depends on where it starts.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_14_stommel_thermohaline_boxes_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_14_stommel_thermohaline_boxes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stommel's two-box thermohaline circulation (1961)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Walter Munk noticed that the deep Pacific temperature profile is exponential with a scale of about 1 km. Cold water sinking near Antarctica must upwell through the abyss, and the upwelling w and downward mixing kappa balance when h = kappa / w. With w about 1.2 cm per day the profile needs a diffusivity of about 1e-4 m^2/s, far more than measured in the interior, a puzzle that took 30 years to resolve.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_15_munk_abyssal_recipes_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_15_munk_abyssal_recipes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Munk's abyssal recipes (1966)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The Thermodynamic Equation of Seawater 2010 replaced the 1980 equation of state with one derived from a Gibbs function, in Absolute Salinity and Conservative Temperature. Its density is curved in temperature: mixing two waters of equal density gives a denser mixture (cabbeling), which no linear equation of state can show. Here the simplified fit of Roquet et al. (2015) stands in for the full TEOS-10 polynomial.">
+
+.. only:: html
+
+  .. image:: /api/gallery/oceanography/images/thumb/sphx_glr_plot_16_teos10_seawater_density_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/oceanography/plot_16_teos10_seawater_density`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">TEOS-10 (2010)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/oceanography/plot_01_newton_equilibrium_tide
+   /api/gallery/oceanography/plot_02_laplace_tidal_equations
+   /api/gallery/oceanography/plot_03_gerstner_trochoidal_wave
+   /api/gallery/oceanography/plot_04_stokes_deep_water_waves
+   /api/gallery/oceanography/plot_05_challenger_soundings
+   /api/gallery/oceanography/plot_06_knudsen_equation_of_state
+   /api/gallery/oceanography/plot_07_sandstrom_helland_hansen_dynamic_method
+   /api/gallery/oceanography/plot_08_ekman_dead_water
+   /api/gallery/oceanography/plot_09_ekman_spiral
+   /api/gallery/oceanography/plot_10_gustafson_kullenberg_inertial_oscillations
+   /api/gallery/oceanography/plot_11_rossby_adjustment_radius
+   /api/gallery/oceanography/plot_12_sverdrup_balance
+   /api/gallery/oceanography/plot_13_stommel_western_intensification
+   /api/gallery/oceanography/plot_14_stommel_thermohaline_boxes
+   /api/gallery/oceanography/plot_15_munk_abyssal_recipes
+   /api/gallery/oceanography/plot_16_teos10_seawater_density
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: oceanography_python.zip </api/gallery/oceanography/oceanography_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: oceanography_jupyter.zip </api/gallery/oceanography/oceanography_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

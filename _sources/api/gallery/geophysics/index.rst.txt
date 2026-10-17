@@ -1,0 +1,342 @@
+:orphan:
+
+.. include:: /_generated/nav/geophysics.rst
+
+Geophysics examples
+===================
+
+One executed example per breakthrough in :doc:`/history/geophysics_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/geophysics` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Gilbert carved a sphere of lodestone, his terrella, and carried a small dip needle over it. The needle lay flat at the terrella&#x27;s equator, stood vertical at its poles and dipped steadily in between, just as compass needles did at sea. He concluded that the Earth itself is a great magnet. For an axial dipole the dip obeys tan(I) = 2 tan(latitude) and the field at the poles is twice that at the equator.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_01_gilbert_magnetic_earth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_01_gilbert_magnetic_earth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gilbert's magnetic Earth (1600)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Newton argued that a rotating, fluid Earth must bulge at the equator. Treating it as homogeneous, he balanced the weight of two water-filled canals, one to the pole and one to the equator, and found a flattening of 1/230. The modern value is 1/298: the Earth&#x27;s mass is concentrated toward its centre, which makes it less flattened than a uniform fluid. Jupiter, spinning in under ten hours, shows the same effect more strongly.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_02_newton_oblate_earth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_02_newton_oblate_earth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Newton's oblate Earth (1687)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Alexis Clairaut showed that a rotating Earth in hydrostatic equilibrium, of any internal layering, has a gravity that grows from equator to pole by the fraction 5 m / 2 - f. Pendulum gravity measured at a few latitudes therefore gives the flattening without any arc survey. Applied to today&#x27;s normal gravity it returns the flattening to within about 1%, and the first-order formula matches the exact Somigliana gravity of the reference ellipsoid to 50 parts per million.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_03_clairaut_theorem_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_03_clairaut_theorem`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Clairaut's theorem (1743)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="On the French expedition to Peru, Pierre Bouguer measured how far the volcano Chimborazo pulled a plumb line aside, the first attempt to see a mountain&#x27;s gravity. He also measured gravity on the high plateau at Quito and found it larger than the height alone predicted: the rock under the station pulls too. Removing that slab of rock (the Bouguer correction) together with the effect of height (the free-air correction) leaves the attraction of buried masses, the Bouguer anomaly that gravity surveys still map.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_04_bouguer_mountain_attraction_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_04_bouguer_mountain_attraction`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bouguer's mountain attraction (1749)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Henry Cavendish hung a 1.8 m rod carrying two small lead balls from a fine wire and brought two 158 kg balls close to them. The rod twisted by about a milliradian, and timing its slow free swing calibrated the wire. Together these give the gravitational constant, and with surface gravity the mean density of the Earth: Cavendish found 5.48 times that of water, about twice the density of surface rock, so the interior must be much denser.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_05_cavendish_weighs_the_earth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_05_cavendish_weighs_the_earth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cavendish weighs the Earth (1798)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Carl Friedrich Gauss wrote the magnetic potential outside the Earth as a sum of spherical harmonics and fitted its coefficients to observatory data. The fit proved that the field comes from inside the Earth, and its degree-1 terms gave the strength and tilt of the best-fitting dipole. The same expansion, the International Geomagnetic Reference Field, is still used: its 2020 coefficients give a dipole moment of 7.7e22 A m^2 tilted about 9.4 degrees from the axis. The higher degrees fall off faster with distance, so the dipole dominates far from the core.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_06_gauss_spherical_harmonic_field_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_06_gauss_spherical_harmonic_field`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gauss's spherical-harmonic geomagnetic field (1839)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Gabriel Stokes showed that gravity measured over the whole surface fixes the shape of the level surface, the geoid, without any assumption about the interior. The geoid height at a point is a weighted integral of the gravity anomaly over the globe, with a kernel that depends only on spherical distance. A gravity anomaly of spherical-harmonic degree n produces a geoid of the same shape, scaled by R / ((n - 1) g): the geoid sees mostly the longest wavelengths.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_07_stokes_geoid_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_07_stokes_geoid_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stokes's geoid formula (1849)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Bernard Brunhes studied a lava flow at Pontfarein in the Massif Central and the clay it had baked as it flowed over it. Both were magnetized in the same direction, nearly opposite to today&#x27;s field: pointing south and up. The clay could only have taken its magnetization from the field as it cooled, so the field itself had pointed the other way. A reversed dipole at the site&#x27;s latitude of 45 degrees gives a declination of 180 degrees and an inclination of -63 degrees.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_08_brunhes_reversed_magnetization_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_08_brunhes_reversed_magnetization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Brunhes's reversed magnetization (1906)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Kelvin had argued from the ocean tides that the Earth is about as rigid as steel. Augustus Love described the Earth&#x27;s yielding to the tidal potential by two numbers: h, the ratio of the body-tide uplift to the equilibrium tide, and k, the extra potential of the deformed Earth. A uniform elastic sphere as rigid as steel has k2 near 0.47; the real Earth, with a fluid core, has h2 = 0.61 and k2 = 0.30. Gravimeters see the tide amplified by 1 + h - 3 k / 2, about 1.16.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_09_love_numbers_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_09_love_numbers`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Love numbers (1909)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Joseph Larmor asked how a body such as the Sun could be a magnet, and proposed that conducting fluid moving through a magnetic field could induce the currents that sustain that field, like a self-exciting dynamo. The Earth needs one: a field left in a still iron core would decay in tens of thousands of years, yet rocks record a field for over three billion years. The core&#x27;s flow of a fraction of a millimetre per second gives a magnetic Reynolds number in the hundreds, enough for induction to beat diffusion.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_10_larmor_self_exciting_dynamo_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_10_larmor_self_exciting_dynamo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Larmor's self-exciting dynamo (1919)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Motonori Matuyama measured the magnetization of basalts from Japan, Korea and Manchuria. The youngest flows were magnetized along today&#x27;s field, but older, early Quaternary flows pointed the opposite way. He concluded that the field had been reversed for a long time before the present one, the interval now called the Matuyama chron. A flow is reversed when its direction lies more than 90 degrees from the present axial dipole field at the site.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_11_matuyama_reversed_epoch_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_11_matuyama_reversed_epoch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Matuyama's reversed epoch (1929)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Keith Runcorn and his colleagues turned the directions in old rocks into virtual geomagnetic poles. British rocks gave poles that wandered far from the present pole with age. When Runcorn added North American rocks, their path ran parallel to the European one but about 30 degrees to the west. One pole cannot be in two places, so the continents must have moved apart: closing the Atlantic brings the two paths together. This example builds synthetic paths in that way and recovers them from site directions.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_12_runcorn_apparent_polar_wander_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_12_runcorn_apparent_polar_wander`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Runcorn's apparent polar wander (1956)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Tsuneji Rikitake coupled two disc dynamos, each driven by the same torque and each powering the coil of the other. The currents never settle: they oscillate about one of two steady states of opposite sign and, at irregular intervals, jump to the other. The model was the first to show that a deterministic dynamo can reverse its field spontaneously, without any outside trigger, with polarity intervals of very unequal length, as in the geological record.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_13_rikitake_two_disc_dynamo_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_13_rikitake_two_disc_dynamo`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rikitake's two-disc dynamo (1958)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The equatorial bulge pulls on an inclined orbit and makes its node drift westward. Desmond King-Hele and Robert Merson timed the drift of Sputnik 2&#x27;s orbit and found a J2 that gave a flattening of 1/298.3, not the 1/297 of the International Ellipsoid that surveyors had used since 1924. A few months of tracking one satellite had improved on two centuries of arc measurements.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_14_king_hele_satellite_flattening_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_14_king_hele_satellite_flattening`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">King-Hele's flattening from satellite orbits (1958)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Allan Cox, Richard Doell and Brent Dalrymple dated lava flows from around the world by potassium-argon and measured their polarity. Flows of the same age had the same polarity everywhere, so reversals are global and can be put on a clock: the Brunhes normal epoch, the reversed Matuyama with short normal events, and the normal Gauss. The timescale turned the magnetic stripes at ridges into a speedometer. Spreading crust records it as blocks of alternating magnetization, whose anomaly profile is symmetric about the ridge.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_15_cox_doell_dalrymple_polarity_timescale_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_15_cox_doell_dalrymple_polarity_timescale`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cox, Doell and Dalrymple's polarity timescale (1964)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The twin GRACE satellites, launched in 2002, measured the distance between them to microns. Its changes gave a new gravity field every month, and the differences between months show where water, ice and groundwater moved. Each change of a Stokes coefficient becomes a layer of equivalent water, after allowing for the elastic Earth sinking under the load. A truncated expansion blurs a river basin&#x27;s water into a smooth bump: the resolution is limited by the highest degree, here 60.">
+
+.. only:: html
+
+  .. image:: /api/gallery/geophysics/images/thumb/sphx_glr_plot_16_grace_gravity_changes_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/geophysics/plot_16_grace_gravity_changes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">GRACE gravity changes (2002)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/geophysics/plot_01_gilbert_magnetic_earth
+   /api/gallery/geophysics/plot_02_newton_oblate_earth
+   /api/gallery/geophysics/plot_03_clairaut_theorem
+   /api/gallery/geophysics/plot_04_bouguer_mountain_attraction
+   /api/gallery/geophysics/plot_05_cavendish_weighs_the_earth
+   /api/gallery/geophysics/plot_06_gauss_spherical_harmonic_field
+   /api/gallery/geophysics/plot_07_stokes_geoid_formula
+   /api/gallery/geophysics/plot_08_brunhes_reversed_magnetization
+   /api/gallery/geophysics/plot_09_love_numbers
+   /api/gallery/geophysics/plot_10_larmor_self_exciting_dynamo
+   /api/gallery/geophysics/plot_11_matuyama_reversed_epoch
+   /api/gallery/geophysics/plot_12_runcorn_apparent_polar_wander
+   /api/gallery/geophysics/plot_13_rikitake_two_disc_dynamo
+   /api/gallery/geophysics/plot_14_king_hele_satellite_flattening
+   /api/gallery/geophysics/plot_15_cox_doell_dalrymple_polarity_timescale
+   /api/gallery/geophysics/plot_16_grace_gravity_changes
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: geophysics_python.zip </api/gallery/geophysics/geophysics_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: geophysics_jupyter.zip </api/gallery/geophysics/geophysics_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

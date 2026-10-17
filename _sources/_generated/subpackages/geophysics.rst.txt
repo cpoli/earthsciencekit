@@ -1,0 +1,28 @@
+earthsciencekit.geophysics
+==========================
+
+Gravity anomalies, the figure of the Earth, the geoid, the geomagnetic field, paleomagnetism and the dynamo.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/geophysics_breakthroughs
+      :link-type: doc
+
+      Foundational ideas linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/geophysics/index
+      :link-type: doc
+
+      Executed scripts, plots, source and notebook downloads.
+
+   .. grid-item-card:: API reference
+      :link: /api/geophysics
+      :link-type: doc
+
+      Public classes, functions and result objects.
+
+
+:doc:`Units, assumptions and numerical validation </guides/geophysics>`.

@@ -1,0 +1,360 @@
+:orphan:
+
+.. include:: /_generated/nav/volcanology.rst
+
+Volcanology examples
+====================
+
+One executed example per breakthrough in :doc:`/history/volcanology_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/volcanology` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rayleigh asked how far a mixture can be separated when the product is removed as soon as it forms. Each increment is only slightly richer in one component, but because the remainder keeps losing it, the remaining reservoir drifts as the fraction left raised to the power alpha - 1. Evaporating water is the classic case: the vapour is poorer in oxygen-18, so the last drops of a drying pool are strongly enriched.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_01_rayleigh_fractional_distillation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_01_rayleigh_fractional_distillation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rayleigh's fractional distillation (1896)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rutherford and Soddy found that the activity of thorium emanation (radon-220) falls by half every minute or so, whatever its temperature or chemistry, and concluded that radioactivity is the spontaneous transformation of one element into another at a fixed fractional rate. Decay is exponential, so a straight line on a logarithmic plot and its slope gives the half-life.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_02_rutherford_soddy_decay_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_02_rutherford_soddy_decay_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rutherford and Soddy's decay law (1902)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Boltwood noticed that uranium minerals always contain lead, and more of it in older rocks. Taking lead as the end of the uranium decay series, he turned the lead-to-uranium ratio of minerals into ages of hundreds of millions to billions of years, the first radiometric ages. With a known decay constant the age is log(1 + D/P) / lambda; Boltwood&#x27;s simpler ratio-over-rate is the first term of that logarithm and overestimates old ages.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_03_boltwood_uranium_lead_ages_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_03_boltwood_uranium_lead_ages`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Boltwood's uranium-lead ages (1907)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Arthur Holmes, in The Age of the Earth, combined lead-uranium ages with the order of the strata to build the first radiometric time scale. His ages placed the Devonian near 370 million years and the oldest Precambrian rocks near 1600 million years, far beyond Kelvin&#x27;s cooling estimate. Forward accumulation shows the lead-to-uranium ratio each period would carry today.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_04_holmes_age_of_the_earth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_04_holmes_age_of_the_earth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Holmes's age of the Earth (1913)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Norman Bowen&#x27;s experiments showed that a basaltic melt crystallizes minerals in a fixed order and that crystals either keep reacting with the melt or are removed from it. Removing them (fractional crystallization) lets the residual melt evolve far towards granite; keeping them in equilibrium limits how far it can go. Trace elements show the difference most clearly: an element the crystals reject is enriched without limit by fractionation, but at most 1 / D by equilibrium crystallization.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_05_bowen_reaction_series_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_05_bowen_reaction_series`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bowen's reaction series (1928)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Victor Goldschmidt classified the elements by where they go in the Earth and stated the rules for which ions replace one another in a crystal: ions of the same charge whose radii differ by less than about 15% substitute freely. Blundy and Wood (1994) made the rule quantitative: the partition coefficient falls off on both sides of the radius that fits the site, as the strain energy of the lattice grows.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_06_goldschmidt_ionic_substitution_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_06_goldschmidt_ionic_substitution`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Goldschmidt's geochemical rules (1937)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harold Urey calculated that the oxygen-18 content of calcite precipitated from water depends on temperature, and proposed reading ancient ocean temperatures from fossil shells. Epstein, Buchsbaum, Lowenstam and Urey calibrated the scale in 1953: about 4 K of cooling per per mil of enrichment. The synthetic shell record below converts delta values into temperatures.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_07_urey_isotope_paleothermometer_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_07_urey_isotope_paleothermometer`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Urey's isotope paleothermometer (1947)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Willard Libby reasoned that cosmic rays keep the atmosphere&#x27;s carbon-14 in a steady state, that living things share it, and that it decays once they die. Arnold and Libby tested the idea on wood and grain of known historical age and found their &quot;curve of knowns&quot;. Conventional ages still use Libby&#x27;s 5568-year half-life; the better value of 5730 years makes true ages about 3% older.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_08_libby_radiocarbon_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_08_libby_radiocarbon`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Libby's radiocarbon dating (1949)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Clair Patterson measured lead in meteorites. The iron meteorite Canyon Diablo holds almost no uranium, so its lead is primordial; stony meteorites add lead grown from uranium since they formed. Plotted as 207Pb/204Pb against 206Pb/204Pb they fall on one line whose slope is the radiogenic 207Pb/206Pb ratio of a 4.55-billion-year age, and terrestrial ocean sediment lies on it too, so the Earth shares that age.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_09_patterson_age_of_the_earth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_09_patterson_age_of_the_earth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Patterson's age of the Earth (1956)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Wetherill plotted the two uranium-lead clocks against each other. Minerals that stayed closed lie on a curve, the concordia, where both give the same age. Zircons that lost part of their lead in a later event fall on a straight chord, the discordia, whose two intersections with the concordia date the crystallization and the lead loss.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_10_wetherill_concordia_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_10_wetherill_concordia`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Wetherill's concordia (1956)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Morton, Taylor and Turner assumed that a turbulent plume draws in surrounding fluid at a speed proportional to its own rising speed. Three flux equations then describe it, and in a stably stratified fluid the plume rises to a height of about 5.0 F(1/4) N(-3/4) set by only its buoyancy flux and the stratification. Following a parcel up the axis shows the rise, the top and the fall back towards the level of neutral buoyancy, where the plume spreads. A vent of finite size tops out a few percent below the point-source height.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_11_morton_taylor_turner_buoyant_plumes_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_11_morton_taylor_turner_buoyant_plumes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Morton, Taylor and Turner's buoyant plumes (1956)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Kiyoo Mogi modelled a magma chamber as a small pressurized sphere in an elastic half-space and matched the domes of uplift that surveys measured around Sakurajima and Kilauea. The uplift is bell-shaped and halves at 0.766 times the source depth, so the width of a dome locates the chamber and its volume gives the magma added.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_12_mogi_point_source_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_12_mogi_point_source`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mogi's point source (1958)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Louis Nicolaysen showed how to date a rock without knowing how much daughter it started with. Minerals that crystallized together share the initial 87Sr/86Sr but take up different amounts of rubidium. As 87Rb decays they move along lines of slope one, so at any time they lie on a straight isochron whose slope gives the age and whose intercept gives the initial ratio.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_13_nicolaysen_isochron_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_13_nicolaysen_isochron`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nicolaysen's isochron (1961)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Herbert Shaw found that the logarithm of the viscosity of silicate melts is a straight line in 1/T whose slope depends only on composition, and that the lines for basalt to rhyolite all pass near one point. That makes Shaw&#x27;s law an Arrhenius law with activation energy s  1e4  R. Rhyolite at eruption temperature is about a hundred million times stiffer than basalt.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_14_shaw_magma_viscosity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_14_shaw_magma_viscosity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Shaw's magma viscosity (1972)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Wilson, Sparks, Huang and Watkins treated a Plinian eruption column as a buoyant plume driven by the heat of its fragmented magma. Its height grows as the fourth root of the heat flux, about 8.2 Q(1/4) metres, so a column ten times higher needs ten thousand times the eruption rate. The same height follows from the Morton-Taylor-Turner plume with the buoyancy flux of that heat in the atmosphere.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_15_wilson_sparks_eruption_columns_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_15_wilson_sparks_eruption_columns`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Wilson, Sparks, Huang and Watkins's eruption columns (1978)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lionel Wilson and James Head followed magma up dikes from its source to the surface on the Earth and the Moon. Buoyancy drives laminar flow between the walls at a speed that grows as the square of the width, and the magma&#x27;s dissolved water comes out of solution as the pressure falls. Basalt in a dike a metre wide rises at metres per second; a viscous rhyolite barely moves.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_16_wilson_head_dike_ascent_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_16_wilson_head_dike_ascent`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Wilson and Head's magma ascent in dikes (1981)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Chris Newhall and Stephen Self combined erupted volume, column height and eyewitness descriptions into one index from 0 to 8, so that eruptions in the historical record could be compared. Above VEI 2 each step is a factor of ten in tephra volume. Approximate volumes of a few well-known eruptions place them on the scale.">
+
+.. only:: html
+
+  .. image:: /api/gallery/volcanology/images/thumb/sphx_glr_plot_17_newhall_self_volcanic_explosivity_index_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/volcanology/plot_17_newhall_self_volcanic_explosivity_index`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Newhall and Self's Volcanic Explosivity Index (1982)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/volcanology/plot_01_rayleigh_fractional_distillation
+   /api/gallery/volcanology/plot_02_rutherford_soddy_decay_law
+   /api/gallery/volcanology/plot_03_boltwood_uranium_lead_ages
+   /api/gallery/volcanology/plot_04_holmes_age_of_the_earth
+   /api/gallery/volcanology/plot_05_bowen_reaction_series
+   /api/gallery/volcanology/plot_06_goldschmidt_ionic_substitution
+   /api/gallery/volcanology/plot_07_urey_isotope_paleothermometer
+   /api/gallery/volcanology/plot_08_libby_radiocarbon
+   /api/gallery/volcanology/plot_09_patterson_age_of_the_earth
+   /api/gallery/volcanology/plot_10_wetherill_concordia
+   /api/gallery/volcanology/plot_11_morton_taylor_turner_buoyant_plumes
+   /api/gallery/volcanology/plot_12_mogi_point_source
+   /api/gallery/volcanology/plot_13_nicolaysen_isochron
+   /api/gallery/volcanology/plot_14_shaw_magma_viscosity
+   /api/gallery/volcanology/plot_15_wilson_sparks_eruption_columns
+   /api/gallery/volcanology/plot_16_wilson_head_dike_ascent
+   /api/gallery/volcanology/plot_17_newhall_self_volcanic_explosivity_index
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: volcanology_python.zip </api/gallery/volcanology/volcanology_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: volcanology_jupyter.zip </api/gallery/volcanology/volcanology_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

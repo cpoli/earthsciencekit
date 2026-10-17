@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="earthsciencekit.geophysics" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/earthsciencekit/api/geophysics.html" />
+<meta property="og:site_name" content="earthsciencekit" />
+<meta property="og:description" content="Domain hub · History · Examples · API reference Inspectable geophysics models: gravity, the figure of the Earth and geomagnetism; SI units unless stated otherwise." />
+<meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
+<meta property="og:image:alt" content="earthsciencekit" />
+<meta name="description" content="Domain hub · History · Examples · API reference Inspectable geophysics models: gravity, the figure of the Earth and geomagnetism; SI units unless stated otherwise." />
+
+    <title>earthsciencekit.geophysics &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=95e61db4"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/geophysics';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/api/geophysics.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="earthsciencekit.integrators" href="integrators.html" />
+    <link rel="prev" title="earthsciencekit.volcanology" href="volcanology.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plate_tectonics.html">earthsciencekit.plate_tectonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seismology.html">earthsciencekit.seismology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atmosphere.html">earthsciencekit.atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">earthsciencekit.climate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oceanography.html">earthsciencekit.oceanography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanology.html">earthsciencekit.volcanology</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">earthsciencekit.geophysics</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">earthsciencekit.integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">earthsciencekit.results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizers.html">earthsciencekit.visualizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">earthsciencekit.units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">earthsciencekit.constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validation.html">Validation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Scope and limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Scientific teaching references</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.geophysics</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="earthsciencekit-geophysics">
+<h1>earthsciencekit.geophysics<a class="headerlink" href="#earthsciencekit-geophysics" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/geophysics.html"><span class="doc">Domain hub</span></a> · <a class="reference internal" href="../history/geophysics_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/geophysics/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p id="module-earthsciencekit.geophysics">Inspectable geophysics models: gravity, the figure of the Earth and geomagnetism; SI units unless stated otherwise.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.block_magnetic_anomaly">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">block_magnetic_anomaly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetization</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#block_magnetic_anomaly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.block_magnetic_anomaly" title="Link to this definition">#</a></dt>
+<dd><p>Magnetic anomaly of a vertically magnetized two-dimensional block.</p>
+<p>Strips of normally and reversely magnetized crust give the alternating anomalies over mid-ocean ridges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real. Horizontal position of the observer, perpendicular to the strike.</p></li>
+<li><p><strong>left</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: left &lt; right. Edges of the block.</p></li>
+<li><p><strong>right</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: left &lt; right. Edges of the block.</p></li>
+<li><p><strong>top</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: 0 &lt; top &lt; bottom. Depths below the observation level.</p></li>
+<li><p><strong>bottom</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: 0 &lt; top &lt; bottom. Depths below the observation level.</p></li>
+<li><p><strong>magnetization</strong> (<em>float</em><em> or </em><em>array_like</em>) – A/m; constraint: real. Positive downward (normal polarity at the north magnetic pole).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [T]: vertical field anomaly, equal to the total-field anomaly reduced to the pole.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Infinite strike length, uniform vertical magnetization and a vertical ambient field. A laterally infinite layer has
+no external field.
+Equation: <code class="docutils literal notranslate"><span class="pre">MU0</span> <span class="pre">*</span> <span class="pre">magnetization</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">np.pi)</span> <span class="pre">*</span> <span class="pre">(phi(top)</span> <span class="pre">-</span> <span class="pre">phi(bottom))</span></code> with
+<code class="docutils literal notranslate"><span class="pre">phi(z)</span> <span class="pre">=</span> <span class="pre">np.arctan((right</span> <span class="pre">-</span> <span class="pre">x)</span> <span class="pre">/</span> <span class="pre">z)</span> <span class="pre">-</span> <span class="pre">np.arctan((left</span> <span class="pre">-</span> <span class="pre">x)</span> <span class="pre">/</span> <span class="pre">z)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.bouguer_anomaly">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">bouguer_anomaly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observed_gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normal_gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/gravity.html#bouguer_anomaly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.bouguer_anomaly" title="Link to this definition">#</a></dt>
+<dd><p>Simple Bouguer gravity anomaly.</p>
+<p>Removing latitude, height and the rock slab under a station leaves the attraction of buried density contrasts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observed_gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>normal_gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive. Normal gravity on the reference surface at the station’s latitude.</p></li>
+<li><p><strong>height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real. Station height above the reference surface.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive. Reduction density of the slab.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s^2]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Free-air and infinite-slab reductions only, without terrain correction. The free-air anomaly is the same
+expression without the slab term.
+Equation: <code class="docutils literal notranslate"><span class="pre">observed_gravity</span> <span class="pre">-</span> <span class="pre">normal_gravity</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">normal_gravity</span> <span class="pre">*</span> <span class="pre">height</span> <span class="pre">/</span> <span class="pre">radius</span> <span class="pre">-</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">G</span> <span class="pre">*</span> <span class="pre">density</span> <span class="pre">*</span> <span class="pre">height</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.bouguer_correction">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">bouguer_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/gravity.html#bouguer_correction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.bouguer_correction" title="Link to this definition">#</a></dt>
+<dd><p>Attraction of an infinite horizontal slab.</p>
+<p>Rock between the station and the reference level adds gravity that does not depend on the slab’s extent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real. Signed station height above the reference level.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s^2]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Flat, uniform, laterally infinite slab; no terrain or curvature correction. About 0.112 mGal per metre at
+2670 kg/m^3.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">G</span> <span class="pre">*</span> <span class="pre">density</span> <span class="pre">*</span> <span class="pre">thickness</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.centrifugal_ratio">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">centrifugal_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angular_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#centrifugal_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.centrifugal_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Ratio of centrifugal to gravitational acceleration at the equator.</p>
+<p>Rotation flattens a planet in proportion to how strongly it competes with gravity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angular_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad/s; constraint: nonnegative.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Equatorial radius.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive. Equatorial gravity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The geodetic <code class="docutils literal notranslate"><span class="pre">m</span></code> uses <code class="docutils literal notranslate"><span class="pre">GM</span> <span class="pre">/</span> <span class="pre">(a</span> <span class="pre">b)</span></code> in place of gravity; the two differ at the 0.5% level.
+Equation: <code class="docutils literal notranslate"><span class="pre">angular_speed**2</span> <span class="pre">*</span> <span class="pre">radius</span> <span class="pre">/</span> <span class="pre">gravity</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.clairaut_gravity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">clairaut_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equatorial_gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flattening</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centrifugal_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#clairaut_gravity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.clairaut_gravity" title="Link to this definition">#</a></dt>
+<dd><p>Gravity on a rotating spheroid from Clairaut’s theorem.</p>
+<p>The increase of gravity toward the poles measures the flattening without any surveying.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= latitude &lt;= pi/2. Geodetic latitude.</p></li>
+<li><p><strong>equatorial_gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>flattening</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: 0 &lt;= value &lt; 1.</p></li>
+<li><p><strong>centrifugal_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s^2]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>First order in flattening and rotation for a spheroid in hydrostatic equilibrium; the sin^4 term is omitted.
+Equation: <code class="docutils literal notranslate"><span class="pre">equatorial_gravity</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">(5</span> <span class="pre">*</span> <span class="pre">centrifugal_ratio</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">flattening)</span> <span class="pre">*</span> <span class="pre">np.sin(latitude)</span> <span class="pre">**</span> <span class="pre">2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.degree_geoid_height">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">degree_geoid_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anomaly_coefficient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#degree_geoid_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.degree_geoid_height" title="Link to this definition">#</a></dt>
+<dd><p>Geoid height of one spherical-harmonic degree of the gravity anomaly.</p>
+<p>Stokes’s integral divides each degree of the anomaly by <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>, so long wavelengths dominate the geoid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>anomaly_coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: real. Coefficient of the degree-<code class="docutils literal notranslate"><span class="pre">n</span></code> surface harmonic of the gravity anomaly.</p></li>
+<li><p><strong>degree</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: integer &gt;= 2.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive. Mean normal gravity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]: coefficient of the same surface harmonic in the geoid height.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Spherical approximation of Stokes’s formula; degrees 0 and 1 are excluded by construction.
+Equation: <code class="docutils literal notranslate"><span class="pre">radius</span> <span class="pre">*</span> <span class="pre">anomaly_coefficient</span> <span class="pre">/</span> <span class="pre">((degree</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">gravity)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.dipole_field">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">dipole_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#dipole_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.dipole_field" title="Link to this definition">#</a></dt>
+<dd><p>Field of a geocentric axial dipole.</p>
+<p>A uniformly magnetized Earth gives a field that dips more steeply toward the poles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= latitude &lt;= pi/2. Geocentric latitude.</p></li>
+<li><p><strong>distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Distance from the Earth’s centre.</p></li>
+<li><p><strong>moment</strong> (<em>float</em><em> or </em><em>array_like</em>) – A m^2; constraint: real. Positive for today’s polarity, whose field points down in the northern hemisphere.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [T]: the northward and the downward component.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Pure axial dipole, outside its sources. The field at the poles is twice that at the equator.
+Equation: <code class="docutils literal notranslate"><span class="pre">MU0</span> <span class="pre">*</span> <span class="pre">moment</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">distance**3)</span> <span class="pre">*</span> <span class="pre">[np.cos(latitude),</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.sin(latitude)]</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.dipole_inclination">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">dipole_inclination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#dipole_inclination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.dipole_inclination" title="Link to this definition">#</a></dt>
+<dd><p>Inclination of an axial dipole field.</p>
+<p>The dip of a compass needle tells a navigator, or a rock, its magnetic latitude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= latitude &lt;= pi/2.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [rad]: positive downward, for today’s polarity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Geocentric axial dipole; <code class="docutils literal notranslate"><span class="pre">tan(I)</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">tan(latitude)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.arctan2(2</span> <span class="pre">*</span> <span class="pre">np.sin(latitude),</span> <span class="pre">np.cos(latitude))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.direction_angle">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">direction_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">declination_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">declination_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination_b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#direction_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.direction_angle" title="Link to this definition">#</a></dt>
+<dd><p>Angle between two magnetic directions.</p>
+<p>A remanence more than 90 degrees from the present field records a reversed polarity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>declination_a</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: real.</p></li>
+<li><p><strong>declination_b</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: real.</p></li>
+<li><p><strong>inclination_a</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= inclination &lt;= pi/2.</p></li>
+<li><p><strong>inclination_b</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= inclination &lt;= pi/2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [rad] in [0, pi]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Great-circle distance between unit vectors; intensities are ignored.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.arccos(np.sin(Ia)</span> <span class="pre">*</span> <span class="pre">np.sin(Ib)</span> <span class="pre">+</span> <span class="pre">np.cos(Ia)</span> <span class="pre">*</span> <span class="pre">np.cos(Ib)</span> <span class="pre">*</span> <span class="pre">np.cos(Da</span> <span class="pre">-</span> <span class="pre">Db))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.earth_mean_density">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">earth_mean_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravitational_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.6743e-11</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/gravity.html#earth_mean_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.earth_mean_density" title="Link to this definition">#</a></dt>
+<dd><p>Mean density of the Earth.</p>
+<p>Surface gravity and the gravitational constant together weigh the Earth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>gravitational_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/(kg s^2); constraint: positive. Defaults to <code class="xref py py-data docutils literal notranslate"><span class="pre">earthsciencekit.constants.G</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Spherically symmetric, nonrotating Earth, so <code class="docutils literal notranslate"><span class="pre">gravity</span> <span class="pre">=</span> <span class="pre">G</span> <span class="pre">M</span> <span class="pre">/</span> <span class="pre">radius**2</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">gravity</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">gravitational_constant</span> <span class="pre">*</span> <span class="pre">radius)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.equivalent_water_height">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">equivalent_water_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coefficient_change</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load_love_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">water_density</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/deformation.html#equivalent_water_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.equivalent_water_height" title="Link to this definition">#</a></dt>
+<dd><p>Water layer behind a change of one Stokes coefficient.</p>
+<p>Monthly gravity fields from a satellite pair reveal the moving mass of water, ice and groundwater.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coefficient_change</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real. Change of a fully normalized Stokes coefficient of degree <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p><strong>degree</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: integer &gt;= 0.</p></li>
+<li><p><strong>load_love_number</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: greater than -1. Elastic yielding <code class="docutils literal notranslate"><span class="pre">k'_n</span></code> of the Earth under the load.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>mean_density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive. Mean density of the Earth.</p></li>
+<li><p><strong>water_density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]: coefficient of the same fully normalized harmonic in the water thickness.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Thin surface layer on an elastic Earth (Wahr et al., 1998); valid while the layer is much thinner than the
+resolution of the truncated expansion.
+Equation: <code class="docutils literal notranslate"><span class="pre">radius</span> <span class="pre">*</span> <span class="pre">mean_density</span> <span class="pre">*</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">degree</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">coefficient_change</span> <span class="pre">/</span> <span class="pre">(3</span> <span class="pre">*</span> <span class="pre">water_density</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">load_love_number))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.field_elements">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">field_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">north</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">east</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">down</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#field_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.field_elements" title="Link to this definition">#</a></dt>
+<dd><p>Declination, inclination and intensity of a field vector.</p>
+<p>Magnetic directions in rocks and observatories are reported as two angles and a strength.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>north</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real, not all zero.</p></li>
+<li><p><strong>east</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real, not all zero.</p></li>
+<li><p><strong>down</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real, not all zero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value: declination [rad] east of north in (-pi, pi], inclination [rad] positive down, intensity [T].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 3)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Local north-east-down frame. A reversed field has declination near pi and inclination of the opposite sign.
+Equation: <code class="docutils literal notranslate"><span class="pre">[np.arctan2(east,</span> <span class="pre">north),</span> <span class="pre">np.arctan2(down,</span> <span class="pre">np.hypot(north,</span> <span class="pre">east)),</span> <span class="pre">np.sqrt(north**2</span> <span class="pre">+</span> <span class="pre">east**2</span> <span class="pre">+</span> <span class="pre">down**2)]</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.flattening_from_j2">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">flattening_from_j2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">j2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centrifugal_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#flattening_from_j2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.flattening_from_j2" title="Link to this definition">#</a></dt>
+<dd><p>Flattening of a hydrostatic Earth from its J2.</p>
+<p>The oblateness term of the gravity field and the rotation fix the shape of the level surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>j2</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real. Unnormalized second zonal harmonic <code class="docutils literal notranslate"><span class="pre">-C20</span></code>.</p></li>
+<li><p><strong>centrifugal_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>First order in flattening (Clairaut’s relation for the external field); second-order terms change <code class="docutils literal notranslate"><span class="pre">1/f</span></code> by
+about 0.1%.
+Equation: <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">j2</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">centrifugal_ratio</span> <span class="pre">/</span> <span class="pre">2</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.free_air_correction">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">free_air_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/gravity.html#free_air_correction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.free_air_correction" title="Link to this definition">#</a></dt>
+<dd><p>Free-air gravity correction.</p>
+<p>Gravity falls off with distance from the Earth’s centre, about 0.3086 mGal per metre at the surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real. Station height above the reference surface.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive. Gravity on the reference surface.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s^2]: the amount to add to gravity observed at <code class="docutils literal notranslate"><span class="pre">height</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>First order in height / radius for a spherical point-mass Earth; no rock between station and reference.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">height</span> <span class="pre">/</span> <span class="pre">radius</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.gauss_dipole_moment">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">gauss_dipole_moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#gauss_dipole_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.gauss_dipole_moment" title="Link to this definition">#</a></dt>
+<dd><p>Dipole moment from the degree-1 Gauss coefficients.</p>
+<p>Gauss’s analysis weighed the Earth’s magnet from surface measurements alone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>g10</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real. Schmidt semi-normalized degree-1 coefficients.</p></li>
+<li><p><strong>g11</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real. Schmidt semi-normalized degree-1 coefficients.</p></li>
+<li><p><strong>h11</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real. Schmidt semi-normalized degree-1 coefficients.</p></li>
+<li><p><strong>reference_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [A m^2]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Magnitude of the best-fitting geocentric (tilted) dipole; the tilt is <code class="docutils literal notranslate"><span class="pre">arccos(abs(g10)</span> <span class="pre">/</span> <span class="pre">B0)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">reference_radius**3</span> <span class="pre">/</span> <span class="pre">MU0</span> <span class="pre">*</span> <span class="pre">np.sqrt(g10**2</span> <span class="pre">+</span> <span class="pre">g11**2</span> <span class="pre">+</span> <span class="pre">h11**2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.homogeneous_flattening">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">homogeneous_flattening</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centrifugal_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#homogeneous_flattening"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.homogeneous_flattening" title="Link to this definition">#</a></dt>
+<dd><p>Flattening of a slowly rotating homogeneous fluid planet.</p>
+<p>A uniform self-gravitating fluid in rotation settles into an oblate spheroid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>centrifugal_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: 0 &lt;= value &lt;= 0.1.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]: <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">-</span> <span class="pre">c)</span> <span class="pre">/</span> <span class="pre">a</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>First order in rotation (Maclaurin spheroid). A centrally condensed Earth is less flattened than this.
+Equation: <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">*</span> <span class="pre">centrifugal_ratio</span> <span class="pre">/</span> <span class="pre">4</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.love_number_h2">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">love_number_h2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rigidity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/deformation.html#love_number_h2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.love_number_h2" title="Link to this definition">#</a></dt>
+<dd><p>Degree-2 displacement Love number of a homogeneous elastic Earth.</p>
+<p>The solid Earth rises and falls with the tide by a fraction of the equilibrium tide that measures its rigidity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rigidity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative. Shear modulus; zero gives a fluid Earth.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]: radial displacement over the equilibrium tide height.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uniform, incompressible, self-gravitating elastic sphere (Kelvin’s solution); <code class="docutils literal notranslate"><span class="pre">h2</span> <span class="pre">=</span> <span class="pre">5</span> <span class="pre">k2</span> <span class="pre">/</span> <span class="pre">3</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">2.5</span> <span class="pre">/</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">19</span> <span class="pre">*</span> <span class="pre">rigidity</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">density</span> <span class="pre">*</span> <span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">radius))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.love_number_k2">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">love_number_k2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rigidity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/deformation.html#love_number_k2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.love_number_k2" title="Link to this definition">#</a></dt>
+<dd><p>Degree-2 potential Love number of a homogeneous elastic Earth.</p>
+<p>The tidal bulge adds its own gravitational potential, a fraction k2 of the tidal potential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rigidity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative. Shear modulus; zero gives a fluid Earth.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uniform, incompressible, self-gravitating elastic sphere (Kelvin’s solution); the fluid limit is 3/2.
+Equation: <code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">/</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">19</span> <span class="pre">*</span> <span class="pre">rigidity</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">density</span> <span class="pre">*</span> <span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">radius))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.magnetic_decay_time">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">magnetic_decay_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conductivity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/dynamo.html#magnetic_decay_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.magnetic_decay_time" title="Link to this definition">#</a></dt>
+<dd><p>Free decay time of the slowest magnetic mode of a conducting sphere.</p>
+<p>Without a dynamo the Earth’s field would die in tens of thousands of years, far less than its age.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – S/m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s]: e-folding time of the field of the slowest dipole mode.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uniform stationary conductor surrounded by an insulator.
+Equation: <code class="docutils literal notranslate"><span class="pre">MU0</span> <span class="pre">*</span> <span class="pre">conductivity</span> <span class="pre">*</span> <span class="pre">radius**2</span> <span class="pre">/</span> <span class="pre">np.pi**2</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.magnetic_reynolds_number">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">magnetic_reynolds_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conductivity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/dynamo.html#magnetic_reynolds_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.magnetic_reynolds_number" title="Link to this definition">#</a></dt>
+<dd><p>Magnetic Reynolds number.</p>
+<p>A conducting fluid can stretch and regenerate a magnetic field only if advection beats diffusion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – S/m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Order-of-magnitude scale; dynamos need values above a geometry-dependent threshold of order 10 to 100.
+Equation: <code class="docutils literal notranslate"><span class="pre">MU0</span> <span class="pre">*</span> <span class="pre">conductivity</span> <span class="pre">*</span> <span class="pre">speed</span> <span class="pre">*</span> <span class="pre">length</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.nodal_precession_rate">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">nodal_precession_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">semi_major_axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eccentricity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravitational_parameter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#nodal_precession_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.nodal_precession_rate" title="Link to this definition">#</a></dt>
+<dd><p>Secular regression of a satellite orbit’s node.</p>
+<p>The equatorial bulge torques an inclined orbit, so the node drifts at a rate that measures J2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>semi_major_axis</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>eccentricity</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: 0 &lt;= value &lt; 1.</p></li>
+<li><p><strong>inclination</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: 0 &lt;= inclination &lt;= pi.</p></li>
+<li><p><strong>j2</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Equatorial reference radius of J2.</p></li>
+<li><p><strong>gravitational_parameter</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s^2; constraint: positive. <code class="docutils literal notranslate"><span class="pre">G</span> <span class="pre">M</span></code> of the Earth.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [rad/s]: negative (westward) for prograde orbits and positive J2.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>First-order secular J2 perturbation, without drag or higher harmonics; perigee must clear the reference radius.
+Equation: <code class="docutils literal notranslate"><span class="pre">-1.5</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">j2</span> <span class="pre">*</span> <span class="pre">(radius</span> <span class="pre">/</span> <span class="pre">semi_major_axis)</span> <span class="pre">**</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.cos(inclination)</span> <span class="pre">/</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">eccentricity**2)</span> <span class="pre">**</span> <span class="pre">2</span></code>
+with mean motion <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">np.sqrt(gravitational_parameter</span> <span class="pre">/</span> <span class="pre">semi_major_axis**3)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.normal_gravity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">normal_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#normal_gravity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.normal_gravity" title="Link to this definition">#</a></dt>
+<dd><p>Normal gravity on the GRS80 ellipsoid.</p>
+<p>The reference field that gravity anomalies are measured against.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= latitude &lt;= pi/2. Geodetic latitude.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s^2]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Somigliana’s closed form on the ellipsoid surface with the GRS80 constants
+<code class="docutils literal notranslate"><span class="pre">gamma_e</span> <span class="pre">=</span> <span class="pre">9.7803267715</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">0.001931851353</span></code> and <code class="docutils literal notranslate"><span class="pre">e2</span> <span class="pre">=</span> <span class="pre">0.00669438002290</span></code>; exact for the level ellipsoid.
+Equation: <code class="docutils literal notranslate"><span class="pre">gamma_e</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">k</span> <span class="pre">*</span> <span class="pre">np.sin(latitude)</span> <span class="pre">**</span> <span class="pre">2)</span> <span class="pre">/</span> <span class="pre">np.sqrt(1</span> <span class="pre">-</span> <span class="pre">e2</span> <span class="pre">*</span> <span class="pre">np.sin(latitude)</span> <span class="pre">**</span> <span class="pre">2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.paleolatitude">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">paleolatitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inclination</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#paleolatitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.paleolatitude" title="Link to this definition">#</a></dt>
+<dd><p>Paleolatitude from a remanent inclination.</p>
+<p>A rock’s frozen-in dip records how far from the pole it formed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inclination</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= inclination &lt;= pi/2. Positive downward.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [rad]: the magnetic latitude of the site when the rock was magnetized.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Assumes a geocentric axial dipole averaged over secular variation; a reversed direction must be inverted first.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.arctan2(np.sin(inclination),</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.cos(inclination))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.rikitake_fixed_point">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">rikitake_fixed_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/dynamo.html#rikitake_fixed_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.rikitake_fixed_point" title="Link to this definition">#</a></dt>
+<dd><p>Steady state of Rikitake’s two-disc dynamo.</p>
+<p>The two coupled discs have a pair of steady states of opposite polarity, which the chaotic flow visits in turn.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mu</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive. Scaled resistance.</p></li>
+<li><p><strong>k</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive. Sets <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">mu</span> <span class="pre">*</span> <span class="pre">(k**2</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">k**2)</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]: the scaled currents <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and the scaled angular speed <code class="docutils literal notranslate"><span class="pre">z</span></code> of the positive state; the
+other state is <code class="docutils literal notranslate"><span class="pre">(-x,</span> <span class="pre">-y,</span> <span class="pre">z)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 3)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Nondimensional system of <a class="reference internal" href="#earthsciencekit.geophysics.simulate_rikitake_dynamo" title="earthsciencekit.geophysics.simulate_rikitake_dynamo"><code class="xref py py-func docutils literal notranslate"><span class="pre">simulate_rikitake_dynamo()</span></code></a>. Both states are unstable for the usual parameters.
+Equation: <code class="docutils literal notranslate"><span class="pre">[k,</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">k,</span> <span class="pre">mu</span> <span class="pre">*</span> <span class="pre">k**2]</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.simulate_rikitake_dynamo">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">simulate_rikitake_dynamo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/dynamo.html#simulate_rikitake_dynamo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.simulate_rikitake_dynamo" title="Link to this definition">#</a></dt>
+<dd><p>Integrate Rikitake’s coupled two-disc dynamo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mu</strong> (<em>float</em>) – Positive scalar scaled resistance [1].</p></li>
+<li><p><strong>k</strong> (<em>float</em>) – Positive scalar setting the torque asymmetry <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">mu</span> <span class="pre">*</span> <span class="pre">(k**2</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">k**2)</span></code> [1].</p></li>
+<li><p><strong>time_scale</strong> (<em>float</em>) – Positive scalar seconds per nondimensional time unit [s].</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing sampled times [s].</p></li>
+<li><p><strong>initial_state</strong> (<em>sequence</em><em> of </em><em>float</em>) – Scaled currents <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and angular speed <code class="docutils literal notranslate"><span class="pre">z</span></code> at the first time [1].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The scaled currents <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> (whose sign is the polarity) and the scaled angular speed <code class="docutils literal notranslate"><span class="pre">z</span></code> [1].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><code class="docutils literal notranslate"><span class="pre">dx/dt</span> <span class="pre">=</span> <span class="pre">-mu</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">*</span> <span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">dy/dt</span> <span class="pre">=</span> <span class="pre">-mu</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">+</span> <span class="pre">(z</span> <span class="pre">-</span> <span class="pre">A)</span> <span class="pre">*</span> <span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">dz/dt</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> in units of <code class="docutils literal notranslate"><span class="pre">time_scale</span></code>.
+The steady states are <a class="reference internal" href="#earthsciencekit.geophysics.rikitake_fixed_point" title="earthsciencekit.geophysics.rikitake_fixed_point"><code class="xref py py-func docutils literal notranslate"><span class="pre">rikitake_fixed_point()</span></code></a>. Trajectories oscillate about one and jump irregularly to the
+other, reversing both currents: a chaotic analogue of geomagnetic reversals, not a model of the core.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.sphere_gravity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">sphere_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_contrast</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/gravity.html#sphere_gravity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.sphere_gravity" title="Link to this definition">#</a></dt>
+<dd><p>Gravitational attraction of a uniform sphere.</p>
+<p>A compact body with excess density pulls a plumb line sideways and adds to gravity above it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real. Horizontal distance of the observer from the point above the centre.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real. Depth of the centre below the observer, positive downward.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>density_contrast</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: real. Density minus that of the surroundings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s^2]: the horizontal component, positive toward increasing <code class="docutils literal notranslate"><span class="pre">x</span></code>, and the downward component.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The observer must lie outside the sphere, where it attracts as a point mass <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">4/3</span> <span class="pre">pi</span> <span class="pre">radius**3</span> <span class="pre">density_contrast</span></code>.
+The horizontal component always points toward the centre for positive contrast.
+Equation: <code class="docutils literal notranslate"><span class="pre">G</span> <span class="pre">*</span> <span class="pre">M</span> <span class="pre">*</span> <span class="pre">[-x,</span> <span class="pre">depth]</span> <span class="pre">/</span> <span class="pre">(x**2</span> <span class="pre">+</span> <span class="pre">depth**2)</span> <span class="pre">**</span> <span class="pre">1.5</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.stokes_function">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">stokes_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spherical_distance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/figure.html#stokes_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.stokes_function" title="Link to this definition">#</a></dt>
+<dd><p>Stokes’s kernel for the geoid.</p>
+<p>Weighting gravity anomalies over the whole globe by spherical distance gives the geoid height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>spherical_distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: 0 &lt; value &lt;= pi.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Spherical approximation with no masses outside the geoid; singular as <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">/</span> <span class="pre">psi</span></code> at zero distance. Its Legendre
+expansion is <code class="docutils literal notranslate"><span class="pre">sum((2</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">(n</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">P_n(cos</span> <span class="pre">psi),</span> <span class="pre">n</span> <span class="pre">&gt;=</span> <span class="pre">2)</span></code>, so the geoid is
+<code class="docutils literal notranslate"><span class="pre">radius</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">pi</span> <span class="pre">gravity)</span> <span class="pre">*</span> <span class="pre">integral(anomaly</span> <span class="pre">*</span> <span class="pre">S</span> <span class="pre">dsigma)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">s</span> <span class="pre">-</span> <span class="pre">6</span> <span class="pre">*</span> <span class="pre">s</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">5</span> <span class="pre">*</span> <span class="pre">np.cos(psi)</span> <span class="pre">-</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">np.cos(psi)</span> <span class="pre">*</span> <span class="pre">np.log(s</span> <span class="pre">+</span> <span class="pre">s**2)</span></code> with <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">np.sin(psi</span> <span class="pre">/</span> <span class="pre">2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.tidal_gravimetric_factor">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">tidal_gravimetric_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/deformation.html#tidal_gravimetric_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.tidal_gravimetric_factor" title="Link to this definition">#</a></dt>
+<dd><p>Gravimetric factor of the body tide.</p>
+<p>A gravimeter on a yielding Earth sees the tide amplified by its uplift and reduced by the bulge’s attraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h2</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: nonnegative.</p></li>
+<li><p><strong>k2</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]: observed over rigid-Earth tidal gravity change.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Degree-2 tide on a spherically symmetric elastic Earth, without ocean loading. About 1.16 for the real Earth.
+Equation: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">h2</span> <span class="pre">-</span> <span class="pre">1.5</span> <span class="pre">*</span> <span class="pre">k2</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.torsion_balance_gravitational_constant">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">torsion_balance_gravitational_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arm_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deflection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attracting_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/gravity.html#torsion_balance_gravitational_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.torsion_balance_gravitational_constant" title="Link to this definition">#</a></dt>
+<dd><p>Gravitational constant from a torsion balance.</p>
+<p>The twist of a suspended rod between large masses, timed by its free swing, measures G.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arm_length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Distance between the two small balls.</p></li>
+<li><p><strong>separation</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Centre distance between each small ball and its large ball.</p></li>
+<li><p><strong>deflection</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: positive. Equilibrium twist of the rod.</p></li>
+<li><p><strong>attracting_mass</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg; constraint: positive. Mass of each large ball.</p></li>
+<li><p><strong>period</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive. Free oscillation period of the rod.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^3/(kg s^2)]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Point masses, a massless rod and attraction by the near large ball only; the small mass cancels.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.pi**2</span> <span class="pre">*</span> <span class="pre">arm_length</span> <span class="pre">*</span> <span class="pre">separation**2</span> <span class="pre">*</span> <span class="pre">deflection</span> <span class="pre">/</span> <span class="pre">(attracting_mass</span> <span class="pre">*</span> <span class="pre">period**2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.virtual_geomagnetic_pole">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">virtual_geomagnetic_pole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">site_latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">site_longitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">declination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#virtual_geomagnetic_pole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.virtual_geomagnetic_pole" title="Link to this definition">#</a></dt>
+<dd><p>Virtual geomagnetic pole of a site direction.</p>
+<p>Poles from rocks of one age on one continent should agree; when they wander, the continent moved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>site_latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= latitude &lt;= pi/2.</p></li>
+<li><p><strong>site_longitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: real.</p></li>
+<li><p><strong>declination</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: real.</p></li>
+<li><p><strong>inclination</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= inclination &lt;= pi/2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [rad]: pole latitude and pole longitude in [0, 2 pi).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The pole of the geocentric dipole that gives the observed direction at the site; a reversed direction gives a
+southern pole. Its angular distance from the site is <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">np.arctan2(2</span> <span class="pre">*</span> <span class="pre">np.cos(I),</span> <span class="pre">np.sin(I))</span></code>, along the
+great circle leaving the site at azimuth <code class="docutils literal notranslate"><span class="pre">D</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">pole</span> <span class="pre">=</span> <span class="pre">site</span> <span class="pre">*</span> <span class="pre">np.cos(p)</span> <span class="pre">+</span> <span class="pre">(north</span> <span class="pre">*</span> <span class="pre">np.cos(D)</span> <span class="pre">+</span> <span class="pre">east</span> <span class="pre">*</span> <span class="pre">np.sin(D))</span> <span class="pre">*</span> <span class="pre">np.sin(p)</span></code> with the site’s unit
+position vector and local north and east unit vectors; latitude <code class="docutils literal notranslate"><span class="pre">np.arctan2(z,</span> <span class="pre">np.hypot(x,</span> <span class="pre">y))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.geophysics.zonal_field">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.geophysics.</span></span><span class="sig-name descname"><span class="pre">zonal_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/geophysics/systems/magnetism.html#zonal_field"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.geophysics.zonal_field" title="Link to this definition">#</a></dt>
+<dd><p>Field of one zonal Gauss coefficient.</p>
+<p>Expanding the potential in spherical harmonics separates the dipole from smaller, faster-decaying parts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: -pi/2 &lt;= latitude &lt;= pi/2. Geocentric latitude.</p></li>
+<li><p><strong>distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Distance from the Earth’s centre.</p></li>
+<li><p><strong>degree</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: integer &gt;= 1.</p></li>
+<li><p><strong>coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – T; constraint: real. Gauss coefficient <code class="docutils literal notranslate"><span class="pre">g_n^0</span></code>; for zonal terms Schmidt and unnormalized Legendre functions agree.</p></li>
+<li><p><strong>reference_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Usually 6371.2 km.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [T]: the northward and the downward component.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Internal sources only, potential <code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">=</span> <span class="pre">reference_radius</span> <span class="pre">*</span> <span class="pre">sum((a</span> <span class="pre">/</span> <span class="pre">r)</span> <span class="pre">**</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">g_n^0</span> <span class="pre">P_n(sin</span> <span class="pre">latitude))</span></code>.
+Sum several calls for a truncated zonal model; non-zonal terms (<code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>) are not included.
+Equation: <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">/</span> <span class="pre">r)</span> <span class="pre">**</span> <span class="pre">(n</span> <span class="pre">+</span> <span class="pre">2)</span> <span class="pre">*</span> <span class="pre">coefficient</span> <span class="pre">*</span> <span class="pre">[lpmv(1,</span> <span class="pre">n,</span> <span class="pre">x),</span> <span class="pre">-(n</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">lpmv(0,</span> <span class="pre">n,</span> <span class="pre">x)]</span></code> with
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">np.sin(latitude)</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">reference_radius</span></code>, <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">distance</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">degree</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="volcanology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">earthsciencekit.volcanology</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="integrators.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">earthsciencekit.integrators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.block_magnetic_anomaly"><code class="docutils literal notranslate"><span class="pre">block_magnetic_anomaly()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.bouguer_anomaly"><code class="docutils literal notranslate"><span class="pre">bouguer_anomaly()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.bouguer_correction"><code class="docutils literal notranslate"><span class="pre">bouguer_correction()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.centrifugal_ratio"><code class="docutils literal notranslate"><span class="pre">centrifugal_ratio()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.clairaut_gravity"><code class="docutils literal notranslate"><span class="pre">clairaut_gravity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.degree_geoid_height"><code class="docutils literal notranslate"><span class="pre">degree_geoid_height()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.dipole_field"><code class="docutils literal notranslate"><span class="pre">dipole_field()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.dipole_inclination"><code class="docutils literal notranslate"><span class="pre">dipole_inclination()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.direction_angle"><code class="docutils literal notranslate"><span class="pre">direction_angle()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.earth_mean_density"><code class="docutils literal notranslate"><span class="pre">earth_mean_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.equivalent_water_height"><code class="docutils literal notranslate"><span class="pre">equivalent_water_height()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.field_elements"><code class="docutils literal notranslate"><span class="pre">field_elements()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.flattening_from_j2"><code class="docutils literal notranslate"><span class="pre">flattening_from_j2()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.free_air_correction"><code class="docutils literal notranslate"><span class="pre">free_air_correction()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.gauss_dipole_moment"><code class="docutils literal notranslate"><span class="pre">gauss_dipole_moment()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.homogeneous_flattening"><code class="docutils literal notranslate"><span class="pre">homogeneous_flattening()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.love_number_h2"><code class="docutils literal notranslate"><span class="pre">love_number_h2()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.love_number_k2"><code class="docutils literal notranslate"><span class="pre">love_number_k2()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.magnetic_decay_time"><code class="docutils literal notranslate"><span class="pre">magnetic_decay_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.magnetic_reynolds_number"><code class="docutils literal notranslate"><span class="pre">magnetic_reynolds_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.nodal_precession_rate"><code class="docutils literal notranslate"><span class="pre">nodal_precession_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.normal_gravity"><code class="docutils literal notranslate"><span class="pre">normal_gravity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.paleolatitude"><code class="docutils literal notranslate"><span class="pre">paleolatitude()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.rikitake_fixed_point"><code class="docutils literal notranslate"><span class="pre">rikitake_fixed_point()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.simulate_rikitake_dynamo"><code class="docutils literal notranslate"><span class="pre">simulate_rikitake_dynamo()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.sphere_gravity"><code class="docutils literal notranslate"><span class="pre">sphere_gravity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.stokes_function"><code class="docutils literal notranslate"><span class="pre">stokes_function()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.tidal_gravimetric_factor"><code class="docutils literal notranslate"><span class="pre">tidal_gravimetric_factor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.torsion_balance_gravitational_constant"><code class="docutils literal notranslate"><span class="pre">torsion_balance_gravitational_constant()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.virtual_geomagnetic_pole"><code class="docutils literal notranslate"><span class="pre">virtual_geomagnetic_pole()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.geophysics.zonal_field"><code class="docutils literal notranslate"><span class="pre">zonal_field()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/geophysics.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

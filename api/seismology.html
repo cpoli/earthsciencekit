@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="earthsciencekit.seismology" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/earthsciencekit/api/seismology.html" />
+<meta property="og:site_name" content="earthsciencekit" />
+<meta property="og:description" content="Domain hub · History · Examples · API reference Inspectable seismology models; SI units unless stated otherwise." />
+<meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
+<meta property="og:image:alt" content="earthsciencekit" />
+<meta name="description" content="Domain hub · History · Examples · API reference Inspectable seismology models; SI units unless stated otherwise." />
+
+    <title>earthsciencekit.seismology &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=95e61db4"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/seismology';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/api/seismology.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="earthsciencekit.atmosphere" href="atmosphere.html" />
+    <link rel="prev" title="earthsciencekit.plate_tectonics" href="plate_tectonics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plate_tectonics.html">earthsciencekit.plate_tectonics</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">earthsciencekit.seismology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atmosphere.html">earthsciencekit.atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">earthsciencekit.climate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oceanography.html">earthsciencekit.oceanography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanology.html">earthsciencekit.volcanology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">earthsciencekit.geophysics</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">earthsciencekit.integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">earthsciencekit.results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizers.html">earthsciencekit.visualizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">earthsciencekit.units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">earthsciencekit.constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validation.html">Validation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Scope and limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Scientific teaching references</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.seismology</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="earthsciencekit-seismology">
+<h1>earthsciencekit.seismology<a class="headerlink" href="#earthsciencekit-seismology" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/seismology.html"><span class="doc">Domain hub</span></a> · <a class="reference internal" href="../history/seismology_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/seismology/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p id="module-earthsciencekit.seismology">Inspectable seismology models; SI units unless stated otherwise.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.attenuated_amplitude">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">attenuated_amplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#attenuated_amplitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.attenuated_amplitude" title="Link to this definition">#</a></dt>
+<dd><p>Constant-Q wave attenuation.</p>
+<p>Finite quality factor models intrinsic amplitude decay during propagation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – arbitrary amplitude; constraint: real.</p></li>
+<li><p><strong>frequency</strong> (<em>float</em><em> or </em><em>array_like</em>) – Hz; constraint: nonnegative.</p></li>
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: nonnegative.</p></li>
+<li><p><strong>quality_factor</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Constant-Q narrowband attenuation; geometric spreading is separate.
+Equation: <code class="docutils literal notranslate"><span class="pre">amplitude</span> <span class="pre">*</span> <span class="pre">np.exp(-np.pi</span> <span class="pre">*</span> <span class="pre">frequency</span> <span class="pre">*</span> <span class="pre">time</span> <span class="pre">/</span> <span class="pre">quality_factor)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.critical_angle">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">critical_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/rays.html#critical_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.critical_angle" title="Link to this definition">#</a></dt>
+<dd><p>Snell refraction critical angle.</p>
+<p>Snell refraction explains head waves above a faster layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speed1</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>speed2</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Incidence from the slower medium; second speed must exceed first.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.arcsin(speed1</span> <span class="pre">/</span> <span class="pre">speed2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.crossover_distance">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">crossover_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/rays.html#crossover_distance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.crossover_distance" title="Link to this definition">#</a></dt>
+<dd><p>Head-wave crossover distance.</p>
+<p>The range at which the refracted wave arrives first measures the depth of the layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>speed1</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>speed2</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Flat layer of speed1 over a faster half-space of speed2; direct and head-wave times are equal there.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">thickness</span> <span class="pre">*</span> <span class="pre">np.sqrt((speed2</span> <span class="pre">+</span> <span class="pre">speed1)</span> <span class="pre">/</span> <span class="pre">(speed2</span> <span class="pre">-</span> <span class="pre">speed1))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.gutenberg_richter">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">gutenberg_richter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#gutenberg_richter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.gutenberg_richter" title="Link to this definition">#</a></dt>
+<dd><p>Earthquake frequency-size relation.</p>
+<p>A logarithmic frequency-size law summarizes an earthquake catalogue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real.</p></li>
+<li><p><strong>b</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive.</p></li>
+<li><p><strong>magnitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Expected cumulative count for the fitted catalogue interval; completeness matters.
+Equation: <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">**</span> <span class="pre">(a</span> <span class="pre">-</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">magnitude)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.head_wave_travel_time">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">head_wave_travel_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/rays.html#head_wave_travel_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.head_wave_travel_time" title="Link to this definition">#</a></dt>
+<dd><p>Head-wave travel time below a single layer.</p>
+<p>A wave critically refracted along a faster layer overtakes the direct wave at long range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative, at least the critical distance.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>speed1</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>speed2</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Flat layer of speed1 over a faster half-space of speed2, surface source and receiver.
+The head wave exists only beyond the critical distance <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">thickness</span> <span class="pre">*</span> <span class="pre">tan(critical_angle)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">distance</span> <span class="pre">/</span> <span class="pre">speed2</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">thickness</span> <span class="pre">*</span> <span class="pre">np.sqrt(speed2**2</span> <span class="pre">-</span> <span class="pre">speed1**2)</span> <span class="pre">/</span> <span class="pre">(speed1</span> <span class="pre">*</span> <span class="pre">speed2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.local_magnitude">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">local_magnitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#local_magnitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.local_magnitude" title="Link to this definition">#</a></dt>
+<dd><p>Richter local magnitude.</p>
+<p>A logarithm of recorded amplitude, corrected for distance, ranks earthquakes by size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Peak Wood-Anderson displacement amplitude.</p></li>
+<li><p><strong>distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive. Hypocentral distance.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Richter’s anchor (1 mm at 100 km is magnitude 3) with the Hutton and Boore (1987)
+southern California distance correction, fitted from about 10 to 700 km.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log10(amplitude</span> <span class="pre">/</span> <span class="pre">1e-3)</span> <span class="pre">+</span> <span class="pre">1.11</span> <span class="pre">*</span> <span class="pre">np.log10(distance</span> <span class="pre">/</span> <span class="pre">1e5)</span> <span class="pre">+</span> <span class="pre">1.89e-6</span> <span class="pre">*</span> <span class="pre">(distance</span> <span class="pre">-</span> <span class="pre">1e5)</span> <span class="pre">+</span> <span class="pre">3</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.love_wave_angular_frequency">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">love_wave_angular_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_s_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">halfspace_s_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_rigidity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">halfspace_rigidity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#love_wave_angular_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.love_wave_angular_frequency" title="Link to this definition">#</a></dt>
+<dd><p>Fundamental Love-wave dispersion in a layer over a half-space.</p>
+<p>Shear waves trapped in a slow surface layer travel at a speed that depends on their period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: strictly between the layer and half-space shear speeds.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>layer_s_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>halfspace_s_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>layer_rigidity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>halfspace_rigidity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [rad/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Fundamental mode of a uniform elastic layer over a faster uniform half-space.
+Solves <code class="docutils literal notranslate"><span class="pre">tan(k</span> <span class="pre">*</span> <span class="pre">thickness</span> <span class="pre">*</span> <span class="pre">s1)</span> <span class="pre">=</span> <span class="pre">halfspace_rigidity</span> <span class="pre">*</span> <span class="pre">s2</span> <span class="pre">/</span> <span class="pre">(layer_rigidity</span> <span class="pre">*</span> <span class="pre">s1)</span></code> for the
+wavenumber k at the given phase speed, with <code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">=</span> <span class="pre">np.sqrt(phase_speed**2</span> <span class="pre">/</span> <span class="pre">layer_s_speed**2</span> <span class="pre">-</span> <span class="pre">1)</span></code>
+and <code class="docutils literal notranslate"><span class="pre">s2</span> <span class="pre">=</span> <span class="pre">np.sqrt(1</span> <span class="pre">-</span> <span class="pre">phase_speed**2</span> <span class="pre">/</span> <span class="pre">halfspace_s_speed**2)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">phase_speed</span> <span class="pre">*</span> <span class="pre">np.arctan(halfspace_rigidity</span> <span class="pre">*</span> <span class="pre">s2</span> <span class="pre">/</span> <span class="pre">(layer_rigidity</span> <span class="pre">*</span> <span class="pre">s1))</span> <span class="pre">/</span> <span class="pre">(thickness</span> <span class="pre">*</span> <span class="pre">s1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.moment_from_magnitude">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">moment_from_magnitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">magnitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#moment_from_magnitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.moment_from_magnitude" title="Link to this definition">#</a></dt>
+<dd><p>Inverse moment magnitude.</p>
+<p>Inverting magnitude enables comparisons on a physical moment scale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>magnitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Same SI convention as moment_magnitude; very large inputs can overflow.
+Equation: <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">**</span> <span class="pre">(1.5</span> <span class="pre">*</span> <span class="pre">magnitude</span> <span class="pre">+</span> <span class="pre">9.1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.moment_magnitude">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">moment_magnitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">moment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#moment_magnitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.moment_magnitude" title="Link to this definition">#</a></dt>
+<dd><p>Moment magnitude in SI.</p>
+<p>Moment magnitude relates logarithmic event size to scalar moment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>moment</strong> (<em>float</em><em> or </em><em>array_like</em>) – N m; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uses the 9.1 intercept with moment in N m, not dyne cm.
+Equation: <code class="docutils literal notranslate"><span class="pre">(2</span> <span class="pre">/</span> <span class="pre">3)</span> <span class="pre">*</span> <span class="pre">(np.log10(moment)</span> <span class="pre">-</span> <span class="pre">9.1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.omori_rate">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">omori_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">productivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exponent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#omori_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.omori_rate" title="Link to this definition">#</a></dt>
+<dd><p>Modified Omori aftershock rate.</p>
+<p>Aftershock rates often decay with time after a main shock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>productivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – count s^(p-1); constraint: nonnegative.</p></li>
+<li><p><strong>offset</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive.</p></li>
+<li><p><strong>exponent</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive.</p></li>
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Empirical fitted rate; no earthquake timing or location prediction.
+Equation: <code class="docutils literal notranslate"><span class="pre">productivity</span> <span class="pre">/</span> <span class="pre">(offset</span> <span class="pre">+</span> <span class="pre">time)**exponent</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.p_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">p_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bulk_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#p_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.p_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Compressional-wave elasticity.</p>
+<p>Elastic moduli and density determine compressional wave speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bulk_modulus</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>shear_modulus</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Homogeneous isotropic small-strain medium; shear modulus may vanish in a fluid.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt((bulk_modulus</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">*</span> <span class="pre">shear_modulus</span> <span class="pre">/</span> <span class="pre">3)</span> <span class="pre">/</span> <span class="pre">density)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.poisson_ratio">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">poisson_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_speed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#poisson_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.poisson_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Elastic velocity ratio.</p>
+<p>Wave-speed ratios constrain isotropic elastic response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>s_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Requires positive bulk modulus: vp squared must exceed 4 vs squared over 3.
+Equation: <code class="docutils literal notranslate"><span class="pre">(p_speed**2</span> <span class="pre">-</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">s_speed**2)</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">(p_speed**2</span> <span class="pre">-</span> <span class="pre">s_speed**2))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.ray_parameter">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">ray_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incidence_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/rays.html#ray_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.ray_parameter" title="Link to this definition">#</a></dt>
+<dd><p>Ray parameter in a spherically layered Earth.</p>
+<p>Snell’s law on a sphere keeps one quantity fixed along each ray, which fixes where it emerges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>incidence_angle</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: between 0 and pi/2, measured from the radial direction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s/rad]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Spherically symmetric isotropic Earth; the value is the same at every point of one ray.
+Equation: <code class="docutils literal notranslate"><span class="pre">radius</span> <span class="pre">*</span> <span class="pre">np.sin(incidence_angle)</span> <span class="pre">/</span> <span class="pre">speed</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.rayleigh_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">rayleigh_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_speed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#rayleigh_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.rayleigh_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Rayleigh surface-wave speed.</p>
+<p>A free surface guides a slower wave that combines compression and shear.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>s_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Homogeneous isotropic half-space with a traction-free surface; nondispersive.
+Requires positive bulk modulus: vp squared must exceed 4 vs squared over 3.
+Equation: <code class="docutils literal notranslate"><span class="pre">s_speed</span> <span class="pre">*</span> <span class="pre">np.sqrt(xi)</span></code>, where <code class="docutils literal notranslate"><span class="pre">xi</span></code> is the root in (0, 1) of
+<code class="docutils literal notranslate"><span class="pre">xi**3</span> <span class="pre">-</span> <span class="pre">8</span> <span class="pre">*</span> <span class="pre">xi**2</span> <span class="pre">+</span> <span class="pre">(24</span> <span class="pre">-</span> <span class="pre">16</span> <span class="pre">*</span> <span class="pre">gamma)</span> <span class="pre">*</span> <span class="pre">xi</span> <span class="pre">-</span> <span class="pre">16</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">gamma)</span> <span class="pre">=</span> <span class="pre">0</span></code> and
+<code class="docutils literal notranslate"><span class="pre">gamma</span> <span class="pre">=</span> <span class="pre">(s_speed</span> <span class="pre">/</span> <span class="pre">p_speed)**2</span></code>, found by bisection to machine precision.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.reflection_coefficient">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">reflection_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">impedance1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">impedance2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/interfaces.html#reflection_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.reflection_coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Normal-incidence pressure reflection.</p>
+<p>An interface divides incident energy into reflected and transmitted waves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>impedance1</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/(m^2 s); constraint: positive.</p></li>
+<li><p><strong>impedance2</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/(m^2 s); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Pressure amplitude convention at normal incidence; coefficient can be negative.
+Equation: <code class="docutils literal notranslate"><span class="pre">(impedance2</span> <span class="pre">-</span> <span class="pre">impedance1)</span> <span class="pre">/</span> <span class="pre">(impedance2</span> <span class="pre">+</span> <span class="pre">impedance1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.ricker_wavelet">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">ricker_wavelet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#ricker_wavelet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.ricker_wavelet" title="Link to this definition">#</a></dt>
+<dd><p>Ricker seismic source pulse.</p>
+<p>A compact pulse makes propagation and filtering examples inspectable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: real.</p></li>
+<li><p><strong>frequency</strong> (<em>float</em><em> or </em><em>array_like</em>) – Hz; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Unit peak at zero time; frequency is the peak-spectrum convention.
+Equation: <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">-</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(np.pi</span> <span class="pre">*</span> <span class="pre">frequency</span> <span class="pre">*</span> <span class="pre">time)**2)</span> <span class="pre">*</span> <span class="pre">np.exp(-(np.pi</span> <span class="pre">*</span> <span class="pre">frequency</span> <span class="pre">*</span> <span class="pre">time)**2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.s_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">s_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shear_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/waves.html#s_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.s_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Shear-wave elasticity.</p>
+<p>Shear waves reveal rigidity and disappear in an ideal fluid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shear_modulus</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Homogeneous isotropic medium; zero shear modulus returns zero speed.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt(shear_modulus</span> <span class="pre">/</span> <span class="pre">density)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.seismic_impedance">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">seismic_impedance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/interfaces.html#seismic_impedance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.seismic_impedance" title="Link to this definition">#</a></dt>
+<dd><p>Acoustic impedance.</p>
+<p>Impedance contrasts control normal-incidence reflection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Scalar acoustic impedance; elastic mode conversion is excluded.
+Equation: <code class="docutils literal notranslate"><span class="pre">density</span> <span class="pre">*</span> <span class="pre">speed</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.seismic_moment">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">seismic_moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rigidity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slip</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#seismic_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.seismic_moment" title="Link to this definition">#</a></dt>
+<dd><p>Fault seismic moment.</p>
+<p>Moment connects an earthquake to fault area and displacement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rigidity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>area</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^2; constraint: positive.</p></li>
+<li><p><strong>slip</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Scalar mean-slip estimate; no spatial rupture distribution.
+Equation: <code class="docutils literal notranslate"><span class="pre">rigidity</span> <span class="pre">*</span> <span class="pre">area</span> <span class="pre">*</span> <span class="pre">slip</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.simulate_oscillator">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">simulate_oscillator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quality_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">displacement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/sources.html#simulate_oscillator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.simulate_oscillator" title="Link to this definition">#</a></dt>
+<dd><p>Integrate an unforced damped seismic oscillator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – Positive scalar undamped natural frequency [Hz].</p></li>
+<li><p><strong>quality_factor</strong> (<em>float</em>) – Positive scalar oscillator Q; damping ratio is 1/(2Q).</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing sampled times [s].</p></li>
+<li><p><strong>displacement</strong> (<em>float</em>) – Finite scalar initial displacement [m] and velocity [m/s].</p></li>
+<li><p><strong>velocity</strong> (<em>float</em>) – Finite scalar initial displacement [m] and velocity [m/s].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Displacement [m] and velocity [m/s].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Solves x’’ + omega/Q x’ + omega^2 x = 0. This single oscillator can
+illustrate a seismometer response; it is not an earthquake rupture model.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.transmission_coefficient">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">transmission_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">impedance1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">impedance2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/interfaces.html#transmission_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.transmission_coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Normal-incidence pressure transmission.</p>
+<p>Pressure transmission differs from transmitted energy fraction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>impedance1</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/(m^2 s); constraint: positive.</p></li>
+<li><p><strong>impedance2</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/(m^2 s); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Normal-incidence acoustic pressure amplitudes, not displacement amplitudes.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">impedance2</span> <span class="pre">/</span> <span class="pre">(impedance2</span> <span class="pre">+</span> <span class="pre">impedance1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.travel_time">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">travel_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/rays.html#travel_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.travel_time" title="Link to this definition">#</a></dt>
+<dd><p>Homogeneous travel time.</p>
+<p>Arrival times connect source distance and propagation speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Straight path in a homogeneous medium; not a ray tracer.
+Equation: <code class="docutils literal notranslate"><span class="pre">distance</span> <span class="pre">/</span> <span class="pre">speed</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.seismology.vertical_travel_time">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.seismology.</span></span><span class="sig-name descname"><span class="pre">vertical_travel_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/seismology/systems/rays.html#vertical_travel_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.seismology.vertical_travel_time" title="Link to this definition">#</a></dt>
+<dd><p>Vertical travel time through a tabulated speed profile.</p>
+<p>Integrating slowness through a reference Earth model predicts arrival times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em><em>, </em><em>n &gt;= 2</em>) – m; constraint: nonnegative and nondecreasing. A repeated depth marks a discontinuity.</p></li>
+<li><p><strong>speed</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s]: one-way vertical time from the first depth to each depth.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Speed varies linearly in depth between tabulated points; the integral of each segment is exact.
+Equation: <code class="docutils literal notranslate"><span class="pre">cumsum(dz</span> <span class="pre">*</span> <span class="pre">np.log(v2</span> <span class="pre">/</span> <span class="pre">v1)</span> <span class="pre">/</span> <span class="pre">(v2</span> <span class="pre">-</span> <span class="pre">v1))</span></code>, which is <code class="docutils literal notranslate"><span class="pre">dz</span> <span class="pre">/</span> <span class="pre">v1</span></code> where <code class="docutils literal notranslate"><span class="pre">v2</span> <span class="pre">==</span> <span class="pre">v1</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plate_tectonics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">earthsciencekit.plate_tectonics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="atmosphere.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">earthsciencekit.atmosphere</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.attenuated_amplitude"><code class="docutils literal notranslate"><span class="pre">attenuated_amplitude()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.critical_angle"><code class="docutils literal notranslate"><span class="pre">critical_angle()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.crossover_distance"><code class="docutils literal notranslate"><span class="pre">crossover_distance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.gutenberg_richter"><code class="docutils literal notranslate"><span class="pre">gutenberg_richter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.head_wave_travel_time"><code class="docutils literal notranslate"><span class="pre">head_wave_travel_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.local_magnitude"><code class="docutils literal notranslate"><span class="pre">local_magnitude()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.love_wave_angular_frequency"><code class="docutils literal notranslate"><span class="pre">love_wave_angular_frequency()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.moment_from_magnitude"><code class="docutils literal notranslate"><span class="pre">moment_from_magnitude()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.moment_magnitude"><code class="docutils literal notranslate"><span class="pre">moment_magnitude()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.omori_rate"><code class="docutils literal notranslate"><span class="pre">omori_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.p_wave_speed"><code class="docutils literal notranslate"><span class="pre">p_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.poisson_ratio"><code class="docutils literal notranslate"><span class="pre">poisson_ratio()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.ray_parameter"><code class="docutils literal notranslate"><span class="pre">ray_parameter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.rayleigh_wave_speed"><code class="docutils literal notranslate"><span class="pre">rayleigh_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.reflection_coefficient"><code class="docutils literal notranslate"><span class="pre">reflection_coefficient()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.ricker_wavelet"><code class="docutils literal notranslate"><span class="pre">ricker_wavelet()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.s_wave_speed"><code class="docutils literal notranslate"><span class="pre">s_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.seismic_impedance"><code class="docutils literal notranslate"><span class="pre">seismic_impedance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.seismic_moment"><code class="docutils literal notranslate"><span class="pre">seismic_moment()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.simulate_oscillator"><code class="docutils literal notranslate"><span class="pre">simulate_oscillator()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.transmission_coefficient"><code class="docutils literal notranslate"><span class="pre">transmission_coefficient()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.travel_time"><code class="docutils literal notranslate"><span class="pre">travel_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.seismology.vertical_travel_time"><code class="docutils literal notranslate"><span class="pre">vertical_travel_time()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/seismology.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

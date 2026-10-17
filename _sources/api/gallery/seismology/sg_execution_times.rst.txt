@@ -1,0 +1,82 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_seismology_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.387** total execution time for 16 files **from api/gallery/seismology**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_05_reid_elastic_rebound.py` (``plot_05_reid_elastic_rebound.py``)
+     - 00:00.260
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_12_ricker_wavelet.py` (``plot_12_ricker_wavelet.py``)
+     - 00:00.234
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_03_omori_aftershock_decay.py` (``plot_03_omori_aftershock_decay.py``)
+     - 00:00.232
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_13_knopoff_q.py` (``plot_13_knopoff_q.py``)
+     - 00:00.210
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_09_richter_magnitude.py` (``plot_09_richter_magnitude.py``)
+     - 00:00.187
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_16_prem_travel_time.py` (``plot_16_prem_travel_time.py``)
+     - 00:00.167
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_11_gutenberg_richter_law.py` (``plot_11_gutenberg_richter_law.py``)
+     - 00:00.154
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_08_zoeppritz_reflection.py` (``plot_08_zoeppritz_reflection.py``)
+     - 00:00.152
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_14_aki_seismic_moment.py` (``plot_14_aki_seismic_moment.py``)
+     - 00:00.151
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_06_love_waves.py` (``plot_06_love_waves.py``)
+     - 00:00.115
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_15_hanks_kanamori_moment_magnitude.py` (``plot_15_hanks_kanamori_moment_magnitude.py``)
+     - 00:00.111
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_07_gutenberg_core_shadow.py` (``plot_07_gutenberg_core_shadow.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_04_mohorovicic_discontinuity.py` (``plot_04_mohorovicic_discontinuity.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_10_lehmann_inner_core.py` (``plot_10_lehmann_inner_core.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_02_rayleigh_surface_waves.py` (``plot_02_rayleigh_surface_waves.py``)
+     - 00:00.083
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_01_poisson_two_elastic_waves.py` (``plot_01_poisson_two_elastic_waves.py``)
+     - 00:00.075
+     - 0.0

@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="earthsciencekit.oceanography" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/earthsciencekit/api/oceanography.html" />
+<meta property="og:site_name" content="earthsciencekit" />
+<meta property="og:description" content="Domain hub · History · Examples · API reference Inspectable oceanography models; SI units unless stated otherwise." />
+<meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
+<meta property="og:image:alt" content="earthsciencekit" />
+<meta name="description" content="Domain hub · History · Examples · API reference Inspectable oceanography models; SI units unless stated otherwise." />
+
+    <title>earthsciencekit.oceanography &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=95e61db4"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/oceanography';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/api/oceanography.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="earthsciencekit.volcanology" href="volcanology.html" />
+    <link rel="prev" title="earthsciencekit.climate" href="climate.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plate_tectonics.html">earthsciencekit.plate_tectonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seismology.html">earthsciencekit.seismology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atmosphere.html">earthsciencekit.atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">earthsciencekit.climate</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">earthsciencekit.oceanography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanology.html">earthsciencekit.volcanology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">earthsciencekit.geophysics</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">earthsciencekit.integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">earthsciencekit.results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizers.html">earthsciencekit.visualizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">earthsciencekit.units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">earthsciencekit.constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validation.html">Validation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Scope and limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Scientific teaching references</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.oceanography</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="earthsciencekit-oceanography">
+<h1>earthsciencekit.oceanography<a class="headerlink" href="#earthsciencekit-oceanography" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/oceanography.html"><span class="doc">Domain hub</span></a> · <a class="reference internal" href="../history/oceanography_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/oceanography/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p id="module-earthsciencekit.oceanography">Inspectable oceanography models; SI units unless stated otherwise.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.abyssal_temperature">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">abyssal_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffusivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upwelling</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/hydrography.html#abyssal_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.abyssal_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Munk’s advective-diffusive abyssal temperature profile.</p>
+<p>Slow upwelling balanced by downward mixing of heat sets an exponential thermocline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: 0 &lt;= height &lt;= column_height. Height above the bottom of the column.</p></li>
+<li><p><strong>bottom_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>top_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>column_height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>diffusivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^2/s; constraint: positive. Vertical eddy diffusivity.</p></li>
+<li><p><strong>upwelling</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [K]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Steady one-dimensional balance <code class="docutils literal notranslate"><span class="pre">upwelling</span> <span class="pre">*</span> <span class="pre">dT/dz</span> <span class="pre">=</span> <span class="pre">diffusivity</span> <span class="pre">*</span> <span class="pre">d2T/dz2</span></code> with fixed end temperatures;
+the scale height is <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">diffusivity</span> <span class="pre">/</span> <span class="pre">upwelling</span></code> (about 1 km in Munk’s recipe).
+Equation: <code class="docutils literal notranslate"><span class="pre">bottom_temperature</span> <span class="pre">+</span> <span class="pre">(top_temperature</span> <span class="pre">-</span> <span class="pre">bottom_temperature)</span>
+<span class="pre">*</span> <span class="pre">(np.exp((height</span> <span class="pre">-</span> <span class="pre">column_height)</span> <span class="pre">/</span> <span class="pre">h)</span> <span class="pre">-</span> <span class="pre">np.exp(-column_height</span> <span class="pre">/</span> <span class="pre">h))</span> <span class="pre">/</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">np.exp(-column_height</span> <span class="pre">/</span> <span class="pre">h))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.buoyancy_frequency_squared">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">buoyancy_frequency_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upward_density_gradient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/hydrography.html#buoyancy_frequency_squared"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.buoyancy_frequency_squared" title="Link to this definition">#</a></dt>
+<dd><p>Ocean density stratification.</p>
+<p>Vertical density gradients control internal oscillations and convection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>upward_density_gradient</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^4; constraint: real.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Coordinate increases upward; negative output denotes unstable stratification.
+Equation: <code class="docutils literal notranslate"><span class="pre">-gravity</span> <span class="pre">*</span> <span class="pre">upward_density_gradient</span> <span class="pre">/</span> <span class="pre">density</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.deep_group_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">deep_group_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#deep_group_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.deep_group_speed" title="Link to this definition">#</a></dt>
+<dd><p>Deep-water group speed.</p>
+<p>Wave energy travels at group speed rather than crest phase speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Deep-water gravity waves; group speed is half phase speed.
+Equation: <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">*</span> <span class="pre">np.sqrt(gravity</span> <span class="pre">*</span> <span class="pre">wavelength</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">np.pi))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.deep_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">deep_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#deep_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.deep_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Deep-water phase speed.</p>
+<p>Short waves relative to depth propagate dispersively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelength</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Deep-water small-amplitude gravity waves without capillarity.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt(gravity</span> <span class="pre">*</span> <span class="pre">wavelength</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">np.pi))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.ekman_spiral_velocity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">ekman_spiral_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_stress</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eddy_viscosity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#ekman_spiral_velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.ekman_spiral_velocity" title="Link to this definition">#</a></dt>
+<dd><p>Velocity profile of the Ekman spiral.</p>
+<p>Wind stress diffused downward by friction turns and decays with depth under rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>wind_stress</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: real. Signed stress along the wind axis.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>eddy_viscosity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^2/s; constraint: positive. Constant vertical eddy viscosity.</p></li>
+<li><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]: the downwind component and the crosswind component, positive to the right of the wind.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Steady, infinitely deep ocean with constant eddy viscosity and no pressure gradient. The surface current is 45 degrees
+to the right of the wind in the northern hemisphere (left in the southern). The crosswind component integrated over
+depth equals <a class="reference internal" href="#earthsciencekit.oceanography.ekman_transport" title="earthsciencekit.oceanography.ekman_transport"><code class="xref py py-func docutils literal notranslate"><span class="pre">ekman_transport()</span></code></a>; the downwind component integrates to zero.
+Equation: <code class="docutils literal notranslate"><span class="pre">v0</span> <span class="pre">*</span> <span class="pre">np.exp(-s)</span> <span class="pre">*</span> <span class="pre">[np.sin(np.pi</span> <span class="pre">/</span> <span class="pre">4</span> <span class="pre">-</span> <span class="pre">s),</span> <span class="pre">np.sign(coriolis)</span> <span class="pre">*</span> <span class="pre">np.cos(np.pi</span> <span class="pre">/</span> <span class="pre">4</span> <span class="pre">-</span> <span class="pre">s)]</span></code>
+with <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">depth</span> <span class="pre">/</span> <span class="pre">d</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">np.sqrt(2</span> <span class="pre">*</span> <span class="pre">eddy_viscosity</span> <span class="pre">/</span> <span class="pre">abs(coriolis))</span></code> and
+<code class="docutils literal notranslate"><span class="pre">v0</span> <span class="pre">=</span> <span class="pre">wind_stress</span> <span class="pre">/</span> <span class="pre">(density</span> <span class="pre">*</span> <span class="pre">np.sqrt(eddy_viscosity</span> <span class="pre">*</span> <span class="pre">abs(coriolis)))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.ekman_transport">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">ekman_transport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wind_stress</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#ekman_transport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.ekman_transport" title="Link to this definition">#</a></dt>
+<dd><p>Cross-wind Ekman transport magnitude.</p>
+<p>Wind stress and rotation drive vertically integrated transport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wind_stress</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: real.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Signed cross-wind component per unit width; direction requires a consistent vector convention.
+Equation: <code class="docutils literal notranslate"><span class="pre">wind_stress</span> <span class="pre">/</span> <span class="pre">(density</span> <span class="pre">*</span> <span class="pre">coriolis)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.geostrophic_current">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">geostrophic_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_slope</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#geostrophic_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.geostrophic_current" title="Link to this definition">#</a></dt>
+<dd><p>Sea-surface geostrophic component.</p>
+<p>Sea-surface tilt can reveal large-scale currents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_slope</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: real.</p></li>
+<li><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Signed cross-slope component away from the equator; no ageostrophic velocity.
+Equation: <code class="docutils literal notranslate"><span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">surface_slope</span> <span class="pre">/</span> <span class="pre">coriolis</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.gerstner_orbit_radius">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">gerstner_orbit_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rest_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavenumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#gerstner_orbit_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.gerstner_orbit_radius" title="Link to this definition">#</a></dt>
+<dd><p>Particle-orbit radius in a Gerstner trochoidal wave.</p>
+<p>Water particles in a deep-water wave move on circles that shrink with depth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rest_depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative. Depth of the particle’s orbit centre below the mean surface.</p></li>
+<li><p><strong>amplitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative. Orbit radius at the surface.</p></li>
+<li><p><strong>wavenumber</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Exact nonlinear deep-water solution with closed orbits and no Stokes drift; the flow has vorticity.
+<code class="docutils literal notranslate"><span class="pre">amplitude</span> <span class="pre">*</span> <span class="pre">wavenumber</span></code> must not exceed 1, where the surface trochoid forms a cusp.
+A particle at rest position <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code> moves to <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">-</span> <span class="pre">r</span> <span class="pre">sin(k</span> <span class="pre">a</span> <span class="pre">-</span> <span class="pre">omega</span> <span class="pre">t),</span> <span class="pre">-b</span> <span class="pre">+</span> <span class="pre">r</span> <span class="pre">cos(k</span> <span class="pre">a</span> <span class="pre">-</span> <span class="pre">omega</span> <span class="pre">t))</span></code>
+with <code class="docutils literal notranslate"><span class="pre">omega</span> <span class="pre">=</span> <span class="pre">sqrt(g</span> <span class="pre">k)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">amplitude</span> <span class="pre">*</span> <span class="pre">np.exp(-wavenumber</span> <span class="pre">*</span> <span class="pre">rest_depth)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.hydrostatic_pressure">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">hydrostatic_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/hydrography.html#hydrostatic_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.hydrostatic_pressure" title="Link to this definition">#</a></dt>
+<dd><p>Ocean hydrostatic pressure.</p>
+<p>Water weight connects pressure and depth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Gauge pressure with constant density; atmospheric pressure is excluded.
+Equation: <code class="docutils literal notranslate"><span class="pre">density</span> <span class="pre">*</span> <span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">depth</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.inertial_period">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">inertial_period</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/inertial.html#inertial_period"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.inertial_period" title="Link to this definition">#</a></dt>
+<dd><p>Inertial oscillation period.</p>
+<p>Rotation supplies a natural timescale for ocean motion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>No pressure gradient or friction; invalid at zero Coriolis parameter.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">/</span> <span class="pre">np.abs(coriolis)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.internal_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">internal_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reduced_gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#internal_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.internal_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Two-layer internal long wave.</p>
+<p>Layer depths and buoyancy jointly set internal long-wave speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reduced_gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>upper_depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>lower_depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Hydrostatic two-layer fluid under a rigid lid.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt(reduced_gravity</span> <span class="pre">*</span> <span class="pre">upper_depth</span> <span class="pre">*</span> <span class="pre">lower_depth</span> <span class="pre">/</span> <span class="pre">(upper_depth</span> <span class="pre">+</span> <span class="pre">lower_depth))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.linear_density">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">linear_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference_density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature_anomaly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salinity_anomaly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_expansion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">haline_contraction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/hydrography.html#linear_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.linear_density" title="Link to this definition">#</a></dt>
+<dd><p>Linear seawater equation of state.</p>
+<p>Temperature and salinity both change buoyancy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reference_density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>temperature_anomaly</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: real.</p></li>
+<li><p><strong>salinity_anomaly</strong> (<em>float</em><em> or </em><em>array_like</em>) – g/kg; constraint: real.</p></li>
+<li><p><strong>thermal_expansion</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/K; constraint: nonnegative.</p></li>
+<li><p><strong>haline_contraction</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/g; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Local linearization around a supplied reference; not TEOS-10 and no pressure dependence.
+Equation: <code class="docutils literal notranslate"><span class="pre">reference_density</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">thermal_expansion</span> <span class="pre">*</span> <span class="pre">temperature_anomaly</span> <span class="pre">+</span> <span class="pre">haline_contraction</span> <span class="pre">*</span> <span class="pre">salinity_anomaly)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.reduced_gravity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">reduced_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density_difference</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#reduced_gravity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.reduced_gravity" title="Link to this definition">#</a></dt>
+<dd><p>Two-layer reduced gravity.</p>
+<p>A small density contrast slows internal waves relative to surface waves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>density_difference</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: nonnegative.</p></li>
+<li><p><strong>reference_density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Boussinesq small density contrast; output is acceleration.
+Equation: <code class="docutils literal notranslate"><span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">density_difference</span> <span class="pre">/</span> <span class="pre">reference_density</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.rossby_radius">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">rossby_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buoyancy_frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#rossby_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.rossby_radius" title="Link to this definition">#</a></dt>
+<dd><p>Baroclinic deformation scale.</p>
+<p>Stratification and rotation set a horizontal adjustment scale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buoyancy_frequency</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>First-mode constant-N rigid-boundary estimate N H over pi f; not a general layered solution.
+Equation: <code class="docutils literal notranslate"><span class="pre">buoyancy_frequency</span> <span class="pre">*</span> <span class="pre">depth</span> <span class="pre">/</span> <span class="pre">(np.pi</span> <span class="pre">*</span> <span class="pre">np.abs(coriolis))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.shallow_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">shallow_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#shallow_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.shallow_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Shallow-water gravity wave.</p>
+<p>Long surface waves respond to water depth through gravity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Wavelength much greater than depth, small amplitude, no dispersion.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt(gravity</span> <span class="pre">*</span> <span class="pre">depth)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.simplified_seawater_density">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">simplified_seawater_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conservative_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute_salinity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/hydrography.html#simplified_seawater_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.simplified_seawater_density" title="Link to this definition">#</a></dt>
+<dd><p>Simplified nonlinear seawater density fitted to TEOS-10.</p>
+<p>Cabbeling and thermobaricity make seawater density nonlinear in temperature, salinity and pressure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conservative_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>absolute_salinity</strong> (<em>float</em><em> or </em><em>array_like</em>) – g/kg; constraint: nonnegative.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The S-EOS of Roquet et al. (2015) with NEMO’s default coefficients: <code class="docutils literal notranslate"><span class="pre">a0</span> <span class="pre">=</span> <span class="pre">0.16550</span></code>, <code class="docutils literal notranslate"><span class="pre">b0</span> <span class="pre">=</span> <span class="pre">0.76554</span></code>,
+<code class="docutils literal notranslate"><span class="pre">lambda1</span> <span class="pre">=</span> <span class="pre">5.9520e-2</span></code>, <code class="docutils literal notranslate"><span class="pre">lambda2</span> <span class="pre">=</span> <span class="pre">7.4914e-4</span></code>, <code class="docutils literal notranslate"><span class="pre">mu1</span> <span class="pre">=</span> <span class="pre">1.4970e-4</span></code>, <code class="docutils literal notranslate"><span class="pre">mu2</span> <span class="pre">=</span> <span class="pre">1.1090e-5</span></code>, <code class="docutils literal notranslate"><span class="pre">nu</span> <span class="pre">=</span> <span class="pre">2.4341e-3</span></code>
+and <code class="docutils literal notranslate"><span class="pre">rho0</span> <span class="pre">=</span> <span class="pre">1026</span></code>, with anomalies <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">conservative_temperature</span> <span class="pre">-</span> <span class="pre">283.15</span></code> and <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">absolute_salinity</span> <span class="pre">-</span> <span class="pre">35</span></code>.
+It reproduces the TEOS-10 density gradients over typical ocean conditions; absolute density can be off by about
+1 kg/m^3 and it is not TEOS-10 itself.
+Equation: <code class="docutils literal notranslate"><span class="pre">1026</span> <span class="pre">-</span> <span class="pre">a0</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">lambda1</span> <span class="pre">*</span> <span class="pre">t</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">mu1</span> <span class="pre">*</span> <span class="pre">depth)</span> <span class="pre">*</span> <span class="pre">t</span> <span class="pre">+</span> <span class="pre">b0</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">lambda2</span> <span class="pre">*</span> <span class="pre">s</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">mu2</span> <span class="pre">*</span> <span class="pre">depth)</span> <span class="pre">*</span> <span class="pre">s</span> <span class="pre">-</span> <span class="pre">nu</span> <span class="pre">*</span> <span class="pre">t</span> <span class="pre">*</span> <span class="pre">s</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.simulate_inertial_current">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">simulate_inertial_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">east_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">north_speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/inertial.html#simulate_inertial_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.simulate_inertial_current" title="Link to this definition">#</a></dt>
+<dd><p>Integrate rotating, optionally damped horizontal ocean currents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coriolis</strong> (<em>float</em>) – Finite nonzero scalar Coriolis parameter [1/s], signed by hemisphere.</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing sampled times [s].</p></li>
+<li><p><strong>east_speed</strong> (<em>float</em>) – Initial signed horizontal velocity components [m/s].</p></li>
+<li><p><strong>north_speed</strong> (<em>float</em>) – Initial signed horizontal velocity components [m/s].</p></li>
+<li><p><strong>damping</strong> (<em>float</em>) – Nonnegative scalar linear decay rate [1/s].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Eastward and northward velocity [m/s].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>du/dt = f v - r u; dv/dt = -f u - r v. With no damping, speed is
+conserved and northern-hemisphere motion rotates clockwise. Pressure
+gradients and wind forcing are omitted.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.simulate_thermohaline_boxes">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">simulate_thermohaline_boxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermal_flow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">haline_coefficient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt_forcing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_salinity_difference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#simulate_thermohaline_boxes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.simulate_thermohaline_boxes" title="Link to this definition">#</a></dt>
+<dd><p>Integrate Stommel’s two-box thermohaline circulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thermal_flow</strong> (<em>float</em>) – Positive scalar overturning driven by the fixed temperature contrast [m^3/s].</p></li>
+<li><p><strong>haline_coefficient</strong> (<em>float</em>) – Positive scalar overturning lost per unit salinity contrast [m^3/s per g/kg].</p></li>
+<li><p><strong>salt_forcing</strong> (<em>float</em>) – Nonnegative scalar virtual salt flux into the equatorial box [g/kg m^3/s].</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – Positive scalar volume of each box [m^3].</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing sampled times [s].</p></li>
+<li><p><strong>initial_salinity_difference</strong> (<em>float</em>) – Equatorial minus polar salinity at the first time [g/kg].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Salinity difference [g/kg] and overturning [m^3/s], positive when polar water sinks.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><code class="docutils literal notranslate"><span class="pre">volume</span> <span class="pre">*</span> <span class="pre">dS/dt</span> <span class="pre">=</span> <span class="pre">salt_forcing</span> <span class="pre">-</span> <span class="pre">abs(q)</span> <span class="pre">*</span> <span class="pre">dS</span></code> with <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">thermal_flow</span> <span class="pre">-</span> <span class="pre">haline_coefficient</span> <span class="pre">*</span> <span class="pre">dS</span></code>.
+Temperatures are held fixed by fast restoring. Steady states satisfy
+<a class="reference internal" href="#earthsciencekit.oceanography.thermohaline_forcing" title="earthsciencekit.oceanography.thermohaline_forcing"><code class="xref py py-func docutils literal notranslate"><span class="pre">thermohaline_forcing()</span></code></a>; below the fold forcing
+thermal_flow**2 / (4 * haline_coefficient) the initial state decides
+between the thermal (q &gt; 0) and haline (q &lt; 0) regimes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.stommel_streamfunction">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">stommel_streamfunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_stress</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basin_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basin_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">friction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#stommel_streamfunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.stommel_streamfunction" title="Link to this definition">#</a></dt>
+<dd><p>Transport streamfunction of Stommel’s wind-driven gyre.</p>
+<p>Bottom friction and the beta effect confine the return flow to a western boundary current.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: 0 &lt;= x &lt;= basin_width. Eastward distance from the western wall.</p></li>
+<li><p><strong>y</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: 0 &lt;= y &lt;= basin_length. Northward distance from the southern wall.</p></li>
+<li><p><strong>wind_stress</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: real. Amplitude of the zonal stress <code class="docutils literal notranslate"><span class="pre">-wind_stress</span> <span class="pre">*</span> <span class="pre">cos(pi</span> <span class="pre">y</span> <span class="pre">/</span> <span class="pre">basin_length)</span></code>.</p></li>
+<li><p><strong>basin_width</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>basin_length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/(m s); constraint: nonnegative. Zero gives Stommel’s symmetric uniform-rotation gyre.</p></li>
+<li><p><strong>friction</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive. Linear bottom-drag coefficient on the depth-integrated flow.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^3/s]. Northward transport is the eastward derivative.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Steady linear barotropic vorticity balance <code class="docutils literal notranslate"><span class="pre">friction</span> <span class="pre">*</span> <span class="pre">laplacian(psi)</span> <span class="pre">+</span> <span class="pre">beta</span> <span class="pre">*</span> <span class="pre">dpsi/dx</span> <span class="pre">=</span> <span class="pre">curl(tau)</span> <span class="pre">/</span> <span class="pre">density</span></code> in a
+rectangular basin with <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">=</span> <span class="pre">0</span></code> on the walls. Positive wind stress gives a clockwise (subtropical) gyre whose
+western boundary layer has width <code class="docutils literal notranslate"><span class="pre">friction</span> <span class="pre">/</span> <span class="pre">beta</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">wind_stress</span> <span class="pre">*</span> <span class="pre">basin_length</span> <span class="pre">/</span> <span class="pre">(np.pi</span> <span class="pre">*</span> <span class="pre">density</span> <span class="pre">*</span> <span class="pre">friction)</span> <span class="pre">*</span> <span class="pre">np.sin(np.pi</span> <span class="pre">*</span> <span class="pre">y</span> <span class="pre">/</span> <span class="pre">basin_length)</span> <span class="pre">*</span> <span class="pre">X</span></code>
+with <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">((np.exp(m2</span> <span class="pre">*</span> <span class="pre">L)</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">np.exp(m1</span> <span class="pre">*</span> <span class="pre">(x</span> <span class="pre">-</span> <span class="pre">L))</span> <span class="pre">+</span> <span class="pre">(np.exp(-m1</span> <span class="pre">*</span> <span class="pre">L)</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">np.exp(m2</span> <span class="pre">*</span> <span class="pre">x))</span>
+<span class="pre">/</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">np.exp((m2</span> <span class="pre">-</span> <span class="pre">m1)</span> <span class="pre">*</span> <span class="pre">L))</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">=</span> <span class="pre">basin_width</span></code>,
+<code class="docutils literal notranslate"><span class="pre">m1,</span> <span class="pre">m2</span> <span class="pre">=</span> <span class="pre">(-beta</span> <span class="pre">+/-</span> <span class="pre">np.sqrt(beta**2</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">*</span> <span class="pre">friction**2</span> <span class="pre">*</span> <span class="pre">k**2))</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">friction)</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">np.pi</span> <span class="pre">/</span> <span class="pre">basin_length</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.sverdrup_transport">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">sverdrup_transport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wind_stress_curl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#sverdrup_transport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.sverdrup_transport" title="Link to this definition">#</a></dt>
+<dd><p>Sverdrup meridional transport.</p>
+<p>Wind-stress curl drives interior flow across planetary vorticity contours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wind_stress_curl</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa/m; constraint: real.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/(m s); constraint: positive. Northward gradient of the Coriolis parameter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^2/s]: depth-integrated northward transport per unit zonal width.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Steady linear interior balance away from boundaries, friction and the equator’s singular Ekman layer.
+Negative curl (subtropical gyres) drives equatorward flow.
+Equation: <code class="docutils literal notranslate"><span class="pre">wind_stress_curl</span> <span class="pre">/</span> <span class="pre">(density</span> <span class="pre">*</span> <span class="pre">beta)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.thermohaline_forcing">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">thermohaline_forcing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_flow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">haline_coefficient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#thermohaline_forcing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.thermohaline_forcing" title="Link to this definition">#</a></dt>
+<dd><p>Salt forcing that holds Stommel’s two-box overturning steady.</p>
+<p>Salt advection by the overturning must balance the freshwater-driven salinity contrast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flow</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s; constraint: at most thermal_flow. Overturning, positive when polar water sinks.</p></li>
+<li><p><strong>thermal_flow</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s; constraint: positive. Overturning the temperature contrast alone would drive.</p></li>
+<li><p><strong>haline_coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s per g/kg; constraint: positive. Overturning lost per unit salinity contrast.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [g/kg m^3/s]: the virtual salt flux into the equatorial box.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Temperatures held fixed by fast restoring; flow <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">thermal_flow</span> <span class="pre">-</span> <span class="pre">haline_coefficient</span> <span class="pre">*</span> <span class="pre">dS</span></code> and steady salt budget
+<code class="docutils literal notranslate"><span class="pre">abs(q)</span> <span class="pre">*</span> <span class="pre">dS</span> <span class="pre">=</span> <span class="pre">forcing</span></code>. Read as forcing against flow, the curve folds at <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">thermal_flow</span> <span class="pre">/</span> <span class="pre">2</span></code>: for
+<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">forcing</span> <span class="pre">&lt;</span> <span class="pre">thermal_flow**2</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">haline_coefficient)</span></code> a thermal and a haline state coexist.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.abs(flow)</span> <span class="pre">*</span> <span class="pre">(thermal_flow</span> <span class="pre">-</span> <span class="pre">flow)</span> <span class="pre">/</span> <span class="pre">haline_coefficient</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.tidal_elevation">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">tidal_elevation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#tidal_elevation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.tidal_elevation" title="Link to this definition">#</a></dt>
+<dd><p>Single harmonic tide.</p>
+<p>Harmonic constituents provide an inspectable tide representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: real.</p></li>
+<li><p><strong>amplitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>period</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive.</p></li>
+<li><p><strong>phase</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: real.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>One supplied constituent; not a site-specific tide prediction or navigational product.
+Equation: <code class="docutils literal notranslate"><span class="pre">amplitude</span> <span class="pre">*</span> <span class="pre">np.cos(2</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">time</span> <span class="pre">/</span> <span class="pre">period</span> <span class="pre">+</span> <span class="pre">phase)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.volume_transport">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">volume_transport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/circulation.html#volume_transport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.volume_transport" title="Link to this definition">#</a></dt>
+<dd><p>Section volume transport.</p>
+<p>Integrating velocity over a section produces volume transport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: real.</p></li>
+<li><p><strong>width</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uniform signed velocity and rectangular section; output m cubed per second, not Sverdrups.
+Equation: <code class="docutils literal notranslate"><span class="pre">speed</span> <span class="pre">*</span> <span class="pre">width</span> <span class="pre">*</span> <span class="pre">depth</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.oceanography.wave_angular_frequency">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.oceanography.</span></span><span class="sig-name descname"><span class="pre">wave_angular_frequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavenumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/oceanography/systems/waves.html#wave_angular_frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.oceanography.wave_angular_frequency" title="Link to this definition">#</a></dt>
+<dd><p>Finite-depth dispersion relation.</p>
+<p>The dispersion relation bridges shallow and deep gravity waves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavenumber</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/m; constraint: positive.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Linear inviscid surface gravity wave, no current or surface tension.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt(gravity</span> <span class="pre">*</span> <span class="pre">wavenumber</span> <span class="pre">*</span> <span class="pre">np.tanh(wavenumber</span> <span class="pre">*</span> <span class="pre">depth))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="climate.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">earthsciencekit.climate</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="volcanology.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">earthsciencekit.volcanology</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.abyssal_temperature"><code class="docutils literal notranslate"><span class="pre">abyssal_temperature()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.buoyancy_frequency_squared"><code class="docutils literal notranslate"><span class="pre">buoyancy_frequency_squared()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.deep_group_speed"><code class="docutils literal notranslate"><span class="pre">deep_group_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.deep_wave_speed"><code class="docutils literal notranslate"><span class="pre">deep_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.ekman_spiral_velocity"><code class="docutils literal notranslate"><span class="pre">ekman_spiral_velocity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.ekman_transport"><code class="docutils literal notranslate"><span class="pre">ekman_transport()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.geostrophic_current"><code class="docutils literal notranslate"><span class="pre">geostrophic_current()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.gerstner_orbit_radius"><code class="docutils literal notranslate"><span class="pre">gerstner_orbit_radius()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.hydrostatic_pressure"><code class="docutils literal notranslate"><span class="pre">hydrostatic_pressure()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.inertial_period"><code class="docutils literal notranslate"><span class="pre">inertial_period()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.internal_wave_speed"><code class="docutils literal notranslate"><span class="pre">internal_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.linear_density"><code class="docutils literal notranslate"><span class="pre">linear_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.reduced_gravity"><code class="docutils literal notranslate"><span class="pre">reduced_gravity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.rossby_radius"><code class="docutils literal notranslate"><span class="pre">rossby_radius()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.shallow_wave_speed"><code class="docutils literal notranslate"><span class="pre">shallow_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.simplified_seawater_density"><code class="docutils literal notranslate"><span class="pre">simplified_seawater_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.simulate_inertial_current"><code class="docutils literal notranslate"><span class="pre">simulate_inertial_current()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.simulate_thermohaline_boxes"><code class="docutils literal notranslate"><span class="pre">simulate_thermohaline_boxes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.stommel_streamfunction"><code class="docutils literal notranslate"><span class="pre">stommel_streamfunction()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.sverdrup_transport"><code class="docutils literal notranslate"><span class="pre">sverdrup_transport()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.thermohaline_forcing"><code class="docutils literal notranslate"><span class="pre">thermohaline_forcing()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.tidal_elevation"><code class="docutils literal notranslate"><span class="pre">tidal_elevation()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.volume_transport"><code class="docutils literal notranslate"><span class="pre">volume_transport()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.oceanography.wave_angular_frequency"><code class="docutils literal notranslate"><span class="pre">wave_angular_frequency()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/oceanography.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+:orphan:
+
+.. include:: /_generated/nav/atmosphere.rst
+
+Atmosphere examples
+===================
+
+One executed example per breakthrough in :doc:`/history/atmosphere_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/atmosphere` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Evangelista Torricelli filled a glass tube with mercury and upended it in a dish. The column fell to about 76 cm and left a vacuum above it: the weight of the air holds the mercury up. A water barometer needs a column 13.6 times taller, which is why pumps cannot lift water more than about 10 m.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_01_torricelli_barometer_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_01_torricelli_barometer`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Torricelli's barometer (1643)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="At Blaise Pascal&#x27;s request, his brother-in-law Florin Périer carried a mercury barometer from Clermont to the top of the Puy de Dôme, about 500 toises (975 m) higher. The column fell by 3 inches and 1.5 lines, about 85 mm, while a second barometer left in the town stayed put. Air has weight, and there is less of it above a mountain. An isothermal column at 10 °C reproduces the measured drop to within a few millimetres.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_02_pascal_perier_puy_de_dome_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_02_pascal_perier_puy_de_dome`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pascal and Périer on the Puy de Dôme (1648)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Edmond Halley combined Boyle&#x27;s law with the weight of the air and found that height grows with the logarithm of pressure: equal ratios of pressure mark equal steps of height. The step for a factor e is the scale height R T / g, about 8 km. Inverting the barometric law turns a barometer into an altimeter.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_03_halley_barometric_altitude_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_03_halley_barometric_altitude`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Halley's barometric altitude (1686)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Hadley explained the trade winds. Air heated at the equator rises and flows poleward aloft, and air returns towards the equator near the ground. The ground there moves eastward faster than at the latitude the air came from, so the returning air lags behind and blows from the east. Today the deflection is written with the Coriolis parameter f = 2 Omega sin(phi). A ring of air that leaves the equator at rest and keeps its angular momentum gains the westerly wind Omega a sin^2(phi) / cos(phi), whose growth with latitude is f + u tan(phi) / a.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_04_hadley_circulation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_04_hadley_circulation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hadley's circulation (1735)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Dalton found that each gas in a mixture exerts the pressure it would exert alone, and that the total is the sum. Water vapour in air is then an ideal gas with its own partial pressure e. The mixing ratio is the ratio of the two partial densities, epsilon e / (p - e), and the specific humidity is the vapour fraction of the total mass.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_05_dalton_partial_pressures_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_05_dalton_partial_pressures`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dalton's partial pressures (1802)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Siméon Denis Poisson showed that a gas compressed or expanded without exchanging heat follows T p^(-R/c_p) = constant. Combined with hydrostatic balance, a rising dry parcel cools at the dry adiabatic lapse rate g / c_p, close to 10 K per kilometre. Integrating the parcel&#x27;s temperature and pressure confirms both: the cooling is linear in height and the Poisson invariant, the potential temperature, does not change.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_06_poisson_adiabat_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_06_poisson_adiabat`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Poisson's adiabat (1823)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Gustav Magnus measured the pressure of water vapour in equilibrium with liquid water and fitted it with an exponential in temperature. Clausius later derived the same shape from thermodynamics. The package uses the Clausius-Clapeyron form with a constant latent heat. Over 0-40 °C it agrees with a modern Magnus fit (Alduchov and Eskridge, 1996) to within 5%, and both give the 6-7% increase per kelvin that makes warm air hold so much more water.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_07_magnus_vapour_pressure_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_07_magnus_vapour_pressure`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Magnus's vapour-pressure formula (1844)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Christophorus Buys Ballot stated the rule from weather maps: in the Northern Hemisphere, stand with your back to the wind and low pressure is on your left. The wind is geostrophic, blowing along the isobars rather than down the pressure gradient, counter-clockwise round a northern low. The geostrophic components are v = (dp/dx) / (rho f) and u = -(dp/dy) / (rho f). The check is that, at every point, the wind is perpendicular to the gradient and the low lies to its left.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_08_buys_ballot_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_08_buys_ballot_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Buys Ballot's law (1857)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Wilhelm von Bezold named the temperature a sample of air would have if brought adiabatically to a standard pressure. Unlike temperature it does not change when dry air rises or sinks, so it labels air masses. In a sounding whose temperature falls more slowly than 9.8 K/km, potential temperature increases with height and the column is stable. The conversion back to temperature recovers the sounding exactly.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_09_von_bezold_potential_temperature_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_09_von_bezold_potential_temperature`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">von Bezold's potential temperature (1888)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Léon Teisserenc de Bort launched hundreds of unmanned sounding balloons from Trappes. Above about 11 km the temperature stopped falling, a layer he called the stratosphere; Richard Assmann found the same in Berlin. With the standard lapse rate of 6.5 K/km below the tropopause, hydrostatic balance gives the standard-atmosphere pressure of 226.3 hPa at 11 km, and the pressure decays exponentially in the isothermal layer above.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_10_teisserenc_de_bort_stratosphere_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_10_teisserenc_de_bort_stratosphere`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Teisserenc de Bort's stratosphere (1902)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Vilhelm Bjerknes argued that weather forecasting is a problem of mechanics and physics: seven variables (pressure, density, temperature, humidity and three wind components) and seven equations. The equation of state is the diagnostic one that ties pressure, density and temperature together. Moist air obeys it with the virtual temperature in place of temperature, so it is lighter than dry air at the same pressure and temperature. The check is that the result equals the sum of Dalton&#x27;s partial densities.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_11_bjerknes_forecasting_programme_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_11_bjerknes_forecasting_programme`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bjerknes's forecasting programme (1904)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lewis Fry Richardson asked when wind shear can stir up a stably stratified layer. Turbulence must lift heavy air against buoyancy, at a rate set by N^2, using energy drawn from the shear. Their ratio, the Richardson number, decides: Miles and Howard later proved that a stratified shear flow can become unstable only where it falls below 1/4. Over a night-time boundary layer, the critical value marks the height where turbulence dies out.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_12_richardson_turbulence_criterion_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_12_richardson_turbulence_criterion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Richardson's turbulence criterion (1920)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In Weather Prediction by Numerical Process, Richardson computed by hand a six-hour forecast for two points over Germany, from the observations of 20 May 1910. He predicted a surface pressure rise of 145 hPa, about a hundred times too large. The pressure tendency is the column-mean divergence times the surface pressure, and the divergence at any one level is much larger than the column mean, because convergence below nearly cancels divergence above. A column-mean error of 7e-6 per second, the size of the divergence at a single level, is enough to reproduce his result.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_13_richardson_numerical_forecast_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_13_richardson_numerical_forecast`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Richardson's numerical forecast (1922)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Vilho Väisälä (1925) and David Brunt (1927) showed that a parcel displaced vertically in stable air oscillates about its level, with angular frequency N = sqrt(g / theta * dtheta/dz). In the troposphere the period is about ten minutes. Integrating the parcel equation z&#x27;&#x27; = -N^2 z recovers that period.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_14_vaisala_brunt_buoyancy_frequency_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_14_vaisala_brunt_buoyancy_frequency`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Väisälä and Brunt's buoyancy frequency (1925)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Carl-Gustaf Rossby explained the slow eastward drift of the large troughs and ridges in the westerlies. Because the Coriolis parameter grows northward at the rate beta, a vorticity wave propagates westward relative to the wind at beta / k^2. Long waves therefore stand still or retrogress, and the stationary wavelength is 2 pi sqrt(U / beta). These waves are large scale, with Rossby numbers well below one.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_15_rossby_planetary_waves_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_15_rossby_planetary_waves`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rossby's planetary waves (1939)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jule Charney, Ragnar Fjørtoft and John von Neumann ran the first computer weather forecasts on the ENIAC in 1950. They avoided Richardson&#x27;s failure by predicting only the vorticity of a nondivergent barotropic flow, which keeps the fast gravity waves out. Here the same equation runs on a doubly periodic beta plane. A single Fourier mode is an exact Rossby wave and moves at the speed of Rossby&#x27;s formula; a mix of modes evolves nonlinearly while keeping its enstrophy.">
+
+.. only:: html
+
+  .. image:: /api/gallery/atmosphere/images/thumb/sphx_glr_plot_16_charney_eniac_forecast_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/atmosphere/plot_16_charney_eniac_forecast`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Charney, Fjørtoft and von Neumann's ENIAC forecast (1950)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/atmosphere/plot_01_torricelli_barometer
+   /api/gallery/atmosphere/plot_02_pascal_perier_puy_de_dome
+   /api/gallery/atmosphere/plot_03_halley_barometric_altitude
+   /api/gallery/atmosphere/plot_04_hadley_circulation
+   /api/gallery/atmosphere/plot_05_dalton_partial_pressures
+   /api/gallery/atmosphere/plot_06_poisson_adiabat
+   /api/gallery/atmosphere/plot_07_magnus_vapour_pressure
+   /api/gallery/atmosphere/plot_08_buys_ballot_law
+   /api/gallery/atmosphere/plot_09_von_bezold_potential_temperature
+   /api/gallery/atmosphere/plot_10_teisserenc_de_bort_stratosphere
+   /api/gallery/atmosphere/plot_11_bjerknes_forecasting_programme
+   /api/gallery/atmosphere/plot_12_richardson_turbulence_criterion
+   /api/gallery/atmosphere/plot_13_richardson_numerical_forecast
+   /api/gallery/atmosphere/plot_14_vaisala_brunt_buoyancy_frequency
+   /api/gallery/atmosphere/plot_15_rossby_planetary_waves
+   /api/gallery/atmosphere/plot_16_charney_eniac_forecast
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: atmosphere_python.zip </api/gallery/atmosphere/atmosphere_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: atmosphere_jupyter.zip </api/gallery/atmosphere/atmosphere_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

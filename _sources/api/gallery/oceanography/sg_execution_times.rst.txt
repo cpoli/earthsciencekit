@@ -1,0 +1,82 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_oceanography_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.220** total execution time for 16 files **from api/gallery/oceanography**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_10_gustafson_kullenberg_inertial_oscillations.py` (``plot_10_gustafson_kullenberg_inertial_oscillations.py``)
+     - 00:00.318
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_14_stommel_thermohaline_boxes.py` (``plot_14_stommel_thermohaline_boxes.py``)
+     - 00:00.307
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_13_stommel_western_intensification.py` (``plot_13_stommel_western_intensification.py``)
+     - 00:00.199
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_04_stokes_deep_water_waves.py` (``plot_04_stokes_deep_water_waves.py``)
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_15_munk_abyssal_recipes.py` (``plot_15_munk_abyssal_recipes.py``)
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_02_laplace_tidal_equations.py` (``plot_02_laplace_tidal_equations.py``)
+     - 00:00.141
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_11_rossby_adjustment_radius.py` (``plot_11_rossby_adjustment_radius.py``)
+     - 00:00.130
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_06_knudsen_equation_of_state.py` (``plot_06_knudsen_equation_of_state.py``)
+     - 00:00.106
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_16_teos10_seawater_density.py` (``plot_16_teos10_seawater_density.py``)
+     - 00:00.099
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_01_newton_equilibrium_tide.py` (``plot_01_newton_equilibrium_tide.py``)
+     - 00:00.096
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_08_ekman_dead_water.py` (``plot_08_ekman_dead_water.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_03_gerstner_trochoidal_wave.py` (``plot_03_gerstner_trochoidal_wave.py``)
+     - 00:00.086
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_07_sandstrom_helland_hansen_dynamic_method.py` (``plot_07_sandstrom_helland_hansen_dynamic_method.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_09_ekman_spiral.py` (``plot_09_ekman_spiral.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_12_sverdrup_balance.py` (``plot_12_sverdrup_balance.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_05_challenger_soundings.py` (``plot_05_challenger_soundings.py``)
+     - 00:00.072
+     - 0.0

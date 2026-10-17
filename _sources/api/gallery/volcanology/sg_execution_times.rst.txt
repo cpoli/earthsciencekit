@@ -1,0 +1,85 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_volcanology_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.619** total execution time for 17 files **from api/gallery/volcanology**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_11_morton_taylor_turner_buoyant_plumes.py` (``plot_11_morton_taylor_turner_buoyant_plumes.py``)
+     - 00:00.382
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_16_wilson_head_dike_ascent.py` (``plot_16_wilson_head_dike_ascent.py``)
+     - 00:00.299
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_02_rutherford_soddy_decay_law.py` (``plot_02_rutherford_soddy_decay_law.py``)
+     - 00:00.246
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_15_wilson_sparks_eruption_columns.py` (``plot_15_wilson_sparks_eruption_columns.py``)
+     - 00:00.223
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_06_goldschmidt_ionic_substitution.py` (``plot_06_goldschmidt_ionic_substitution.py``)
+     - 00:00.191
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_07_urey_isotope_paleothermometer.py` (``plot_07_urey_isotope_paleothermometer.py``)
+     - 00:00.180
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_14_shaw_magma_viscosity.py` (``plot_14_shaw_magma_viscosity.py``)
+     - 00:00.139
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_05_bowen_reaction_series.py` (``plot_05_bowen_reaction_series.py``)
+     - 00:00.133
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_17_newhall_self_volcanic_explosivity_index.py` (``plot_17_newhall_self_volcanic_explosivity_index.py``)
+     - 00:00.112
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_10_wetherill_concordia.py` (``plot_10_wetherill_concordia.py``)
+     - 00:00.097
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_03_boltwood_uranium_lead_ages.py` (``plot_03_boltwood_uranium_lead_ages.py``)
+     - 00:00.094
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_04_holmes_age_of_the_earth.py` (``plot_04_holmes_age_of_the_earth.py``)
+     - 00:00.094
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_13_nicolaysen_isochron.py` (``plot_13_nicolaysen_isochron.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_12_mogi_point_source.py` (``plot_12_mogi_point_source.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_08_libby_radiocarbon.py` (``plot_08_libby_radiocarbon.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_01_rayleigh_fractional_distillation.py` (``plot_01_rayleigh_fractional_distillation.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_09_patterson_age_of_the_earth.py` (``plot_09_patterson_age_of_the_earth.py``)
+     - 00:00.083
+     - 0.0

@@ -1,0 +1,342 @@
+:orphan:
+
+.. include:: /_generated/nav/seismology.rst
+
+Seismology examples
+===================
+
+One executed example per breakthrough in :doc:`/history/seismology_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/seismology` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Siméon Denis Poisson showed that an elastic solid carries two kinds of wave: a faster compressional wave and a slower shear wave. When the two Lamé constants are equal (a Poisson solid) the speed ratio is exactly sqrt(3) and Poisson&#x27;s ratio is 1/4. With no rigidity the shear wave vanishes, as in a fluid.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_01_poisson_two_elastic_waves_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_01_poisson_two_elastic_waves`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Poisson's two elastic waves (1829)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lord Rayleigh found a wave bound to the free surface of an elastic solid, slower than the shear wave and decaying with depth. Its speed solves a cubic that depends only on Poisson&#x27;s ratio: about 0.92 of the shear speed in a Poisson solid. Because it spreads in two dimensions rather than three, it carries the largest motions on distant seismograms.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_02_rayleigh_surface_waves_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_02_rayleigh_surface_waves`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rayleigh's surface waves (1885)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fusakichi Omori counted the aftershocks of the 1891 Nobi earthquake and found that their rate fell as 1/(t + c). Tokuji Utsu later generalized the exponent to p, usually close to 1. On log-log axes the rate is flat for t &lt;&lt; c and has slope -p for t &gt;&gt; c. The parameters here are synthetic.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_03_omori_aftershock_decay_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_03_omori_aftershock_decay`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Omori's aftershock decay (1894)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="On records of the Kupa Valley earthquake of 8 October 1909, Andrija Mohorovičić saw two P phases. A few hundred kilometres out a faster phase overtook the direct wave: energy refracted along a boundary below the crust. The crossover distance fixes the depth of that boundary, which he put at about 54 km. The speeds below are of the size he used.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_04_mohorovicic_discontinuity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_04_mohorovicic_discontinuity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mohorovičić's discontinuity (1909)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="From survey lines across the San Andreas fault before and after 1906, Harry Fielding Reid argued that the crust bends elastically while the fault is locked and springs back when it slips. Here a fault locked for 100 years stores the far-field motion as strain. At failure the stored offset is released in seconds, modelled as a damped oscillator returning to equilibrium.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_05_reid_elastic_rebound_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_05_reid_elastic_rebound`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reid's elastic rebound (1910)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Augustus Love showed that horizontal shear waves can be trapped in a slow surface layer over a faster half-space, which a homogeneous Earth cannot do. Their speed depends on period: short waves travel at the speed of the layer, long waves at the speed of the half-space. That dispersion measures the thickness of the crust. The layer here is a 35 km crust over mantle.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_06_love_waves_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_06_love_waves`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Love waves (1911)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Beno Gutenberg placed the core-mantle boundary at a depth of about 2900 km. A slower core bends rays towards the centre, so in the real Earth direct P waves fade near 103 degrees from the source and refracted core waves return only beyond about 143 degrees. In between is a shadow. The ray parameter, which is conserved along a ray, connects the two. This toy Earth has a uniform 13 km/s mantle over an 8 km/s core, so its rays are straight within each shell and its shadow starts later, at about 114 degrees.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_07_gutenberg_core_shadow_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_07_gutenberg_core_shadow`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gutenberg's core shadow (1914)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Karl Zoeppritz derived how a plane wave divides at a boundary between two elastic media. At normal incidence his equations reduce to the impedance contrast: the pressure transmission can exceed one, yet the reflected and transmitted energy fractions always sum to one.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_08_zoeppritz_reflection_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_08_zoeppritz_reflection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Zoeppritz's reflection coefficients (1919)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Charles Richter ranked southern California earthquakes by the logarithm of the peak amplitude on a Wood-Anderson seismometer, corrected for distance. Magnitude 3 is a 1 mm trace at 100 km, and each unit is a tenfold amplitude. The distance correction used here is Hutton and Boore&#x27;s 1987 calibration.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_09_richter_magnitude_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_09_richter_magnitude`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Richter's magnitude scale (1935)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Inge Lehmann noticed weak P arrivals inside the core shadow zone. She explained them with an inner core faster than the outer core: rays meeting it beyond the critical angle are totally reflected and emerge in the shadow. In this straight-ray toy Earth (mantle 13 km/s, outer core 8 km/s, inner core 11 km/s, inner-core radius 1220 km) the post-critical reflections fill the shadow zone of the 1914 example.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_10_lehmann_inner_core_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_10_lehmann_inner_core`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lehmann's inner core (1936)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Beno Gutenberg and Charles Richter found that the number of earthquakes of at least magnitude M falls as 10^(a - bM), with b close to 1: each magnitude unit brings ten times fewer events. A synthetic catalogue drawn from that law recovers b with Aki&#x27;s maximum-likelihood estimator.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_11_gutenberg_richter_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_11_gutenberg_richter_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gutenberg and Richter's frequency-magnitude law (1944)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Norman Ricker studied how a sharp seismic pulse changes shape as it travels through absorbing rock and proposed the &quot;Mexican hat&quot; pulse as its stable form. The wavelet has unit peak, zero mean, zero crossings at ±1/(sqrt(2) pi f) and an amplitude spectrum that peaks at f.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_12_ricker_wavelet_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_12_ricker_wavelet`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ricker's wavelet (1953)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Leon Knopoff reviewed the evidence that rocks dissipate a nearly constant fraction of wave energy per cycle, whatever the frequency. With a constant quality factor Q, amplitude decays as exp(-pi f t / Q), so high frequencies die first. The log ratio of two spectra is then a straight line in frequency whose slope gives Q, the spectral-ratio method.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_13_knopoff_q_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_13_knopoff_q`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Knopoff's Q (1964)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="From the long-period Love waves of the 1964 Niigata earthquake, Keiiti Aki measured the seismic moment, rigidity times fault area times average slip. Unlike magnitudes read off one instrument, moment is a physical quantity that does not saturate for great earthquakes. The fault dimensions below are of the order Aki inferred (about 100 km by 20 km, a few metres of slip).">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_14_aki_seismic_moment_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_14_aki_seismic_moment`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Aki's seismic moment (1966)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Thomas Hanks and Hiroo Kanamori defined a magnitude from the seismic moment so that it matches the older scales where they work and keeps growing for great earthquakes. Each unit of magnitude multiplies the moment by 10^1.5, about 32. The SI form uses Mw = (2/3)(log10 M0 - 9.1).">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_15_hanks_kanamori_moment_magnitude_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_15_hanks_kanamori_moment_magnitude`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hanks and Kanamori's moment magnitude (1979)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Adam Dziewonski and Don Anderson fitted one spherically symmetric Earth model, PREM, to travel times, normal modes and the Earth&#x27;s mass and moment of inertia. Integrating slowness through such a table predicts arrival times. The rounded P-wave values below follow PREM. A vertical ray from the surface through the centre to the antipode takes about 20 minutes, close to the tabulated PKIKP time of about 1212 s.">
+
+.. only:: html
+
+  .. image:: /api/gallery/seismology/images/thumb/sphx_glr_plot_16_prem_travel_time_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/seismology/plot_16_prem_travel_time`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dziewonski and Anderson's PREM (1981)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/seismology/plot_01_poisson_two_elastic_waves
+   /api/gallery/seismology/plot_02_rayleigh_surface_waves
+   /api/gallery/seismology/plot_03_omori_aftershock_decay
+   /api/gallery/seismology/plot_04_mohorovicic_discontinuity
+   /api/gallery/seismology/plot_05_reid_elastic_rebound
+   /api/gallery/seismology/plot_06_love_waves
+   /api/gallery/seismology/plot_07_gutenberg_core_shadow
+   /api/gallery/seismology/plot_08_zoeppritz_reflection
+   /api/gallery/seismology/plot_09_richter_magnitude
+   /api/gallery/seismology/plot_10_lehmann_inner_core
+   /api/gallery/seismology/plot_11_gutenberg_richter_law
+   /api/gallery/seismology/plot_12_ricker_wavelet
+   /api/gallery/seismology/plot_13_knopoff_q
+   /api/gallery/seismology/plot_14_aki_seismic_moment
+   /api/gallery/seismology/plot_15_hanks_kanamori_moment_magnitude
+   /api/gallery/seismology/plot_16_prem_travel_time
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: seismology_python.zip </api/gallery/seismology/seismology_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: seismology_jupyter.zip </api/gallery/seismology/seismology_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

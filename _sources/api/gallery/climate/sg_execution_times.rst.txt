@@ -1,0 +1,82 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_climate_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.781** total execution time for 16 files **from api/gallery/climate**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_climate_plot_11_hasselmann_stochastic_climate.py` (``plot_11_hasselmann_stochastic_climate.py``)
+     - 00:00.634
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_08_keeling_curve.py` (``plot_08_keeling_curve.py``)
+     - 00:00.281
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_05_milankovic_orbital_insolation.py` (``plot_05_milankovic_orbital_insolation.py``)
+     - 00:00.264
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_13_hansen_ocean_heat_uptake.py` (``plot_13_hansen_ocean_heat_uptake.py``)
+     - 00:00.206
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_14_myhre_forcing_formulas.py` (``plot_14_myhre_forcing_formulas.py``)
+     - 00:00.191
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_03_stefan_t4_law.py` (``plot_03_stefan_t4_law.py``)
+     - 00:00.189
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_06_callendar_measured_warming.py` (``plot_06_callendar_measured_warming.py``)
+     - 00:00.186
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_09_manabe_wetherald_radiative_convective.py` (``plot_09_manabe_wetherald_radiative_convective.py``)
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_01_fourier_greenhouse.py` (``plot_01_fourier_greenhouse.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_15_gregory_forcing_feedback_regression.py` (``plot_15_gregory_forcing_feedback_regression.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_07_revelle_suess_buffer_factor.py` (``plot_07_revelle_suess_buffer_factor.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_12_charney_report_sensitivity.py` (``plot_12_charney_report_sensitivity.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_02_foote_heated_co2.py` (``plot_02_foote_heated_co2.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_10_budyko_sellers_ice_albedo.py` (``plot_10_budyko_sellers_ice_albedo.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_16_sea_level_budget.py` (``plot_16_sea_level_budget.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_04_arrhenius_co2_sensitivity.py` (``plot_04_arrhenius_co2_sensitivity.py``)
+     - 00:00.065
+     - 0.0

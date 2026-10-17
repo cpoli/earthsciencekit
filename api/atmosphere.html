@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="earthsciencekit.atmosphere" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/earthsciencekit/api/atmosphere.html" />
+<meta property="og:site_name" content="earthsciencekit" />
+<meta property="og:description" content="Domain hub · History · Examples · API reference Inspectable atmosphere models; SI units unless stated otherwise." />
+<meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
+<meta property="og:image:alt" content="earthsciencekit" />
+<meta name="description" content="Domain hub · History · Examples · API reference Inspectable atmosphere models; SI units unless stated otherwise." />
+
+    <title>earthsciencekit.atmosphere &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=95e61db4"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/atmosphere';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/api/atmosphere.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="earthsciencekit.climate" href="climate.html" />
+    <link rel="prev" title="earthsciencekit.seismology" href="seismology.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plate_tectonics.html">earthsciencekit.plate_tectonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seismology.html">earthsciencekit.seismology</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">earthsciencekit.atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">earthsciencekit.climate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oceanography.html">earthsciencekit.oceanography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanology.html">earthsciencekit.volcanology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">earthsciencekit.geophysics</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">earthsciencekit.integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">earthsciencekit.results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizers.html">earthsciencekit.visualizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">earthsciencekit.units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">earthsciencekit.constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validation.html">Validation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Scope and limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Scientific teaching references</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.atmosphere</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="earthsciencekit-atmosphere">
+<h1>earthsciencekit.atmosphere<a class="headerlink" href="#earthsciencekit-atmosphere" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/atmosphere.html"><span class="doc">Domain hub</span></a> · <a class="reference internal" href="../history/atmosphere_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/atmosphere/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p id="module-earthsciencekit.atmosphere">Inspectable atmosphere models; SI units unless stated otherwise.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.barometer_column_height">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">barometer_column_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">liquid_density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/hydrostatics.html#barometer_column_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.barometer_column_height" title="Link to this definition">#</a></dt>
+<dd><p>Liquid barometer column height.</p>
+<p>The weight of a liquid column balances the pressure of the air above it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative.</p></li>
+<li><p><strong>liquid_density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Incompressible liquid with a vacuum above the column; vapour pressure and capillarity are neglected.
+Equation: <code class="docutils literal notranslate"><span class="pre">pressure</span> <span class="pre">/</span> <span class="pre">(liquid_density</span> <span class="pre">*</span> <span class="pre">gravity)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.barometric_pressure">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">barometric_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/hydrostatics.html#barometric_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.barometric_pressure" title="Link to this definition">#</a></dt>
+<dd><p>Isothermal barometric profile.</p>
+<p>Vertical pressure structure follows from hydrostatic balance and the gas law.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: real.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Isothermal column; signed height is relative to the reference level.
+Equation: <code class="docutils literal notranslate"><span class="pre">surface_pressure</span> <span class="pre">*</span> <span class="pre">np.exp(-gravity</span> <span class="pre">*</span> <span class="pre">height</span> <span class="pre">/</span> <span class="pre">(R_DRY_AIR</span> <span class="pre">*</span> <span class="pre">temperature))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.brunt_vaisala_squared">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">brunt_vaisala_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">potential_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_gradient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/thermodynamics.html#brunt_vaisala_squared"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.brunt_vaisala_squared" title="Link to this definition">#</a></dt>
+<dd><p>Dry static stability.</p>
+<p>A potential-temperature gradient determines dry stratification stability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>potential_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>vertical_gradient</strong> (<em>float</em><em> or </em><em>array_like</em>) – K/m; constraint: real.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Returns signed N squared; negative values represent instability rather than an imaginary frequency.
+Equation: <code class="docutils literal notranslate"><span class="pre">gravity</span> <span class="pre">*</span> <span class="pre">vertical_gradient</span> <span class="pre">/</span> <span class="pre">potential_temperature</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.coriolis_parameter">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">coriolis_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/dynamics.html#coriolis_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.coriolis_parameter" title="Link to this definition">#</a></dt>
+<dd><p>Rotating-Earth Coriolis parameter.</p>
+<p>Latitude controls rotational deflection and geophysical balance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>latitude</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad; constraint: latitude.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Spherical rotating-Earth approximation; input is radians.
+Equation: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">OMEGA_EARTH</span> <span class="pre">*</span> <span class="pre">np.sin(latitude)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.dry_adiabatic_lapse_rate">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">dry_adiabatic_lapse_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heat_capacity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/thermodynamics.html#dry_adiabatic_lapse_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.dry_adiabatic_lapse_rate" title="Link to this definition">#</a></dt>
+<dd><p>Dry adiabatic lapse rate.</p>
+<p>Rising dry parcels cool as they perform expansion work.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>float</em><em> or </em><em>array_like</em>) – J/(kg K); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Returned positive lapse magnitude in K per metre; temperature decreases upward.
+Equation: <code class="docutils literal notranslate"><span class="pre">gravity</span> <span class="pre">/</span> <span class="pre">heat_capacity</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.dry_air_density">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">dry_air_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/hydrostatics.html#dry_air_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.dry_air_density" title="Link to this definition">#</a></dt>
+<dd><p>Ideal-gas atmospheric density.</p>
+<p>An equation of state connects atmospheric pressure, temperature and density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dry ideal air with fixed specific gas constant.
+Equation: <code class="docutils literal notranslate"><span class="pre">pressure</span> <span class="pre">/</span> <span class="pre">(R_DRY_AIR</span> <span class="pre">*</span> <span class="pre">temperature)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.geostrophic_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">geostrophic_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure_gradient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/dynamics.html#geostrophic_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.geostrophic_speed" title="Link to this definition">#</a></dt>
+<dd><p>Pressure-gradient geostrophic component.</p>
+<p>Pressure gradients and rotation can balance in large-scale flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure_gradient</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa/m; constraint: real.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Signed cross-gradient component; invalid at the equator where coriolis vanishes.
+Equation: <code class="docutils literal notranslate"><span class="pre">pressure_gradient</span> <span class="pre">/</span> <span class="pre">(density</span> <span class="pre">*</span> <span class="pre">coriolis)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.mixing_ratio">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">mixing_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vapor_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/moisture.html#mixing_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.mixing_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Water-vapor mass mixing ratio.</p>
+<p>Partial pressure determines water mass per unit dry-air mass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vapor_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative.</p></li>
+<li><p><strong>total_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Ideal vapor mixture; vapor pressure must be below total pressure.
+Equation: <code class="docutils literal notranslate"><span class="pre">EPSILON_WATER</span> <span class="pre">*</span> <span class="pre">vapor_pressure</span> <span class="pre">/</span> <span class="pre">(total_pressure</span> <span class="pre">-</span> <span class="pre">vapor_pressure)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.potential_temperature">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">potential_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/thermodynamics.html#potential_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.potential_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Poisson potential temperature.</p>
+<p>Adiabatic temperature adjustment permits comparisons across pressure levels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>reference_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dry ideal gas with constant heat capacity; not equivalent potential temperature.
+Equation: <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">*</span> <span class="pre">(reference_pressure</span> <span class="pre">/</span> <span class="pre">pressure)**(R_DRY_AIR</span> <span class="pre">/</span> <span class="pre">CP_DRY_AIR)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.relative_humidity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">relative_humidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vapor_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturation_pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/moisture.html#relative_humidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.relative_humidity" title="Link to this definition">#</a></dt>
+<dd><p>Relative humidity fraction.</p>
+<p>Humidity compares actual vapor pressure to a saturation reference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vapor_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative.</p></li>
+<li><p><strong>saturation_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Returned fraction may exceed one during supersaturation; no clipping.
+Equation: <code class="docutils literal notranslate"><span class="pre">vapor_pressure</span> <span class="pre">/</span> <span class="pre">saturation_pressure</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.richardson_number">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">richardson_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brunt_vaisala_squared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/thermodynamics.html#richardson_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.richardson_number" title="Link to this definition">#</a></dt>
+<dd><p>Gradient Richardson number.</p>
+<p>Stratification suppresses the turbulence that vertical wind shear generates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>brunt_vaisala_squared</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s^2; constraint: real.</p></li>
+<li><p><strong>shear</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Signed; stratified shear flow can become unstable only where it falls below 1/4 (Miles-Howard).
+Equation: <code class="docutils literal notranslate"><span class="pre">brunt_vaisala_squared</span> <span class="pre">/</span> <span class="pre">shear**2</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.rossby_number">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">rossby_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coriolis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/dynamics.html#rossby_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.rossby_number" title="Link to this definition">#</a></dt>
+<dd><p>Rossby dynamical scaling.</p>
+<p>Rossby number measures inertia relative to rotational effects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>coriolis</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: nonzero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Magnitude scaling only; small values support but do not prove geostrophic balance.
+Equation: <code class="docutils literal notranslate"><span class="pre">speed</span> <span class="pre">/</span> <span class="pre">(np.abs(coriolis)</span> <span class="pre">*</span> <span class="pre">length)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.rossby_wave_speed">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">rossby_wave_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zonal_wind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavenumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/dynamics.html#rossby_wave_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.rossby_wave_speed" title="Link to this definition">#</a></dt>
+<dd><p>Barotropic Rossby-wave zonal phase speed.</p>
+<p>The latitude gradient of the Coriolis parameter makes vorticity waves drift westward.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zonal_wind</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: real. Uniform background eastward wind.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/(m s); constraint: nonnegative. Northward gradient of the Coriolis parameter.</p></li>
+<li><p><strong>wavenumber</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad/m; constraint: positive. Total horizontal wavenumber.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Nondivergent barotropic flow on a beta plane; positive values are eastward.
+Equation: <code class="docutils literal notranslate"><span class="pre">zonal_wind</span> <span class="pre">-</span> <span class="pre">beta</span> <span class="pre">/</span> <span class="pre">wavenumber**2</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.saturation_vapor_pressure">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">saturation_vapor_pressure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/moisture.html#saturation_vapor_pressure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.saturation_vapor_pressure" title="Link to this definition">#</a></dt>
+<dd><p>Integrated Clausius-Clapeyron approximation.</p>
+<p>Phase equilibrium makes saturation vapor pressure strongly temperature dependent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: temperature.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Liquid-water reference with constant latent heat; restricted to 180-330 K, not an ice saturation formula.
+Equation: <code class="docutils literal notranslate"><span class="pre">611.2</span> <span class="pre">*</span> <span class="pre">np.exp((2.5e6</span> <span class="pre">/</span> <span class="pre">R_VAPOR)</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">/</span> <span class="pre">273.15</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">temperature))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.scale_height">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">scale_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/hydrostatics.html#scale_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.scale_height" title="Link to this definition">#</a></dt>
+<dd><p>Isothermal scale height.</p>
+<p>Hydrostatic balance predicts an exponential pressure scale.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dry isothermal atmosphere with constant gravity.
+Equation: <code class="docutils literal notranslate"><span class="pre">R_DRY_AIR</span> <span class="pre">*</span> <span class="pre">temperature</span> <span class="pre">/</span> <span class="pre">gravity</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.simulate_barotropic_vorticity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">simulate_barotropic_vorticity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_vorticity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/dynamics.html#simulate_barotropic_vorticity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.simulate_barotropic_vorticity" title="Link to this definition">#</a></dt>
+<dd><p>Integrate the barotropic vorticity equation on a periodic beta plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_vorticity</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>ny</em><em>, </em><em>nx</em><em>)</em><em>, </em><em>ny</em><em>, </em><em>nx &gt;= 4</em>) – Relative vorticity [1/s] on an equally spaced doubly periodic grid,
+rows northward and columns eastward.</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Strictly increasing nonnegative output times [s]. Initial state belongs
+to the first supplied time; values need not start at zero.</p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – Nonnegative scalar northward gradient of the Coriolis parameter [1/(m s)].</p></li>
+<li><p><strong>spacing</strong> (<em>float</em>) – Positive scalar grid spacing [m], the same in both directions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Relative vorticity at each grid point [1/s], flattened row by row.
+Columns are labeled cell_&lt;row&gt;_&lt;column&gt;.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Solves <code class="docutils literal notranslate"><span class="pre">d(zeta)/dt</span> <span class="pre">+</span> <span class="pre">J(psi,</span> <span class="pre">zeta)</span> <span class="pre">+</span> <span class="pre">beta</span> <span class="pre">*</span> <span class="pre">d(psi)/dx</span> <span class="pre">=</span> <span class="pre">0</span></code> with
+<code class="docutils literal notranslate"><span class="pre">laplacian(psi)</span> <span class="pre">=</span> <span class="pre">zeta</span></code>. Derivatives are pseudo-spectral (FFT) with the
+two-thirds dealiasing rule, and <code class="docutils literal notranslate"><span class="pre">integrators.integrate_ode</span></code> steps in time.
+The domain mean of vorticity is removed and conserved; energy and enstrophy
+are conserved up to the time-stepping error. A single Fourier mode is an
+exact Rossby wave. There is no forcing, friction, divergence or sphere.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.simulate_dry_ascent">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">simulate_dry_ascent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertical_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/thermodynamics.html#simulate_dry_ascent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.simulate_dry_ascent" title="Link to this definition">#</a></dt>
+<dd><p>Follow an ideal dry parcel along a hydrostatic constant-speed ascent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_temperature</strong> (<em>float</em>) – Positive scalar initial temperature [K].</p></li>
+<li><p><strong>initial_pressure</strong> (<em>float</em>) – Positive scalar initial pressure [Pa].</p></li>
+<li><p><strong>vertical_speed</strong> (<em>float</em>) – Finite scalar vertical velocity [m/s], positive upward.</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing sampled times [s].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Parcel temperature [K] and pressure [Pa].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dry lapse and hydrostatic pressure equations use constant standard gravity
+and dry-air heat capacity. Potential temperature should remain constant.
+The parcel is unsaturated; condensation and environmental entrainment are
+excluded. Reject trajectories whose predicted temperature reaches zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.specific_humidity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">specific_humidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mixing_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/moisture.html#specific_humidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.specific_humidity" title="Link to this definition">#</a></dt>
+<dd><p>Specific humidity from mixing ratio.</p>
+<p>Changing the denominator connects two moisture conventions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mixing_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/kg dry air; constraint: nonnegative.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Output is water mass per total moist-air mass.
+Equation: <code class="docutils literal notranslate"><span class="pre">mixing_ratio</span> <span class="pre">/</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">mixing_ratio)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.surface_pressure_tendency">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">surface_pressure_tendency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean_divergence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/hydrostatics.html#surface_pressure_tendency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.surface_pressure_tendency" title="Link to this definition">#</a></dt>
+<dd><p>Surface pressure tendency from column divergence.</p>
+<p>Mass leaving the column through net horizontal divergence lowers the surface pressure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean_divergence</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: real. Pressure-weighted column mean of the horizontal divergence.</p></li>
+<li><p><strong>surface_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Hydrostatic column with no surface mass flux; divergence at one level is far larger than the column mean.
+Equation: <code class="docutils literal notranslate"><span class="pre">-surface_pressure</span> <span class="pre">*</span> <span class="pre">mean_divergence</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.temperature_from_potential">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">temperature_from_potential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">potential_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/thermodynamics.html#temperature_from_potential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.temperature_from_potential" title="Link to this definition">#</a></dt>
+<dd><p>Inverse potential temperature.</p>
+<p>Potential-temperature inversion recovers the local dry-air temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>potential_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+<li><p><strong>reference_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uses the same dry-air heat capacity and reference pressure convention.
+Equation: <code class="docutils literal notranslate"><span class="pre">potential_temperature</span> <span class="pre">*</span> <span class="pre">(pressure</span> <span class="pre">/</span> <span class="pre">reference_pressure)**(R_DRY_AIR</span> <span class="pre">/</span> <span class="pre">CP_DRY_AIR)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.two_layer_temperature">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">two_layer_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lapse_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tropopause_height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/hydrostatics.html#two_layer_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.two_layer_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Troposphere-stratosphere temperature profile.</p>
+<p>Temperature falls with height up to the tropopause and stays constant above it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>surface_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>lapse_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – K/m; constraint: nonnegative.</p></li>
+<li><p><strong>tropopause_height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [K]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Constant-lapse troposphere under an isothermal lower stratosphere; the stratospheric warming above about 20 km is omitted.
+Equation: <code class="docutils literal notranslate"><span class="pre">surface_temperature</span> <span class="pre">-</span> <span class="pre">lapse_rate</span> <span class="pre">*</span> <span class="pre">np.minimum(height,</span> <span class="pre">tropopause_height)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.atmosphere.virtual_temperature">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.atmosphere.</span></span><span class="sig-name descname"><span class="pre">virtual_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specific_humidity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/atmosphere/systems/moisture.html#virtual_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.atmosphere.virtual_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Virtual-temperature buoyancy correction.</p>
+<p>Moist air is less dense than dry air at the same pressure and temperature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>specific_humidity</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/kg moist air; constraint: fraction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Ideal vapor mixture without suspended liquid or ice.
+Equation: <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">(1</span> <span class="pre">/</span> <span class="pre">EPSILON_WATER</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">specific_humidity)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="seismology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">earthsciencekit.seismology</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="climate.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">earthsciencekit.climate</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.barometer_column_height"><code class="docutils literal notranslate"><span class="pre">barometer_column_height()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.barometric_pressure"><code class="docutils literal notranslate"><span class="pre">barometric_pressure()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.brunt_vaisala_squared"><code class="docutils literal notranslate"><span class="pre">brunt_vaisala_squared()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.coriolis_parameter"><code class="docutils literal notranslate"><span class="pre">coriolis_parameter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.dry_adiabatic_lapse_rate"><code class="docutils literal notranslate"><span class="pre">dry_adiabatic_lapse_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.dry_air_density"><code class="docutils literal notranslate"><span class="pre">dry_air_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.geostrophic_speed"><code class="docutils literal notranslate"><span class="pre">geostrophic_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.mixing_ratio"><code class="docutils literal notranslate"><span class="pre">mixing_ratio()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.potential_temperature"><code class="docutils literal notranslate"><span class="pre">potential_temperature()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.relative_humidity"><code class="docutils literal notranslate"><span class="pre">relative_humidity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.richardson_number"><code class="docutils literal notranslate"><span class="pre">richardson_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.rossby_number"><code class="docutils literal notranslate"><span class="pre">rossby_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.rossby_wave_speed"><code class="docutils literal notranslate"><span class="pre">rossby_wave_speed()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.saturation_vapor_pressure"><code class="docutils literal notranslate"><span class="pre">saturation_vapor_pressure()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.scale_height"><code class="docutils literal notranslate"><span class="pre">scale_height()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.simulate_barotropic_vorticity"><code class="docutils literal notranslate"><span class="pre">simulate_barotropic_vorticity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.simulate_dry_ascent"><code class="docutils literal notranslate"><span class="pre">simulate_dry_ascent()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.specific_humidity"><code class="docutils literal notranslate"><span class="pre">specific_humidity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.surface_pressure_tendency"><code class="docutils literal notranslate"><span class="pre">surface_pressure_tendency()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.temperature_from_potential"><code class="docutils literal notranslate"><span class="pre">temperature_from_potential()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.two_layer_temperature"><code class="docutils literal notranslate"><span class="pre">two_layer_temperature()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.atmosphere.virtual_temperature"><code class="docutils literal notranslate"><span class="pre">virtual_temperature()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/atmosphere.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

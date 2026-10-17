@@ -1,0 +1,376 @@
+
+:orphan:
+
+.. _sphx_glr_sg_execution_times:
+
+
+Computation times
+=================
+**00:19.217** total execution time for 114 files **from all galleries**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_13_rikitake_two_disc_dynamo.py` (``../../examples/geophysics/plot_13_rikitake_two_disc_dynamo.py``)
+     - 00:01.846
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_11_hasselmann_stochastic_climate.py` (``../../examples/climate/plot_11_hasselmann_stochastic_climate.py``)
+     - 00:00.634
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_10_larmor_self_exciting_dynamo.py` (``../../examples/geophysics/plot_10_larmor_self_exciting_dynamo.py``)
+     - 00:00.387
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_11_morton_taylor_turner_buoyant_plumes.py` (``../../examples/volcanology/plot_11_morton_taylor_turner_buoyant_plumes.py``)
+     - 00:00.382
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_03_kelvin_cooling_earth.py` (``../../examples/plate_tectonics/plot_03_kelvin_cooling_earth.py``)
+     - 00:00.335
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_06_gauss_spherical_harmonic_field.py` (``../../examples/geophysics/plot_06_gauss_spherical_harmonic_field.py``)
+     - 00:00.323
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_10_gustafson_kullenberg_inertial_oscillations.py` (``../../examples/oceanography/plot_10_gustafson_kullenberg_inertial_oscillations.py``)
+     - 00:00.318
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_14_stommel_thermohaline_boxes.py` (``../../examples/oceanography/plot_14_stommel_thermohaline_boxes.py``)
+     - 00:00.307
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_16_wilson_head_dike_ascent.py` (``../../examples/volcanology/plot_16_wilson_head_dike_ascent.py``)
+     - 00:00.299
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_06_holmes_mantle_convection.py` (``../../examples/plate_tectonics/plot_06_holmes_mantle_convection.py``)
+     - 00:00.294
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_08_keeling_curve.py` (``../../examples/climate/plot_08_keeling_curve.py``)
+     - 00:00.281
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_07_stokes_geoid_formula.py` (``../../examples/geophysics/plot_07_stokes_geoid_formula.py``)
+     - 00:00.276
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_05_milankovic_orbital_insolation.py` (``../../examples/climate/plot_05_milankovic_orbital_insolation.py``)
+     - 00:00.264
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_05_reid_elastic_rebound.py` (``../../examples/seismology/plot_05_reid_elastic_rebound.py``)
+     - 00:00.260
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_02_rutherford_soddy_decay_law.py` (``../../examples/volcanology/plot_02_rutherford_soddy_decay_law.py``)
+     - 00:00.246
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_03_kelvin_cooling_earth_grid.py` (``../../examples/plate_tectonics/plot_03_kelvin_cooling_earth_grid.py``)
+     - 00:00.235
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_12_ricker_wavelet.py` (``../../examples/seismology/plot_12_ricker_wavelet.py``)
+     - 00:00.234
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_03_omori_aftershock_decay.py` (``../../examples/seismology/plot_03_omori_aftershock_decay.py``)
+     - 00:00.232
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_15_wilson_sparks_eruption_columns.py` (``../../examples/volcanology/plot_15_wilson_sparks_eruption_columns.py``)
+     - 00:00.223
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_04_bouguer_mountain_attraction.py` (``../../examples/geophysics/plot_04_bouguer_mountain_attraction.py``)
+     - 00:00.220
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_12_runcorn_apparent_polar_wander.py` (``../../examples/geophysics/plot_12_runcorn_apparent_polar_wander.py``)
+     - 00:00.213
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_13_knopoff_q.py` (``../../examples/seismology/plot_13_knopoff_q.py``)
+     - 00:00.210
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_05_cavendish_weighs_the_earth.py` (``../../examples/geophysics/plot_05_cavendish_weighs_the_earth.py``)
+     - 00:00.209
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_11_isacks_oliver_sykes_subducting_slabs.py` (``../../examples/plate_tectonics/plot_11_isacks_oliver_sykes_subducting_slabs.py``)
+     - 00:00.208
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_13_hansen_ocean_heat_uptake.py` (``../../examples/climate/plot_13_hansen_ocean_heat_uptake.py``)
+     - 00:00.206
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_16_charney_eniac_forecast.py` (``../../examples/atmosphere/plot_16_charney_eniac_forecast.py``)
+     - 00:00.200
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_10_teisserenc_de_bort_stratosphere.py` (``../../examples/atmosphere/plot_10_teisserenc_de_bort_stratosphere.py``)
+     - 00:00.200
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_13_stommel_western_intensification.py` (``../../examples/oceanography/plot_13_stommel_western_intensification.py``)
+     - 00:00.199
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_01_gilbert_magnetic_earth.py` (``../../examples/geophysics/plot_01_gilbert_magnetic_earth.py``)
+     - 00:00.196
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_14_myhre_forcing_formulas.py` (``../../examples/climate/plot_14_myhre_forcing_formulas.py``)
+     - 00:00.191
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_06_goldschmidt_ionic_substitution.py` (``../../examples/volcanology/plot_06_goldschmidt_ionic_substitution.py``)
+     - 00:00.191
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_03_stefan_t4_law.py` (``../../examples/climate/plot_03_stefan_t4_law.py``)
+     - 00:00.189
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_04_hadley_circulation.py` (``../../examples/atmosphere/plot_04_hadley_circulation.py``)
+     - 00:00.188
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_09_richter_magnitude.py` (``../../examples/seismology/plot_09_richter_magnitude.py``)
+     - 00:00.187
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_06_callendar_measured_warming.py` (``../../examples/climate/plot_06_callendar_measured_warming.py``)
+     - 00:00.186
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_07_magnus_vapour_pressure.py` (``../../examples/atmosphere/plot_07_magnus_vapour_pressure.py``)
+     - 00:00.181
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_07_urey_isotope_paleothermometer.py` (``../../examples/volcanology/plot_07_urey_isotope_paleothermometer.py``)
+     - 00:00.180
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_09_manabe_wetherald_radiative_convective.py` (``../../examples/climate/plot_09_manabe_wetherald_radiative_convective.py``)
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_04_stokes_deep_water_waves.py` (``../../examples/oceanography/plot_04_stokes_deep_water_waves.py``)
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_13_richardson_numerical_forecast.py` (``../../examples/atmosphere/plot_13_richardson_numerical_forecast.py``)
+     - 00:00.172
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_15_parsons_sclater_depth_age.py` (``../../examples/plate_tectonics/plot_15_parsons_sclater_depth_age.py``)
+     - 00:00.170
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_06_poisson_adiabat.py` (``../../examples/atmosphere/plot_06_poisson_adiabat.py``)
+     - 00:00.169
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_16_prem_travel_time.py` (``../../examples/seismology/plot_16_prem_travel_time.py``)
+     - 00:00.167
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_15_munk_abyssal_recipes.py` (``../../examples/oceanography/plot_15_munk_abyssal_recipes.py``)
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_09_wilson_transform_faults.py` (``../../examples/plate_tectonics/plot_09_wilson_transform_faults.py``)
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_01_torricelli_barometer.py` (``../../examples/atmosphere/plot_01_torricelli_barometer.py``)
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_02_newton_oblate_earth.py` (``../../examples/geophysics/plot_02_newton_oblate_earth.py``)
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_03_clairaut_theorem.py` (``../../examples/geophysics/plot_03_clairaut_theorem.py``)
+     - 00:00.164
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_15_cox_doell_dalrymple_polarity_timescale.py` (``../../examples/geophysics/plot_15_cox_doell_dalrymple_polarity_timescale.py``)
+     - 00:00.154
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_11_gutenberg_richter_law.py` (``../../examples/seismology/plot_11_gutenberg_richter_law.py``)
+     - 00:00.154
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_09_love_numbers.py` (``../../examples/geophysics/plot_09_love_numbers.py``)
+     - 00:00.153
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_08_zoeppritz_reflection.py` (``../../examples/seismology/plot_08_zoeppritz_reflection.py``)
+     - 00:00.152
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_14_aki_seismic_moment.py` (``../../examples/seismology/plot_14_aki_seismic_moment.py``)
+     - 00:00.151
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_02_laplace_tidal_equations.py` (``../../examples/oceanography/plot_02_laplace_tidal_equations.py``)
+     - 00:00.141
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_14_shaw_magma_viscosity.py` (``../../examples/volcanology/plot_14_shaw_magma_viscosity.py``)
+     - 00:00.139
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_05_bowen_reaction_series.py` (``../../examples/volcanology/plot_05_bowen_reaction_series.py``)
+     - 00:00.133
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_11_rossby_adjustment_radius.py` (``../../examples/oceanography/plot_11_rossby_adjustment_radius.py``)
+     - 00:00.130
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_08_vine_matthews_magnetic_stripes.py` (``../../examples/plate_tectonics/plot_08_vine_matthews_magnetic_stripes.py``)
+     - 00:00.128
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_04_hertz_floating_plate.py` (``../../examples/plate_tectonics/plot_04_hertz_floating_plate.py``)
+     - 00:00.123
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_03_halley_barometric_altitude.py` (``../../examples/atmosphere/plot_03_halley_barometric_altitude.py``)
+     - 00:00.120
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_06_love_waves.py` (``../../examples/seismology/plot_06_love_waves.py``)
+     - 00:00.115
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_14_vaisala_brunt_buoyancy_frequency.py` (``../../examples/atmosphere/plot_14_vaisala_brunt_buoyancy_frequency.py``)
+     - 00:00.112
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_17_newhall_self_volcanic_explosivity_index.py` (``../../examples/volcanology/plot_17_newhall_self_volcanic_explosivity_index.py``)
+     - 00:00.112
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_15_hanks_kanamori_moment_magnitude.py` (``../../examples/seismology/plot_15_hanks_kanamori_moment_magnitude.py``)
+     - 00:00.111
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_12_richardson_turbulence_criterion.py` (``../../examples/atmosphere/plot_12_richardson_turbulence_criterion.py``)
+     - 00:00.108
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_06_knudsen_equation_of_state.py` (``../../examples/oceanography/plot_06_knudsen_equation_of_state.py``)
+     - 00:00.106
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_01_euler_rotation_theorem.py` (``../../examples/plate_tectonics/plot_01_euler_rotation_theorem.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_08_brunhes_reversed_magnetization.py` (``../../examples/geophysics/plot_08_brunhes_reversed_magnetization.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_07_hess_seafloor_spreading.py` (``../../examples/plate_tectonics/plot_07_hess_seafloor_spreading.py``)
+     - 00:00.100
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_16_teos10_seawater_density.py` (``../../examples/oceanography/plot_16_teos10_seawater_density.py``)
+     - 00:00.099
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_14_king_hele_satellite_flattening.py` (``../../examples/geophysics/plot_14_king_hele_satellite_flattening.py``)
+     - 00:00.098
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_08_buys_ballot_law.py` (``../../examples/atmosphere/plot_08_buys_ballot_law.py``)
+     - 00:00.098
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_10_wetherill_concordia.py` (``../../examples/volcanology/plot_10_wetherill_concordia.py``)
+     - 00:00.097
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_01_newton_equilibrium_tide.py` (``../../examples/oceanography/plot_01_newton_equilibrium_tide.py``)
+     - 00:00.096
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_03_boltwood_uranium_lead_ages.py` (``../../examples/volcanology/plot_03_boltwood_uranium_lead_ages.py``)
+     - 00:00.094
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_04_holmes_age_of_the_earth.py` (``../../examples/volcanology/plot_04_holmes_age_of_the_earth.py``)
+     - 00:00.094
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_01_fourier_greenhouse.py` (``../../examples/climate/plot_01_fourier_greenhouse.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_08_ekman_dead_water.py` (``../../examples/oceanography/plot_08_ekman_dead_water.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_11_matuyama_reversed_epoch.py` (``../../examples/geophysics/plot_11_matuyama_reversed_epoch.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_15_gregory_forcing_feedback_regression.py` (``../../examples/climate/plot_15_gregory_forcing_feedback_regression.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_02_pascal_perier_puy_de_dome.py` (``../../examples/atmosphere/plot_02_pascal_perier_puy_de_dome.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_13_nicolaysen_isochron.py` (``../../examples/volcanology/plot_13_nicolaysen_isochron.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_12_mogi_point_source.py` (``../../examples/volcanology/plot_12_mogi_point_source.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_07_revelle_suess_buffer_factor.py` (``../../examples/climate/plot_07_revelle_suess_buffer_factor.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_geophysics_plot_16_grace_gravity_changes.py` (``../../examples/geophysics/plot_16_grace_gravity_changes.py``)
+     - 00:00.088
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_05_dalton_partial_pressures.py` (``../../examples/atmosphere/plot_05_dalton_partial_pressures.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_07_gutenberg_core_shadow.py` (``../../examples/seismology/plot_07_gutenberg_core_shadow.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_08_libby_radiocarbon.py` (``../../examples/volcanology/plot_08_libby_radiocarbon.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_03_gerstner_trochoidal_wave.py` (``../../examples/oceanography/plot_03_gerstner_trochoidal_wave.py``)
+     - 00:00.086
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_04_mohorovicic_discontinuity.py` (``../../examples/seismology/plot_04_mohorovicic_discontinuity.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_01_rayleigh_fractional_distillation.py` (``../../examples/volcanology/plot_01_rayleigh_fractional_distillation.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_07_sandstrom_helland_hansen_dynamic_method.py` (``../../examples/oceanography/plot_07_sandstrom_helland_hansen_dynamic_method.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_10_lehmann_inner_core.py` (``../../examples/seismology/plot_10_lehmann_inner_core.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_12_charney_report_sensitivity.py` (``../../examples/climate/plot_12_charney_report_sensitivity.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_14_forsyth_uyeda_slab_pull.py` (``../../examples/plate_tectonics/plot_14_forsyth_uyeda_slab_pull.py``)
+     - 00:00.084
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_13_morgan_hotspot_tracks.py` (``../../examples/plate_tectonics/plot_13_morgan_hotspot_tracks.py``)
+     - 00:00.083
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_volcanology_plot_09_patterson_age_of_the_earth.py` (``../../examples/volcanology/plot_09_patterson_age_of_the_earth.py``)
+     - 00:00.083
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_02_rayleigh_surface_waves.py` (``../../examples/seismology/plot_02_rayleigh_surface_waves.py``)
+     - 00:00.083
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_02_airy_isostasy.py` (``../../examples/plate_tectonics/plot_02_airy_isostasy.py``)
+     - 00:00.082
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_02_foote_heated_co2.py` (``../../examples/climate/plot_02_foote_heated_co2.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_15_rossby_planetary_waves.py` (``../../examples/atmosphere/plot_15_rossby_planetary_waves.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_10_budyko_sellers_ice_albedo.py` (``../../examples/climate/plot_10_budyko_sellers_ice_albedo.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_12_walcott_lithospheric_flexure.py` (``../../examples/plate_tectonics/plot_12_walcott_lithospheric_flexure.py``)
+     - 00:00.079
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_09_ekman_spiral.py` (``../../examples/oceanography/plot_09_ekman_spiral.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_11_bjerknes_forecasting_programme.py` (``../../examples/atmosphere/plot_11_bjerknes_forecasting_programme.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_05_wegener_continental_drift.py` (``../../examples/plate_tectonics/plot_05_wegener_continental_drift.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_16_sea_level_budget.py` (``../../examples/climate/plot_16_sea_level_budget.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_seismology_plot_01_poisson_two_elastic_waves.py` (``../../examples/seismology/plot_01_poisson_two_elastic_waves.py``)
+     - 00:00.075
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_09_von_bezold_potential_temperature.py` (``../../examples/atmosphere/plot_09_von_bezold_potential_temperature.py``)
+     - 00:00.074
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_12_sverdrup_balance.py` (``../../examples/oceanography/plot_12_sverdrup_balance.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_oceanography_plot_05_challenger_soundings.py` (``../../examples/oceanography/plot_05_challenger_soundings.py``)
+     - 00:00.072
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_10_mckenzie_parker_plates_on_sphere.py` (``../../examples/plate_tectonics/plot_10_mckenzie_parker_plates_on_sphere.py``)
+     - 00:00.070
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_16_nuvel1_euler_circuit.py` (``../../examples/plate_tectonics/plot_16_nuvel1_euler_circuit.py``)
+     - 00:00.068
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_climate_plot_04_arrhenius_co2_sensitivity.py` (``../../examples/climate/plot_04_arrhenius_co2_sensitivity.py``)
+     - 00:00.065
+     - 0.0

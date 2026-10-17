@@ -1,0 +1,360 @@
+:orphan:
+
+.. include:: /_generated/nav/plate_tectonics.rst
+
+Plate Tectonics examples
+========================
+
+One executed example per breakthrough in :doc:`/history/plate_tectonics_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/plate_tectonics` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Any motion of a rigid cap on a sphere is a rotation about an axis through the centre. The velocity of every point is the cross product of the Euler vector and its position, so it is tangent to the sphere and vanishes at the pole. The pole and rate here are synthetic.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_01_euler_rotation_theorem_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_01_euler_rotation_theorem`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Euler's rotation theorem (1776)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="George Airy explained why the Himalaya deflect a plumb line less than their visible mass predicts: mountains float on denser rock on light roots. A root of depth r under an elevation h balances the pressure at the base of the deepest column.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_02_airy_isostasy_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_02_airy_isostasy`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Airy's isostasy (1855)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="William Thomson (Lord Kelvin) treated the Earth as a half-space cooling from a uniform 7000 degrees Fahrenheit. The surface gradient of the conductive solution falls as one over the square root of age, so the measured gradient of about 1 degree Fahrenheit per 50 feet fixes an age near 100 million years. Kelvin did not know about radioactive heating or mantle convection.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_03_kelvin_cooling_earth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_03_kelvin_cooling_earth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kelvin's cooling Earth (1862)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Kelvin&#x27;s calculation rests on Fourier&#x27;s conduction law, under which every sinusoidal temperature mode decays at the rate kappa k2. On a periodic grid the same mode decays at 4 kappa sin(k dx / 2)2 / dx2, which tends to Fourier&#x27;s rate as the grid is refined, and the mean temperature is conserved because no heat leaves a periodic domain.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_03_kelvin_cooling_earth_grid_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_03_kelvin_cooling_earth_grid`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Kelvin's conduction on a discrete grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Heinrich Hertz solved for the bending of a thin elastic plate floating on a fluid, the problem of a load on lake ice. The same equation describes the lithosphere floating on the mantle: rigidity grows as the cube of the elastic thickness and the flexural length as its three-quarter power.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_04_hertz_floating_plate_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_04_hertz_floating_plate`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hertz's floating elastic plate (1884)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Alfred Wegener argued from matching coastlines, fossils and rocks that South America and Africa were once joined. At a few centimetres a year, the separation since the opening of the South Atlantic is thousands of kilometres. The rate here is a representative value, not a reconstruction.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_05_wegener_continental_drift_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_05_wegener_continental_drift`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Wegener's continental drift (1912)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Arthur Holmes proposed that radioactive heat drives slow convection in the mantle, which could carry continents. A layer heated from below convects when its Rayleigh number exceeds about 10^3. For any plausible mantle viscosity the whole mantle is far above that threshold.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_06_holmes_mantle_convection_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_06_holmes_mantle_convection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Holmes's mantle convection (1931)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Harry Hess proposed that new ocean floor forms at mid-ocean ridges and moves away on both sides. Two plates each moving at the half rate open the ridge at twice that speed, and an ocean basin a few thousand kilometres wide is renewed in a few hundred million years.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_07_hess_seafloor_spreading_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_07_hess_seafloor_spreading`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hess's seafloor spreading (1962)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fred Vine and Drummond Matthews, and independently Lawrence Morley, saw that ocean crust records the reversing geomagnetic field as it cools at the ridge. Distance over half-spreading rate gives the age of each stripe, so the pattern is a mirror image about the ridge. The polarity timescale below keeps only the main chrons and subchrons of the last 4 million years.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_08_vine_matthews_magnetic_stripes_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_08_vine_matthews_magnetic_stripes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Vine, Matthews and Morley's magnetic stripes (1963)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="J. Tuzo Wilson recognised that the faults offsetting mid-ocean ridges slip only between the two ridge tips, and in the opposite sense to the apparent offset. There the boundary is parallel to the relative motion, so all of the full spreading rate is strike slip and none of it is convergence.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_09_wilson_transform_faults_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_09_wilson_transform_faults`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Wilson's transform faults (1965)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Dan McKenzie and Robert Parker showed that the North Pacific moves as one rigid cap rotating about a single pole. Speed then varies as the sine of the angular distance from the pole: zero at the pole, largest 90 degrees away.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_10_mckenzie_parker_plates_on_sphere_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_10_mckenzie_parker_plates_on_sphere`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">McKenzie and Parker's plates on a sphere (1967)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Bryan Isacks, Jack Oliver and Lynn Sykes traced deep earthquakes down inclined zones beneath trenches and read them as cold lithosphere sinking into the mantle. A shallower dip lengthens the path to a given depth; only the part of the relative motion normal to the trench is convergence.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_11_isacks_oliver_sykes_subducting_slabs_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_11_isacks_oliver_sykes_subducting_slabs`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Isacks, Oliver and Sykes's subducting slabs (1968)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Richard Walcott measured how the lithosphere bends under volcanic islands, ice sheets and sediment, and estimated its rigidity from the bending. A line load on an elastic plate digs a moat that crosses zero at 3 pi alpha / 4 and lifts a bulge at pi alpha whose height is exp(-pi) of the central deflection. The load here is a synthetic Hawaiian-scale ridge.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_12_walcott_lithospheric_flexure_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_12_walcott_lithospheric_flexure`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Walcott's lithospheric flexure under loads (1970)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="W. Jason Morgan proposed that fixed plumes rising from the deep mantle feed chains such as Hawaii-Emperor. A plate rotating over them leaves volcanoes whose age grows linearly along small circles about the plate&#x27;s Euler pole. Chains at different distances from the pole move at different speeds but record the same rotation. Positions and ages here are synthetic.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_13_morgan_hotspot_tracks_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_13_morgan_hotspot_tracks`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Morgan's hotspot tracks (1971)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Donald Forsyth and Seiya Uyeda compared the forces on each plate and found that plates attached to sinking slabs move fastest. Per metre of trench, the excess weight of a cold slab exceeds ridge push by about an order of magnitude. Ridge push uses the half-space formula of Turcotte and Schubert.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_14_forsyth_uyeda_slab_pull_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_14_forsyth_uyeda_slab_pull`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Forsyth and Uyeda's slab pull (1975)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Barry Parsons and John Sclater fitted ocean depth and heat flow against sea-floor age. Out to about 70 million years the depth grows as 2500 + 350 sqrt(t) metres (``t`` in million years), which the cooling half-space reproduces; older floor flattens, as their cooling-plate fit shows. Surface heat flow falls as one over the square root of age.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_15_parsons_sclater_depth_age_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_15_parsons_sclater_depth_age`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Parsons and Sclater's depth-age law (1977)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Charles DeMets, Richard Gordon, Donald Argus and Seth Stein fitted spreading rates, transform azimuths and earthquake slip vectors for all the major plates at once. The fit requires every circuit of relative Euler vectors to close: the motion of A relative to C is A-B plus B-C. At a triple junction the three relative velocities then form a closed triangle. The Euler vectors here are synthetic.">
+
+.. only:: html
+
+  .. image:: /api/gallery/plate_tectonics/images/thumb/sphx_glr_plot_16_nuvel1_euler_circuit_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/plate_tectonics/plot_16_nuvel1_euler_circuit`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">NUVEL-1 relative plate motions (1990)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/plate_tectonics/plot_01_euler_rotation_theorem
+   /api/gallery/plate_tectonics/plot_02_airy_isostasy
+   /api/gallery/plate_tectonics/plot_03_kelvin_cooling_earth
+   /api/gallery/plate_tectonics/plot_03_kelvin_cooling_earth_grid
+   /api/gallery/plate_tectonics/plot_04_hertz_floating_plate
+   /api/gallery/plate_tectonics/plot_05_wegener_continental_drift
+   /api/gallery/plate_tectonics/plot_06_holmes_mantle_convection
+   /api/gallery/plate_tectonics/plot_07_hess_seafloor_spreading
+   /api/gallery/plate_tectonics/plot_08_vine_matthews_magnetic_stripes
+   /api/gallery/plate_tectonics/plot_09_wilson_transform_faults
+   /api/gallery/plate_tectonics/plot_10_mckenzie_parker_plates_on_sphere
+   /api/gallery/plate_tectonics/plot_11_isacks_oliver_sykes_subducting_slabs
+   /api/gallery/plate_tectonics/plot_12_walcott_lithospheric_flexure
+   /api/gallery/plate_tectonics/plot_13_morgan_hotspot_tracks
+   /api/gallery/plate_tectonics/plot_14_forsyth_uyeda_slab_pull
+   /api/gallery/plate_tectonics/plot_15_parsons_sclater_depth_age
+   /api/gallery/plate_tectonics/plot_16_nuvel1_euler_circuit
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: plate_tectonics_python.zip </api/gallery/plate_tectonics/plate_tectonics_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: plate_tectonics_jupyter.zip </api/gallery/plate_tectonics/plate_tectonics_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

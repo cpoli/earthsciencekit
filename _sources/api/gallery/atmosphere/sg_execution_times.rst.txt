@@ -1,0 +1,82 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_atmosphere_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.122** total execution time for 16 files **from api/gallery/atmosphere**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_16_charney_eniac_forecast.py` (``plot_16_charney_eniac_forecast.py``)
+     - 00:00.200
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_10_teisserenc_de_bort_stratosphere.py` (``plot_10_teisserenc_de_bort_stratosphere.py``)
+     - 00:00.200
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_04_hadley_circulation.py` (``plot_04_hadley_circulation.py``)
+     - 00:00.188
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_07_magnus_vapour_pressure.py` (``plot_07_magnus_vapour_pressure.py``)
+     - 00:00.181
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_13_richardson_numerical_forecast.py` (``plot_13_richardson_numerical_forecast.py``)
+     - 00:00.172
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_06_poisson_adiabat.py` (``plot_06_poisson_adiabat.py``)
+     - 00:00.169
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_01_torricelli_barometer.py` (``plot_01_torricelli_barometer.py``)
+     - 00:00.166
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_03_halley_barometric_altitude.py` (``plot_03_halley_barometric_altitude.py``)
+     - 00:00.120
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_14_vaisala_brunt_buoyancy_frequency.py` (``plot_14_vaisala_brunt_buoyancy_frequency.py``)
+     - 00:00.112
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_12_richardson_turbulence_criterion.py` (``plot_12_richardson_turbulence_criterion.py``)
+     - 00:00.108
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_08_buys_ballot_law.py` (``plot_08_buys_ballot_law.py``)
+     - 00:00.098
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_02_pascal_perier_puy_de_dome.py` (``plot_02_pascal_perier_puy_de_dome.py``)
+     - 00:00.090
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_05_dalton_partial_pressures.py` (``plot_05_dalton_partial_pressures.py``)
+     - 00:00.087
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_15_rossby_planetary_waves.py` (``plot_15_rossby_planetary_waves.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_11_bjerknes_forecasting_programme.py` (``plot_11_bjerknes_forecasting_programme.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_atmosphere_plot_09_von_bezold_potential_temperature.py` (``plot_09_von_bezold_potential_temperature.py``)
+     - 00:00.074
+     - 0.0

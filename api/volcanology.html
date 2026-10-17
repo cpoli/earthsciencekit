@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="earthsciencekit.volcanology" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/earthsciencekit/api/volcanology.html" />
+<meta property="og:site_name" content="earthsciencekit" />
+<meta property="og:description" content="Domain hub · History · Examples · API reference Inspectable volcanology and geochemistry models; SI units unless stated otherwise." />
+<meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
+<meta property="og:image:alt" content="earthsciencekit" />
+<meta name="description" content="Domain hub · History · Examples · API reference Inspectable volcanology and geochemistry models; SI units unless stated otherwise." />
+
+    <title>earthsciencekit.volcanology &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=95e61db4"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/volcanology';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/api/volcanology.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="earthsciencekit.geophysics" href="geophysics.html" />
+    <link rel="prev" title="earthsciencekit.oceanography" href="oceanography.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plate_tectonics.html">earthsciencekit.plate_tectonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seismology.html">earthsciencekit.seismology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atmosphere.html">earthsciencekit.atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">earthsciencekit.climate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oceanography.html">earthsciencekit.oceanography</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">earthsciencekit.volcanology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">earthsciencekit.geophysics</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">earthsciencekit.integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">earthsciencekit.results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizers.html">earthsciencekit.visualizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">earthsciencekit.units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">earthsciencekit.constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validation.html">Validation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Scope and limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Scientific teaching references</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.volcanology</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="earthsciencekit-volcanology">
+<h1>earthsciencekit.volcanology<a class="headerlink" href="#earthsciencekit-volcanology" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/volcanology.html"><span class="doc">Domain hub</span></a> · <a class="reference internal" href="../history/volcanology_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/volcanology/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p id="module-earthsciencekit.volcanology">Inspectable volcanology and geochemistry models; SI units unless stated otherwise.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.arrhenius_viscosity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">arrhenius_viscosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_viscosity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/magma.html#arrhenius_viscosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.arrhenius_viscosity" title="Link to this definition">#</a></dt>
+<dd><p>Arrhenius temperature dependence of melt viscosity.</p>
+<p>Silicate melts stiffen by orders of magnitude as they cool, which controls how lava flows and how magma erupts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>reference_viscosity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa s, viscosity at the reference temperature; constraint: positive.</p></li>
+<li><p><strong>activation_energy</strong> (<em>float</em><em> or </em><em>array_like</em>) – J/mol; constraint: nonnegative.</p></li>
+<li><p><strong>reference_temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Constant activation energy over the range of interest; crystal- and bubble-free Newtonian melt.
+Equation: <code class="docutils literal notranslate"><span class="pre">reference_viscosity</span> <span class="pre">*</span> <span class="pre">np.exp(activation_energy</span> <span class="pre">/</span> <span class="pre">R_GAS</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">/</span> <span class="pre">temperature</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">reference_temperature))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.column_height">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">column_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heat_flux</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/eruptions.html#column_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.column_height" title="Link to this definition">#</a></dt>
+<dd><p>Height of a Plinian eruption column from its heat flux.</p>
+<p>The thermal energy released at the vent, not the eruption velocity, controls how high a volcanic column rises.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>heat_flux</strong> (<em>float</em><em> or </em><em>array_like</em>) – W, rate of heat release <code class="docutils literal notranslate"><span class="pre">mass_eruption_rate</span> <span class="pre">*</span> <span class="pre">specific_heat</span> <span class="pre">*</span> <span class="pre">temperature_excess</span></code>; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Wilson, Sparks, Huang and Watkins (1978), JGR 83: 1829-1836, for a standard atmosphere and a strong steady column;
+wind bends weak plumes lower.
+Equation: <code class="docutils literal notranslate"><span class="pre">8.2</span> <span class="pre">*</span> <span class="pre">heat_flux**0.25</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.concordia_ratios">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">concordia_ratios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#concordia_ratios"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.concordia_ratios" title="Link to this definition">#</a></dt>
+<dd><p>Point on the Wetherill U-Pb concordia.</p>
+<p>Both uranium-lead clocks agree only on this curve, so a zircon off it has lost lead and its chord dates the loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: nonnegative.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]: <code class="docutils literal notranslate"><span class="pre">[207Pb*/235U,</span> <span class="pre">206Pb*/238U]</span></code>, the horizontal and vertical concordia coordinates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Wetherill (1956): closed system with the Jaffey et al. (1971) decay constants. Episodic lead loss puts samples on a
+straight chord (discordia) between the concordia points of formation and loss.
+Equation: <code class="docutils literal notranslate"><span class="pre">[np.expm1(LAMBDA_U235</span> <span class="pre">*</span> <span class="pre">time),</span> <span class="pre">np.expm1(LAMBDA_U238</span> <span class="pre">*</span> <span class="pre">time)]</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.decay_constant">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">decay_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">half_life</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#decay_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.decay_constant" title="Link to this definition">#</a></dt>
+<dd><p>Decay constant from a half-life.</p>
+<p>Every radioactive nuclide has a fixed probability per unit time of decaying, set by its half-life.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>half_life</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Rutherford and Soddy (1902): first-order decay, independent of temperature, pressure and chemistry.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log(2)</span> <span class="pre">/</span> <span class="pre">half_life</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.delta_value">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">delta_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standard_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochemistry.html#delta_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.delta_value" title="Link to this definition">#</a></dt>
+<dd><p>Isotope delta value relative to a standard.</p>
+<p>Isotope ratios vary in the fourth decimal place, so geochemists report deviations from a standard in per mil.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, heavy-to-light isotope ratio of the sample; constraint: positive.</p></li>
+<li><p><strong>standard_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, the same ratio in the standard (e.g. VSMOW, VPDB); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [per mil]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Linear in the ratio; delta values of different standards must be converted before they are compared.
+Equation: <code class="docutils literal notranslate"><span class="pre">(ratio</span> <span class="pre">/</span> <span class="pre">standard_ratio</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">1000</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.dike_ascent_velocity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">dike_ascent_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_contrast</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viscosity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/magma.html#dike_ascent_velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.dike_ascent_velocity" title="Link to this definition">#</a></dt>
+<dd><p>Mean laminar velocity of buoyant magma in a dike.</p>
+<p>Buoyancy drives magma up a planar crack, and the viscous drag on its walls sets how fast it rises.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, full dike width; constraint: positive.</p></li>
+<li><p><strong>density_contrast</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3, host rock minus magma; constraint: real.</p></li>
+<li><p><strong>viscosity</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa s; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s], positive upward. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Wilson and Head (1981): plane Poiseuille flow between parallel walls driven by buoyancy alone; check that the Reynolds
+number <code class="docutils literal notranslate"><span class="pre">magma_density</span> <span class="pre">*</span> <span class="pre">velocity</span> <span class="pre">*</span> <span class="pre">width</span> <span class="pre">/</span> <span class="pre">viscosity</span></code> stays below about 2000.
+Equation: <code class="docutils literal notranslate"><span class="pre">width**2</span> <span class="pre">*</span> <span class="pre">density_contrast</span> <span class="pre">*</span> <span class="pre">gravity</span> <span class="pre">/</span> <span class="pre">(12</span> <span class="pre">*</span> <span class="pre">viscosity)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.equilibrium_crystallization_melt">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">equilibrium_crystallization_melt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_concentration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">melt_fraction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partition_coefficient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochemistry.html#equilibrium_crystallization_melt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.equilibrium_crystallization_melt" title="Link to this definition">#</a></dt>
+<dd><p>Trace-element concentration in a melt during equilibrium crystallization.</p>
+<p>Crystals that keep reacting with the melt, as in Bowen’s continuous series, limit how far the melt can evolve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_concentration</strong> (<em>float</em><em> or </em><em>array_like</em>) – Concentration in the parent melt (any unit, e.g. ppm); constraint: nonnegative.</p></li>
+<li><p><strong>melt_fraction</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, fraction of melt remaining; constraint: fraction.</p></li>
+<li><p><strong>partition_coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, bulk solid/melt concentration ratio; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [unit of initial_concentration]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Batch mass balance (Shaw 1970): solid and melt stay in equilibrium, so an incompatible element is enriched at most by
+1 / partition_coefficient.
+Equation: <code class="docutils literal notranslate"><span class="pre">initial_concentration</span> <span class="pre">/</span> <span class="pre">(partition_coefficient</span> <span class="pre">+</span> <span class="pre">melt_fraction</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">partition_coefficient))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.fractional_crystallization_melt">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">fractional_crystallization_melt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_concentration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">melt_fraction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partition_coefficient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochemistry.html#fractional_crystallization_melt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.fractional_crystallization_melt" title="Link to this definition">#</a></dt>
+<dd><p>Trace-element concentration in a melt during fractional crystallization.</p>
+<p>Crystals removed as soon as they form leave the residual melt enriched in the elements they reject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_concentration</strong> (<em>float</em><em> or </em><em>array_like</em>) – Concentration in the parent melt (any unit, e.g. ppm); constraint: nonnegative.</p></li>
+<li><p><strong>melt_fraction</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, fraction of melt remaining; constraint: fraction above zero.</p></li>
+<li><p><strong>partition_coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, bulk solid/melt concentration ratio; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [unit of initial_concentration]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Rayleigh fractional crystallization (Bowen 1928; Gast 1968): crystals do not re-equilibrate and the bulk partition
+coefficient is constant.
+Equation: <code class="docutils literal notranslate"><span class="pre">initial_concentration</span> <span class="pre">*</span> <span class="pre">melt_fraction**(partition_coefficient</span> <span class="pre">-</span> <span class="pre">1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.isochron_fit">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">isochron_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daughter_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_constant</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#isochron_fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.isochron_fit" title="Link to this definition">#</a></dt>
+<dd><p>Age and initial ratio from a whole-rock or mineral isochron.</p>
+<p>Cogenetic minerals with different parent contents line up on a straight line whose slope gives the age without knowing
+the initial daughter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent_ratio</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em><em>, </em><em>n &gt;= 2</em>) – 1, parent over a stable reference isotope (e.g. 87Rb/86Sr); constraint: nonnegative, not all equal.</p></li>
+<li><p><strong>daughter_ratio</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>) – 1, daughter over the same reference isotope (e.g. 87Sr/86Sr); constraint: nonnegative.</p></li>
+<li><p><strong>decay_constant</strong> (<em>float</em>) – 1/s; constraint: positive scalar.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">[age,</span> <span class="pre">initial_ratio]</span></code>: the age [s] from the least-squares slope and the intercept [1].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray, shape (2,)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Nicolaysen (1961): every sample formed at the same time with the same initial ratio and stayed closed; ordinary least
+squares without measurement-error weighting (a York fit would weight them). The slope must be positive.
+Equation: <code class="docutils literal notranslate"><span class="pre">daughter_ratio</span> <span class="pre">=</span> <span class="pre">initial_ratio</span> <span class="pre">+</span> <span class="pre">parent_ratio</span> <span class="pre">*</span> <span class="pre">np.expm1(decay_constant</span> <span class="pre">*</span> <span class="pre">age)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.isotope_temperature">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">isotope_temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_calcite</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_water</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochemistry.html#isotope_temperature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.isotope_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Calcite-water oxygen-isotope paleotemperature.</p>
+<p>The oxygen-isotope fractionation between a shell and the water it grew in falls with temperature, so fossil shells
+record ancient ocean temperatures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta_calcite</strong> (<em>float</em><em> or </em><em>array_like</em>) – per mil, delta18O of the carbonate (CO2 from the calcite, PDB scale); constraint: real.</p></li>
+<li><p><strong>delta_water</strong> (<em>float</em><em> or </em><em>array_like</em>) – per mil, delta18O of the water on the same scale; constraint: real.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [K]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Urey (1947) predicted the effect; this is the empirical calibration of Epstein, Buchsbaum, Lowenstam and Urey (1953),
+valid for about 7-30 degC and equilibrium calcite.
+Equation: <code class="docutils literal notranslate"><span class="pre">273.15</span> <span class="pre">+</span> <span class="pre">16.5</span> <span class="pre">-</span> <span class="pre">4.3</span> <span class="pre">*</span> <span class="pre">d</span> <span class="pre">+</span> <span class="pre">0.14</span> <span class="pre">*</span> <span class="pre">d**2</span></code> with <code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">delta_calcite</span> <span class="pre">-</span> <span class="pre">delta_water</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.lattice_strain_partition">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">lattice_strain_partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ionic_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimal_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peak_partition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youngs_modulus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochemistry.html#lattice_strain_partition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.lattice_strain_partition" title="Link to this definition">#</a></dt>
+<dd><p>Mineral-melt partition coefficient from the strain of the crystal lattice.</p>
+<p>Ions close in size to the site they replace enter a crystal easily, which is Goldschmidt’s first rule of substitution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ionic_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>optimal_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, radius that fits the site without strain; constraint: positive.</p></li>
+<li><p><strong>peak_partition</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, partition coefficient of an ion of the optimal radius; constraint: positive.</p></li>
+<li><p><strong>youngs_modulus</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa, apparent Young’s modulus of the site; constraint: positive.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Blundy and Wood (1994) quantification of Goldschmidt (1937) for isovalent ions on one site; charge differences
+need a separate parabola.
+Equation: <code class="docutils literal notranslate"><span class="pre">peak_partition</span> <span class="pre">*</span> <span class="pre">np.exp(-4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">youngs_modulus</span> <span class="pre">*</span> <span class="pre">AVOGADRO</span> <span class="pre">*</span> <span class="pre">(optimal_radius</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">(ionic_radius</span> <span class="pre">-</span> <span class="pre">optimal_radius)**2</span>
+<span class="pre">+</span> <span class="pre">(ionic_radius</span> <span class="pre">-</span> <span class="pre">optimal_radius)**3</span> <span class="pre">/</span> <span class="pre">3)</span> <span class="pre">/</span> <span class="pre">(R_GAS</span> <span class="pre">*</span> <span class="pre">temperature))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.lead_lead_age">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">lead_lead_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lead_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#lead_lead_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.lead_lead_age" title="Link to this definition">#</a></dt>
+<dd><p>Age from a radiogenic 207Pb/206Pb ratio.</p>
+<p>Patterson dated the Earth from the slope of a meteorite lead isochron, which equals this ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lead_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, radiogenic 207Pb*/206Pb* or the slope of a Pb-Pb isochron; constraint: between the ratios at one year
+(about 0.0461) and at 10 Ga.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Inverts radiogenic_lead_ratio by Brent’s method between one year and 10 Ga; same closed-system assumptions.
+Equation: <code class="docutils literal notranslate"><span class="pre">radiogenic_lead_ratio(age)</span> <span class="pre">=</span> <span class="pre">lead_ratio</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.mogi_displacement">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">mogi_displacement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radial_distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_change</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poisson_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/magma.html#mogi_displacement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.mogi_displacement" title="Link to this definition">#</a></dt>
+<dd><p>Surface displacement above an inflating point source.</p>
+<p>Magma entering a chamber lifts the ground in a bell-shaped dome whose width reveals the chamber depth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radial_distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, horizontal distance from the point above the source; constraint: nonnegative.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>volume_change</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3, signed change of the source volume; constraint: real.</p></li>
+<li><p><strong>poisson_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: between 0 and 0.5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]: <code class="docutils literal notranslate"><span class="pre">[radial,</span> <span class="pre">vertical]</span></code> displacement, outward and upward positive.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 2)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Mogi (1958) point source in an elastic half-space; the chamber radius must be small compared with its depth. The
+uplift halves at <code class="docutils literal notranslate"><span class="pre">radial_distance</span> <span class="pre">=</span> <span class="pre">0.766</span> <span class="pre">*</span> <span class="pre">depth</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">-</span> <span class="pre">poisson_ratio)</span> <span class="pre">*</span> <span class="pre">volume_change</span> <span class="pre">/</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">[radial_distance,</span> <span class="pre">depth]</span> <span class="pre">/</span> <span class="pre">(radial_distance**2</span> <span class="pre">+</span> <span class="pre">depth**2)**1.5</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.parent_fraction">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">parent_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decay_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#parent_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.parent_fraction" title="Link to this definition">#</a></dt>
+<dd><p>Fraction of radioactive parent atoms remaining.</p>
+<p>Exponential decay is the clock behind every radiometric age.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>decay_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Rutherford and Soddy (1902): a closed system with no parent added after time zero.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.exp(-decay_constant</span> <span class="pre">*</span> <span class="pre">time)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.plume_rise_height">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">plume_rise_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buoyancy_flux</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buoyancy_frequency</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/eruptions.html#plume_rise_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.plume_rise_height" title="Link to this definition">#</a></dt>
+<dd><p>Maximum height of a buoyant plume in a stratified fluid.</p>
+<p>Turbulent entrainment dilutes a plume until the stratification removes its buoyancy, which caps its height at a value
+set by only the source buoyancy flux and the stratification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buoyancy_flux</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^4/s^3, source <code class="docutils literal notranslate"><span class="pre">reduced_gravity</span> <span class="pre">*</span> <span class="pre">velocity</span> <span class="pre">*</span> <span class="pre">radius**2</span></code> (the factor pi omitted); constraint: positive.</p></li>
+<li><p><strong>buoyancy_frequency</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Morton, Taylor and Turner (1956) for a steady point source of buoyancy in uniform stratification, with Briggs’s
+constant 5.0 (entrainment about 0.1); source momentum, wind and moisture are neglected.
+Equation: <code class="docutils literal notranslate"><span class="pre">5.0</span> <span class="pre">*</span> <span class="pre">buoyancy_flux**0.25</span> <span class="pre">*</span> <span class="pre">buoyancy_frequency**-0.75</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.radiocarbon_age">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">radiocarbon_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fraction_modern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#radiocarbon_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.radiocarbon_age" title="Link to this definition">#</a></dt>
+<dd><p>Conventional radiocarbon age.</p>
+<p>Living matter exchanges carbon-14 with the atmosphere; after death the carbon-14 decays, dating organic remains.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fraction_modern</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, sample 14C/12C relative to the modern standard; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s]; negative for bomb carbon above the standard. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Libby et al. (1949) with the conventional 5568-year (Libby) half-life, mean life LIBBY_MEAN_LIFE; it is a radiocarbon
+age, not a calendar age, until calibrated.
+Equation: <code class="docutils literal notranslate"><span class="pre">-LIBBY_MEAN_LIFE</span> <span class="pre">*</span> <span class="pre">np.log(fraction_modern)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.radiogenic_daughter">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">radiogenic_daughter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#radiogenic_daughter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.radiogenic_daughter" title="Link to this definition">#</a></dt>
+<dd><p>Radiogenic daughter accumulated beside the surviving parent.</p>
+<p>Forward accumulation shows how the daughter-to-parent ratio of a rock records its age.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>float</em><em> or </em><em>array_like</em>) – Surviving parent amount today (atoms, moles or any consistent unit); constraint: nonnegative.</p></li>
+<li><p><strong>decay_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [unit of parent]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Closed system with no initial daughter; the inverse of radiometric_age. Holmes (1913) used it to build the first
+radiometric time scale.
+Equation: <code class="docutils literal notranslate"><span class="pre">parent</span> <span class="pre">*</span> <span class="pre">np.expm1(decay_constant</span> <span class="pre">*</span> <span class="pre">time)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.radiogenic_lead_ratio">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">radiogenic_lead_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#radiogenic_lead_ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.radiogenic_lead_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Radiogenic 207Pb/206Pb ratio produced over a given age.</p>
+<p>Two uranium isotopes decaying at different rates make the ratio of their lead daughters a clock that needs no uranium
+measurement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Patterson (1956): closed system with today’s 238U/235U = U238_U235 and the Jaffey et al. (1971) decay constants. The
+ratio tends to LAMBDA_U235 / (U238_U235 * LAMBDA_U238) at zero age.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.expm1(LAMBDA_U235</span> <span class="pre">*</span> <span class="pre">time)</span> <span class="pre">/</span> <span class="pre">(U238_U235</span> <span class="pre">*</span> <span class="pre">np.expm1(LAMBDA_U238</span> <span class="pre">*</span> <span class="pre">time))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.radiometric_age">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">radiometric_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">daughter_parent_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_constant</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochronology.html#radiometric_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.radiometric_age" title="Link to this definition">#</a></dt>
+<dd><p>Age from a radiogenic daughter-to-parent ratio.</p>
+<p>The ratio of accumulated daughter atoms to surviving parent atoms grows with time, so measuring it dates the rock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>daughter_parent_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, radiogenic daughter atoms per parent atom; constraint: nonnegative.</p></li>
+<li><p><strong>decay_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Closed system with no initial daughter; Boltwood (1907) applied it to lead in uranium minerals.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log1p(daughter_parent_ratio)</span> <span class="pre">/</span> <span class="pre">decay_constant</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.rayleigh_fractionation">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">rayleigh_fractionation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_ratio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remaining_fraction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractionation_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/geochemistry.html#rayleigh_fractionation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.rayleigh_fractionation" title="Link to this definition">#</a></dt>
+<dd><p>Isotope ratio of a reservoir depleted by Rayleigh distillation.</p>
+<p>Removing a product that is always slightly enriched in one isotope drives the remaining reservoir further and further
+from its starting composition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>initial_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, heavy-to-light isotope ratio of the reservoir at the start; constraint: positive.</p></li>
+<li><p><strong>remaining_fraction</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, fraction of the reservoir left; constraint: fraction above zero.</p></li>
+<li><p><strong>fractionation_factor</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, product ratio over reservoir ratio at each instant; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Rayleigh (1896): the product leaves as soon as it forms, the reservoir stays well mixed and the factor is constant.
+Equation: <code class="docutils literal notranslate"><span class="pre">initial_ratio</span> <span class="pre">*</span> <span class="pre">remaining_fraction**(fractionation_factor</span> <span class="pre">-</span> <span class="pre">1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.shaw_viscosity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">shaw_viscosity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/magma.html#shaw_viscosity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.shaw_viscosity" title="Link to this definition">#</a></dt>
+<dd><p>Shaw’s empirical viscosity of an anhydrous or hydrous silicate melt.</p>
+<p>One composition-dependent slope predicts the viscosity of melts from basalt to rhyolite.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: positive.</p></li>
+<li><p><strong>slope</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, Shaw’s s from the molar composition (about 2-3 for basalt, 3.5-4 for rhyolite); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Shaw (1972), Am. J. Sci. 272: 870-893; all lines pass near ln(eta [poise]) = -6.4 at 1e4/T = 1.5. Crystal- and
+bubble-free Newtonian melt; about 0.2 log units of accuracy.
+Equation: <code class="docutils literal notranslate"><span class="pre">0.1</span> <span class="pre">*</span> <span class="pre">np.exp(slope</span> <span class="pre">*</span> <span class="pre">(1e4</span> <span class="pre">/</span> <span class="pre">temperature)</span> <span class="pre">-</span> <span class="pre">1.5</span> <span class="pre">*</span> <span class="pre">slope</span> <span class="pre">-</span> <span class="pre">6.4)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.simulate_eruption_column">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">simulate_eruption_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vent_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vent_velocity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduced_gravity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buoyancy_frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">entrainment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/eruptions.html#simulate_eruption_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.simulate_eruption_column" title="Link to this definition">#</a></dt>
+<dd><p>Follow a parcel up the axis of a steady buoyant eruption column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vent_radius</strong> (<em>float</em>) – Positive scalar source radius [m].</p></li>
+<li><p><strong>vent_velocity</strong> (<em>float</em>) – Positive scalar source velocity [m/s].</p></li>
+<li><p><strong>reduced_gravity</strong> (<em>float</em>) – Positive scalar source buoyancy <code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">(rho_air</span> <span class="pre">-</span> <span class="pre">rho_plume)</span> <span class="pre">/</span> <span class="pre">rho_air</span></code> [m/s^2].</p></li>
+<li><p><strong>buoyancy_frequency</strong> (<em>float</em>) – Nonnegative scalar Brunt-Vaisala frequency of the atmosphere [1/s].</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing travel times since the parcel left the vent [s].</p></li>
+<li><p><strong>entrainment</strong> (<em>float</em>) – Positive scalar top-hat entrainment coefficient [1]; 0.12 reproduces the constant 5.0 of plume_rise_height.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Parcel height [m], vertical velocity [m/s] and reduced gravity [m/s^2].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The Morton, Taylor and Turner (1956) top-hat plume equations for the fluxes Q = b**2 w, M = b**2 w**2 and
+F = b**2 w g’ (pi omitted), carried by a parcel moving at w = M / Q: dz/dt = M / Q, dQ/dt = 2 alpha abs(M)**1.5 / Q,
+dM/dt = F and dF/dt = -N**2 M. In a uniform atmosphere the parcel stops near plume_rise_height. Past that height the
+steady theory ends; the parcel is continued as a fountain that falls back with the same entrainment law and oscillates
+about the level of neutral buoyancy, near three quarters of the maximum height, where the umbrella cloud spreads.
+This illustrative closure omits wind, the dense gas-thrust region, particle fallout and moisture.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.volcanic_explosivity_index">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">volcanic_explosivity_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">erupted_volume</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/eruptions.html#volcanic_explosivity_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.volcanic_explosivity_index" title="Link to this definition">#</a></dt>
+<dd><p>Volcanic Explosivity Index from the erupted tephra volume.</p>
+<p>A single logarithmic number lets eruptions of very different style and size be compared and catalogued.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>erupted_volume</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3, bulk tephra volume; constraint: nonnegative.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1], an integer from 0 to 8. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Newhall and Self (1982), volume criterion only: VEI 0 below 1e4 m^3, 1 below 1e6 m^3, then one step per factor of
+ten up to VEI 8 at 1e12 m^3 and above. Column height and other criteria are not used.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.where(erupted_volume</span> <span class="pre">&lt;</span> <span class="pre">1e4,</span> <span class="pre">0,</span> <span class="pre">np.where(erupted_volume</span> <span class="pre">&lt;</span> <span class="pre">1e6,</span> <span class="pre">1,</span>
+<span class="pre">np.clip(np.floor(np.log10(erupted_volume))</span> <span class="pre">-</span> <span class="pre">4,</span> <span class="pre">2,</span> <span class="pre">8)))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.volcanology.water_solubility">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.volcanology.</span></span><span class="sig-name descname"><span class="pre">water_solubility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solubility_constant</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/volcanology/systems/magma.html#water_solubility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.volcanology.water_solubility" title="Link to this definition">#</a></dt>
+<dd><p>Dissolved water in a melt saturated at a given pressure.</p>
+<p>Water dissolves as hydroxyl, so its solubility grows as the square root of pressure and ascending magma exsolves
+bubbles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: nonnegative.</p></li>
+<li><p><strong>solubility_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/sqrt(Pa), mass fraction per root pascal (about 4.1e-6 for rhyolite); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1], mass fraction. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Square-root (Henry-type) law for pure water vapour, valid up to a few hundred MPa; ignores CO2 and temperature.
+Equation: <code class="docutils literal notranslate"><span class="pre">solubility_constant</span> <span class="pre">*</span> <span class="pre">np.sqrt(pressure)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="oceanography.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">earthsciencekit.oceanography</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="geophysics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">earthsciencekit.geophysics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.arrhenius_viscosity"><code class="docutils literal notranslate"><span class="pre">arrhenius_viscosity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.column_height"><code class="docutils literal notranslate"><span class="pre">column_height()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.concordia_ratios"><code class="docutils literal notranslate"><span class="pre">concordia_ratios()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.decay_constant"><code class="docutils literal notranslate"><span class="pre">decay_constant()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.delta_value"><code class="docutils literal notranslate"><span class="pre">delta_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.dike_ascent_velocity"><code class="docutils literal notranslate"><span class="pre">dike_ascent_velocity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.equilibrium_crystallization_melt"><code class="docutils literal notranslate"><span class="pre">equilibrium_crystallization_melt()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.fractional_crystallization_melt"><code class="docutils literal notranslate"><span class="pre">fractional_crystallization_melt()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.isochron_fit"><code class="docutils literal notranslate"><span class="pre">isochron_fit()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.isotope_temperature"><code class="docutils literal notranslate"><span class="pre">isotope_temperature()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.lattice_strain_partition"><code class="docutils literal notranslate"><span class="pre">lattice_strain_partition()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.lead_lead_age"><code class="docutils literal notranslate"><span class="pre">lead_lead_age()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.mogi_displacement"><code class="docutils literal notranslate"><span class="pre">mogi_displacement()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.parent_fraction"><code class="docutils literal notranslate"><span class="pre">parent_fraction()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.plume_rise_height"><code class="docutils literal notranslate"><span class="pre">plume_rise_height()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.radiocarbon_age"><code class="docutils literal notranslate"><span class="pre">radiocarbon_age()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.radiogenic_daughter"><code class="docutils literal notranslate"><span class="pre">radiogenic_daughter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.radiogenic_lead_ratio"><code class="docutils literal notranslate"><span class="pre">radiogenic_lead_ratio()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.radiometric_age"><code class="docutils literal notranslate"><span class="pre">radiometric_age()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.rayleigh_fractionation"><code class="docutils literal notranslate"><span class="pre">rayleigh_fractionation()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.shaw_viscosity"><code class="docutils literal notranslate"><span class="pre">shaw_viscosity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.simulate_eruption_column"><code class="docutils literal notranslate"><span class="pre">simulate_eruption_column()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.volcanic_explosivity_index"><code class="docutils literal notranslate"><span class="pre">volcanic_explosivity_index()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.volcanology.water_solubility"><code class="docutils literal notranslate"><span class="pre">water_solubility()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/volcanology.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
