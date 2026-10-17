@@ -1,5 +1,36 @@
 # Changelog
 
+## [Unreleased]
+
+- New `hydrology` domain (ROADMAP item 4): the catchment water balance and
+  runoff coefficient, Darcy flow and hydraulic head, Dupuit's unconfined
+  aquifer, the Theis well function and drawdown, the Cooper-Jacob
+  approximation and transmissivity, Gardner's conductivity and steady Richards
+  profiles, Green-Ampt and Horton infiltration, Chézy and Manning channel flow,
+  Nash and Sherman unit hydrographs, Muskingum routing, Dalton, Penman and
+  Penman-Monteith evaporation with the aerodynamic and surface resistances,
+  Horton's stream laws and TOPMODEL's index, deficit and baseflow: 38
+  algebraic models and the dynamic `simulate_infiltration` (Green-Ampt under
+  steady rain). Its history is a dated chronology of 17 breakthroughs, from
+  Perrault's catchment water balance (1674) to TOPMODEL (1979), each with its
+  own executed example.
+- New constants `LATENT_HEAT_VAPORIZATION` and `VON_KARMAN`.
+- New `glaciology` domain (ROADMAP item 5): Forbes's viscous slab, Glen's
+  flow law with its rate factor, effective viscosity and laminar velocity
+  profile, Nye's plastic ice sheet and dry and water-filled crevasse depths,
+  Weertman sliding, the driving stress, the shallow-ice flux and diffusivity
+  with Vialov's steady profile, linear mass balance, the accumulation-area
+  ratio, equilibrium-line shift and response time, Stefan sea-ice growth and
+  freeboard, glacial isostasy and Haskell's viscous rebound, Dansgaard's
+  isotope thermometer, the Nye and Dansgaard-Johnsen time scales, the gas-age
+  difference, flotation thickness, ice-shelf spreading and Schoof's
+  grounding-line flux: 37 algebraic models and the dynamic
+  `simulate_flowline_glacier` (a shallow-ice flowline under a linear mass
+  balance, by the method of lines). Its history is a dated chronology of 16
+  breakthroughs, from Agassiz's ice age (1840) to Schoof's grounding-line flux
+  (2007), each with its own executed example.
+- New constants `ICE_DENSITY` and `LATENT_HEAT_FUSION`.
+
 ## [0.2.0] - 2026-10-17
 
 - First release on PyPI, with the git history on GitHub, CI, tag-driven

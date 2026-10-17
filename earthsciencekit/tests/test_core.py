@@ -166,7 +166,10 @@ def test_dynamic_overflow_is_normalized():
         seismology.simulate_oscillator(1e308, 10, [0, 1])
 
 
-@pytest.mark.parametrize("name", ["plate_tectonics", "seismology", "atmosphere", "climate", "oceanography", "geophysics", "volcanology"])
+@pytest.mark.parametrize(
+    "name",
+    ["plate_tectonics", "seismology", "atmosphere", "climate", "oceanography", "geophysics", "volcanology", "hydrology", "glaciology"],
+)
 def test_domain_family_layout(name):
     import importlib
     import inspect

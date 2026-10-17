@@ -111,6 +111,22 @@ SUBPACKAGES = [
         "category": "Solid Earth",
         "blurb": "Gravity anomalies, the figure of the Earth, the geoid, the geomagnetic field, paleomagnetism and the dynamo.",
     },
+    {
+        "name": "hydrology",
+        "category": "Fluid Earth and Climate",
+        "blurb": (
+            "Catchment water balance, Darcy and Dupuit groundwater flow, Theis wells, infiltration, "
+            "open channels, unit hydrographs, flood routing and evaporation."
+        ),
+    },
+    {
+        "name": "glaciology",
+        "category": "Fluid Earth and Climate",
+        "blurb": (
+            "Glen's flow law, plastic and shallow-ice profiles, sliding, crevasses, mass balance, "
+            "sea-ice growth, postglacial rebound, ice-core dating and marine grounding lines."
+        ),
+    },
 ]
 
 

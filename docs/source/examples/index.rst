@@ -14,6 +14,8 @@ Examples
    /api/gallery/oceanography/index
    /api/gallery/volcanology/index
    /api/gallery/geophysics/index
+   /api/gallery/hydrology/index
+   /api/gallery/glaciology/index
 
 Tutorials and model guides
 --------------------------
@@ -30,3 +32,5 @@ Tutorials and model guides
    /guides/oceanography
    /guides/volcanology
    /guides/geophysics
+   /guides/hydrology
+   /guides/glaciology

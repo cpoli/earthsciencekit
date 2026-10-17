@@ -8,9 +8,9 @@ Inspectable Earth-system computations for learning and teaching.
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cpoli/earthsciencekit/blob/main/notebooks/quickstart.ipynb)
 [![JupyterLite](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://cpoli.github.io/earthsciencekit/lite/lab/)
 
-EarthScienceKit **0.2.0** follows the MathematicsKit family structure with seven
-subpackages and 171 domain models: 162 algebraic equations and nine sampled
-dynamic models. Every model documents its units, input bounds and applicability.
+EarthScienceKit follows the MathematicsKit family structure with nine
+subpackages and 248 domain models: 237 algebraic equations and eleven sampled
+dynamic models. Release **0.2.0** has the first seven; `hydrology` and `glaciology` are unreleased. Every model documents its units, input bounds and applicability.
 NumPy and SciPy supply mature numerical foundations.
 
 | Subpackage | Models | Focus |
@@ -22,6 +22,8 @@ NumPy and SciPy supply mature numerical foundations.
 | `oceanography` | 24 | Tides, trochoidal and dispersive waves, density and TEOS-10 cabbeling, dynamic method, Ekman spiral, gyres, two-box overturning, abyssal mixing |
 | `geophysics` | 31 | Gravity anomalies, normal gravity and flattening, satellite J2, Stokes's geoid, dipole and Gauss coefficients, paleomagnetic poles, reversal anomalies, Love numbers, GRACE water, Rikitake dynamo |
 | `volcanology` | 24 | Decay and radiometric ages, radiocarbon, Pb-Pb, concordia and isochron dating, Rayleigh and crystal fractionation, lattice strain, isotope thermometry, magma viscosity and ascent, Mogi inflation, plume and column heights, VEI |
+| `hydrology` | 39 | Water balance, Darcy and Dupuit flow, Theis and Cooper-Jacob wells, Richards, Green-Ampt and Horton infiltration, Chézy and Manning channels, unit hydrographs, Muskingum routing, Penman-Monteith evaporation, Horton's stream laws, TOPMODEL |
+| `glaciology` | 38 | Glen's flow law, Forbes's viscous slab, Nye's plastic ice sheet and crevasses, Weertman sliding, shallow-ice and Vialov profiles, flowline glacier, mass balance, Stefan sea ice, glacial isostasy and Haskell rebound, ice-core dating, gas-age offset, Schoof grounding line |
 
 ## Install and explore
 
@@ -52,8 +54,8 @@ and animation export.
 ## Documentation and validation
 
 The Sphinx site has Subpackages, History, Examples and API entry points,
-MathematicsKit-style cards/hubs and cross-links. Seven history pages connect
-at least fifteen dated breakthroughs each to the APIs; seven guides explain equations,
+MathematicsKit-style cards/hubs and cross-links. Nine history pages connect
+at least fifteen dated breakthroughs each to the APIs; nine guides explain equations,
 conventions and independent checks. One executed gallery script per breakthrough
 provides figures and Python/notebook downloads.
 

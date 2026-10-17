@@ -49,3 +49,15 @@ Volcanology
 
 - `USGS Volcano Hazards Program <https://www.usgs.gov/programs/VHP>`_
 - `Smithsonian Global Volcanism Program <https://volcano.si.edu/>`_
+
+Hydrology
+---------
+
+- `USGS Water Science School <https://www.usgs.gov/special-topics/water-science-school>`_
+- `FAO Irrigation and Drainage Paper 56: Crop evapotranspiration <https://www.fao.org/3/x0490e/x0490e00.htm>`_
+
+Glaciology
+----------
+
+- `National Snow and Ice Data Center: Learn <https://nsidc.org/learn>`_
+- `AntarcticGlaciers.org <https://www.antarcticglaciers.org/>`_

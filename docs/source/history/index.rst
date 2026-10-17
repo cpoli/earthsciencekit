@@ -14,3 +14,5 @@ History
    oceanography_breakthroughs
    volcanology_breakthroughs
    geophysics_breakthroughs
+   hydrology_breakthroughs
+   glaciology_breakthroughs

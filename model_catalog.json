@@ -5160,5 +5160,2708 @@
    "extra": "",
    "output_unit": "1"
   }
+ ],
+ "hydrology": [
+  {
+   "name": "water_balance",
+   "title": "Rate of change of the water stored in a catchment",
+   "params": [
+    {
+     "name": "precipitation",
+     "unit": "m/s, depth per unit time over the catchment",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "evapotranspiration",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "runoff",
+     "unit": "m/s, river discharge divided by the catchment area",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "precipitation - evapotranspiration - runoff",
+   "args": [
+    3,
+    1,
+    0.5
+   ],
+   "expected": "1.5",
+   "why": "Whatever falls on a catchment and neither evaporates nor leaves by its river must be stored in its soil, aquifers and lakes.",
+   "limit": "Perrault (1674): a closed catchment with no groundwater exchange across its divide; any common depth rate (such as mm/day) may be used throughout.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "runoff_coefficient",
+   "title": "Fraction of the precipitation that leaves a catchment as river flow",
+   "params": [
+    {
+     "name": "runoff",
+     "unit": "m, runoff depth over a period",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "precipitation",
+     "unit": "m, precipitation depth over the same period",
+     "kind": "positive"
+    }
+   ],
+   "expr": "runoff / precipitation",
+   "args": [
+    1,
+    6
+   ],
+   "expected": "0.166666666667",
+   "why": "Perrault's measurement that the Seine carries only about a sixth of the rain on its basin showed that rainfall is enough to feed rivers.",
+   "limit": "Both depths over the same area and period; long periods make the storage change negligible.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "hydraulic_radius",
+   "title": "Hydraulic radius of a rectangular channel",
+   "params": [
+    {
+     "name": "width",
+     "unit": "m, bed width",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m, flow depth",
+     "kind": "positive"
+    }
+   ],
+   "expr": "width * depth / (width + 2 * depth)",
+   "args": [
+    4,
+    1
+   ],
+   "expected": "0.666666666667",
+   "why": "Friction acts on the wetted perimeter while gravity acts on the cross-section, so their ratio sets the resistance of a channel.",
+   "limit": "Rectangular section; tends to the depth for a wide channel.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "chezy_velocity",
+   "title": "Chezy's mean velocity of uniform flow in an open channel",
+   "params": [
+    {
+     "name": "chezy_coefficient",
+     "unit": "m^0.5/s, typically 30-90",
+     "kind": "positive"
+    },
+    {
+     "name": "hydraulic_radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "1, bed (energy) slope",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "chezy_coefficient * np.sqrt(hydraulic_radius * slope)",
+   "args": [
+    50,
+    2,
+    0.02
+   ],
+   "expected": "10",
+   "why": "In uniform flow the weight of the water down the slope balances bed friction that grows as the square of the velocity.",
+   "limit": "Chezy (1775): steady uniform turbulent flow; the coefficient is not a constant but depends on roughness and depth.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "dalton_evaporation",
+   "title": "Dalton's evaporation from a wet surface",
+   "params": [
+    {
+     "name": "saturation_vapor_pressure",
+     "unit": "Pa, at the surface temperature",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "vapor_pressure",
+     "unit": "Pa, of the air",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "transfer_coefficient",
+     "unit": "kg/(m^2 s Pa), a wind function that grows with wind speed",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "transfer_coefficient * (saturation_vapor_pressure - vapor_pressure)",
+   "args": [
+    3000,
+    1000,
+    1e-09
+   ],
+   "expected": "2e-06",
+   "why": "Evaporation is proportional to how far the air is from saturation at the temperature of the surface, and stops when the air is saturated.",
+   "limit": "Dalton (1802), a bulk mass-transfer law; the surface temperature it needs is rarely measured.",
+   "extra": "",
+   "output_unit": "kg/(m^2 s)"
+  },
+  {
+   "name": "hydraulic_head",
+   "title": "Hydraulic head from elevation and pore pressure",
+   "params": [
+    {
+     "name": "elevation",
+     "unit": "m, above a datum",
+     "kind": "real"
+    },
+    {
+     "name": "pressure",
+     "unit": "Pa, gauge pore pressure",
+     "kind": "real"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "elevation + pressure / (density * gravity)",
+   "args": [
+    10,
+    9810,
+    1000,
+    9.81
+   ],
+   "expected": "11",
+   "why": "Groundwater flows from high to low head, the sum of the elevation and pressure heads, not from high to low pressure.",
+   "limit": "Slow flow with negligible velocity head and uniform fluid density.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "darcy_flux",
+   "title": "Darcy's specific discharge through a porous medium",
+   "params": [
+    {
+     "name": "hydraulic_conductivity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "head_gradient",
+     "unit": "1, change of head per unit length along the flow direction",
+     "kind": "real"
+    }
+   ],
+   "expr": "-hydraulic_conductivity * head_gradient",
+   "args": [
+    0.0001,
+    -0.01
+   ],
+   "expected": "1e-06",
+   "why": "Darcy's filters at Dijon showed that the flow through sand is proportional to the drop in head per unit length.",
+   "limit": "Darcy (1856): laminar flow with a pore Reynolds number below about 1-10 in a saturated isotropic medium.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "seepage_velocity",
+   "title": "Mean velocity of water in the pores",
+   "params": [
+    {
+     "name": "darcy_flux",
+     "unit": "m/s",
+     "kind": "real"
+    },
+    {
+     "name": "porosity",
+     "unit": "1, effective porosity",
+     "kind": "between 0 (exclusive) and 1"
+    }
+   ],
+   "expr": "darcy_flux / porosity",
+   "args": [
+    1e-06,
+    0.25
+   ],
+   "expected": "4e-06",
+   "why": "Water moves only through the connected pores, so a tracer travels faster than the Darcy flux suggests.",
+   "limit": "Average linear velocity; dispersion spreads tracers about it.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "dupuit_head",
+   "title": "Water-table height in an unconfined aquifer between two rivers",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m, from the upstream boundary",
+     "kind": "between 0 and length"
+    },
+    {
+     "name": "upstream_head",
+     "unit": "m, saturated thickness above the impermeable base",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "downstream_head",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "length",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(upstream_head**2 - (upstream_head**2 - downstream_head**2) * distance / length)",
+   "args": [
+    50,
+    5,
+    3,
+    100
+   ],
+   "expected": "4.12310562562",
+   "why": "Treating the flow as horizontal turns the unconfined aquifer into a one-dimensional problem with a parabolic water table.",
+   "limit": "Dupuit (1863): no recharge, a horizontal base, and slopes small enough that the head is uniform on each vertical.",
+   "extra": "distance <= length",
+   "output_unit": "m"
+  },
+  {
+   "name": "dupuit_discharge",
+   "title": "Discharge per unit width through an unconfined aquifer",
+   "params": [
+    {
+     "name": "hydraulic_conductivity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "upstream_head",
+     "unit": "m, saturated thickness",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "downstream_head",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "length",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "hydraulic_conductivity * (upstream_head**2 - downstream_head**2) / (2 * length)",
+   "args": [
+    2,
+    5,
+    3,
+    4
+   ],
+   "expected": "4",
+   "why": "In Dupuit's approximation the flow depends on the difference of the squared heads, not of the heads.",
+   "limit": "Dupuit (1863), the Dupuit-Forchheimer discharge formula, exact for the discharge even where the head profile is not.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "manning_velocity",
+   "title": "Manning's mean velocity of uniform flow in an open channel",
+   "params": [
+    {
+     "name": "roughness",
+     "unit": "s/m^(1/3), Manning's n (about 0.012 for concrete, 0.03-0.05 for natural rivers)",
+     "kind": "positive"
+    },
+    {
+     "name": "hydraulic_radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "1",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "hydraulic_radius**(2 / 3) * np.sqrt(slope) / roughness",
+   "args": [
+    0.04,
+    8,
+    0.0004
+   ],
+   "expected": "2",
+   "why": "One roughness number per kind of channel bed predicts the velocity at any depth, which made Manning's formula the standard of channel design.",
+   "limit": "Manning (1891), SI form; fully rough turbulent flow, steady and uniform.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "chezy_from_manning",
+   "title": "Chezy coefficient equivalent to a Manning roughness",
+   "params": [
+    {
+     "name": "roughness",
+     "unit": "s/m^(1/3)",
+     "kind": "positive"
+    },
+    {
+     "name": "hydraulic_radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "hydraulic_radius**(1 / 6) / roughness",
+   "args": [
+    0.05,
+    64
+   ],
+   "expected": "40",
+   "why": "Manning's formula is Chezy's with a coefficient that grows as the sixth root of the hydraulic radius.",
+   "limit": "Manning (1891), SI units.",
+   "extra": "",
+   "output_unit": "m^0.5/s"
+  },
+  {
+   "name": "green_ampt_rate",
+   "title": "Green-Ampt infiltration capacity of a ponded soil",
+   "params": [
+    {
+     "name": "cumulative_infiltration",
+     "unit": "m, depth infiltrated so far",
+     "kind": "positive"
+    },
+    {
+     "name": "saturated_conductivity",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "suction_head",
+     "unit": "m, capillary suction at the wetting front",
+     "kind": "positive"
+    },
+    {
+     "name": "moisture_deficit",
+     "unit": "1, saturated minus initial water content",
+     "kind": "between 0 (exclusive) and 1"
+    }
+   ],
+   "expr": "saturated_conductivity * (1 + suction_head * moisture_deficit / cumulative_infiltration)",
+   "args": [
+    0.5,
+    2,
+    1,
+    0.5
+   ],
+   "expected": "4",
+   "why": "A sharp wetting front moves down behind a ponded surface, pulled by capillary suction that matters less and less as the wetted zone deepens.",
+   "limit": "Green and Ampt (1911): a piston-like front in a uniform soil with a negligible ponding depth; the rate tends to the saturated conductivity.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "green_ampt_time",
+   "title": "Time for a ponded Green-Ampt soil to absorb a given depth",
+   "params": [
+    {
+     "name": "cumulative_infiltration",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "saturated_conductivity",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "suction_head",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "moisture_deficit",
+     "unit": "1",
+     "kind": "between 0 (exclusive) and 1"
+    }
+   ],
+   "expr": "(cumulative_infiltration - suction_head * moisture_deficit * np.log(1 + cumulative_infiltration / (suction_head * moisture_deficit))) / saturated_conductivity",
+   "args": [
+    1.718281828459045,
+    1,
+    1,
+    1
+   ],
+   "expected": "0.718281828459",
+   "why": "Integrating the Green-Ampt rate gives the time in closed form, so the infiltrated depth follows by inverting it.",
+   "limit": "Green and Ampt (1911), ponded from time zero; early on the depth grows as the square root of time.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "gardner_conductivity",
+   "title": "Gardner's exponential unsaturated hydraulic conductivity",
+   "params": [
+    {
+     "name": "pressure_head",
+     "unit": "m, negative under suction",
+     "kind": "nonpositive"
+    },
+    {
+     "name": "saturated_conductivity",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "sorptive_number",
+     "unit": "1/m, Gardner's alpha (about 1 for clay to 10 for sand)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "saturated_conductivity * np.exp(sorptive_number * pressure_head)",
+   "args": [
+    -1,
+    2,
+    0.6931471805599453
+   ],
+   "expected": "1",
+   "why": "Drying soil conducts water through ever thinner films and smaller pores, so its conductivity falls by orders of magnitude as suction rises.",
+   "limit": "Gardner (1958), a one-parameter fit without hysteresis; it makes the steady Richards equation solvable in closed form.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "unsaturated_darcy_flux",
+   "title": "Vertical Darcy-Buckingham flux in an unsaturated soil",
+   "params": [
+    {
+     "name": "conductivity",
+     "unit": "m/s, at the local pressure head",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "pressure_head_gradient",
+     "unit": "1, d(pressure_head)/dz with z upward",
+     "kind": "real"
+    }
+   ],
+   "expr": "-conductivity * (pressure_head_gradient + 1)",
+   "args": [
+    2,
+    -3
+   ],
+   "expected": "4",
+   "why": "Richards extended Darcy's law to unsaturated soil, where capillary suction and gravity together drive the water.",
+   "limit": "Richards (1931): the total head is ``pressure_head + z`` and air stays at atmospheric pressure.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "richards_steady_head",
+   "title": "Steady pressure-head profile above a water table in a Gardner soil",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m, above the water table",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "flux",
+     "unit": "m/s, positive upward (evaporation), negative downward (infiltration)",
+     "kind": "greater than ``-saturated_conductivity``"
+    },
+    {
+     "name": "saturated_conductivity",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "sorptive_number",
+     "unit": "1/m, Gardner's alpha",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.log(((flux + saturated_conductivity) * np.exp(-sorptive_number * height) - flux) / saturated_conductivity) / sorptive_number",
+   "args": [
+    0.6931471805599453,
+    -0.5,
+    1,
+    1
+   ],
+   "expected": "-0.287682072452",
+   "why": "With a constant flux through the unsaturated zone, Richards's equation fixes the suction at every height: capillary rise for evaporation, a unit-gradient tail for infiltration.",
+   "limit": "Richards (1931) steady equation ``flux = -K(psi) (dpsi/dz + 1)`` with Gardner's (1958) conductivity; an upward flux can only be sustained below ``np.log(1 + saturated_conductivity / flux) / sorptive_number``.",
+   "extra": "flux > -saturated_conductivity; conductivity > 0",
+   "output_unit": "m"
+  },
+  {
+   "name": "nash_unit_hydrograph",
+   "title": "Instantaneous unit hydrograph of a cascade of linear reservoirs",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s, since the instant of excess rainfall",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "reservoirs",
+     "unit": "1, Nash's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "storage_constant",
+     "unit": "s, Nash's k of each reservoir",
+     "kind": "positive"
+    }
+   ],
+   "expr": "time**(reservoirs - 1) * np.exp(-time / storage_constant) / (storage_constant**reservoirs * scipy.special.gamma(reservoirs))",
+   "args": [
+    2,
+    2,
+    1
+   ],
+   "expected": "0.270670566473",
+   "why": "A catchment that drains like a chain of equal linear reservoirs turns an instant of rain into a skewed, gamma-shaped pulse of river flow.",
+   "limit": "Nash (1957), a gamma density with mean lag ``reservoirs * storage_constant``; a smooth synthetic shape for Sherman's unit hydrograph, linear and time-invariant.",
+   "extra": "",
+   "output_unit": "1/s"
+  },
+  {
+   "name": "unit_hydrograph_convolution",
+   "title": "Storm hydrograph from excess rainfall and a unit hydrograph",
+   "params": [
+    {
+     "name": "excess_rainfall",
+     "unit": "m, excess (effective) rainfall depth in each interval",
+     "kind": "nonnegative vector"
+    },
+    {
+     "name": "unit_hydrograph",
+     "unit": "m^3/s per metre of excess rainfall, ordinates at the same interval",
+     "kind": "nonnegative vector"
+    }
+   ],
+   "expr": "np.convolve(excess_rainfall, unit_hydrograph)",
+   "args": [
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     4,
+     5
+    ]
+   ],
+   "expected": "[3, 10, 13, 10]",
+   "why": "If a catchment responds linearly, the flood from any storm is the sum of unit-hydrograph responses to its successive bursts of excess rainfall, each shifted and scaled.",
+   "limit": "Sherman (1932): linear superposition and time invariance; baseflow and losses are removed beforehand.",
+   "extra": "excess_rainfall.ndim == 1 and unit_hydrograph.ndim == 1",
+   "output_unit": "m^3/s"
+  },
+  {
+   "name": "horton_infiltration_rate",
+   "title": "Horton's infiltration capacity during a storm",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s, since the soil began to infiltrate at capacity",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "initial_rate",
+     "unit": "m/s",
+     "kind": "at least final_rate"
+    },
+    {
+     "name": "final_rate",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "final_rate + (initial_rate - final_rate) * np.exp(-decay_constant * time)",
+   "args": [
+    0.6931471805599453,
+    5,
+    1,
+    1
+   ],
+   "expected": "3",
+   "why": "Infiltration capacity falls from a high initial value to a steady one as the soil wets, and rain beyond it runs off over the surface.",
+   "limit": "Horton (1933, 1940), an empirical law for rain at or above capacity throughout.",
+   "extra": "initial_rate >= final_rate",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "horton_cumulative_infiltration",
+   "title": "Depth infiltrated under Horton's law",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "initial_rate",
+     "unit": "m/s",
+     "kind": "at least final_rate"
+    },
+    {
+     "name": "final_rate",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "final_rate * time + (initial_rate - final_rate) * (1 - np.exp(-decay_constant * time)) / decay_constant",
+   "args": [
+    0.6931471805599453,
+    5,
+    1,
+    1
+   ],
+   "expected": "2.69314718056",
+   "why": "The time integral of Horton's capacity is the water the soil can take up before the steady rate dominates.",
+   "limit": "Horton (1933, 1940), with rain at or above capacity from time zero.",
+   "extra": "initial_rate >= final_rate",
+   "output_unit": "m"
+  },
+  {
+   "name": "well_function",
+   "title": "Theis well function W(u)",
+   "params": [
+    {
+     "name": "u",
+     "unit": "1, ``radius**2 * storativity / (4 * transmissivity * time)``",
+     "kind": "positive"
+    }
+   ],
+   "expr": "scipy.special.exp1(u)",
+   "args": [
+    1
+   ],
+   "expected": "0.219383934396",
+   "why": "The drawdown around a pumped well is a universal curve of one combination of distance, time and aquifer properties.",
+   "limit": "The exponential integral E1, ``-0.5772 - ln(u) + u - ...`` for small u.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "theis_drawdown",
+   "title": "Drawdown around a well pumping a confined aquifer",
+   "params": [
+    {
+     "name": "pumping_rate",
+     "unit": "m^3/s",
+     "kind": "real"
+    },
+    {
+     "name": "transmissivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "storativity",
+     "unit": "1",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m, from the well axis",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s, since pumping began",
+     "kind": "positive"
+    }
+   ],
+   "expr": "pumping_rate / (4 * np.pi * transmissivity) * scipy.special.exp1(radius**2 * storativity / (4 * transmissivity * time))",
+   "args": [
+    12.566370614359172,
+    1,
+    4,
+    1,
+    1
+   ],
+   "expected": "0.219383934396",
+   "why": "Theis took the heat-conduction solution for a line sink and found that the cone of depression keeps growing as the well draws water from storage.",
+   "limit": "Theis (1935): constant rate, a fully penetrating well of negligible radius in an infinite, homogeneous, isotropic confined aquifer with water released instantly from storage.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "muskingum_coefficients",
+   "title": "Muskingum routing coefficients",
+   "params": [
+    {
+     "name": "storage_constant",
+     "unit": "s, Muskingum K, about the travel time through the reach",
+     "kind": "positive"
+    },
+    {
+     "name": "weighting",
+     "unit": "1, Muskingum X",
+     "kind": "between 0 and 0.5"
+    },
+    {
+     "name": "time_step",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "[time_step - 2 K X, time_step + 2 K X, 2 K (1 - X) - time_step] / (2 K (1 - X) + time_step)",
+   "args": [
+    1,
+    0.25,
+    1
+   ],
+   "expected": "[0.2, 0.6, 0.2]",
+   "why": "Storage in a river reach is a weighted mix of inflow and outflow, which makes the outflow a fixed linear combination of the latest flows.",
+   "limit": "McCarthy (1938), storage ``K (X I + (1 - X) O)``; all coefficients are nonnegative when ``2 K X <= time_step <= 2 K (1 - X)``.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "muskingum_routing",
+   "title": "Outflow hydrograph of a river reach by the Muskingum method",
+   "params": [
+    {
+     "name": "inflow",
+     "unit": "m^3/s, sampled every time step",
+     "kind": "nonnegative vector"
+    },
+    {
+     "name": "storage_constant",
+     "unit": "s",
+     "kind": "positive scalar"
+    },
+    {
+     "name": "weighting",
+     "unit": "1",
+     "kind": "scalar between 0 and 0.5"
+    },
+    {
+     "name": "time_step",
+     "unit": "s",
+     "kind": "positive scalar"
+    }
+   ],
+   "expr": "O[j + 1] = C0 * I[j + 1] + C1 * I[j] + C2 * O[j]",
+   "args": [
+    [
+     1,
+     3,
+     2
+    ],
+    1,
+    0.25,
+    1
+   ],
+   "expected": "[1, 1.4, 2.48]",
+   "why": "Routing a flood through a reach delays and flattens its peak, the effect forecasters need downstream.",
+   "limit": "McCarthy (1938): ``O[j+1] = C0 I[j+1] + C1 I[j] + C2 O[j]``; choose the time step so that no coefficient is negative.",
+   "extra": "inflow.ndim == 1 and inflow.size >= 2; coefficients.ndim == 1",
+   "output_unit": "m^3/s"
+  },
+  {
+   "name": "stream_number",
+   "title": "Number of streams of a given order in a drainage network",
+   "params": [
+    {
+     "name": "order",
+     "unit": "1, stream order",
+     "kind": "at least 1"
+    },
+    {
+     "name": "highest_order",
+     "unit": "1, order of the main stream",
+     "kind": "at least order"
+    },
+    {
+     "name": "bifurcation_ratio",
+     "unit": "1, typically 3-5",
+     "kind": "positive"
+    }
+   ],
+   "expr": "bifurcation_ratio**(highest_order - order)",
+   "args": [
+    1,
+    3,
+    4
+   ],
+   "expected": "16",
+   "why": "Horton found that stream counts fall geometrically with order, so a whole river network is summarized by one bifurcation ratio.",
+   "limit": "Horton's law of stream numbers (1945), an empirical average; Strahler's (1952) ordering is the usual convention.",
+   "extra": "highest_order >= order",
+   "output_unit": "1"
+  },
+  {
+   "name": "stream_length",
+   "title": "Mean length of the streams of a given order",
+   "params": [
+    {
+     "name": "order",
+     "unit": "1, stream order",
+     "kind": "at least 1"
+    },
+    {
+     "name": "first_order_length",
+     "unit": "m, mean length of first-order streams",
+     "kind": "positive"
+    },
+    {
+     "name": "length_ratio",
+     "unit": "1, typically 1.5-3.5",
+     "kind": "positive"
+    }
+   ],
+   "expr": "first_order_length * length_ratio**(order - 1)",
+   "args": [
+    3,
+    100,
+    2
+   ],
+   "expected": "400",
+   "why": "Streams grow longer geometrically with order, Horton's companion to his law of stream numbers.",
+   "limit": "Horton's law of stream lengths (1945), an empirical average over a network.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "cooper_jacob_drawdown",
+   "title": "Cooper and Jacob's late-time approximation to the Theis drawdown",
+   "params": [
+    {
+     "name": "pumping_rate",
+     "unit": "m^3/s",
+     "kind": "real"
+    },
+    {
+     "name": "transmissivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "storativity",
+     "unit": "1",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "pumping_rate / (4 * np.pi * transmissivity) * (-np.euler_gamma - np.log(radius**2 * storativity / (4 * transmissivity * time)))",
+   "args": [
+    12.566370614359172,
+    1,
+    4,
+    1,
+    1
+   ],
+   "expected": "-0.577215664902",
+   "why": "Late in a pumping test the drawdown grows linearly with the logarithm of time, so a straight line on a semilog plot gives the aquifer properties.",
+   "limit": "Cooper and Jacob (1946): the first two terms of the Theis series, within 1% for ``u < 0.01`` and meaningless (it goes negative) for u above about 0.56.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "cooper_jacob_transmissivity",
+   "title": "Transmissivity from the slope of a Cooper-Jacob straight line",
+   "params": [
+    {
+     "name": "pumping_rate",
+     "unit": "m^3/s",
+     "kind": "positive"
+    },
+    {
+     "name": "drawdown_per_log_cycle",
+     "unit": "m, drawdown increase per factor of ten in time",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.log(10) * pumping_rate / (4 * np.pi * drawdown_per_log_cycle)",
+   "args": [
+    12.566370614359172,
+    2.302585092994046
+   ],
+   "expected": "1",
+   "why": "The drawdown gained per tenfold increase in time depends only on the pumping rate and the transmissivity.",
+   "limit": "Cooper and Jacob (1946), from late-time data where ``u < 0.01``; the storativity follows from the zero-drawdown intercept ``t0`` as ``2.25 * transmissivity * t0 / radius**2``.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "saturation_slope",
+   "title": "Slope of the saturation vapour-pressure curve",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "between 180 and 330"
+    }
+   ],
+   "expr": "saturation_vapor_pressure(temperature) * LATENT_HEAT_VAPORIZATION / (R_VAPOR * temperature**2)",
+   "args": [
+    273.15
+   ],
+   "expected": "44.3761109983",
+   "why": "The steepness of the Clausius-Clapeyron curve converts a surface-to-air temperature difference into a vapour-pressure difference.",
+   "limit": "Derivative of :func:`earthsciencekit.atmosphere.saturation_vapor_pressure` (constant latent heat 2.5e6 J/kg).",
+   "extra": "",
+   "output_unit": "Pa/K"
+  },
+  {
+   "name": "psychrometric_constant",
+   "title": "Psychrometric constant",
+   "params": [
+    {
+     "name": "pressure",
+     "unit": "Pa, air pressure",
+     "kind": "positive"
+    }
+   ],
+   "expr": "CP_DRY_AIR * pressure / (EPSILON_WATER * LATENT_HEAT_VAPORIZATION)",
+   "args": [
+    101325
+   ],
+   "expected": "65.4220985194",
+   "why": "It converts a temperature difference into the vapour-pressure difference that carries the same energy, as sensible rather than latent heat.",
+   "limit": "Dry-air heat capacity and constant latent heat; equal transfer coefficients for heat and vapour.",
+   "extra": "",
+   "output_unit": "Pa/K"
+  },
+  {
+   "name": "penman_evaporation",
+   "title": "Penman's combination equation for open-water evaporation",
+   "params": [
+    {
+     "name": "net_radiation",
+     "unit": "W/m^2, net radiation minus heat stored below the surface",
+     "kind": "real"
+    },
+    {
+     "name": "temperature",
+     "unit": "K, air temperature",
+     "kind": "between 180 and 330"
+    },
+    {
+     "name": "aerodynamic_evaporation",
+     "unit": "kg/(m^2 s), Dalton's evaporation evaluated with the air temperature, ``f(u) (e_s(T_air) - e_air)``",
+     "kind": "real"
+    },
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(saturation_slope(temperature) * net_radiation / LATENT_HEAT_VAPORIZATION + psychrometric_constant(pressure) * aerodynamic_evaporation) / (saturation_slope(temperature) + psychrometric_constant(pressure))",
+   "args": [
+    0,
+    273.15,
+    1e-05,
+    101325
+   ],
+   "expected": "5.95839393072e-06",
+   "why": "Penman eliminated the unknown surface temperature by combining the energy balance with Dalton's law, so evaporation follows from routine weather measurements.",
+   "limit": "Penman (1948): the saturation curve is linearized between air and surface temperature, and heat and vapour share one transfer coefficient; a saturated surface (open water or wet grass).",
+   "extra": "",
+   "output_unit": "kg/(m^2 s)"
+  },
+  {
+   "name": "aerodynamic_resistance",
+   "title": "Aerodynamic resistance to vapour transfer above a canopy",
+   "params": [
+    {
+     "name": "wind_speed",
+     "unit": "m/s, at the measurement height",
+     "kind": "positive"
+    },
+    {
+     "name": "measurement_height",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "displacement_height",
+     "unit": "m, zero-plane displacement (about two thirds of the canopy height)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "momentum_roughness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "vapor_roughness",
+     "unit": "m, often a tenth of the momentum roughness",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.log((measurement_height - displacement_height) / momentum_roughness) * np.log((measurement_height - displacement_height) / vapor_roughness) / (VON_KARMAN**2 * wind_speed)",
+   "args": [
+    5.948839976204641,
+    2,
+    0,
+    0.7357588823428847,
+    0.2706705664732254
+   ],
+   "expected": "2",
+   "why": "Turbulence in the logarithmic wind profile carries vapour away from the canopy, faster in stronger wind over rougher surfaces.",
+   "limit": "Neutral stability; the measurement height above the displacement height must exceed both roughness lengths. For FAO grass (0.12 m) at 2 m it is about ``208 / wind_speed``.",
+   "extra": "(height > momentum_roughness) & (height > vapor_roughness)",
+   "output_unit": "s/m"
+  },
+  {
+   "name": "bulk_surface_resistance",
+   "title": "Bulk surface (canopy) resistance from the leaf stomatal resistance",
+   "params": [
+    {
+     "name": "stomatal_resistance",
+     "unit": "s/m, of a single well-illuminated leaf (about 100)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "active_leaf_area_index",
+     "unit": "1, sunlit leaf area per ground area (about half the leaf area index)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "stomatal_resistance / active_leaf_area_index",
+   "args": [
+    100,
+    2
+   ],
+   "expected": "50",
+   "why": "The stomata of all leaves act as resistances in parallel, so a dense canopy offers less resistance than a single leaf.",
+   "limit": "Monteith (1965) big-leaf canopy with parallel leaves; FAO grass has about 70 s/m.",
+   "extra": "",
+   "output_unit": "s/m"
+  },
+  {
+   "name": "penman_monteith_evaporation",
+   "title": "Penman-Monteith evaporation from a vegetated surface",
+   "params": [
+    {
+     "name": "available_energy",
+     "unit": "W/m^2, net radiation minus ground heat flux",
+     "kind": "real"
+    },
+    {
+     "name": "temperature",
+     "unit": "K, air temperature",
+     "kind": "between 180 and 330"
+    },
+    {
+     "name": "vapor_pressure_deficit",
+     "unit": "Pa, ``e_s(T_air) - e_air``",
+     "kind": "real"
+    },
+    {
+     "name": "air_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "aerodynamic_resistance",
+     "unit": "s/m",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_resistance",
+     "unit": "s/m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(Delta * available_energy + air_density * CP_DRY_AIR * vapor_pressure_deficit / aerodynamic_resistance) / (LATENT_HEAT_VAPORIZATION * (Delta + gamma * (1 + surface_resistance / aerodynamic_resistance)))",
+   "args": [
+    0,
+    273.15,
+    1000,
+    1,
+    1004,
+    1004,
+    101325
+   ],
+   "expected": "2.28284041091e-06",
+   "why": "Monteith added the resistance of the stomata to Penman's equation, so the same formula covers open water, wet leaves and transpiring crops.",
+   "limit": "Monteith (1965): a big-leaf canopy at one temperature, neutral stability; zero surface resistance recovers Penman with ``aerodynamic_evaporation = air_density * CP_DRY_AIR * vapor_pressure_deficit / (psychrometric_constant * LATENT_HEAT_VAPORIZATION * aerodynamic_resistance)``.",
+   "extra": "",
+   "output_unit": "kg/(m^2 s)"
+  },
+  {
+   "name": "topographic_index",
+   "title": "TOPMODEL topographic wetness index",
+   "params": [
+    {
+     "name": "specific_area",
+     "unit": "m, upslope area drained per unit contour width",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "rad, local surface slope",
+     "kind": "between 0 and pi/2, exclusive"
+    }
+   ],
+   "expr": "np.log(specific_area / np.tan(slope))",
+   "args": [
+    2.718281828459045,
+    0.7853981633974483
+   ],
+   "expected": "1",
+   "why": "Ground that drains a large upslope area through a gentle slope is the first to saturate, so one number from the topography maps where runoff starts.",
+   "limit": "Beven and Kirkby (1979): steady recharge, a water table parallel to the surface and transmissivity falling exponentially with deficit.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "topmodel_deficit",
+   "title": "Local storage deficit of TOPMODEL from the catchment mean",
+   "params": [
+    {
+     "name": "mean_deficit",
+     "unit": "m, catchment-mean storage deficit",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "topographic_index",
+     "unit": "1, local ``ln(a / tan(beta))``",
+     "kind": "real"
+    },
+    {
+     "name": "mean_index",
+     "unit": "1, catchment mean of the index",
+     "kind": "real"
+    },
+    {
+     "name": "scaling_depth",
+     "unit": "m, TOPMODEL's m, the deficit that reduces transmissivity by a factor e",
+     "kind": "positive"
+    }
+   ],
+   "expr": "mean_deficit + scaling_depth * (mean_index - topographic_index)",
+   "args": [
+    0.1,
+    7,
+    6,
+    0.05
+   ],
+   "expected": "0.05",
+   "why": "Each point's deficit departs from the catchment mean in proportion to how much wetter its topographic index is than average, so one state variable maps the saturated area.",
+   "limit": "Beven and Kirkby (1979) with uniform transmissivity at saturation and quasi-steady drainage.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "topmodel_baseflow",
+   "title": "TOPMODEL subsurface drainage from the catchment-mean deficit",
+   "params": [
+    {
+     "name": "saturated_transmissivity",
+     "unit": "m^2/s, transmissivity when the soil is saturated to the surface",
+     "kind": "positive"
+    },
+    {
+     "name": "mean_index",
+     "unit": "1, catchment mean of ``ln(a / tan(beta))`` with a in metres",
+     "kind": "real"
+    },
+    {
+     "name": "mean_deficit",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "scaling_depth",
+     "unit": "m, TOPMODEL's m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "saturated_transmissivity * np.exp(-mean_index) * np.exp(-mean_deficit / scaling_depth)",
+   "args": [
+    2,
+    0,
+    1,
+    1
+   ],
+   "expected": "0.735758882343",
+   "why": "Baseflow falls exponentially as the catchment dries, the recession behaviour TOPMODEL is built on.",
+   "limit": "Beven and Kirkby (1979): exponential transmissivity profile, water table parallel to the surface.",
+   "extra": "",
+   "output_unit": "m/s"
+  }
+ ],
+ "glaciology": [
+  {
+   "name": "ela_shift",
+   "title": "Shift of the equilibrium-line altitude with a change of climate",
+   "params": [
+    {
+     "name": "temperature_change",
+     "unit": "K, change of summer air temperature at fixed altitude",
+     "kind": "real"
+    },
+    {
+     "name": "lapse_rate",
+     "unit": "K/m, decrease of temperature with height",
+     "kind": "positive"
+    }
+   ],
+   "expr": "temperature_change / lapse_rate",
+   "args": [
+    -6,
+    0.0065
+   ],
+   "expected": "-923.076923077",
+   "why": "A colder climate brings the snow line down the mountains, and the glaciers grow to meet it.",
+   "limit": "Temperature alone controls ablation and the lapse rate is uniform; changes of snowfall also move the line.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "driving_stress",
+   "title": "Gravitational driving stress of a glacier or ice sheet",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "surface_slope",
+     "unit": "1, tangent of the surface slope",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * gravity * thickness * surface_slope",
+   "args": [
+    1000,
+    0.1,
+    900,
+    10
+   ],
+   "expected": "900000",
+   "why": "The weight of the ice resolved down the surface slope is what the bed and the ice must resist.",
+   "limit": "Shallow-ice balance: horizontal scales much larger than the thickness, small slopes, longitudinal stresses neglected.",
+   "extra": "",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "viscous_slab_velocity",
+   "title": "Velocity in a Newtonian viscous slab flowing down a slope",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m, above the bed",
+     "kind": "between 0 and thickness"
+    },
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_slope",
+     "unit": "1, tangent of the surface slope",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "viscosity",
+     "unit": "Pa s",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * gravity * surface_slope * (2 * thickness * height - height**2) / (2 * viscosity)",
+   "args": [
+    50,
+    100,
+    0.1,
+    10000000000000.0,
+    1000,
+    10
+   ],
+   "expected": "3.75e-07",
+   "why": "Forbes argued that a glacier flows like a very viscous fluid, fastest at the surface and slowest against its bed.",
+   "limit": "Forbes (1843): a wide parallel-sided slab with a linear viscosity, no sliding and small slope.",
+   "extra": "height <= thickness",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "isostatic_depression",
+   "title": "Equilibrium depression of the land under an ice sheet",
+   "params": [
+    {
+     "name": "ice_thickness",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "mantle_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "ice_thickness * ice_density / mantle_density",
+   "args": [
+    3000,
+    900,
+    3300
+   ],
+   "expected": "818.181818182",
+   "why": "The mantle under a wide ice sheet gives way until the displaced rock weighs as much as the ice, about a third of its thickness.",
+   "limit": "Jamieson (1865): local isostasy for a load much wider than the flexural wavelength of the lithosphere.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "stefan_ice_thickness",
+   "title": "Stefan's thickness of ice grown by conduction through itself",
+   "params": [
+    {
+     "name": "freezing_degree_time",
+     "unit": "K s, time integral of the freezing temperature minus the surface temperature",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "conductivity",
+     "unit": "W/(m K), about 2.2 for ice",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "latent_heat",
+     "unit": "J/kg",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(2 * conductivity * freezing_degree_time / (density * latent_heat))",
+   "args": [
+    260000000.0,
+    2.2,
+    917,
+    334000.0
+   ],
+   "expected": "1.93265845481",
+   "why": "The latent heat released at the base of the ice must be conducted up through ice already formed, so the thickness grows only as the square root of the accumulated cold.",
+   "limit": "Stefan (1891): ice free of snow, with its surface at the air temperature, a linear temperature profile, no ocean heat flux and no initial ice; it overestimates growth under snow.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "stefan_growth_rate",
+   "title": "Basal growth rate of ice in Stefan's problem",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature_difference",
+     "unit": "K, freezing temperature minus surface temperature",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "conductivity",
+     "unit": "W/(m K)",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "latent_heat",
+     "unit": "J/kg",
+     "kind": "positive"
+    }
+   ],
+   "expr": "conductivity * temperature_difference / (density * latent_heat * thickness)",
+   "args": [
+    1,
+    20,
+    2,
+    1000,
+    200000.0
+   ],
+   "expected": "2e-07",
+   "why": "Thin ice grows fast and thick ice slowly, because the conductive heat flux falls with thickness.",
+   "limit": "Stefan (1891), quasi-steady conduction with no ocean heat flux.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "sea_ice_freeboard",
+   "title": "Height of floating snow-free ice above the waterline",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "less than water_density"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "thickness * (1 - ice_density / water_density)",
+   "args": [
+    2,
+    900,
+    1000
+   ],
+   "expected": "0.2",
+   "why": "Satellite altimeters measure the freeboard, and Archimedes' principle turns it into a thickness about ten times larger.",
+   "limit": "Hydrostatic equilibrium of a uniform floe without snow load.",
+   "extra": "ice_density < water_density",
+   "output_unit": "m"
+  },
+  {
+   "name": "viscous_relaxation_time",
+   "title": "Relaxation time of a surface depression on a viscous half-space",
+   "params": [
+    {
+     "name": "wavelength",
+     "unit": "m, of the depression",
+     "kind": "positive"
+    },
+    {
+     "name": "viscosity",
+     "unit": "Pa s, of the mantle",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3, of the mantle",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "4 * np.pi * viscosity / (density * gravity * wavelength)",
+   "args": [
+    1000000.0,
+    1e+21,
+    3300,
+    10
+   ],
+   "expected": "380799109526",
+   "why": "A broad depression in a viscous mantle recovers faster than a narrow one, so the timing of rebound measures the viscosity.",
+   "limit": "Haskell (1935): a uniform Newtonian half-space without an elastic lithosphere, which slows the shortest wavelengths.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "haskell_viscosity",
+   "title": "Mantle viscosity inferred from a rebound relaxation time",
+   "params": [
+    {
+     "name": "relaxation_time",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "wavelength",
+     "unit": "m, of the depression",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3, of the mantle",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * gravity * wavelength * relaxation_time / (4 * np.pi)",
+   "args": [
+    100000000000.0,
+    1000000.0,
+    3300,
+    10
+   ],
+   "expected": "2.62605656102e+20",
+   "why": "Haskell turned the uplift of Fennoscandia into the first estimate of the viscosity of the mantle, about 1e21 Pa s.",
+   "limit": "Haskell (1935), the inverse of viscous_relaxation_time for a uniform half-space.",
+   "extra": "",
+   "output_unit": "Pa s"
+  },
+  {
+   "name": "remaining_depression",
+   "title": "Depression still to be recovered after the ice has gone",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s, since the ice was removed",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "initial_depression",
+     "unit": "m, at removal",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "relaxation_time",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "initial_depression * np.exp(-time / relaxation_time)",
+   "args": [
+    1000.0,
+    300,
+    1000.0
+   ],
+   "expected": "110.363832351",
+   "why": "After the ice sheet melts the land rises exponentially, and the uplift still to come falls by e every relaxation time.",
+   "limit": "Haskell (1935): one wavelength on a viscous half-space, with the load removed at once.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "rebound_uplift_rate",
+   "title": "Rate of postglacial uplift",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s, since the ice was removed",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "initial_depression",
+     "unit": "m, at removal",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "relaxation_time",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "initial_depression / relaxation_time * np.exp(-time / relaxation_time)",
+   "args": [
+    1000.0,
+    300,
+    1000.0
+   ],
+   "expected": "0.110363832351",
+   "why": "The land rises fastest just after deglaciation; Fennoscandia still rises by up to 9 mm a year.",
+   "limit": "Haskell (1935), the time derivative of remaining_depression.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "nye_plastic_profile",
+   "title": "Surface height of a perfectly plastic ice sheet on a flat bed",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m, inland from the margin",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "yield_stress",
+     "unit": "Pa, about 100 kPa",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(2 * yield_stress * distance / (density * gravity))",
+   "args": [
+    100000.0,
+    100000.0,
+    1000,
+    10
+   ],
+   "expected": "1414.21356237",
+   "why": "If ice yields at a fixed stress, the ice sheet takes a parabolic profile whose height depends only on the distance from its margin.",
+   "limit": "Nye (1951): a horizontal bed, basal shear stress everywhere equal to the yield stress and no isostatic depression.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "glen_strain_rate",
+   "title": "Glen's flow law: strain rate of polycrystalline ice",
+   "params": [
+    {
+     "name": "stress",
+     "unit": "Pa, effective (or shear) stress",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s, the softness A",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n, about 3",
+     "kind": "at least 1"
+    }
+   ],
+   "expr": "rate_factor * stress**exponent",
+   "args": [
+    100000.0,
+    2.4e-24,
+    3
+   ],
+   "expected": "2.4e-09",
+   "why": "Glen's creep tests showed that ice deforms at a rate proportional to roughly the cube of the stress, so it is far from a Newtonian fluid.",
+   "limit": "Glen (1955): secondary creep of isotropic ice at stresses of about 0.05-1 MPa.",
+   "extra": "",
+   "output_unit": "1/s"
+  },
+  {
+   "name": "glen_stress",
+   "title": "Stress needed to deform ice at a given strain rate",
+   "params": [
+    {
+     "name": "strain_rate",
+     "unit": "1/s, effective strain rate",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    }
+   ],
+   "expr": "(strain_rate / rate_factor) ** (1 / exponent)",
+   "args": [
+    2.4e-09,
+    2.4e-24,
+    3
+   ],
+   "expected": "100000",
+   "why": "Inverting Glen's law turns a measured stretching rate into the stress that drives it.",
+   "limit": "Glen (1955), inverted; secondary creep of isotropic ice.",
+   "extra": "",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "glen_rate_factor",
+   "title": "Arrhenius temperature dependence of Glen's rate factor",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K, ice temperature (relative to the pressure-melting point)",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_factor",
+     "unit": "Pa^-n/s, rate factor at reference_temperature",
+     "kind": "positive"
+    },
+    {
+     "name": "activation_energy",
+     "unit": "J/mol, creep activation energy",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "reference_temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "reference_factor * np.exp(-activation_energy / R_GAS * (1 / temperature - 1 / reference_temperature))",
+   "args": [
+    263.15,
+    2.4e-24,
+    60000.0,
+    273.15
+   ],
+   "expected": "8.79429223089e-25",
+   "why": "Ice near its melting point is softer by more than an order of magnitude than ice at -30 degC.",
+   "limit": "An Arrhenius law with one activation energy, about 60 kJ/mol below -10 degC and 115 kJ/mol above (Cuffey and Paterson 2010), for temperate-ice water contents neglected.",
+   "extra": "",
+   "output_unit": "Pa^-n/s"
+  },
+  {
+   "name": "effective_viscosity",
+   "title": "Effective viscosity of ice under Glen's law",
+   "params": [
+    {
+     "name": "stress",
+     "unit": "Pa, effective stress",
+     "kind": "positive"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    }
+   ],
+   "expr": "1 / (2 * rate_factor * stress ** (exponent - 1))",
+   "args": [
+    100000.0,
+    2.4e-24,
+    3
+   ],
+   "expected": "2.08333333333e+13",
+   "why": "Ice under a large stress behaves as a much less viscous fluid than ice under a small one.",
+   "limit": "Glen (1955), written as a stress-dependent Newtonian viscosity; with n = 1 it is the viscosity 1 / (2 A).",
+   "extra": "",
+   "output_unit": "Pa s"
+  },
+  {
+   "name": "glen_velocity_profile",
+   "title": "Deformation velocity through a glacier obeying Glen's law",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m, above the bed",
+     "kind": "between 0 and thickness"
+    },
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_slope",
+     "unit": "1, tangent of the surface slope",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * rate_factor / (exponent + 1) * (density * gravity * surface_slope) ** exponent * (thickness ** (exponent + 1) - (thickness - height) ** (exponent + 1))",
+   "args": [
+    50,
+    100,
+    0.1,
+    1e-24,
+    3,
+    1000,
+    10
+   ],
+   "expected": "4.6875e-08",
+   "why": "Most of the shearing in a frozen-bed glacier happens near the bed, so the velocity is nearly uniform in its upper half.",
+   "limit": "Nye (1952) laminar flow with Glen (1955) rheology: a wide slab, uniform rate factor and no sliding.",
+   "extra": "height <= thickness",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "glen_surface_velocity",
+   "title": "Surface velocity of a glacier deforming by Glen's law",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_slope",
+     "unit": "1, tangent of the surface slope",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * rate_factor / (exponent + 1) * (density * gravity * surface_slope) ** exponent * thickness ** (exponent + 1)",
+   "args": [
+    100,
+    0.1,
+    1e-24,
+    3,
+    1000,
+    10
+   ],
+   "expected": "5e-08",
+   "why": "The surface speed rises with the fourth power of thickness and the cube of slope, which is why thick glaciers flow so much faster than thin ones.",
+   "limit": "Nye (1952) laminar flow with Glen (1955) rheology, no sliding.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "nye_crevasse_depth",
+   "title": "Depth of a dry crevasse in stretching ice",
+   "params": [
+    {
+     "name": "strain_rate",
+     "unit": "1/s, longitudinal stretching rate",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * (strain_rate / rate_factor) ** (1 / exponent) / (density * gravity)",
+   "args": [
+    1e-09,
+    1e-24,
+    3,
+    1000,
+    10
+   ],
+   "expected": "20",
+   "why": "A crevasse can only stay open where the tensile stress from stretching exceeds the closing pressure of the ice, which caps dry crevasses at a few tens of metres.",
+   "limit": "Nye (1955): a field of closely spaced crevasses in uniform ice of density independent of depth; fracture toughness is neglected.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "water_filled_crevasse_depth",
+   "title": "Depth of a crevasse partly filled with meltwater",
+   "params": [
+    {
+     "name": "strain_rate",
+     "unit": "1/s, longitudinal stretching rate",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "water_depth",
+     "unit": "m, height of water standing in the crevasse",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * (strain_rate / rate_factor) ** (1 / exponent) / (ice_density * gravity) + water_density / ice_density * water_depth",
+   "args": [
+    1e-09,
+    1e-24,
+    3,
+    10,
+    900,
+    1000,
+    10
+   ],
+   "expected": "33.3333333333",
+   "why": "Water is denser than ice, so a water-filled crevasse is pushed deeper than a dry one and can cut through a whole ice shelf.",
+   "limit": "Nye (1955) with the water pressure added (Benn et al. 2007); the result is meaningful only while it is less than the ice thickness and at least the water depth.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "weertman_sliding_velocity",
+   "title": "Weertman's sliding velocity of temperate ice over a rough bed",
+   "params": [
+    {
+     "name": "basal_stress",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "sliding_coefficient",
+     "unit": "m/(s Pa^m)",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, m = (n + 1) / 2, about 2 for Glen's n = 3",
+     "kind": "at least 1"
+    }
+   ],
+   "expr": "sliding_coefficient * basal_stress**exponent",
+   "args": [
+    100000.0,
+    1e-17,
+    2
+   ],
+   "expected": "1e-07",
+   "why": "Ice gets past bed obstacles by regelation around small ones and enhanced creep around large ones, which makes the sliding speed a power of the basal stress.",
+   "limit": "Weertman (1957): a bed at the melting point, free of cavities and sediment; the coefficient lumps the bed roughness.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "linear_mass_balance",
+   "title": "Surface mass balance rising linearly with altitude",
+   "params": [
+    {
+     "name": "elevation",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "equilibrium_line_altitude",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "balance_gradient",
+     "unit": "1/s, metres of ice per second per metre of altitude",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "balance_gradient * (elevation - equilibrium_line_altitude)",
+   "args": [
+    3000,
+    2500,
+    1e-10
+   ],
+   "expected": "5e-08",
+   "why": "A glacier gains mass above its equilibrium line and loses it below, at a rate that grows steadily with the distance from the line.",
+   "limit": "Meier (1962): the balance gradient is about 0.003-0.01 m of water per year per metre on mid-latitude glaciers; real profiles flatten at high altitude.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "accumulation_area_ratio",
+   "title": "Fraction of a glacier's area above its equilibrium line",
+   "params": [
+    {
+     "name": "accumulation_area",
+     "unit": "m^2",
+     "kind": "between 0 and glacier_area"
+    },
+    {
+     "name": "glacier_area",
+     "unit": "m^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "accumulation_area / glacier_area",
+   "args": [
+    6,
+    10
+   ],
+   "expected": "0.6",
+   "why": "A glacier in balance with its climate keeps a characteristic share of its area in the accumulation zone, about 0.6.",
+   "limit": "Meier (1962); the steady-state ratio depends on the glacier's hypsometry and is not universal.",
+   "extra": "accumulation_area <= glacier_area",
+   "output_unit": "1"
+  },
+  {
+   "name": "dansgaard_delta",
+   "title": "Oxygen-isotope ratio of precipitation from the air temperature",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K, mean annual surface air temperature",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "permil/K, about 0.69",
+     "kind": "positive"
+    },
+    {
+     "name": "offset",
+     "unit": "permil, the delta at 0 degC, about -13.6",
+     "kind": "real"
+    }
+   ],
+   "expr": "slope * (temperature - 273.15) + offset",
+   "args": [
+    253.15,
+    0.69,
+    -13.6
+   ],
+   "expected": "-27.4",
+   "why": "Air loses its heavy isotopes first as it cools and rains out, so the snow at colder sites is lighter.",
+   "limit": "Dansgaard (1964): a spatial relation for mid- and high-latitude coastal and polar stations; the temporal slope at one site can differ.",
+   "extra": "",
+   "output_unit": "permil"
+  },
+  {
+   "name": "dansgaard_temperature",
+   "title": "Air temperature recorded by the oxygen-isotope ratio of snow",
+   "params": [
+    {
+     "name": "delta",
+     "unit": "permil, delta-18O relative to SMOW",
+     "kind": "real"
+    },
+    {
+     "name": "slope",
+     "unit": "permil/K",
+     "kind": "positive"
+    },
+    {
+     "name": "offset",
+     "unit": "permil",
+     "kind": "real"
+    }
+   ],
+   "expr": "273.15 + (delta - offset) / slope",
+   "args": [
+    -27.4,
+    0.69,
+    -13.6
+   ],
+   "expected": "253.15",
+   "why": "Inverting Dansgaard's relation turns the isotope profile of an ice core into a temperature history.",
+   "limit": "Dansgaard (1964), inverted; the spatial slope is an approximation of the temporal one.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "nye_age",
+   "title": "Age of ice at depth when layers thin uniformly",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m, of ice equivalent below the surface",
+     "kind": "between 0 and thickness, exclusive of thickness"
+    },
+    {
+     "name": "thickness",
+     "unit": "m of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    }
+   ],
+   "expr": "thickness / accumulation * np.log(thickness / (thickness - depth))",
+   "args": [
+    2000,
+    3000,
+    1e-08
+   ],
+   "expected": "329583686600",
+   "why": "In a steady ice sheet each layer thins in proportion to its height above the bed, so age grows logarithmically with depth.",
+   "limit": "Nye (1963): a steady divide with uniform vertical strain rate, no basal melting or sliding; the age diverges at the bed.",
+   "extra": "depth < thickness",
+   "output_unit": "s"
+  },
+  {
+   "name": "dansgaard_johnsen_downward_velocity",
+   "title": "Vertical ice velocity in the Dansgaard-Johnsen flow model",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m of ice below the surface",
+     "kind": "between 0 and thickness"
+    },
+    {
+     "name": "thickness",
+     "unit": "m of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "kink_height",
+     "unit": "m above the bed",
+     "kind": "between 0 (exclusive) and thickness"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.where(z >= h, accumulation * (2 * z - h) / (2 * thickness - h), accumulation * z**2 / (h * (2 * thickness - h)))",
+   "args": [
+    1000,
+    3000,
+    500,
+    1e-08
+   ],
+   "expected": "6.36363636364e-09",
+   "why": "Ice frozen to its bed shears only near the bottom, so the vertical velocity falls linearly down to a kink and then quadratically to zero at the bed.",
+   "limit": "Dansgaard and Johnsen (1969): steady state, constant horizontal strain rate above the kink and a linear decrease below it, no basal melting. Below, z = thickness - depth and h = kink_height.",
+   "extra": "depth <= thickness; kink_height <= thickness",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "dansgaard_johnsen_age",
+   "title": "Age of ice at depth in the Dansgaard-Johnsen flow model",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m of ice below the surface",
+     "kind": "between 0 and thickness, exclusive of thickness"
+    },
+    {
+     "name": "thickness",
+     "unit": "m of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "kink_height",
+     "unit": "m above the bed",
+     "kind": "between 0 (exclusive) and thickness"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    }
+   ],
+   "expr": "s / (2 * a) * np.log(s / (2 * np.maximum(z, h) - h)) + h * s / a * (1 / np.minimum(z, h) - 1 / h)",
+   "args": [
+    2800,
+    3000,
+    500,
+    1e-08
+   ],
+   "expected": "1.48442120002e+12",
+   "why": "The first time scale for a deep ice core, Camp Century, integrated the thinning of annual layers down to the kink and below it.",
+   "limit": "Dansgaard and Johnsen (1969), the integral of the reciprocal of dansgaard_johnsen_downward_velocity; it tends to nye_age as the kink height goes to zero. Below, z = thickness - depth, h = kink_height, a = accumulation and s = 2 * thickness - h.",
+   "extra": "depth < thickness; kink_height <= thickness",
+   "output_unit": "s"
+  },
+  {
+   "name": "flotation_thickness",
+   "title": "Thickness at which ice resting on a submarine bed begins to float",
+   "params": [
+    {
+     "name": "bed_depth",
+     "unit": "m, below sea level",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "water_density * bed_depth / ice_density",
+   "args": [
+    900,
+    900,
+    1000
+   ],
+   "expected": "1000",
+   "why": "The grounding line of a marine ice sheet sits where the ice is just thin enough to float, so its thickness is set by the water depth alone.",
+   "limit": "Archimedes' principle for an ice column of uniform density.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "ice_shelf_strain_rate",
+   "title": "Spreading rate of a freely floating ice shelf",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "less than water_density"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "rate_factor * (ice_density * gravity * thickness * (1 - ice_density / water_density) / 4) ** exponent",
+   "args": [
+    400,
+    1e-24,
+    3,
+    900,
+    1000,
+    10
+   ],
+   "expected": "7.29e-10",
+   "why": "A floating shelf spreads under the difference between its weight and the water pressure, faster the thicker it is.",
+   "limit": "Weertman (1957) for an unconfined shelf spreading in one direction, without buttressing or side drag.",
+   "extra": "ice_density < water_density",
+   "output_unit": "1/s"
+  },
+  {
+   "name": "shallow_ice_flux",
+   "title": "Ice flux per unit width in the shallow-ice approximation",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "surface_slope",
+     "unit": "1, magnitude of the surface gradient",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * rate_factor / (exponent + 2) * (density * gravity * surface_slope) ** exponent * thickness ** (exponent + 2)",
+   "args": [
+    100,
+    0.1,
+    1e-24,
+    3,
+    1000,
+    10
+   ],
+   "expected": "4e-06",
+   "why": "In a thin ice sheet the flux at each point depends only on the local thickness and surface slope.",
+   "limit": "Hutter (1983) and Mahaffy (1976): Glen ice frozen to its bed, aspect ratio small, uniform rate factor.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "shallow_ice_diffusivity",
+   "title": "Nonlinear diffusivity of the shallow-ice equation",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "surface_slope",
+     "unit": "1, magnitude of the surface gradient",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * A / (n + 2) * (density * gravity) ** n * thickness ** (n + 2) * surface_slope ** (n - 1)",
+   "args": [
+    100,
+    0.1,
+    1e-24,
+    3,
+    1000,
+    10
+   ],
+   "expected": "4e-05",
+   "why": "The shallow-ice approximation makes the ice thickness obey a diffusion equation whose diffusivity grows steeply with thickness and slope.",
+   "limit": "Mahaffy (1976): the shallow-ice approximation for Glen ice frozen to its bed. Below, A = rate_factor, n = exponent.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "vialov_dome_height",
+   "title": "Central height of a steady shallow-ice sheet",
+   "params": [
+    {
+     "name": "half_width",
+     "unit": "m, divide to margin",
+     "kind": "positive"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(2 * ((n + 2) * accumulation / (2 * A * (density * gravity) ** n)) ** (1 / n)) ** (n / (2 * n + 2)) * np.sqrt(half_width)",
+   "args": [
+    1000000.0,
+    1e-08,
+    1e-24,
+    3,
+    1000,
+    10
+   ],
+   "expected": "4598.63297827",
+   "why": "An ice sheet in balance with a uniform snowfall has a dome height that grows only as the square root of its width.",
+   "limit": "Vialov (1958): a flat bed, uniform accumulation up to a fixed margin, shallow-ice flow without sliding. Below, A = rate_factor, n = exponent.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "vialov_profile",
+   "title": "Surface profile of a steady shallow-ice sheet",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m, from the divide",
+     "kind": "between 0 and half_width"
+    },
+    {
+     "name": "half_width",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "dome_height",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    }
+   ],
+   "expr": "dome_height * (1 - (distance / half_width) ** ((exponent + 1) / exponent)) ** (exponent / (2 * exponent + 2))",
+   "args": [
+    0.5,
+    1,
+    100,
+    3
+   ],
+   "expected": "82.7293150324",
+   "why": "Glen's law flattens the dome and steepens the margin of a steady ice sheet compared with Nye's parabola.",
+   "limit": "Vialov (1958), see vialov_dome_height; the shallow-ice approximation fails within a few thicknesses of the divide and the margin.",
+   "extra": "distance <= half_width",
+   "output_unit": "m"
+  },
+  {
+   "name": "glacier_response_time",
+   "title": "Volume response time of a glacier to a change of climate",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m, a characteristic thickness",
+     "kind": "positive"
+    },
+    {
+     "name": "terminus_ablation",
+     "unit": "m/s of ice, ablation rate at the terminus as a positive magnitude",
+     "kind": "positive"
+    }
+   ],
+   "expr": "thickness / terminus_ablation",
+   "args": [
+    200,
+    1e-07
+   ],
+   "expected": "2000000000",
+   "why": "A glacier adjusts to a new climate in about the time its terminus ablation takes to remove its own thickness.",
+   "limit": "Johannesson, Raymond and Waddington (1989): a linear response of volume; decades for valley glaciers, millennia for ice sheets.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "gas_age_difference",
+   "title": "Age difference between the ice and the air trapped in it",
+   "params": [
+    {
+     "name": "close_off_depth",
+     "unit": "m, depth of bubble close-off",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "mean_firn_density",
+     "unit": "kg/m^3, mean density of the firn above it",
+     "kind": "between 0 (exclusive) and ice_density"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    }
+   ],
+   "expr": "close_off_depth * mean_firn_density / (ice_density * accumulation)",
+   "args": [
+    100,
+    600,
+    900,
+    1e-09
+   ],
+   "expected": "66666666666.7",
+   "why": "Air stays connected to the atmosphere through the porous firn until the bubbles close, so the gas in a core is younger than the ice around it.",
+   "limit": "Schwander and Stauffer (1984), as used for Vostok by Barnola et al. (1987): steady firn densification with no thinning above close-off; diffusion through the open pores, which makes the gas slightly older, is neglected.",
+   "extra": "mean_firn_density <= ice_density",
+   "output_unit": "s"
+  },
+  {
+   "name": "schoof_grounding_line_flux",
+   "title": "Schoof's ice flux across the grounding line of a marine ice sheet",
+   "params": [
+    {
+     "name": "grounding_thickness",
+     "unit": "m, the flotation thickness at the grounding line",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rate_factor",
+     "unit": "Pa^-n/s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, Glen's n",
+     "kind": "at least 1"
+    },
+    {
+     "name": "friction_coefficient",
+     "unit": "Pa (s/m)^m, the C of a basal stress C u^m",
+     "kind": "positive"
+    },
+    {
+     "name": "friction_exponent",
+     "unit": "1, the m of a basal stress C u^m, such as 1/3",
+     "kind": "positive"
+    },
+    {
+     "name": "ice_density",
+     "unit": "kg/m^3",
+     "kind": "less than water_density"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(A * (rho_i * gravity)**(n + 1) * (1 - rho_i / rho_w)**n / (4**n * C))**(1 / (m + 1)) * h**((m + n + 3) / (m + 1))",
+   "args": [
+    1000,
+    1e-24,
+    3,
+    1000000.0,
+    1,
+    900,
+    1000,
+    10
+   ],
+   "expected": "10.125",
+   "why": "The flux out of a marine ice sheet is set by the ice thickness at its grounding line, and rises so steeply with it that a grounding line on a bed deepening inland cannot be steady.",
+   "limit": "Schoof (2007): a flowline with a power-law sliding bed, an unbuttressed shelf and a boundary layer at the grounding line; steady states are stable only where the bed rises inland. Below, A = rate_factor, n = exponent, C = friction_coefficient, m = friction_exponent, rho_i = ice_density, rho_w = water_density, h = grounding_thickness.",
+   "extra": "ice_density < water_density",
+   "output_unit": "m^2/s"
+  }
  ]
 }

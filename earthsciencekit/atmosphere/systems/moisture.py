@@ -31,7 +31,7 @@ def saturation_vapor_pressure(temperature):
     Returns
     -------
     numpy scalar or ndarray
-        Model value [kg/m^3]. Scalar input returns a NumPy scalar; arrays broadcast.
+        Model value [Pa]. Scalar input returns a NumPy scalar; arrays broadcast.
 
     Notes
     -----

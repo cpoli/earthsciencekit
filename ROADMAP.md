@@ -2,24 +2,24 @@
 
 What earthsciencekit does not do yet, in priority order.
 
-earthsciencekit 0.1.0 shipped five domains. Unreleased work since then
-has moved every domain to the family layout (item 2), rewritten the
-history pages as dated breakthroughs with one example each (item 3), and
-added `geophysics` (item 6) and `volcanology` (item 7). The package now
-has seven domains, 162 algebraic and nine dynamic models, 100% statement
-coverage and an executed gallery (see the table at the end). Those four
-items are summarized under [Done](#done); item numbers are kept because
-CHANGELOG.md cites them.
+earthsciencekit 0.1.0 shipped five domains. Work since then has moved
+every domain to the family layout (item 2), rewritten the history pages
+as dated breakthroughs with one example each (item 3), and added
+`geophysics` (item 6) and `volcanology` (item 7). Those four make up
+0.2.0, which is committed and pushed to `main` but not yet tagged or on
+PyPI (item 1). `hydrology` (item 4) and `glaciology` (item 5) came after
+it and are unreleased. The package now has nine domains, 237 algebraic and
+eleven dynamic models, 100% statement coverage and an executed gallery (see
+the table at the end). Those six items are summarized under
+[Done](#done); item numbers are kept because CHANGELOG.md cites them.
 
 ## Still to do
 
 | # | Item | State |
 |---|---|---|
-| 1 | Version control, CI and releases | In progress: repository, workflows, JupyterLite and Colab done; the 0.2.0 tag, Zenodo DOI and conda-forge recipe remain |
-| 4 | `hydrology` domain | Not started |
-| 5 | `glaciology` domain | Not started |
+| 1 | Version control, CI and releases | In progress: repository, workflows, JupyterLite and Colab set up; PyPI/Pages/Zenodo setup, the `v0.2.0` tag, the DOI and the conda-forge recipe remain |
 | 8 | Deeper models in the existing domains | Not started, apart from a simplified TEOS-10 fit |
-| 9 | Course material | Not started; tutorials depend on items 4 and 5 |
+| 9 | Course material | Not started |
 | 10 | Typing and coverage | Not started |
 
 Each item lists why it matters, the current state, and a sketch of the
@@ -64,7 +64,9 @@ mathematicskit, checks a `vX.Y.Z` tag against `__version__`,
 publishes to PyPI through trusted publishing, creates the GitHub Release
 and deploys `gh-pages`. The first release is 0.2.0 with the seven
 domains. Every gallery example has a JupyterLite button, and
-`notebooks/quickstart.ipynb` has a Colab badge in the README.
+`notebooks/quickstart.ipynb` has a Colab badge in the README. No tag has
+been pushed, so the package is not on PyPI and the docs site (and with
+it the JupyterLite buttons and the README docs badge) returns 404.
 
 **Still to do.**
 - One-time setup: a pending trusted publisher on PyPI (owner `cpoli`,
@@ -76,78 +78,6 @@ domains. Every gallery example has a JupyterLite button, and
   release.
 - Add a conda-forge `recipe.yaml` after the first PyPI release, with the
   package name written inline rather than in `context`.
-
-## 4. `hydrology`: water on and under land
-
-**Why.** None of the domains models land-surface water. Flow through
-soil and aquifers, runoff and evaporation make up a course of their own,
-and the domain gives the package its first diffusion problem with a
-closed-form well solution.
-
-**Now.** Nothing. `atmosphere` has the vapour-pressure and humidity
-helpers that evaporation needs.
-
-**Approach.** Darcy flow and hydraulic head; steady unconfined flow;
-infiltration (Green-Ampt, Horton); the Theis and Cooper-Jacob well
-solutions (`scipy.special.exp1`); open-channel flow (Chézy, Manning);
-unit-hydrograph convolution and Muskingum routing; Penman-Monteith
-evaporation. Dynamic model: `simulate_infiltration` (Green-Ampt) or
-reservoir routing of a storm hydrograph. Candidate breakthroughs:
-
-1. 1674: Perrault's catchment water balance
-2. 1775: Chézy's open-channel formula
-3. 1802: Dalton's evaporation law
-4. 1856: Darcy's law
-5. 1863: Dupuit's unconfined flow
-6. 1889: Manning's formula
-7. 1911: Green and Ampt's infiltration
-8. 1931: Richards's equation
-9. 1932: Sherman's unit hydrograph
-10. 1933: Horton's infiltration capacity
-11. 1935: Theis's well solution
-12. 1938: McCarthy's Muskingum routing
-13. 1945: Horton's laws of stream numbers
-14. 1946: Cooper and Jacob's straight-line method
-15. 1948: Penman's evaporation
-16. 1965: Monteith's canopy resistance
-17. 1979: Beven and Kirkby's TOPMODEL
-
-## 5. `glaciology`: ice sheets, glaciers and sea ice
-
-**Why.** Ice links the `climate` sea-level helpers with the isostasy in
-`plate_tectonics`, but the package has no ice dynamics. Glen's law and
-the perfectly plastic ice sheet are short closed-form results that
-students can check against real ice-sheet profiles.
-
-**Now.** `climate.ice_albedo` and `climate.water_equivalent_sea_level`;
-`plate_tectonics.airy_root` and `flexural_deflection` for ice loads;
-`geophysics.equivalent_water_height` for GRACE ice-mass change. No ice
-flow, mass balance or rebound in time.
-
-**Approach.** Glen's flow law and deformation velocity; Nye's plastic
-profile and the shallow-ice approximation; Weertman sliding; mass
-balance and equilibrium-line altitude; crevasse depth; Stefan sea-ice
-growth; postglacial rebound with a viscous half-space relaxation time;
-the Dansgaard-Johnsen age-depth model. Dynamic model: a 1D flowline glacier
-responding to a step in the equilibrium line, with
-`integrators.integrate_ode` (method of lines). Candidate breakthroughs:
-
-1. 1840: Agassiz's ice age
-2. 1843: Forbes's viscous glacier flow
-3. 1865: Jamieson's glacial isostasy
-4. 1891: Stefan's sea-ice growth
-5. 1935: Haskell's mantle viscosity from rebound
-6. 1951: Nye's perfectly plastic ice sheet
-7. 1955: Glen's flow law
-8. 1955: Nye's crevasse depth
-9. 1957: Weertman's sliding law
-10. 1962: Meier's glacier mass balance
-11. 1964: Dansgaard's isotope thermometer
-12. 1969: Dansgaard and Johnsen's age-depth model
-13. 1974: Weertman's marine ice-sheet instability
-14. 1976: Mahaffy's shallow-ice model
-15. 1987: Barnola's Vostok CO2 record
-16. 2007: Schoof's grounding-line flux
 
 ## 8. Deeper models in the existing domains
 
@@ -191,8 +121,8 @@ exercises, and the only cross-domain material is the README example.
 - cross-domain tutorials, such as "the Earth's energy budget"
   (`climate`, `atmosphere`, `oceanography`), "isostasy everywhere"
   (`plate_tectonics`, `glaciology`, `geophysics`) and "dating the Earth"
-  (`volcanology`, `plate_tectonics`, `geophysics`). The first and last
-  can be written now; "isostasy everywhere" waits for item 5;
+  (`volcanology`, `plate_tectonics`, `geophysics`). All three can be
+  written now;
 - a quickstart notebook in JupyterLite (item 1).
 
 ## 10. Typing and coverage
@@ -211,6 +141,31 @@ Finished items move here with the release they shipped in, as in
 CHANGELOG.md.
 
 ### Unreleased
+
+- **5. `glaciology`.** 37 algebraic models in `rheology`, `ice_sheets`,
+  `glaciers`, `sea_ice`, `rebound` and `ice_cores`, the dynamic
+  `simulate_flowline_glacier` (shallow ice under a linear mass balance, by
+  the method of lines with BDF), and 16 dated entries from Agassiz (1840) to
+  Schoof (2007), all as drafted. Agassiz is shown by the equilibrium-line
+  shift; Glen's entry carries Nye's (1952) laminar-flow profile; Weertman
+  (1974) by the flotation thickness and Weertman's (1957) ice-shelf
+  spreading; Mahaffy by Vialov's (1958) steady profile and the flowline
+  glacier; Dansgaard-Johnsen with Nye's (1963) age for comparison; Barnola by
+  the gas-age difference with `climate.co2_forcing`. New constants
+  `ICE_DENSITY` and `LATENT_HEAT_FUSION`.
+
+- **4. `hydrology`.** 38 algebraic models in `catchments`, `groundwater`,
+  `soil_water`, `channels` and `evaporation`, the dynamic
+  `simulate_infiltration` (Green-Ampt under steady rain, after Mein and
+  Larson 1973), and 17 dated entries from Perrault (1674) to TOPMODEL
+  (1979), all as drafted. Richards is shown by steady profiles in a Gardner
+  (1958) soil rather than a transient solver, Sherman by convolution with a
+  Nash (1957) cascade, and Monteith with the FAO-56 grass resistances.
+  Evaporation reuses `atmosphere.saturation_vapor_pressure` and its 2.5e6
+  J/kg latent heat; new constants `LATENT_HEAT_VAPORIZATION` and
+  `VON_KARMAN`. Manning's paper was read in 1889 and printed in 1891.
+
+### 0.2.0 (committed, not yet tagged)
 
 - **2. The family layout.** Each domain has four or five `systems`
   modules (for example `plate_tectonics`: `kinematics`, `boundaries`,
@@ -269,5 +224,5 @@ executed examples, with a 100% statement-coverage gate.
 | `oceanography` | 24 | 16 | 16 | 16 |
 | `geophysics` | 31 | 16 | 16 | 16 |
 | `volcanology` | 24 | 17 | 17 | 17 |
-| `hydrology` (item 4) | — | — | — | — |
-| `glaciology` (item 5) | — | — | — | — |
+| `hydrology` | 39 | 17 | 17 | 17 |
+| `glaciology` | 38 | 16 | 16 | 16 |

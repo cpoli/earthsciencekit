@@ -21,3 +21,7 @@ LAMBDA_U238 = 1.55125e-10 / SECONDS_PER_YEAR  # 1/s, Jaffey et al. (1971)
 LAMBDA_U235 = 9.8485e-10 / SECONDS_PER_YEAR  # 1/s, Jaffey et al. (1971)
 U238_U235 = 137.88  # 1, present-day atomic ratio, Steiger and Jaeger (1977)
 LIBBY_MEAN_LIFE = 8033 * SECONDS_PER_YEAR  # s, conventional radiocarbon mean life (5568-year half-life)
+LATENT_HEAT_VAPORIZATION = 2.5e6  # J/kg, water at 0 degC, as in atmosphere.saturation_vapor_pressure
+VON_KARMAN = 0.41  # 1, von Karman constant of the logarithmic wind profile
+ICE_DENSITY = 917.0  # kg/m^3, glacier ice
+LATENT_HEAT_FUSION = 3.34e5  # J/kg, ice at 0 degC
