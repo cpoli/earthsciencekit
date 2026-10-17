@@ -3,6 +3,7 @@
 Inspectable Earth-system computations for learning and teaching.
 
 [![PyPI](https://img.shields.io/pypi/v/earthsciencekit)](https://pypi.org/project/earthsciencekit/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23441034.svg)](https://doi.org/10.5281/zenodo.23441034)
 [![CI](https://github.com/cpoli/earthsciencekit/actions/workflows/ci.yml/badge.svg)](https://github.com/cpoli/earthsciencekit/actions/workflows/ci.yml)
 [![Docs](https://img.shields.io/badge/docs-cpoli.github.io-blue)](https://cpoli.github.io/earthsciencekit/)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cpoli/earthsciencekit/blob/main/notebooks/quickstart.ipynb)

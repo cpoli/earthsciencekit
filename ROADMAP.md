@@ -6,8 +6,7 @@ earthsciencekit 0.1.0 shipped five domains. Work since then has moved
 every domain to the family layout (item 2), rewritten the history pages
 as dated breakthroughs with one example each (item 3), and added
 `geophysics` (item 6) and `volcanology` (item 7). Those four make up
-0.2.0, which is committed and pushed to `main` but not yet tagged or on
-PyPI (item 1). `hydrology` (item 4) and `glaciology` (item 5) came after
+0.2.0, released on PyPI on 2026-10-17 (item 1). `hydrology` (item 4) and `glaciology` (item 5) came after
 it and are unreleased. The package now has nine domains, 237 algebraic and
 eleven dynamic models, 100% statement coverage and an executed gallery (see
 the table at the end). Those six items are summarized under
@@ -17,7 +16,7 @@ the table at the end). Those six items are summarized under
 
 | # | Item | State |
 |---|---|---|
-| 1 | Version control, CI and releases | In progress: repository, workflows, JupyterLite and Colab set up; PyPI/Pages/Zenodo setup, the `v0.2.0` tag, the DOI and the conda-forge recipe remain |
+| 1 | Version control, CI and releases | 0.2.0 released (PyPI, docs site, Zenodo DOI); the conda-forge recipe awaits review, and CI on `main` fails one glaciology test |
 | 8 | Deeper models in the existing domains | Not started, apart from a simplified TEOS-10 fit |
 | 9 | Course material | Not started |
 | 10 | Typing and coverage | Not started |
@@ -64,20 +63,32 @@ mathematicskit, checks a `vX.Y.Z` tag against `__version__`,
 publishes to PyPI through trusted publishing, creates the GitHub Release
 and deploys `gh-pages`. The first release is 0.2.0 with the seven
 domains. Every gallery example has a JupyterLite button, and
-`notebooks/quickstart.ipynb` has a Colab badge in the README. No tag has
-been pushed, so the package is not on PyPI and the docs site (and with
-it the JupyterLite buttons and the README docs badge) returns 404.
+`notebooks/quickstart.ipynb` has a Colab badge in the README.
+
+0.2.0 was released on 2026-10-17 from the tag `v0.2.0` on a0ac09c (the
+0.2.0 commit, so `hydrology` and `glaciology` stay unreleased): it is on
+PyPI, the GitHub Release exists, the docs are served from `gh-pages` at
+https://cpoli.github.io/earthsciencekit/, and Zenodo archived it as the
+version DOI 10.5281/zenodo.23441034 (concept record 23441033), now in
+`CITATION.cff` and the README badge. The conda-forge recipe is
+conda-forge/staged-recipes#35239 (branch `earthsciencekit` of
+`cpoli/staged-recipes`), with the name written inline.
 
 **Still to do.**
-- One-time setup: a pending trusted publisher on PyPI (owner `cpoli`,
-  repository `earthsciencekit`, workflow `release.yml`, environment
-  `pypi`), the `pypi` environment and Pages from `gh-pages` on GitHub,
-  and the repository enabled on Zenodo. Then push the tag `v0.2.0`.
-- Add that release's own **version DOI** (never the concept DOI) to
-  `CITATION.cff` and as a README badge, and update both on every
-  release.
-- Add a conda-forge `recipe.yaml` after the first PyPI release, with the
-  package name written inline rather than in `context`.
+- Merge of conda-forge/staged-recipes#35239: answer review comments,
+  post the maintainer-confirmation comment the checklist asks for, then
+  add a conda-forge badge and `conda install` line to the README as in
+  mathematicskit.
+- CI on `main` (ea527a8) fails
+  `glaciology/tests/test_physics.py::test_raising_the_equilibrium_line_shrinks_the_glacier`
+  on Linux with Python 3.10, 3.12 and 3.13 (it passes on 3.11 and on
+  macOS with the same NumPy 2.5.4 and SciPy 1.18.1). On Linux the step
+  run starts from an area of 1.81e6 m^2 rather than the ELA-2600 steady
+  state of 2.42e6 m^2, so the first `simulate_flowline_glacier` run goes
+  wrong there; separately, the 1e-8 monotonicity tolerance sits at the
+  solver's noise level (`atol=1e-3` breaks it on macOS). Fix before 0.3.0.
+- On every release, replace the version DOI in `CITATION.cff` and the
+  README badge with that release's own (never the concept DOI).
 
 ## 8. Deeper models in the existing domains
 
@@ -165,7 +176,7 @@ CHANGELOG.md.
   J/kg latent heat; new constants `LATENT_HEAT_VAPORIZATION` and
   `VON_KARMAN`. Manning's paper was read in 1889 and printed in 1891.
 
-### 0.2.0 (committed, not yet tagged)
+### 0.2.0 (2026-10-17)
 
 - **2. The family layout.** Each domain has four or five `systems`
   modules (for example `plate_tectonics`: `kinematics`, `boundaries`,
