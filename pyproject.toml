@@ -1,0 +1,44 @@
+[build-system]
+requires=["setuptools>=77.0.3","wheel"]
+build-backend="setuptools.build_meta"
+[project]
+name="earthsciencekit"
+version="0.2.0"
+description="Inspectable Earth-system models for learning and teaching."
+readme="README.md"
+requires-python=">=3.10"
+license="MIT"
+license-files=["LICENSE"]
+authors=[{name="Charles Poli", email="cpoli374@gmail.com"}]
+dependencies=["numpy>=1.24","scipy>=1.10","matplotlib>=3.6"]
+[project.optional-dependencies]
+test=["pytest>=7","pytest-cov"]
+docs=["sphinx-design>=0.6","sphinx-gallery>=0.19","sphinx-autodoc-typehints>=2", "sphinx>=7","pydata-sphinx-theme>=0.15","sphinx-sitemap>=2.6","sphinxext-opengraph>=0.9","jupyterlite-sphinx>=0.17","jupyterlite-pyodide-kernel>=0.4"]
+dev=["sphinx-design>=0.6","sphinx-sitemap>=2.6","sphinxext-opengraph>=0.9","sphinx-gallery>=0.19","sphinx-autodoc-typehints>=2", "pytest>=7","pytest-cov","sphinx>=7","pydata-sphinx-theme>=0.15","jupyterlite-sphinx>=0.17","jupyterlite-pyodide-kernel>=0.4","ruff>=0.6","mypy>=1.10","build>=1.2","twine>=5"]
+[project.urls]
+Homepage="https://github.com/cpoli/earthsciencekit"
+Documentation="https://cpoli.github.io/earthsciencekit/"
+Issues="https://github.com/cpoli/earthsciencekit/issues"
+Changelog="https://github.com/cpoli/earthsciencekit/blob/main/CHANGELOG.md"
+[tool.setuptools.packages.find]
+include=["earthsciencekit*"]
+[tool.pytest.ini_options]
+testpaths=["earthsciencekit"]
+filterwarnings=["error"]
+[tool.ruff]
+line-length=140
+[tool.ruff.lint]
+select=["E","F","I"]
+ignore=["E741"] # Conventional engineering symbols I (inertia), l (length).
+
+[tool.ruff.lint.per-file-ignores]
+"**/test_*.py"=["F403","F405"]
+
+[tool.setuptools.package-data]
+earthsciencekit=["py.typed"]
+
+[tool.coverage.run]
+omit=["*/test_*.py", "*/tests/*"]
+[tool.coverage.report]
+show_missing=true
+fail_under=100

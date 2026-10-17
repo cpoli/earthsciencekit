@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite EarthScienceKit when using its educational models."
+title: "EarthScienceKit: inspectable Earth-system computations"
+authors:
+  - family-names: Poli
+    given-names: Charles
+version: 0.2.0
+date-released: 2026-10-17
+license: MIT
+repository-code: "https://github.com/cpoli/earthsciencekit"
+url: "https://cpoli.github.io/earthsciencekit/"

@@ -1,0 +1,120 @@
+name: Release
+
+# Push a tag vX.Y.Z to release. The tag must match
+# `earthsciencekit.__version__` and `version` in pyproject.toml (kept equal
+# by tests/test_core.py::test_version), CITATION.cff's `version`, and a
+# "## [X.Y.Z] - date" section in CHANGELOG.md. The workflow then publishes
+# to PyPI, creates the GitHub Release with that CHANGELOG section as its
+# notes, and deploys the docs to gh-pages.
+#
+# One-time setup on the services:
+# - PyPI: add a pending GitHub trusted publisher for the project
+#   earthsciencekit (owner cpoli, repository earthsciencekit, workflow
+#   release.yml, environment pypi). No API token is stored in the repository.
+# - GitHub: the environment "pypi" in the repository settings, and Pages
+#   served from the gh-pages branch.
+# - Zenodo: enable the repository at zenodo.org/account/settings/github;
+#   every GitHub Release is then archived with its own version DOI, which
+#   goes into CITATION.cff and the README badge after the release.
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check --strict dist/*
+      - name: Tag matches package version
+        run: |
+          version=${GITHUB_REF_NAME#v}
+          test -f "dist/earthsciencekit-$version.tar.gz"
+          test -f "dist/earthsciencekit-$version-py3-none-any.whl"
+          grep -qx "__version__ = \"$version\"" earthsciencekit/__init__.py
+      - name: Tag matches CITATION.cff
+        run: |
+          grep -qx "version: ${GITHUB_REF_NAME#v}" CITATION.cff
+      # Checked before publishing, so a missing section cannot leave a
+      # release on PyPI without its GitHub Release.
+      - name: Release notes from the CHANGELOG section
+        run: |
+          version=${GITHUB_REF_NAME#v}
+          awk -v v="$version" '
+            /^## / { if (found) exit; if (index($0, "## [" v "] ") == 1) { found = 1; next } }
+            found' CHANGELOG.md > notes.md
+          test -s notes.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: notes
+          path: notes.md
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/earthsciencekit/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    name: Create the GitHub Release
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: actions/download-artifact@v4
+        with:
+          name: notes
+      - run: >-
+          gh release create "$GITHUB_REF_NAME" dist/*
+          --repo "$GITHUB_REPOSITORY"
+          --title "earthsciencekit ${GITHUB_REF_NAME#v}"
+          --notes-file notes.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  docs:
+    name: Deploy the docs
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[docs]"
+      - run: MPLBACKEND=Agg python -m sphinx -E -W --keep-going -b html docs/source docs/_build/html
+      - run: touch docs/_build/html/.nojekyll
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ github.token }}
+          publish_dir: docs/_build/html
+          commit_message: "Rebuild docs for ${{ github.ref_name }}"

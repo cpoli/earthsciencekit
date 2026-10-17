@@ -1,0 +1,5164 @@
+{
+ "plate_tectonics": [
+  {
+   "name": "angular_speed",
+   "title": "Euler-pole angular speed",
+   "params": [
+    {
+     "name": "rotation_angle",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "rotation_angle / time",
+   "args": [
+    0.1,
+    10
+   ],
+   "expected": ".01",
+   "why": "Rigid plate motion is rotation about an Euler pole.",
+   "limit": "Constant angular rate; angular input is radians and output radians per second.",
+   "extra": "",
+   "output_unit": "rad/s"
+  },
+  {
+   "name": "plate_speed",
+   "title": "Rigid plate speed about an Euler pole",
+   "params": [
+    {
+     "name": "angular_speed",
+     "unit": "rad/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "angular_distance",
+     "unit": "rad",
+     "kind": "width"
+    }
+   ],
+   "expr": "angular_speed * radius * np.sin(angular_distance)",
+   "args": [
+    1e-09,
+    6000000.0,
+    1.5707963267948966
+   ],
+   "expected": ".006",
+   "why": "Distance from the rotation axis controls surface plate speed.",
+   "limit": "Spherical rigid plate, magnitude only; angular distance must be at most pi.",
+   "extra": "require(angular_distance <= np.pi, \"angular distance exceeds pi\")",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "euler_velocity_x",
+   "title": "Euler rotation east-fixed x velocity",
+   "params": [
+    {
+     "name": "omega_y",
+     "unit": "rad/s",
+     "kind": "real"
+    },
+    {
+     "name": "omega_z",
+     "unit": "rad/s",
+     "kind": "real"
+    },
+    {
+     "name": "position_y",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "position_z",
+     "unit": "m",
+     "kind": "real"
+    }
+   ],
+   "expr": "omega_y * position_z - omega_z * position_y",
+   "args": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "expected": "-2",
+   "why": "The cross product of rotation and position gives Cartesian plate velocity.",
+   "limit": "Earth-fixed Cartesian axes; x is not the local east component.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "euler_velocity_y",
+   "title": "Euler rotation y velocity",
+   "params": [
+    {
+     "name": "omega_z",
+     "unit": "rad/s",
+     "kind": "real"
+    },
+    {
+     "name": "omega_x",
+     "unit": "rad/s",
+     "kind": "real"
+    },
+    {
+     "name": "position_z",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "position_x",
+     "unit": "m",
+     "kind": "real"
+    }
+   ],
+   "expr": "omega_z * position_x - omega_x * position_z",
+   "args": [
+    2,
+    1,
+    4,
+    3
+   ],
+   "expected": "2",
+   "why": "A rigid plate velocity field is tangent to its spherical path.",
+   "limit": "Same Earth-fixed Cartesian convention as euler_velocity_x.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "euler_velocity_z",
+   "title": "Euler rotation polar velocity",
+   "params": [
+    {
+     "name": "omega_x",
+     "unit": "rad/s",
+     "kind": "real"
+    },
+    {
+     "name": "omega_y",
+     "unit": "rad/s",
+     "kind": "real"
+    },
+    {
+     "name": "position_x",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "position_y",
+     "unit": "m",
+     "kind": "real"
+    }
+   ],
+   "expr": "omega_x * position_y - omega_y * position_x",
+   "args": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "expected": "-2",
+   "why": "The polar velocity component completes the Euler-vector cross product.",
+   "limit": "Earth-fixed components, not local vertical motion or deformation.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "plate_displacement",
+   "title": "Plate kinematic displacement",
+   "params": [
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "real"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "speed * time",
+   "args": [
+    0.01,
+    100
+   ],
+   "expected": "1",
+   "why": "Velocity connects short instrumental records with geological displacement.",
+   "limit": "Constant signed speed along a local coordinate; not a finite Euler rotation.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "spreading_age",
+   "title": "Magnetic-stripe spreading clock",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "half_spreading_rate",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "distance / half_spreading_rate",
+   "args": [
+    100,
+    2
+   ],
+   "expected": "50",
+   "why": "Symmetric ocean-floor ages link ridge spreading to plate creation.",
+   "limit": "Distance on one side and half-spreading rate; changes in rate are omitted.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "full_spreading_rate",
+   "title": "Symmetric full spreading rate",
+   "params": [
+    {
+     "name": "half_spreading_rate",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "2 * half_spreading_rate",
+   "args": [
+    0.001
+   ],
+   "expected": ".002",
+   "why": "Opposite plate velocities combine into ridge opening speed.",
+   "limit": "Symmetric spreading; asymmetric velocities require their own relative-vector calculation.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "convergence_rate",
+   "title": "Signed plate-boundary convergence",
+   "params": [
+    {
+     "name": "relative_speed",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "obliquity",
+     "unit": "rad",
+     "kind": "width"
+    }
+   ],
+   "expr": "relative_speed * np.cos(obliquity)",
+   "args": [
+    2,
+    1.0471975511965976
+   ],
+   "expected": "1",
+   "why": "Resolving relative motion normal to a boundary separates convergence and shear.",
+   "limit": "Positive normal component denotes convergence; negative denotes divergence.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "fault_slip_rate",
+   "title": "Tangential boundary slip rate",
+   "params": [
+    {
+     "name": "relative_speed",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "obliquity",
+     "unit": "rad",
+     "kind": "width"
+    }
+   ],
+   "expr": "relative_speed * np.sin(obliquity)",
+   "args": [
+    2,
+    0.5235987755982988
+   ],
+   "expected": "1",
+   "why": "The tangential motion component connects oblique convergence to strike slip.",
+   "limit": "Supplied obliquity is oriented from the positive convergence normal.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "subduction_travel_time",
+   "title": "Slab path travel time",
+   "params": [
+    {
+     "name": "vertical_depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "slab_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "dip",
+     "unit": "rad",
+     "kind": "inclination"
+    }
+   ],
+   "expr": "vertical_depth / (slab_speed * np.sin(dip))",
+   "args": [
+    100,
+    2,
+    0.5235987755982988
+   ],
+   "expected": "100",
+   "why": "Slab dip changes the path length required to reach a specified depth.",
+   "limit": "Straight slab at constant speed; zero dip cannot reach depth and is rejected.",
+   "extra": "require(dip > 0, \"slab dip must be positive\")",
+   "output_unit": "s"
+  },
+  {
+   "name": "slab_pull_force",
+   "title": "Slab negative-buoyancy force",
+   "params": [
+    {
+     "name": "density_excess",
+     "unit": "kg/m^3",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "slab_volume",
+     "unit": "m^3",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density_excess * slab_volume * gravity",
+   "args": [
+    100,
+    1000000000.0,
+    10
+   ],
+   "expected": "1e12",
+   "why": "A cold slab can drive motion through its excess weight.",
+   "limit": "Simple buoyancy force magnitude; drag, phase changes and mantle flow are excluded.",
+   "extra": "",
+   "output_unit": "N"
+  },
+  {
+   "name": "airy_root",
+   "title": "Airy crustal compensation",
+   "params": [
+    {
+     "name": "elevation",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "crust_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "mantle_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "elevation * crust_density / (mantle_density - crust_density)",
+   "args": [
+    1000,
+    2700,
+    3300
+   ],
+   "expected": "4500",
+   "why": "Crustal buoyancy provides a baseline for mountain-root support.",
+   "limit": "Local compensation without plate flexure; mantle must be denser than crust.",
+   "extra": "require(mantle_density > crust_density, \"mantle must be denser than crust\")",
+   "output_unit": "m"
+  },
+  {
+   "name": "flexural_rigidity",
+   "title": "Elastic lithosphere rigidity",
+   "params": [
+    {
+     "name": "young_modulus",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "elastic_thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "poisson_ratio",
+     "unit": "1",
+     "kind": "poisson"
+    }
+   ],
+   "expr": "young_modulus * elastic_thickness**3 / (12 * (1 - poisson_ratio**2))",
+   "args": [
+    12,
+    1,
+    0
+   ],
+   "expected": "1",
+   "why": "Elastic thickness turns lithospheric strength into a bending resistance.",
+   "limit": "Thin isotropic elastic plate with stable Poisson ratio, not a yielding viscoelastic lithosphere.",
+   "extra": "",
+   "output_unit": "N m"
+  },
+  {
+   "name": "flexural_parameter",
+   "title": "Lithosphere flexural length",
+   "params": [
+    {
+     "name": "rigidity",
+     "unit": "N m",
+     "kind": "positive"
+    },
+    {
+     "name": "density_contrast",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(4 * rigidity / (density_contrast * gravity))**0.25",
+   "args": [
+    4,
+    1,
+    1
+   ],
+   "expected": "2",
+   "why": "Bending and buoyancy jointly set the scale of load compensation.",
+   "limit": "Infinite beam-like plate convention alpha to the fourth equals 4D over density contrast times g.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "halfspace_temperature",
+   "title": "Cooling oceanic lithosphere",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "age",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "mantle_temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "surface_temperature + (mantle_temperature - surface_temperature) * erf(depth / (2 * np.sqrt(diffusivity * age)))",
+   "args": [
+    0,
+    1,
+    1,
+    300,
+    1300
+   ],
+   "expected": "300",
+   "why": "Oceanic plates cool as their age and distance from a ridge increase.",
+   "limit": "Semi-infinite conduction with fixed surface temperature; no hydrothermal or advective heat transfer.",
+   "extra": "require(mantle_temperature >= surface_temperature, \"mantle must be at least as warm as surface\")",
+   "output_unit": "K"
+  },
+  {
+   "name": "halfspace_heat_flux",
+   "title": "Cooling-plate surface heat flux",
+   "params": [
+    {
+     "name": "age",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "conductivity",
+     "unit": "W/(m K)",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "mantle_temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "conductivity * (mantle_temperature - surface_temperature) / np.sqrt(np.pi * diffusivity * age)",
+   "args": [
+    1,
+    1,
+    1,
+    300,
+    1300
+   ],
+   "expected": "1000/np.sqrt(np.pi)",
+   "why": "Surface heat flux decreases as an oceanic plate cools.",
+   "limit": "Positive upward flux; semi-infinite conductive model excludes the zero-age singularity.",
+   "extra": "require(mantle_temperature >= surface_temperature, \"mantle must be at least as warm as surface\")",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "mantle_rayleigh_number",
+   "title": "Rayleigh number of a convecting mantle layer",
+   "params": [
+    {
+     "name": "thermal_expansivity",
+     "unit": "1/K",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature_difference",
+     "unit": "K",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "viscosity",
+     "unit": "Pa s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "thermal_expansivity * density * gravity * temperature_difference * thickness**3 / (diffusivity * viscosity)",
+   "args": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "expected": "3000/42",
+   "why": "Buoyancy against viscous and thermal diffusion decides whether the mantle convects.",
+   "limit": "Layer heated from below with uniform properties; convection starts above about 657.5 (free slip) or 1708 (rigid walls).",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "flexural_deflection",
+   "title": "Elastic plate deflection under a line load",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "line_load",
+     "unit": "N/m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rigidity",
+     "unit": "N m",
+     "kind": "positive"
+    },
+    {
+     "name": "density_contrast",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "line_load * alpha**3 / (8 * rigidity) * np.exp(-abs(distance) / alpha) * (np.cos(abs(distance) / alpha) + np.sin(abs(distance) / alpha))",
+   "args": [
+    0,
+    8,
+    1,
+    4,
+    1
+   ],
+   "expected": "1",
+   "why": "A load bends the lithosphere into a moat flanked by a peripheral bulge.",
+   "limit": "Unbroken infinite thin elastic plate, deflection positive downward; density contrast is mantle minus infill.",
+   "extra": "alpha = (4 * rigidity / (density_contrast * gravity)) ** 0.25",
+   "output_unit": "m"
+  },
+  {
+   "name": "hotspot_age",
+   "title": "Age progression along a hotspot track",
+   "params": [
+    {
+     "name": "track_length",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "angular_speed",
+     "unit": "rad/s",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "pole_distance",
+     "unit": "rad",
+     "kind": "open_colatitude"
+    }
+   ],
+   "expr": "track_length / (angular_speed * radius * np.sin(pole_distance))",
+   "args": [
+    6,
+    1,
+    2,
+    1.5707963267948966
+   ],
+   "expected": "3",
+   "why": "A plate moving over a fixed plume leaves volcanoes that age with distance along a small circle.",
+   "limit": "Fixed hotspot and constant Euler rotation of the plate over it; track length is measured along the small circle.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "ocean_depth",
+   "title": "Ocean depth of a cooling half-space",
+   "params": [
+    {
+     "name": "age",
+     "unit": "s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "ridge_depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "mantle_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "thermal_expansivity",
+     "unit": "1/K",
+     "kind": "positive"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "mantle_temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "ridge_depth + 2 * mantle_density * thermal_expansivity * (mantle_temperature - surface_temperature) / (mantle_density - water_density) * np.sqrt(diffusivity * age / np.pi)",
+   "args": [
+    0.7853981633974483,
+    2500,
+    2,
+    1,
+    0.5,
+    1,
+    300,
+    1300
+   ],
+   "expected": "3500",
+   "why": "Thermal contraction of the cooling plate makes the sea floor deepen with the square root of its age.",
+   "limit": "Isostatic half-space cooling, depth positive downward; it overestimates depth on sea floor older than about 70 million years.",
+   "extra": "require(mantle_density > water_density, \"mantle must be denser than water\"); require(mantle_temperature >= surface_temperature, \"mantle must be at least as warm as surface\")",
+   "output_unit": "m"
+  },
+  {
+   "name": "compose_euler_vectors",
+   "title": "Composition of relative Euler vectors around a plate circuit",
+   "params": [
+    {
+     "name": "omega_ab",
+     "unit": "rad/s",
+     "kind": "vector3"
+    },
+    {
+     "name": "omega_bc",
+     "unit": "rad/s",
+     "kind": "vector3"
+    }
+   ],
+   "expr": "omega_ab + omega_bc",
+   "args": [
+    [
+     1,
+     2,
+     3
+    ],
+    [
+     4,
+     -5,
+     6
+    ]
+   ],
+   "expected": "[5, -3, 9]",
+   "why": "Angular velocities of rigid plates add, so two relative motions predict the third.",
+   "limit": "Instantaneous rotations only; inputs and output have three Cartesian components on the last axis.",
+   "extra": "require(omega_ab.shape[-1] == 3 and omega_bc.shape[-1] == 3, \"three Cartesian components on the last axis\")",
+   "output_unit": "rad/s"
+  }
+ ],
+ "seismology": [
+  {
+   "name": "p_wave_speed",
+   "title": "Compressional-wave elasticity",
+   "params": [
+    {
+     "name": "bulk_modulus",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "shear_modulus",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt((bulk_modulus + 4 * shear_modulus / 3) / density)",
+   "args": [
+    12,
+    3,
+    4
+   ],
+   "expected": "2",
+   "why": "Elastic moduli and density determine compressional wave speed.",
+   "limit": "Homogeneous isotropic small-strain medium; shear modulus may vanish in a fluid.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "s_wave_speed",
+   "title": "Shear-wave elasticity",
+   "params": [
+    {
+     "name": "shear_modulus",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(shear_modulus / density)",
+   "args": [
+    16,
+    4
+   ],
+   "expected": "2",
+   "why": "Shear waves reveal rigidity and disappear in an ideal fluid.",
+   "limit": "Homogeneous isotropic medium; zero shear modulus returns zero speed.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "poisson_ratio",
+   "title": "Elastic velocity ratio",
+   "params": [
+    {
+     "name": "p_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "s_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(p_speed**2 - 2 * s_speed**2) / (2 * (p_speed**2 - s_speed**2))",
+   "args": [
+    2,
+    1
+   ],
+   "expected": "1/3",
+   "why": "Wave-speed ratios constrain isotropic elastic response.",
+   "limit": "Requires positive bulk modulus: vp squared must exceed 4 vs squared over 3.",
+   "extra": "require(p_speed**2 > 4 * s_speed**2 / 3, \"wave speeds imply nonpositive bulk modulus\")",
+   "output_unit": "1"
+  },
+  {
+   "name": "travel_time",
+   "title": "Homogeneous travel time",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "distance / speed",
+   "args": [
+    3000,
+    1500
+   ],
+   "expected": "2",
+   "why": "Arrival times connect source distance and propagation speed.",
+   "limit": "Straight path in a homogeneous medium; not a ray tracer.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "seismic_impedance",
+   "title": "Acoustic impedance",
+   "params": [
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * speed",
+   "args": [
+    2000,
+    3000
+   ],
+   "expected": "6e6",
+   "why": "Impedance contrasts control normal-incidence reflection.",
+   "limit": "Scalar acoustic impedance; elastic mode conversion is excluded.",
+   "extra": "",
+   "output_unit": "kg/(m^2 s)"
+  },
+  {
+   "name": "reflection_coefficient",
+   "title": "Normal-incidence pressure reflection",
+   "params": [
+    {
+     "name": "impedance1",
+     "unit": "kg/(m^2 s)",
+     "kind": "positive"
+    },
+    {
+     "name": "impedance2",
+     "unit": "kg/(m^2 s)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(impedance2 - impedance1) / (impedance2 + impedance1)",
+   "args": [
+    2,
+    6
+   ],
+   "expected": "0.5",
+   "why": "An interface divides incident energy into reflected and transmitted waves.",
+   "limit": "Pressure amplitude convention at normal incidence; coefficient can be negative.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "transmission_coefficient",
+   "title": "Normal-incidence pressure transmission",
+   "params": [
+    {
+     "name": "impedance1",
+     "unit": "kg/(m^2 s)",
+     "kind": "positive"
+    },
+    {
+     "name": "impedance2",
+     "unit": "kg/(m^2 s)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * impedance2 / (impedance2 + impedance1)",
+   "args": [
+    2,
+    6
+   ],
+   "expected": "1.5",
+   "why": "Pressure transmission differs from transmitted energy fraction.",
+   "limit": "Normal-incidence acoustic pressure amplitudes, not displacement amplitudes.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "critical_angle",
+   "title": "Snell refraction critical angle",
+   "params": [
+    {
+     "name": "speed1",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "speed2",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.arcsin(speed1 / speed2)",
+   "args": [
+    1,
+    2
+   ],
+   "expected": "np.pi/6",
+   "why": "Snell refraction explains head waves above a faster layer.",
+   "limit": "Incidence from the slower medium; second speed must exceed first.",
+   "extra": "require(speed2 > speed1, \"second medium must be faster\")",
+   "output_unit": "rad"
+  },
+  {
+   "name": "seismic_moment",
+   "title": "Fault seismic moment",
+   "params": [
+    {
+     "name": "rigidity",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "area",
+     "unit": "m^2",
+     "kind": "positive"
+    },
+    {
+     "name": "slip",
+     "unit": "m",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "rigidity * area * slip",
+   "args": [
+    30000000000.0,
+    1000000.0,
+    1
+   ],
+   "expected": "3e16",
+   "why": "Moment connects an earthquake to fault area and displacement.",
+   "limit": "Scalar mean-slip estimate; no spatial rupture distribution.",
+   "extra": "",
+   "output_unit": "N m"
+  },
+  {
+   "name": "moment_magnitude",
+   "title": "Moment magnitude in SI",
+   "params": [
+    {
+     "name": "moment",
+     "unit": "N m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(2 / 3) * (np.log10(moment) - 9.1)",
+   "args": [
+    1.2589254117941714e+18
+   ],
+   "expected": "6",
+   "why": "Moment magnitude relates logarithmic event size to scalar moment.",
+   "limit": "Uses the 9.1 intercept with moment in N m, not dyne cm.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "moment_from_magnitude",
+   "title": "Inverse moment magnitude",
+   "params": [
+    {
+     "name": "magnitude",
+     "unit": "1",
+     "kind": "real"
+    }
+   ],
+   "expr": "10 ** (1.5 * magnitude + 9.1)",
+   "args": [
+    6
+   ],
+   "expected": "10**18.1",
+   "why": "Inverting magnitude enables comparisons on a physical moment scale.",
+   "limit": "Same SI convention as moment_magnitude; very large inputs can overflow.",
+   "extra": "",
+   "output_unit": "N m"
+  },
+  {
+   "name": "gutenberg_richter",
+   "title": "Earthquake frequency-size relation",
+   "params": [
+    {
+     "name": "a",
+     "unit": "1",
+     "kind": "real"
+    },
+    {
+     "name": "b",
+     "unit": "1",
+     "kind": "positive"
+    },
+    {
+     "name": "magnitude",
+     "unit": "1",
+     "kind": "real"
+    }
+   ],
+   "expr": "10 ** (a - b * magnitude)",
+   "args": [
+    4,
+    1,
+    3
+   ],
+   "expected": "10",
+   "why": "A logarithmic frequency-size law summarizes an earthquake catalogue.",
+   "limit": "Expected cumulative count for the fitted catalogue interval; completeness matters.",
+   "extra": "",
+   "output_unit": "count"
+  },
+  {
+   "name": "omori_rate",
+   "title": "Modified Omori aftershock rate",
+   "params": [
+    {
+     "name": "productivity",
+     "unit": "count s^(p-1)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "offset",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "productivity / (offset + time)**exponent",
+   "args": [
+    10,
+    1,
+    1,
+    1
+   ],
+   "expected": "5",
+   "why": "Aftershock rates often decay with time after a main shock.",
+   "limit": "Empirical fitted rate; no earthquake timing or location prediction.",
+   "extra": "",
+   "output_unit": "count/s"
+  },
+  {
+   "name": "ricker_wavelet",
+   "title": "Ricker seismic source pulse",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "real"
+    },
+    {
+     "name": "frequency",
+     "unit": "Hz",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(1 - 2 * (np.pi * frequency * time)**2) * np.exp(-(np.pi * frequency * time)**2)",
+   "args": [
+    0,
+    10
+   ],
+   "expected": "1",
+   "why": "A compact pulse makes propagation and filtering examples inspectable.",
+   "limit": "Unit peak at zero time; frequency is the peak-spectrum convention.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "attenuated_amplitude",
+   "title": "Constant-Q wave attenuation",
+   "params": [
+    {
+     "name": "amplitude",
+     "unit": "arbitrary amplitude",
+     "kind": "real"
+    },
+    {
+     "name": "frequency",
+     "unit": "Hz",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "quality_factor",
+     "unit": "1",
+     "kind": "positive"
+    }
+   ],
+   "expr": "amplitude * np.exp(-np.pi * frequency * time / quality_factor)",
+   "args": [
+    2,
+    1,
+    1,
+    4.532360141827194
+   ],
+   "expected": "1",
+   "why": "Finite quality factor models intrinsic amplitude decay during propagation.",
+   "limit": "Constant-Q narrowband attenuation; geometric spreading is separate.",
+   "extra": "",
+   "output_unit": "same amplitude units as input"
+  },
+  {
+   "name": "rayleigh_wave_speed",
+   "title": "Rayleigh surface-wave speed",
+   "params": [
+    {
+     "name": "p_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "s_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "s_speed * np.sqrt(xi)",
+   "args": [
+    1.7320508075688772,
+    1
+   ],
+   "expected": "np.sqrt(2 - 2 / np.sqrt(3))",
+   "why": "A free surface guides a slower wave that combines compression and shear.",
+   "limit": "Homogeneous isotropic half-space with a traction-free surface; requires positive bulk modulus.",
+   "extra": "gamma = (s_speed / p_speed)**2; xi is the root in (0, 1) of xi**3 - 8 * xi**2 + (24 - 16 * gamma) * xi - 16 * (1 - gamma), found by bisection; require(p_speed**2 > 4 * s_speed**2 / 3, \"wave speeds imply nonpositive bulk modulus\")",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "head_wave_travel_time",
+   "title": "Head-wave travel time below a single layer",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "speed1",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "speed2",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "distance / speed2 + 2 * thickness * np.sqrt(speed2**2 - speed1**2) / (speed1 * speed2)",
+   "args": [
+    4,
+    1,
+    1,
+    2
+   ],
+   "expected": "2 + np.sqrt(3)",
+   "why": "A wave critically refracted along a faster layer overtakes the direct wave at long range.",
+   "limit": "Flat layer over a faster half-space, surface source and receiver; only beyond the critical distance.",
+   "extra": "require(speed2 > speed1, \"second medium must be faster\"); require(distance >= 2 * thickness * speed1 / np.sqrt(speed2**2 - speed1**2), \"distance is inside the critical distance\")",
+   "output_unit": "s"
+  },
+  {
+   "name": "crossover_distance",
+   "title": "Head-wave crossover distance",
+   "params": [
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "speed1",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "speed2",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * thickness * np.sqrt((speed2 + speed1) / (speed2 - speed1))",
+   "args": [
+    1,
+    1,
+    3
+   ],
+   "expected": "2 * np.sqrt(2)",
+   "why": "The range at which the refracted wave arrives first measures the depth of the layer.",
+   "limit": "Flat layer over a faster half-space; direct and head-wave times are equal there.",
+   "extra": "require(speed2 > speed1, \"second medium must be faster\")",
+   "output_unit": "m"
+  },
+  {
+   "name": "love_wave_angular_frequency",
+   "title": "Fundamental Love-wave dispersion in a layer over a half-space",
+   "params": [
+    {
+     "name": "phase_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "layer_s_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "halfspace_s_speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "layer_rigidity",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "halfspace_rigidity",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "phase_speed * np.arctan(halfspace_rigidity * s2 / (layer_rigidity * s1)) / (thickness * s1)",
+   "args": [
+    1.4142135623730951,
+    1,
+    1,
+    2,
+    1,
+    1
+   ],
+   "expected": "np.sqrt(2) * np.arctan(np.sqrt(0.5))",
+   "why": "Shear waves trapped in a slow surface layer travel at a speed that depends on their period.",
+   "limit": "Fundamental mode of a uniform layer over a faster uniform half-space; phase speed strictly between the two shear speeds.",
+   "extra": "s1 = np.sqrt(phase_speed**2 / layer_s_speed**2 - 1); s2 = np.sqrt(1 - phase_speed**2 / halfspace_s_speed**2); require(phase_speed > layer_s_speed, \"phase speed must exceed the layer shear speed\"); require(phase_speed < halfspace_s_speed, \"phase speed must be below the half-space shear speed\")",
+   "output_unit": "rad/s"
+  },
+  {
+   "name": "ray_parameter",
+   "title": "Ray parameter in a spherically layered Earth",
+   "params": [
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "positive"
+    },
+    {
+     "name": "incidence_angle",
+     "unit": "rad",
+     "kind": "quarter_turn"
+    }
+   ],
+   "expr": "radius * np.sin(incidence_angle) / speed",
+   "args": [
+    2,
+    4,
+    0.5235987755982988
+   ],
+   "expected": "0.25",
+   "why": "Snell's law on a sphere keeps one quantity fixed along each ray, which fixes where it emerges.",
+   "limit": "Spherically symmetric isotropic Earth; incidence angle from the radial direction, between 0 and pi/2.",
+   "extra": "",
+   "output_unit": "s/rad"
+  },
+  {
+   "name": "local_magnitude",
+   "title": "Richter local magnitude",
+   "params": [
+    {
+     "name": "amplitude",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.log10(amplitude / 1e-3) + 1.11 * np.log10(distance / 1e5) + 1.89e-6 * (distance - 1e5) + 3",
+   "args": [
+    0.001,
+    100000.0
+   ],
+   "expected": "3",
+   "why": "A logarithm of recorded amplitude, corrected for distance, ranks earthquakes by size.",
+   "limit": "Wood-Anderson amplitude and hypocentral distance; Hutton and Boore (1987) southern California correction for about 10 to 700 km.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "vertical_travel_time",
+   "title": "Vertical travel time through a tabulated speed profile",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nondecreasing_vector"
+    },
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "positive_vector"
+    }
+   ],
+   "expr": "cumsum(dz * np.log(v2 / v1) / (v2 - v1))",
+   "args": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2.718281828459045
+    ]
+   ],
+   "expected": "[0, 1 / (np.e - 1)]",
+   "why": "Integrating slowness through a reference Earth model predicts arrival times.",
+   "limit": "Speed linear in depth between tabulated points; a repeated depth marks a discontinuity.",
+   "extra": "require(depth.ndim == 1 and depth.size >= 2, \"depth must be a vector with at least two samples\"); require(speed.shape == depth.shape, \"speed must have the same shape as depth\"); require(np.all(np.diff(depth) >= 0), \"depth must not decrease\")",
+   "output_unit": "s"
+  }
+ ],
+ "atmosphere": [
+  {
+   "name": "dry_air_density",
+   "title": "Ideal-gas atmospheric density",
+   "params": [
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "pressure / (R_DRY_AIR * temperature)",
+   "args": [
+    86115.0,
+    300
+   ],
+   "expected": "1",
+   "why": "An equation of state connects atmospheric pressure, temperature and density.",
+   "limit": "Dry ideal air with fixed specific gas constant.",
+   "extra": "",
+   "output_unit": "kg/m^3"
+  },
+  {
+   "name": "scale_height",
+   "title": "Isothermal scale height",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "R_DRY_AIR * temperature / gravity",
+   "args": [
+    300,
+    10
+   ],
+   "expected": "8611.5",
+   "why": "Hydrostatic balance predicts an exponential pressure scale.",
+   "limit": "Dry isothermal atmosphere with constant gravity.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "barometric_pressure",
+   "title": "Isothermal barometric profile",
+   "params": [
+    {
+     "name": "surface_pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "surface_pressure * np.exp(-gravity * height / (R_DRY_AIR * temperature))",
+   "args": [
+    100000.0,
+    0,
+    300,
+    10
+   ],
+   "expected": "1e5",
+   "why": "Vertical pressure structure follows from hydrostatic balance and the gas law.",
+   "limit": "Isothermal column; signed height is relative to the reference level.",
+   "extra": "",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "potential_temperature",
+   "title": "Poisson potential temperature",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "temperature * (reference_pressure / pressure)**(R_DRY_AIR / CP_DRY_AIR)",
+   "args": [
+    300,
+    100000.0,
+    100000.0
+   ],
+   "expected": "300",
+   "why": "Adiabatic temperature adjustment permits comparisons across pressure levels.",
+   "limit": "Dry ideal gas with constant heat capacity; not equivalent potential temperature.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "temperature_from_potential",
+   "title": "Inverse potential temperature",
+   "params": [
+    {
+     "name": "potential_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "potential_temperature * (pressure / reference_pressure)**(R_DRY_AIR / CP_DRY_AIR)",
+   "args": [
+    300,
+    100000.0,
+    100000.0
+   ],
+   "expected": "300",
+   "why": "Potential-temperature inversion recovers the local dry-air temperature.",
+   "limit": "Uses the same dry-air heat capacity and reference pressure convention.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "dry_adiabatic_lapse_rate",
+   "title": "Dry adiabatic lapse rate",
+   "params": [
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "heat_capacity",
+     "unit": "J/(kg K)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "gravity / heat_capacity",
+   "args": [
+    10,
+    1000
+   ],
+   "expected": ".01",
+   "why": "Rising dry parcels cool as they perform expansion work.",
+   "limit": "Returned positive lapse magnitude in K per metre; temperature decreases upward.",
+   "extra": "",
+   "output_unit": "K/m"
+  },
+  {
+   "name": "saturation_vapor_pressure",
+   "title": "Integrated Clausius-Clapeyron approximation",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "temperature"
+    }
+   ],
+   "expr": "611.2 * np.exp((2.5e6 / R_VAPOR) * (1 / 273.15 - 1 / temperature))",
+   "args": [
+    273.15
+   ],
+   "expected": "611.2",
+   "why": "Phase equilibrium makes saturation vapor pressure strongly temperature dependent.",
+   "limit": "Liquid-water reference with constant latent heat; restricted to 180-330 K, not an ice saturation formula.",
+   "extra": "",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "mixing_ratio",
+   "title": "Water-vapor mass mixing ratio",
+   "params": [
+    {
+     "name": "vapor_pressure",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "total_pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "EPSILON_WATER * vapor_pressure / (total_pressure - vapor_pressure)",
+   "args": [
+    1000,
+    100000
+   ],
+   "expected": "EPSILON_WATER/99",
+   "why": "Partial pressure determines water mass per unit dry-air mass.",
+   "limit": "Ideal vapor mixture; vapor pressure must be below total pressure.",
+   "extra": "require(vapor_pressure < total_pressure, \"vapor pressure must be below total pressure\")",
+   "output_unit": "kg/kg dry air"
+  },
+  {
+   "name": "specific_humidity",
+   "title": "Specific humidity from mixing ratio",
+   "params": [
+    {
+     "name": "mixing_ratio",
+     "unit": "kg/kg dry air",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "mixing_ratio / (1 + mixing_ratio)",
+   "args": [
+    1
+   ],
+   "expected": ".5",
+   "why": "Changing the denominator connects two moisture conventions.",
+   "limit": "Output is water mass per total moist-air mass.",
+   "extra": "",
+   "output_unit": "kg/kg moist air"
+  },
+  {
+   "name": "virtual_temperature",
+   "title": "Virtual-temperature buoyancy correction",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "specific_humidity",
+     "unit": "kg/kg moist air",
+     "kind": "fraction"
+    }
+   ],
+   "expr": "temperature * (1 + (1 / EPSILON_WATER - 1) * specific_humidity)",
+   "args": [
+    300,
+    0
+   ],
+   "expected": "300",
+   "why": "Moist air is less dense than dry air at the same pressure and temperature.",
+   "limit": "Ideal vapor mixture without suspended liquid or ice.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "relative_humidity",
+   "title": "Relative humidity fraction",
+   "params": [
+    {
+     "name": "vapor_pressure",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "saturation_pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "vapor_pressure / saturation_pressure",
+   "args": [
+    500,
+    1000
+   ],
+   "expected": ".5",
+   "why": "Humidity compares actual vapor pressure to a saturation reference.",
+   "limit": "Returned fraction may exceed one during supersaturation; no clipping.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "coriolis_parameter",
+   "title": "Rotating-Earth Coriolis parameter",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "2 * OMEGA_EARTH * np.sin(latitude)",
+   "args": [
+    0
+   ],
+   "expected": "0",
+   "why": "Latitude controls rotational deflection and geophysical balance.",
+   "limit": "Spherical rotating-Earth approximation; input is radians.",
+   "extra": "",
+   "output_unit": "1/s"
+  },
+  {
+   "name": "brunt_vaisala_squared",
+   "title": "Dry static stability",
+   "params": [
+    {
+     "name": "potential_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "vertical_gradient",
+     "unit": "K/m",
+     "kind": "real"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "gravity * vertical_gradient / potential_temperature",
+   "args": [
+    300,
+    0.003,
+    10
+   ],
+   "expected": ".0001",
+   "why": "A potential-temperature gradient determines dry stratification stability.",
+   "limit": "Returns signed N squared; negative values represent instability rather than an imaginary frequency.",
+   "extra": "",
+   "output_unit": "1/s^2"
+  },
+  {
+   "name": "geostrophic_speed",
+   "title": "Pressure-gradient geostrophic component",
+   "params": [
+    {
+     "name": "pressure_gradient",
+     "unit": "Pa/m",
+     "kind": "real"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "pressure_gradient / (density * coriolis)",
+   "args": [
+    0.001,
+    1,
+    0.0001
+   ],
+   "expected": "10",
+   "why": "Pressure gradients and rotation can balance in large-scale flow.",
+   "limit": "Signed cross-gradient component; invalid at the equator where coriolis vanishes.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "rossby_number",
+   "title": "Rossby dynamical scaling",
+   "params": [
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "length",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "speed / (np.abs(coriolis) * length)",
+   "args": [
+    10,
+    1000000.0,
+    0.0001
+   ],
+   "expected": ".1",
+   "why": "Rossby number measures inertia relative to rotational effects.",
+   "limit": "Magnitude scaling only; small values support but do not prove geostrophic balance.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "barometer_column_height",
+   "title": "Liquid barometer column height",
+   "params": [
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "liquid_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "pressure / (liquid_density * gravity)",
+   "args": [
+    12,
+    2,
+    3
+   ],
+   "expected": "2",
+   "why": "The weight of a liquid column balances the pressure of the air above it.",
+   "limit": "Incompressible liquid with a vacuum above the column; vapour pressure and capillarity are neglected.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "two_layer_temperature",
+   "title": "Troposphere-stratosphere temperature profile",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "surface_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "lapse_rate",
+     "unit": "K/m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "tropopause_height",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "surface_temperature - lapse_rate * np.minimum(height, tropopause_height)",
+   "args": [
+    5000,
+    288,
+    0.006,
+    10000
+   ],
+   "expected": "258",
+   "why": "Temperature falls with height up to the tropopause and stays constant above it.",
+   "limit": "Constant-lapse troposphere under an isothermal lower stratosphere; the stratospheric warming above about 20 km is omitted.",
+   "extra": "require(surface_temperature > lapse_rate * tropopause_height, \"tropopause temperature must be positive\")",
+   "output_unit": "K"
+  },
+  {
+   "name": "richardson_number",
+   "title": "Gradient Richardson number",
+   "params": [
+    {
+     "name": "brunt_vaisala_squared",
+     "unit": "1/s^2",
+     "kind": "real"
+    },
+    {
+     "name": "shear",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "brunt_vaisala_squared / shear**2",
+   "args": [
+    0.0001,
+    0.02
+   ],
+   "expected": ".25",
+   "why": "Stratification suppresses the turbulence that vertical wind shear generates.",
+   "limit": "Signed; stratified shear flow can become unstable only where it falls below 1/4 (Miles-Howard).",
+   "extra": "require(shear != 0, \"shear must be nonzero\")",
+   "output_unit": "1"
+  },
+  {
+   "name": "surface_pressure_tendency",
+   "title": "Surface pressure tendency from column divergence",
+   "params": [
+    {
+     "name": "mean_divergence",
+     "unit": "1/s",
+     "kind": "real"
+    },
+    {
+     "name": "surface_pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    }
+   ],
+   "expr": "-surface_pressure * mean_divergence",
+   "args": [
+    1e-05,
+    100000.0
+   ],
+   "expected": "-1",
+   "why": "Mass leaving the column through net horizontal divergence lowers the surface pressure.",
+   "limit": "Hydrostatic column with no surface mass flux; divergence at one level is far larger than the column mean.",
+   "extra": "",
+   "output_unit": "Pa/s"
+  },
+  {
+   "name": "rossby_wave_speed",
+   "title": "Barotropic Rossby-wave zonal phase speed",
+   "params": [
+    {
+     "name": "zonal_wind",
+     "unit": "m/s",
+     "kind": "real"
+    },
+    {
+     "name": "beta",
+     "unit": "1/(m s)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "wavenumber",
+     "unit": "rad/m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "zonal_wind - beta / wavenumber**2",
+   "args": [
+    10,
+    2e-11,
+    1e-06
+   ],
+   "expected": "-10",
+   "why": "The latitude gradient of the Coriolis parameter makes vorticity waves drift westward.",
+   "limit": "Nondivergent barotropic flow on a beta plane; positive values are eastward.",
+   "extra": "",
+   "output_unit": "m/s"
+  }
+ ],
+ "climate": [
+  {
+   "name": "absorbed_solar",
+   "title": "Planetary mean absorbed sunlight",
+   "params": [
+    {
+     "name": "solar_constant",
+     "unit": "W/m^2",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "albedo",
+     "unit": "1",
+     "kind": "fraction"
+    }
+   ],
+   "expr": "solar_constant * (1 - albedo) / 4",
+   "args": [
+    1360,
+    0.3
+   ],
+   "expected": "238",
+   "why": "Sphere geometry and reflection set the global mean solar input.",
+   "limit": "Global mean rather than local insolation; fixed bolometric albedo.",
+   "extra": "",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "effective_temperature",
+   "title": "Radiative equilibrium temperature",
+   "params": [
+    {
+     "name": "absorbed_flux",
+     "unit": "W/m^2",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "emissivity",
+     "unit": "1",
+     "kind": "open_fraction"
+    }
+   ],
+   "expr": "(absorbed_flux / (emissivity * SIGMA_SB))**0.25",
+   "args": [
+    459.300327939,
+    1
+   ],
+   "expected": "300",
+   "why": "Stefan-Boltzmann emission links an energy balance to temperature.",
+   "limit": "Single emitting level in equilibrium; not the surface temperature of a greenhouse atmosphere.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "outgoing_longwave",
+   "title": "Greybody infrared emission",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "emissivity",
+     "unit": "1",
+     "kind": "fraction"
+    }
+   ],
+   "expr": "emissivity * SIGMA_SB * temperature**4",
+   "args": [
+    300,
+    1
+   ],
+   "expected": "459.300327939",
+   "why": "A greybody approximation maps temperature to outgoing radiant flux.",
+   "limit": "Constant emissivity; not a spectral atmospheric radiative-transfer solver.",
+   "extra": "",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "planck_feedback",
+   "title": "Blackbody restoring derivative",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "emissivity",
+     "unit": "1",
+     "kind": "open_fraction"
+    }
+   ],
+   "expr": "4 * emissivity * SIGMA_SB * temperature**3",
+   "args": [
+    300,
+    1
+   ],
+   "expected": "6.12400437252",
+   "why": "The temperature derivative of emission supplies a radiative restoring coefficient.",
+   "limit": "Positive restoring magnitude in W per square metre per kelvin; other feedbacks are separate.",
+   "extra": "",
+   "output_unit": "W/(m^2 K)"
+  },
+  {
+   "name": "co2_forcing",
+   "title": "Logarithmic CO2 forcing approximation",
+   "params": [
+    {
+     "name": "concentration",
+     "unit": "ppm",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_concentration",
+     "unit": "ppm",
+     "kind": "positive"
+    },
+    {
+     "name": "coefficient",
+     "unit": "W/m^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "coefficient * np.log(concentration / reference_concentration)",
+   "args": [
+    560,
+    280,
+    5.35
+   ],
+   "expected": "5.35*np.log(2)",
+   "why": "A logarithmic approximation connects concentration changes to a forcing perturbation.",
+   "limit": "User-supplied coefficient; an educational parameterization, not a current assessed forcing product.",
+   "extra": "",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "equilibrium_warming",
+   "title": "Linear climate response",
+   "params": [
+    {
+     "name": "forcing",
+     "unit": "W/m^2",
+     "kind": "real"
+    },
+    {
+     "name": "restoring",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "forcing / restoring",
+   "args": [
+    4,
+    2
+   ],
+   "expected": "2",
+   "why": "A restoring feedback maps steady forcing to equilibrium temperature change.",
+   "limit": "Stable linear response with a positive net restoring coefficient.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "heat_capacity_column",
+   "title": "Mixed-layer areal heat capacity",
+   "params": [
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "heat_capacity",
+     "unit": "J/(kg K)",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * heat_capacity * depth",
+   "args": [
+    1000,
+    4000,
+    50
+   ],
+   "expected": "2e8",
+   "why": "Mixed-layer depth determines how much energy is needed for warming.",
+   "limit": "Uniform slab with constant material properties.",
+   "extra": "",
+   "output_unit": "J/(m^2 K)"
+  },
+  {
+   "name": "response_timescale",
+   "title": "Climate relaxation time",
+   "params": [
+    {
+     "name": "areal_heat_capacity",
+     "unit": "J/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "restoring",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "areal_heat_capacity / restoring",
+   "args": [
+    200000000.0,
+    2
+   ],
+   "expected": "1e8",
+   "why": "Heat storage delays the equilibrium response to forcing.",
+   "limit": "One-box linear model; output is seconds.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "step_temperature",
+   "title": "Transient one-box warming",
+   "params": [
+    {
+     "name": "forcing",
+     "unit": "W/m^2",
+     "kind": "real"
+    },
+    {
+     "name": "restoring",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "areal_heat_capacity",
+     "unit": "J/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "forcing / restoring * (-np.expm1(-restoring * time / areal_heat_capacity))",
+   "args": [
+    4,
+    2,
+    2,
+    0
+   ],
+   "expected": "0",
+   "why": "A step forcing exposes the lag between forcing and temperature adjustment.",
+   "limit": "Zero initial anomaly and constant parameters; no deep-ocean exchange.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "heat_uptake",
+   "title": "Areal heat-content change",
+   "params": [
+    {
+     "name": "areal_heat_capacity",
+     "unit": "J/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature_change",
+     "unit": "K",
+     "kind": "real"
+    }
+   ],
+   "expr": "areal_heat_capacity * temperature_change",
+   "args": [
+    200000000.0,
+    2
+   ],
+   "expected": "4e8",
+   "why": "Energy accounting connects warming to ocean heat storage.",
+   "limit": "One uniform layer; temperature_change is an anomaly.",
+   "extra": "",
+   "output_unit": "J/m^2"
+  },
+  {
+   "name": "ice_albedo",
+   "title": "Smooth illustrative ice-albedo transition",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "cold_albedo",
+     "unit": "1",
+     "kind": "fraction"
+    },
+    {
+     "name": "warm_albedo",
+     "unit": "1",
+     "kind": "fraction"
+    },
+    {
+     "name": "transition_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "width",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "warm_albedo + (cold_albedo - warm_albedo) * (1 - np.tanh((temperature - transition_temperature) / width)) / 2",
+   "args": [
+    273,
+    0.6,
+    0.2,
+    273,
+    5
+   ],
+   "expected": ".4",
+   "why": "Temperature-dependent reflection illustrates ice-albedo feedback.",
+   "limit": "Illustrative smooth closure, not a calibrated satellite albedo retrieval.",
+   "extra": "require(cold_albedo >= warm_albedo, \"cold albedo must be at least warm albedo\")",
+   "output_unit": "1"
+  },
+  {
+   "name": "carbon_airborne_fraction",
+   "title": "Carbon budget fraction",
+   "params": [
+    {
+     "name": "atmospheric_increase",
+     "unit": "kg C",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "emissions",
+     "unit": "kg C",
+     "kind": "positive"
+    }
+   ],
+   "expr": "atmospheric_increase / emissions",
+   "args": [
+    4,
+    10
+   ],
+   "expected": ".4",
+   "why": "A carbon mass budget partitions emissions and atmospheric accumulation.",
+   "limit": "Same time interval and carbon mass units; feedback-driven values above one are not clipped.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "carbon_decay",
+   "title": "Single-reservoir carbon relaxation",
+   "params": [
+    {
+     "name": "initial_excess",
+     "unit": "kg C",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "timescale",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "initial_excess * np.exp(-time / timescale)",
+   "args": [
+    2,
+    1,
+    0.6931471805599453
+   ],
+   "expected": "1",
+   "why": "A reservoir model illustrates first-order removal and residence time.",
+   "limit": "Not a realistic complete atmospheric CO2 impulse response, which has multiple timescales.",
+   "extra": "",
+   "output_unit": "kg C"
+  },
+  {
+   "name": "thermal_expansion_sea_level",
+   "title": "Steric sea-level slab approximation",
+   "params": [
+    {
+     "name": "expansion_coefficient",
+     "unit": "1/K",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature_change",
+     "unit": "K",
+     "kind": "real"
+    }
+   ],
+   "expr": "expansion_coefficient * depth * temperature_change",
+   "args": [
+    0.0002,
+    1000,
+    1
+   ],
+   "expected": ".2",
+   "why": "Ocean expansion connects heat uptake to a sea-level contribution.",
+   "limit": "Constant coefficient and uniform warming; salinity and pressure dependence are omitted.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "water_equivalent_sea_level",
+   "title": "Mass-equivalent sea-level contribution",
+   "params": [
+    {
+     "name": "water_mass",
+     "unit": "kg",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "ocean_area",
+     "unit": "m^2",
+     "kind": "positive"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "water_mass / (ocean_area * water_density)",
+   "args": [
+    1000000000000.0,
+    1000000000000.0,
+    1000
+   ],
+   "expected": ".001",
+   "why": "Added ocean water changes mean level through mass conservation.",
+   "limit": "Uniform ocean area and density; gravitational fingerprints and land motion are omitted.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "greenhouse_surface_temperature",
+   "title": "Surface temperature under one absorbing atmospheric layer",
+   "params": [
+    {
+     "name": "absorbed_flux",
+     "unit": "W/m^2",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "layer_emissivity",
+     "unit": "1",
+     "kind": "fraction"
+    }
+   ],
+   "expr": "(2 * absorbed_flux / ((2 - layer_emissivity) * SIGMA_SB))**0.25",
+   "args": [
+    459.300327939,
+    0
+   ],
+   "expected": "300",
+   "why": "A layer that absorbs and re-emits infrared returns part of the surface emission and warms the ground.",
+   "limit": "Blackbody surface, a grey isothermal layer transparent to sunlight; the layer temperature is the surface temperature over 2**0.25.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "daily_insolation",
+   "title": "Daily-mean top-of-atmosphere insolation",
+   "params": [
+    {
+     "name": "solar_constant",
+     "unit": "W/m^2",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "declination",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "distance_ratio",
+     "unit": "1",
+     "kind": "positive"
+    }
+   ],
+   "expr": "solar_constant * distance_ratio**2 / np.pi * (h0 * np.sin(latitude) * np.sin(declination) + np.cos(latitude) * np.cos(declination) * np.sin(h0))",
+   "args": [
+    1361,
+    0,
+    0,
+    1
+   ],
+   "expected": "1361 / np.pi",
+   "why": "Latitude, solar declination and Earth-Sun distance set the sunlight a latitude receives over a day.",
+   "limit": "Declination fixed over the day, no atmosphere; the sunset hour angle h0 is clipped for polar day and night.",
+   "extra": "h0 = np.arccos(np.clip(-np.tan(latitude) * np.tan(declination), -1, 1))",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "radiative_convective_temperature",
+   "title": "Radiative-convective equilibrium temperature profile",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "effective_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "lapse_rate",
+     "unit": "K/m",
+     "kind": "positive"
+    },
+    {
+     "name": "emission_height",
+     "unit": "m",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "np.maximum(effective_temperature + lapse_rate * (emission_height - height), effective_temperature / 2**0.25)",
+   "args": [
+    0,
+    255,
+    0.0065,
+    5000
+   ],
+   "expected": "287.5",
+   "why": "Convection holds the troposphere at a fixed lapse rate below a radiatively balanced stratosphere.",
+   "limit": "Grey optically thin stratosphere at the skin temperature; the troposphere passes through the effective temperature at the emission height.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "equilibrium_solar_constant",
+   "title": "Solar constant that holds a planet with ice-albedo feedback at a given temperature",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "emissivity",
+     "unit": "1",
+     "kind": "open_fraction"
+    },
+    {
+     "name": "cold_albedo",
+     "unit": "1",
+     "kind": "fraction"
+    },
+    {
+     "name": "warm_albedo",
+     "unit": "1",
+     "kind": "fraction"
+    },
+    {
+     "name": "transition_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "width",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "4 * emissivity * SIGMA_SB * temperature**4 / (1 - ice_albedo(temperature, cold_albedo, warm_albedo, transition_temperature, width))",
+   "args": [
+    288,
+    1,
+    0.6,
+    0.2,
+    288,
+    5
+   ],
+   "expected": "4 * 5.670374419e-8 * 288**4 / 0.6",
+   "why": "Inverting the energy balance traces every equilibrium, including the unstable branch between a warm and an ice-covered state.",
+   "limit": "Zero-dimensional greybody balance with the ice_albedo closure; equilibria with a negative slope dS/dT are unstable.",
+   "extra": "require(cold_albedo < 1, \"cold albedo must be below one\")",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "red_noise_spectrum",
+   "title": "Temperature spectrum of a one-box climate driven by white noise",
+   "params": [
+    {
+     "name": "frequency",
+     "unit": "Hz",
+     "kind": "real"
+    },
+    {
+     "name": "forcing_spectrum",
+     "unit": "W^2/(m^4 Hz)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "restoring",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "areal_heat_capacity",
+     "unit": "J/(m^2 K)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "forcing_spectrum / (restoring**2 + (2 * np.pi * frequency * areal_heat_capacity)**2)",
+   "args": [
+    0,
+    4,
+    2,
+    1
+   ],
+   "expected": "1",
+   "why": "Heat capacity integrates random weather forcing into slow red-noise climate variability.",
+   "limit": "Linear one-box model with white-noise forcing; two-sided spectra.",
+   "extra": "",
+   "output_unit": "K^2/Hz"
+  },
+  {
+   "name": "methane_forcing",
+   "title": "Methane radiative forcing (Myhre et al. 1998)",
+   "params": [
+    {
+     "name": "concentration",
+     "unit": "ppb",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_concentration",
+     "unit": "ppb",
+     "kind": "positive"
+    },
+    {
+     "name": "nitrous_oxide",
+     "unit": "ppb",
+     "kind": "positive"
+    }
+   ],
+   "expr": "0.036 * (np.sqrt(concentration) - np.sqrt(reference_concentration)) - (f(concentration, nitrous_oxide) - f(reference_concentration, nitrous_oxide))",
+   "args": [
+    900,
+    400,
+    1e-16
+   ],
+   "expected": "0.36",
+   "why": "Methane forcing grows as a square root of concentration, less the band it shares with nitrous oxide.",
+   "limit": "Simplified fit to line-by-line calculations, valid near present-day concentrations.",
+   "extra": "f(M, N) = 0.47 * np.log(1 + 2.01e-5 * (M * N)**0.75 + 5.31e-15 * M * (M * N)**1.52)",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "nitrous_oxide_forcing",
+   "title": "Nitrous oxide radiative forcing (Myhre et al. 1998)",
+   "params": [
+    {
+     "name": "concentration",
+     "unit": "ppb",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_concentration",
+     "unit": "ppb",
+     "kind": "positive"
+    },
+    {
+     "name": "methane",
+     "unit": "ppb",
+     "kind": "positive"
+    }
+   ],
+   "expr": "0.12 * (np.sqrt(concentration) - np.sqrt(reference_concentration)) - (f(methane, concentration) - f(methane, reference_concentration))",
+   "args": [
+    400,
+    100,
+    1e-16
+   ],
+   "expected": "1.2",
+   "why": "Nitrous oxide forcing grows as a square root of concentration, less the band it shares with methane.",
+   "limit": "Simplified fit to line-by-line calculations, valid near present-day concentrations.",
+   "extra": "f(M, N) = 0.47 * np.log(1 + 2.01e-5 * (M * N)**0.75 + 5.31e-15 * M * (M * N)**1.52)",
+   "output_unit": "W/m^2"
+  },
+  {
+   "name": "gregory_regression",
+   "title": "Forcing and feedback from a regression of imbalance on warming",
+   "params": [
+    {
+     "name": "temperature_change",
+     "unit": "K",
+     "kind": "vector"
+    },
+    {
+     "name": "imbalance",
+     "unit": "W/m^2",
+     "kind": "vector"
+    }
+   ],
+   "expr": "least squares of imbalance = forcing - restoring * temperature_change",
+   "args": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     4,
+     2.8,
+     1.6
+    ]
+   ],
+   "expected": "[4, 1.2]",
+   "why": "In a run with constant forcing, the top-of-atmosphere imbalance falls linearly with warming, so a straight-line fit gives both.",
+   "limit": "Assumes constant forcing and feedback; returns [forcing W/m^2, restoring W/(m^2 K)].",
+   "extra": "require(temperature_change.ndim == 1 and temperature_change.size >= 2, \"vector of at least two samples\")",
+   "output_unit": "[W/m^2, W/(m^2 K)]"
+  }
+ ],
+ "oceanography": [
+  {
+   "name": "hydrostatic_pressure",
+   "title": "Ocean hydrostatic pressure",
+   "params": [
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * gravity * depth",
+   "args": [
+    1000,
+    100,
+    10
+   ],
+   "expected": "1e6",
+   "why": "Water weight connects pressure and depth.",
+   "limit": "Gauge pressure with constant density; atmospheric pressure is excluded.",
+   "extra": "",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "linear_density",
+   "title": "Linear seawater equation of state",
+   "params": [
+    {
+     "name": "reference_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature_anomaly",
+     "unit": "K",
+     "kind": "real"
+    },
+    {
+     "name": "salinity_anomaly",
+     "unit": "g/kg",
+     "kind": "real"
+    },
+    {
+     "name": "thermal_expansion",
+     "unit": "1/K",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "haline_contraction",
+     "unit": "kg/g",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "reference_density * (1 - thermal_expansion * temperature_anomaly + haline_contraction * salinity_anomaly)",
+   "args": [
+    1000,
+    1,
+    0,
+    0.0002,
+    0.0008
+   ],
+   "expected": "999.8",
+   "why": "Temperature and salinity both change buoyancy.",
+   "limit": "Local linearization around a supplied reference; not TEOS-10 and no pressure dependence.",
+   "extra": "",
+   "output_unit": "kg/m^3"
+  },
+  {
+   "name": "buoyancy_frequency_squared",
+   "title": "Ocean density stratification",
+   "params": [
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "upward_density_gradient",
+     "unit": "kg/m^4",
+     "kind": "real"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "-gravity * upward_density_gradient / density",
+   "args": [
+    1000,
+    -0.01,
+    10
+   ],
+   "expected": ".0001",
+   "why": "Vertical density gradients control internal oscillations and convection.",
+   "limit": "Coordinate increases upward; negative output denotes unstable stratification.",
+   "extra": "",
+   "output_unit": "1/s^2"
+  },
+  {
+   "name": "geostrophic_current",
+   "title": "Sea-surface geostrophic component",
+   "params": [
+    {
+     "name": "surface_slope",
+     "unit": "1",
+     "kind": "real"
+    },
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "gravity * surface_slope / coriolis",
+   "args": [
+    1e-05,
+    0.0001,
+    10
+   ],
+   "expected": "1",
+   "why": "Sea-surface tilt can reveal large-scale currents.",
+   "limit": "Signed cross-slope component away from the equator; no ageostrophic velocity.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "ekman_transport",
+   "title": "Cross-wind Ekman transport magnitude",
+   "params": [
+    {
+     "name": "wind_stress",
+     "unit": "Pa",
+     "kind": "real"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "wind_stress / (density * coriolis)",
+   "args": [
+    0.1,
+    1000,
+    0.0001
+   ],
+   "expected": "1",
+   "why": "Wind stress and rotation drive vertically integrated transport.",
+   "limit": "Signed cross-wind component per unit width; direction requires a consistent vector convention.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "inertial_period",
+   "title": "Inertial oscillation period",
+   "params": [
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "2 * np.pi / np.abs(coriolis)",
+   "args": [
+    0.0001
+   ],
+   "expected": "2*np.pi*1e4",
+   "why": "Rotation supplies a natural timescale for ocean motion.",
+   "limit": "No pressure gradient or friction; invalid at zero Coriolis parameter.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "shallow_wave_speed",
+   "title": "Shallow-water gravity wave",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(gravity * depth)",
+   "args": [
+    100,
+    10
+   ],
+   "expected": "np.sqrt(1000)",
+   "why": "Long surface waves respond to water depth through gravity.",
+   "limit": "Wavelength much greater than depth, small amplitude, no dispersion.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "deep_wave_speed",
+   "title": "Deep-water phase speed",
+   "params": [
+    {
+     "name": "wavelength",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(gravity * wavelength / (2 * np.pi))",
+   "args": [
+    6.283185307179586,
+    10
+   ],
+   "expected": "np.sqrt(10)",
+   "why": "Short waves relative to depth propagate dispersively.",
+   "limit": "Deep-water small-amplitude gravity waves without capillarity.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "wave_angular_frequency",
+   "title": "Finite-depth dispersion relation",
+   "params": [
+    {
+     "name": "wavenumber",
+     "unit": "1/m",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(gravity * wavenumber * np.tanh(wavenumber * depth))",
+   "args": [
+    1,
+    1,
+    10
+   ],
+   "expected": "np.sqrt(10*np.tanh(1))",
+   "why": "The dispersion relation bridges shallow and deep gravity waves.",
+   "limit": "Linear inviscid surface gravity wave, no current or surface tension.",
+   "extra": "",
+   "output_unit": "rad/s"
+  },
+  {
+   "name": "deep_group_speed",
+   "title": "Deep-water group speed",
+   "params": [
+    {
+     "name": "wavelength",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "0.5 * np.sqrt(gravity * wavelength / (2 * np.pi))",
+   "args": [
+    6.283185307179586,
+    10
+   ],
+   "expected": ".5*np.sqrt(10)",
+   "why": "Wave energy travels at group speed rather than crest phase speed.",
+   "limit": "Deep-water gravity waves; group speed is half phase speed.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "rossby_radius",
+   "title": "Baroclinic deformation scale",
+   "params": [
+    {
+     "name": "buoyancy_frequency",
+     "unit": "1/s",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "buoyancy_frequency * depth / (np.pi * np.abs(coriolis))",
+   "args": [
+    0.01,
+    1000,
+    0.0001
+   ],
+   "expected": "1e5/np.pi",
+   "why": "Stratification and rotation set a horizontal adjustment scale.",
+   "limit": "First-mode constant-N rigid-boundary estimate N H over pi f; not a general layered solution.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "reduced_gravity",
+   "title": "Two-layer reduced gravity",
+   "params": [
+    {
+     "name": "density_difference",
+     "unit": "kg/m^3",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "reference_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "gravity * density_difference / reference_density",
+   "args": [
+    2,
+    1000,
+    10
+   ],
+   "expected": ".02",
+   "why": "A small density contrast slows internal waves relative to surface waves.",
+   "limit": "Boussinesq small density contrast; output is acceleration.",
+   "extra": "",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "internal_wave_speed",
+   "title": "Two-layer internal long wave",
+   "params": [
+    {
+     "name": "reduced_gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "upper_depth",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "lower_depth",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(reduced_gravity * upper_depth * lower_depth / (upper_depth + lower_depth))",
+   "args": [
+    0.02,
+    100,
+    100
+   ],
+   "expected": "1",
+   "why": "Layer depths and buoyancy jointly set internal long-wave speed.",
+   "limit": "Hydrostatic two-layer fluid under a rigid lid.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "volume_transport",
+   "title": "Section volume transport",
+   "params": [
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "real"
+    },
+    {
+     "name": "width",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "speed * width * depth",
+   "args": [
+    1,
+    1000,
+    100
+   ],
+   "expected": "1e5",
+   "why": "Integrating velocity over a section produces volume transport.",
+   "limit": "Uniform signed velocity and rectangular section; output m cubed per second, not Sverdrups.",
+   "extra": "",
+   "output_unit": "m^3/s"
+  },
+  {
+   "name": "tidal_elevation",
+   "title": "Single harmonic tide",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "real"
+    },
+    {
+     "name": "amplitude",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "period",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "phase",
+     "unit": "rad",
+     "kind": "real"
+    }
+   ],
+   "expr": "amplitude * np.cos(2 * np.pi * time / period + phase)",
+   "args": [
+    0,
+    2,
+    12,
+    0
+   ],
+   "expected": "2",
+   "why": "Harmonic constituents provide an inspectable tide representation.",
+   "limit": "One supplied constituent; not a site-specific tide prediction or navigational product.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "gerstner_orbit_radius",
+   "title": "Particle-orbit radius in a Gerstner trochoidal wave",
+   "params": [
+    {
+     "name": "rest_depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "amplitude",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "wavenumber",
+     "unit": "1/m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "amplitude * np.exp(-wavenumber * rest_depth)",
+   "args": [
+    0.6931471805599453,
+    0.5,
+    1
+   ],
+   "expected": "0.25",
+   "why": "Water particles in a deep-water wave move on circles that shrink with depth.",
+   "limit": "Exact nonlinear deep-water solution with closed orbits and no Stokes drift; amplitude * wavenumber must not exceed 1.",
+   "extra": "require(amplitude * wavenumber <= 1, \"a trochoid steeper than amplitude * wavenumber = 1 overturns\")",
+   "output_unit": "m"
+  },
+  {
+   "name": "ekman_spiral_velocity",
+   "title": "Velocity profile of the Ekman spiral",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "wind_stress",
+     "unit": "Pa",
+     "kind": "real"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "eddy_viscosity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "coriolis",
+     "unit": "1/s",
+     "kind": "nonzero"
+    }
+   ],
+   "expr": "v0 * np.exp(-s) * [np.sin(np.pi / 4 - s), np.sign(coriolis) * np.cos(np.pi / 4 - s)]",
+   "args": [
+    0,
+    1,
+    1,
+    0.5,
+    2
+   ],
+   "expected": "[np.sqrt(0.5), np.sqrt(0.5)]",
+   "why": "Wind stress diffused downward by friction turns and decays with depth under rotation.",
+   "limit": "Steady, infinitely deep ocean with constant eddy viscosity; last axis holds downwind and crosswind (right of the wind) components.",
+   "extra": "s = depth / np.sqrt(2 * eddy_viscosity / abs(coriolis)); v0 = wind_stress / (density * np.sqrt(eddy_viscosity * abs(coriolis)))",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "sverdrup_transport",
+   "title": "Sverdrup meridional transport",
+   "params": [
+    {
+     "name": "wind_stress_curl",
+     "unit": "Pa/m",
+     "kind": "real"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "beta",
+     "unit": "1/(m s)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "wind_stress_curl / (density * beta)",
+   "args": [
+    6,
+    2,
+    3
+   ],
+   "expected": "1",
+   "why": "Wind-stress curl drives interior flow across planetary vorticity contours.",
+   "limit": "Steady linear interior balance away from boundaries, friction and the equator; per unit zonal width.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "stommel_streamfunction",
+   "title": "Transport streamfunction of Stommel's wind-driven gyre",
+   "params": [
+    {
+     "name": "x",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "y",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "wind_stress",
+     "unit": "Pa",
+     "kind": "real"
+    },
+    {
+     "name": "basin_width",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "basin_length",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "beta",
+     "unit": "1/(m s)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "friction",
+     "unit": "1/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "wind_stress * basin_length / (np.pi * density * friction) * np.sin(np.pi * y / basin_length) * X",
+   "args": [
+    1,
+    1.5707963267948966,
+    1,
+    2,
+    3.141592653589793,
+    1,
+    0,
+    1
+   ],
+   "expected": "1 - 1 / np.cosh(1)",
+   "why": "Bottom friction and the beta effect confine the return flow to a western boundary current.",
+   "limit": "Steady linear barotropic vorticity balance in a rectangular basin with psi = 0 on the walls; zonal stress -wind_stress * cos(pi y / basin_length).",
+   "extra": "require(x <= basin_width and y <= basin_length); k = np.pi / basin_length; m1, m2 = (-beta +/- np.sqrt(beta**2 + 4 * friction**2 * k**2)) / (2 * friction); X = 1 + ((np.exp(m2 * L) - 1) * np.exp(m1 * (x - L)) + (np.exp(-m1 * L) - 1) * np.exp(m2 * x)) / (1 - np.exp((m2 - m1) * L)) with L = basin_width",
+   "output_unit": "m^3/s"
+  },
+  {
+   "name": "thermohaline_forcing",
+   "title": "Salt forcing that holds Stommel's two-box overturning steady",
+   "params": [
+    {
+     "name": "flow",
+     "unit": "m^3/s",
+     "kind": "real"
+    },
+    {
+     "name": "thermal_flow",
+     "unit": "m^3/s",
+     "kind": "positive"
+    },
+    {
+     "name": "haline_coefficient",
+     "unit": "m^3/s per g/kg",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.abs(flow) * (thermal_flow - flow) / haline_coefficient",
+   "args": [
+    -1,
+    2,
+    3
+   ],
+   "expected": "1",
+   "why": "Salt advection by the overturning must balance the freshwater-driven salinity contrast.",
+   "limit": "Temperatures fixed by fast restoring; two stable states coexist for 0 < forcing < thermal_flow**2 / (4 * haline_coefficient).",
+   "extra": "require(flow <= thermal_flow, \"flow above thermal_flow implies a negative salinity contrast\")",
+   "output_unit": "g/kg m^3/s"
+  },
+  {
+   "name": "abyssal_temperature",
+   "title": "Munk's advective-diffusive abyssal temperature profile",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "bottom_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "top_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "column_height",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "upwelling",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "bottom_temperature + (top_temperature - bottom_temperature) * (np.exp((height - column_height) / h) - np.exp(-column_height / h)) / (1 - np.exp(-column_height / h))",
+   "args": [
+    0.6931471805599453,
+    1,
+    4,
+    1.3862943611198906,
+    1,
+    1
+   ],
+   "expected": "2",
+   "why": "Slow upwelling balanced by downward mixing of heat sets an exponential thermocline.",
+   "limit": "Steady one-dimensional upwelling-diffusion balance with fixed end temperatures; height measured up from the bottom.",
+   "extra": "h = diffusivity / upwelling; require(height <= column_height, \"height must lie inside the column\")",
+   "output_unit": "K"
+  },
+  {
+   "name": "simplified_seawater_density",
+   "title": "Simplified nonlinear seawater density fitted to TEOS-10",
+   "params": [
+    {
+     "name": "conservative_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "absolute_salinity",
+     "unit": "g/kg",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "1026 - a0 * (1 + lambda1 * t / 2 + mu1 * depth) * t + b0 * (1 - lambda2 * s / 2 - mu2 * depth) * s - nu * t * s",
+   "args": [
+    293.15,
+    36,
+    0
+   ],
+   "expected": "1026 - 1.655 * (1 + 0.2976) + 0.76554 * (1 - 0.5 * 7.4914e-4) - 0.024341",
+   "why": "Cabbeling and thermobaricity make seawater density nonlinear in temperature, salinity and pressure.",
+   "limit": "Roquet et al. (2015) S-EOS with NEMO default coefficients; reproduces TEOS-10 gradients, absolute density off by about 1 kg/m^3.",
+   "extra": "t = conservative_temperature - 283.15; s = absolute_salinity - 35; a0 = 0.16550; b0 = 0.76554; lambda1 = 5.9520e-2; lambda2 = 7.4914e-4; mu1 = 1.4970e-4; mu2 = 1.1090e-5; nu = 2.4341e-3",
+   "output_unit": "kg/m^3"
+  }
+ ],
+ "geophysics": [
+  {
+   "name": "sphere_gravity",
+   "title": "Gravitational attraction of a uniform sphere",
+   "params": [
+    {
+     "name": "x",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "density_contrast",
+     "unit": "kg/m^3",
+     "kind": "real"
+    }
+   ],
+   "expr": "G * M * [-x, depth] / (x**2 + depth**2) ** 1.5",
+   "args": [
+    3,
+    4,
+    1,
+    447111334967.41797
+   ],
+   "expected": "[-3, 4]",
+   "why": "A compact body with excess density pulls a plumb line sideways and adds to gravity above it.",
+   "limit": "Observer outside the sphere, which attracts as a point mass; last axis holds the horizontal (toward +x) and downward components.",
+   "extra": "M = 4 / 3 * np.pi * radius**3 * density_contrast; require(x**2 + depth**2 >= radius**2)",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "bouguer_correction",
+   "title": "Attraction of an infinite horizontal slab",
+   "params": [
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "thickness",
+     "unit": "m",
+     "kind": "real"
+    }
+   ],
+   "expr": "2 * np.pi * G * density * thickness",
+   "args": [
+    2384593786.492896,
+    3
+   ],
+   "expected": "3",
+   "why": "Rock between the station and the reference level adds gravity that does not depend on the slab's extent.",
+   "limit": "Flat, uniform, laterally infinite slab; no terrain or curvature correction.",
+   "extra": "",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "free_air_correction",
+   "title": "Free-air gravity correction",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * gravity * height / radius",
+   "args": [
+    100,
+    9.8,
+    6400000
+   ],
+   "expected": "2 * 9.8 * 100 / 6.4e6",
+   "why": "Gravity falls off with distance from the Earth's centre, about 0.3086 mGal per metre at the surface.",
+   "limit": "First order in height / radius for a spherical point-mass Earth; no rock between station and reference.",
+   "extra": "",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "bouguer_anomaly",
+   "title": "Simple Bouguer gravity anomaly",
+   "params": [
+    {
+     "name": "observed_gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "normal_gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "observed_gravity - normal_gravity + 2 * normal_gravity * height / radius - 2 * np.pi * G * density * height",
+   "args": [
+    9.81,
+    9.8,
+    100,
+    2384.5937864928956,
+    6400000
+   ],
+   "expected": "0.01 + 3.0625e-4 - 1e-4",
+   "why": "Removing latitude, height and the rock slab under a station leaves the attraction of buried density contrasts.",
+   "limit": "Free-air and infinite-slab reductions only, without terrain correction.",
+   "extra": "",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "torsion_balance_gravitational_constant",
+   "title": "Gravitational constant from a torsion balance",
+   "params": [
+    {
+     "name": "arm_length",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "separation",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "deflection",
+     "unit": "rad",
+     "kind": "positive"
+    },
+    {
+     "name": "attracting_mass",
+     "unit": "kg",
+     "kind": "positive"
+    },
+    {
+     "name": "period",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2 * np.pi**2 * arm_length * separation**2 * deflection / (attracting_mass * period**2)",
+   "args": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "expected": "0.24 * np.pi**2",
+   "why": "The twist of a suspended rod between large masses, timed by its free swing, measures G.",
+   "limit": "Point masses, a massless rod and attraction by the near large ball only.",
+   "extra": "",
+   "output_unit": "m^3/(kg s^2)"
+  },
+  {
+   "name": "earth_mean_density",
+   "title": "Mean density of the Earth",
+   "params": [
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravitational_constant",
+     "unit": "m^3/(kg s^2)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "3 * gravity / (4 * np.pi * gravitational_constant * radius)",
+   "args": [
+    12.566370614359172,
+    3,
+    1
+   ],
+   "expected": "1",
+   "why": "Surface gravity and the gravitational constant together weigh the Earth.",
+   "limit": "Spherically symmetric, nonrotating Earth; gravitational_constant defaults to constants.G.",
+   "extra": "",
+   "output_unit": "kg/m^3"
+  },
+  {
+   "name": "centrifugal_ratio",
+   "title": "Ratio of centrifugal to gravitational acceleration at the equator",
+   "params": [
+    {
+     "name": "angular_speed",
+     "unit": "rad/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "angular_speed**2 * radius / gravity",
+   "args": [
+    2,
+    3,
+    4
+   ],
+   "expected": "3",
+   "why": "Rotation flattens a planet in proportion to how strongly it competes with gravity.",
+   "limit": "Equatorial ratio with surface gravity; the geodetic m uses GM / (a b) instead.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "homogeneous_flattening",
+   "title": "Flattening of a slowly rotating homogeneous fluid planet",
+   "params": [
+    {
+     "name": "centrifugal_ratio",
+     "unit": "1",
+     "kind": "small_fraction"
+    }
+   ],
+   "expr": "5 * centrifugal_ratio / 4",
+   "args": [
+    0.08
+   ],
+   "expected": "0.1",
+   "why": "A uniform self-gravitating fluid in rotation settles into an oblate spheroid.",
+   "limit": "First order in rotation (Maclaurin spheroid); centrifugal_ratio at most 0.1.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "clairaut_gravity",
+   "title": "Gravity on a rotating spheroid from Clairaut's theorem",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "equatorial_gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "flattening",
+     "unit": "1",
+     "kind": "open_fraction"
+    },
+    {
+     "name": "centrifugal_ratio",
+     "unit": "1",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "equatorial_gravity * (1 + (5 * centrifugal_ratio / 2 - flattening) * np.sin(latitude) ** 2)",
+   "args": [
+    0.5235987755982988,
+    10,
+    0.003,
+    0.004
+   ],
+   "expected": "10.0175",
+   "why": "The increase of gravity toward the poles measures the flattening without any surveying.",
+   "limit": "First order in flattening and rotation for a hydrostatic spheroid; no sin^4 term.",
+   "extra": "",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "normal_gravity",
+   "title": "Normal gravity on the GRS80 ellipsoid",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "gamma_e * (1 + k * np.sin(latitude) ** 2) / np.sqrt(1 - e2 * np.sin(latitude) ** 2)",
+   "args": [
+    1.5707963267948966
+   ],
+   "expected": "9.8321863685",
+   "why": "The reference field that gravity anomalies are measured against.",
+   "limit": "Somigliana's closed form on the GRS80 ellipsoid surface.",
+   "extra": "gamma_e = 9.7803267715; k = 0.001931851353; e2 = 0.00669438002290",
+   "output_unit": "m/s^2"
+  },
+  {
+   "name": "flattening_from_j2",
+   "title": "Flattening of a hydrostatic Earth from its J2",
+   "params": [
+    {
+     "name": "j2",
+     "unit": "1",
+     "kind": "real"
+    },
+    {
+     "name": "centrifugal_ratio",
+     "unit": "1",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "3 * j2 / 2 + centrifugal_ratio / 2",
+   "args": [
+    0.002,
+    0.004
+   ],
+   "expected": "0.005",
+   "why": "The oblateness term of the gravity field and the rotation fix the shape of the level surface.",
+   "limit": "First order in flattening; second-order terms change 1/f by about 0.1%.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "nodal_precession_rate",
+   "title": "Secular regression of a satellite orbit's node",
+   "params": [
+    {
+     "name": "semi_major_axis",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "eccentricity",
+     "unit": "1",
+     "kind": "open_fraction"
+    },
+    {
+     "name": "inclination",
+     "unit": "rad",
+     "kind": "half_turn"
+    },
+    {
+     "name": "j2",
+     "unit": "1",
+     "kind": "real"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravitational_parameter",
+     "unit": "m^3/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "-1.5 * n * j2 * (radius / semi_major_axis) ** 2 * np.cos(inclination) / (1 - eccentricity**2) ** 2",
+   "args": [
+    2,
+    0,
+    0,
+    1,
+    1,
+    8
+   ],
+   "expected": "-0.375",
+   "why": "The equatorial bulge torques an inclined orbit, so the node drifts at a rate that measures J2.",
+   "limit": "First-order secular J2 perturbation without drag or higher harmonics; perigee above the reference radius.",
+   "extra": "n = np.sqrt(gravitational_parameter / semi_major_axis**3); require(semi_major_axis * (1 - eccentricity) > radius)",
+   "output_unit": "rad/s"
+  },
+  {
+   "name": "stokes_function",
+   "title": "Stokes's kernel for the geoid",
+   "params": [
+    {
+     "name": "spherical_distance",
+     "unit": "rad",
+     "kind": "open_colatitude"
+    }
+   ],
+   "expr": "1 / s - 6 * s + 1 - 5 * np.cos(psi) - 3 * np.cos(psi) * np.log(s + s**2)",
+   "args": [
+    3.141592653589793
+   ],
+   "expected": "1 + 3 * np.log(2)",
+   "why": "Weighting gravity anomalies over the whole globe by spherical distance gives the geoid height.",
+   "limit": "Spherical approximation with no masses outside the geoid; singular at zero distance.",
+   "extra": "s = np.sin(psi / 2); psi = spherical_distance",
+   "output_unit": "1"
+  },
+  {
+   "name": "degree_geoid_height",
+   "title": "Geoid height of one spherical-harmonic degree of the gravity anomaly",
+   "params": [
+    {
+     "name": "anomaly_coefficient",
+     "unit": "m/s^2",
+     "kind": "real"
+    },
+    {
+     "name": "degree",
+     "unit": "1",
+     "kind": "degree_from_2"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "radius * anomaly_coefficient / ((degree - 1) * gravity)",
+   "args": [
+    6,
+    4,
+    2,
+    4
+   ],
+   "expected": "1",
+   "why": "Stokes's integral divides each degree of the anomaly by n - 1, so long wavelengths dominate the geoid.",
+   "limit": "Spherical approximation of Stokes's formula for degrees of at least 2.",
+   "extra": "require(degree == np.round(degree), \"degree must be an integer\")",
+   "output_unit": "m"
+  },
+  {
+   "name": "dipole_field",
+   "title": "Field of a geocentric axial dipole",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "moment",
+     "unit": "A m^2",
+     "kind": "real"
+    }
+   ],
+   "expr": "MU0 * moment / (4 * np.pi * distance**3) * [np.cos(latitude), 2 * np.sin(latitude)]",
+   "args": [
+    0,
+    1,
+    10000000
+   ],
+   "expected": "[1, 0]",
+   "why": "A uniformly magnetized Earth gives a field that dips more steeply toward the poles.",
+   "limit": "Pure axial dipole outside its sources; last axis holds the northward and downward components.",
+   "extra": "",
+   "output_unit": "T"
+  },
+  {
+   "name": "dipole_inclination",
+   "title": "Inclination of an axial dipole field",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "np.arctan2(2 * np.sin(latitude), np.cos(latitude))",
+   "args": [
+    0.7853981633974483
+   ],
+   "expected": "np.arctan(2)",
+   "why": "The dip of a compass needle tells a navigator, or a rock, its magnetic latitude.",
+   "limit": "Geocentric axial dipole; positive downward for today's polarity.",
+   "extra": "",
+   "output_unit": "rad"
+  },
+  {
+   "name": "paleolatitude",
+   "title": "Paleolatitude from a remanent inclination",
+   "params": [
+    {
+     "name": "inclination",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "np.arctan2(np.sin(inclination), 2 * np.cos(inclination))",
+   "args": [
+    1.1071487177940906
+   ],
+   "expected": "np.pi / 4",
+   "why": "A rock's frozen-in dip records how far from the pole it formed.",
+   "limit": "Geocentric axial dipole averaged over secular variation.",
+   "extra": "",
+   "output_unit": "rad"
+  },
+  {
+   "name": "zonal_field",
+   "title": "Field of one zonal Gauss coefficient",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "degree",
+     "unit": "1",
+     "kind": "degree_from_1"
+    },
+    {
+     "name": "coefficient",
+     "unit": "T",
+     "kind": "real"
+    },
+    {
+     "name": "reference_radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(a / r) ** (n + 2) * coefficient * [lpmv(1, n, x), -(n + 1) * lpmv(0, n, x)]",
+   "args": [
+    0.5235987755982988,
+    1,
+    2,
+    1,
+    1
+   ],
+   "expected": "[-0.75 * np.sqrt(3), 0.375]",
+   "why": "Expanding the potential in spherical harmonics separates the dipole from smaller, faster-decaying parts.",
+   "limit": "Internal zonal sources only; last axis holds the northward and downward components.",
+   "extra": "x = np.sin(latitude); a = reference_radius; r = distance; n = degree; require(degree == np.round(degree), \"degree must be an integer\")",
+   "output_unit": "T"
+  },
+  {
+   "name": "gauss_dipole_moment",
+   "title": "Dipole moment from the degree-1 Gauss coefficients",
+   "params": [
+    {
+     "name": "g10",
+     "unit": "T",
+     "kind": "real"
+    },
+    {
+     "name": "g11",
+     "unit": "T",
+     "kind": "real"
+    },
+    {
+     "name": "h11",
+     "unit": "T",
+     "kind": "real"
+    },
+    {
+     "name": "reference_radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "4 * np.pi * reference_radius**3 / MU0 * np.sqrt(g10**2 + g11**2 + h11**2)",
+   "args": [
+    3,
+    4,
+    12,
+    1
+   ],
+   "expected": "4 * np.pi * 13 / 1.2566370614359173e-6",
+   "why": "Gauss's analysis weighed the Earth's magnet from surface measurements alone.",
+   "limit": "Magnitude of the best-fitting geocentric tilted dipole.",
+   "extra": "",
+   "output_unit": "A m^2"
+  },
+  {
+   "name": "field_elements",
+   "title": "Declination, inclination and intensity of a field vector",
+   "params": [
+    {
+     "name": "north",
+     "unit": "T",
+     "kind": "real"
+    },
+    {
+     "name": "east",
+     "unit": "T",
+     "kind": "real"
+    },
+    {
+     "name": "down",
+     "unit": "T",
+     "kind": "real"
+    }
+   ],
+   "expr": "[np.arctan2(east, north), np.arctan2(down, np.hypot(north, east)), np.sqrt(north**2 + east**2 + down**2)]",
+   "args": [
+    1,
+    1,
+    1.4142135623730951
+   ],
+   "expected": "[np.pi / 4, np.pi / 4, 2]",
+   "why": "Magnetic directions in rocks and observatories are reported as two angles and a strength.",
+   "limit": "Local north-east-down frame; the field vector must be nonzero.",
+   "extra": "require(intensity > 0, \"the field vector must be nonzero\")",
+   "output_unit": "rad, rad, T"
+  },
+  {
+   "name": "direction_angle",
+   "title": "Angle between two magnetic directions",
+   "params": [
+    {
+     "name": "declination_a",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "inclination_a",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "declination_b",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "inclination_b",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "np.arccos(np.sin(Ia) * np.sin(Ib) + np.cos(Ia) * np.cos(Ib) * np.cos(Da - Db))",
+   "args": [
+    0,
+    0.5,
+    0,
+    -0.5
+   ],
+   "expected": "1",
+   "why": "A remanence more than 90 degrees from the present field records a reversed polarity.",
+   "limit": "Great-circle distance between unit vectors; intensities are ignored.",
+   "extra": "",
+   "output_unit": "rad"
+  },
+  {
+   "name": "virtual_geomagnetic_pole",
+   "title": "Virtual geomagnetic pole of a site direction",
+   "params": [
+    {
+     "name": "site_latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "site_longitude",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "declination",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "inclination",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "[np.arctan2(z, np.hypot(x, y)), np.arctan2(y, x)] of site * np.cos(p) + (north * np.cos(D) + east * np.sin(D)) * np.sin(p)",
+   "args": [
+    0,
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "expected": "[0, np.pi / 2]",
+   "why": "Poles from rocks of one age on one continent should agree; when they wander, the continent moved.",
+   "limit": "Geocentric dipole pole; last axis holds pole latitude and longitude in [0, 2 pi).",
+   "extra": "p = np.arctan2(2 * np.cos(I), np.sin(I)); site, north, east are the site unit vector and its local north and east unit vectors",
+   "output_unit": "rad"
+  },
+  {
+   "name": "block_magnetic_anomaly",
+   "title": "Magnetic anomaly of a vertically magnetized two-dimensional block",
+   "params": [
+    {
+     "name": "x",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "left",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "right",
+     "unit": "m",
+     "kind": "real"
+    },
+    {
+     "name": "top",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "bottom",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "magnetization",
+     "unit": "A/m",
+     "kind": "real"
+    }
+   ],
+   "expr": "MU0 * magnetization / (2 * np.pi) * (phi(top) - phi(bottom))",
+   "args": [
+    0,
+    -1,
+    1,
+    1,
+    1.7320508075688772,
+    9549296.58551372
+   ],
+   "expected": "1",
+   "why": "Strips of normally and reversely magnetized crust give the alternating anomalies over mid-ocean ridges.",
+   "limit": "Infinite strike, vertical magnetization and ambient field (reduced to the pole); left < right and top < bottom.",
+   "extra": "phi(z) = np.arctan((right - x) / z) - np.arctan((left - x) / z); require(left < right); require(top < bottom)",
+   "output_unit": "T"
+  },
+  {
+   "name": "magnetic_reynolds_number",
+   "title": "Magnetic Reynolds number",
+   "params": [
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "length",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "conductivity",
+     "unit": "S/m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "MU0 * conductivity * speed * length",
+   "args": [
+    2,
+    3,
+    795774.7154594767
+   ],
+   "expected": "6",
+   "why": "A conducting fluid can stretch and regenerate a magnetic field only if advection beats diffusion.",
+   "limit": "Order-of-magnitude scale; dynamos need values above a threshold of order 10 to 100.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "magnetic_decay_time",
+   "title": "Free decay time of the slowest magnetic mode of a conducting sphere",
+   "params": [
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "conductivity",
+     "unit": "S/m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "MU0 * conductivity * radius**2 / np.pi**2",
+   "args": [
+    3.141592653589793,
+    795774.7154594767
+   ],
+   "expected": "1",
+   "why": "Without a dynamo the Earth's field would die in tens of thousands of years, far less than its age.",
+   "limit": "Uniform stationary conductor surrounded by an insulator.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "rikitake_fixed_point",
+   "title": "Steady state of Rikitake's two-disc dynamo",
+   "params": [
+    {
+     "name": "mu",
+     "unit": "1",
+     "kind": "positive"
+    },
+    {
+     "name": "k",
+     "unit": "1",
+     "kind": "positive"
+    }
+   ],
+   "expr": "[k, 1 / k, mu * k**2]",
+   "args": [
+    3,
+    2
+   ],
+   "expected": "[2, 0.5, 12]",
+   "why": "The two coupled discs have a pair of steady states of opposite polarity, which the chaotic flow visits in turn.",
+   "limit": "Positive state of the nondimensional Rikitake system; the other is (-x, -y, z).",
+   "extra": "A = mu * (k**2 - 1 / k**2)",
+   "output_unit": "1"
+  },
+  {
+   "name": "love_number_h2",
+   "title": "Degree-2 displacement Love number of a homogeneous elastic Earth",
+   "params": [
+    {
+     "name": "rigidity",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "2.5 / (1 + 19 * rigidity / (2 * density * gravity * radius))",
+   "args": [
+    1.5,
+    1,
+    1,
+    9.5
+   ],
+   "expected": "1",
+   "why": "The solid Earth rises and falls with the tide by a fraction of the equilibrium tide that measures its rigidity.",
+   "limit": "Uniform incompressible self-gravitating elastic sphere (Kelvin's solution).",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "love_number_k2",
+   "title": "Degree-2 potential Love number of a homogeneous elastic Earth",
+   "params": [
+    {
+     "name": "rigidity",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "1.5 / (1 + 19 * rigidity / (2 * density * gravity * radius))",
+   "args": [
+    1.5,
+    1,
+    1,
+    9.5
+   ],
+   "expected": "0.6",
+   "why": "The tidal bulge adds its own gravitational potential, a fraction k2 of the tidal potential.",
+   "limit": "Uniform incompressible self-gravitating elastic sphere; the fluid limit is 3/2.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "tidal_gravimetric_factor",
+   "title": "Gravimetric factor of the body tide",
+   "params": [
+    {
+     "name": "h2",
+     "unit": "1",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "k2",
+     "unit": "1",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "1 + h2 - 1.5 * k2",
+   "args": [
+    0.6,
+    0.3
+   ],
+   "expected": "1.15",
+   "why": "A gravimeter on a yielding Earth sees the tide amplified by its uplift and reduced by the bulge's attraction.",
+   "limit": "Degree-2 tide on a spherically symmetric elastic Earth without ocean loading.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "equivalent_water_height",
+   "title": "Water layer behind a change of one Stokes coefficient",
+   "params": [
+    {
+     "name": "coefficient_change",
+     "unit": "1",
+     "kind": "real"
+    },
+    {
+     "name": "degree",
+     "unit": "1",
+     "kind": "degree_from_0"
+    },
+    {
+     "name": "load_love_number",
+     "unit": "1",
+     "kind": "above_minus_one"
+    },
+    {
+     "name": "radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "mean_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "water_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "radius * mean_density * (2 * degree + 1) * coefficient_change / (3 * water_density * (1 + load_love_number))",
+   "args": [
+    2,
+    1,
+    0.5,
+    3,
+    3,
+    2
+   ],
+   "expected": "6",
+   "why": "Monthly gravity fields from a satellite pair reveal the moving mass of water, ice and groundwater.",
+   "limit": "Thin surface layer on an elastic Earth (Wahr et al., 1998), fully normalized coefficients.",
+   "extra": "require(degree == np.round(degree), \"degree must be an integer\")",
+   "output_unit": "m"
+  }
+ ],
+ "volcanology": [
+  {
+   "name": "decay_constant",
+   "title": "Decay constant from a half-life",
+   "params": [
+    {
+     "name": "half_life",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.log(2) / half_life",
+   "args": [
+    2
+   ],
+   "expected": "np.log(2) / 2",
+   "why": "Every radioactive nuclide has a fixed probability per unit time of decaying, set by its half-life.",
+   "limit": "Rutherford and Soddy (1902): first-order decay, independent of temperature, pressure and chemistry.",
+   "extra": "",
+   "output_unit": "1/s"
+  },
+  {
+   "name": "parent_fraction",
+   "title": "Fraction of radioactive parent atoms remaining",
+   "params": [
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "np.exp(-decay_constant * time)",
+   "args": [
+    0.6931471805599453,
+    1
+   ],
+   "expected": "0.5",
+   "why": "Exponential decay is the clock behind every radiometric age.",
+   "limit": "Rutherford and Soddy (1902): a closed system with no parent added after time zero.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "radiometric_age",
+   "title": "Age from a radiogenic daughter-to-parent ratio",
+   "params": [
+    {
+     "name": "daughter_parent_ratio",
+     "unit": "1, radiogenic daughter atoms per parent atom",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.log1p(daughter_parent_ratio) / decay_constant",
+   "args": [
+    1.718281828459045,
+    2
+   ],
+   "expected": "0.5",
+   "why": "The ratio of accumulated daughter atoms to surviving parent atoms grows with time, so measuring it dates the rock.",
+   "limit": "Closed system with no initial daughter; Boltwood (1907) applied it to lead in uranium minerals.",
+   "extra": "",
+   "output_unit": "s"
+  },
+  {
+   "name": "radiogenic_daughter",
+   "title": "Radiogenic daughter accumulated beside the surviving parent",
+   "params": [
+    {
+     "name": "parent",
+     "unit": "Surviving parent amount today (atoms, moles or any consistent unit)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "parent * np.expm1(decay_constant * time)",
+   "args": [
+    3,
+    0.6931471805599453,
+    1
+   ],
+   "expected": "3",
+   "why": "Forward accumulation shows how the daughter-to-parent ratio of a rock records its age.",
+   "limit": "Closed system with no initial daughter; the inverse of radiometric_age. Holmes (1913) used it to build the first radiometric time scale.",
+   "extra": "",
+   "output_unit": "unit of parent"
+  },
+  {
+   "name": "radiocarbon_age",
+   "title": "Conventional radiocarbon age",
+   "params": [
+    {
+     "name": "fraction_modern",
+     "unit": "1, sample 14C/12C relative to the modern standard",
+     "kind": "positive"
+    }
+   ],
+   "expr": "-LIBBY_MEAN_LIFE * np.log(fraction_modern)",
+   "args": [
+    0.36787944117144233
+   ],
+   "expected": "8033 * 365.25 * 86400",
+   "why": "Living matter exchanges carbon-14 with the atmosphere; after death the carbon-14 decays, dating organic remains.",
+   "limit": "Libby et al. (1949) with the conventional 5568-year (Libby) half-life, mean life LIBBY_MEAN_LIFE; it is a radiocarbon age, not a calendar age, until calibrated.",
+   "extra": "LIBBY_MEAN_LIFE = 8033 years",
+   "output_unit": "s"
+  },
+  {
+   "name": "radiogenic_lead_ratio",
+   "title": "Radiogenic 207Pb/206Pb ratio produced over a given age",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.expm1(LAMBDA_U235 * time) / (U238_U235 * np.expm1(LAMBDA_U238 * time))",
+   "args": [
+    1.4100926004988576e+17
+   ],
+   "expected": "(2 ** (9.8485 / 1.55125) - 1) / 137.88",
+   "why": "Two uranium isotopes decaying at different rates make the ratio of their lead daughters a clock that needs no uranium measurement.",
+   "limit": "Patterson (1956): closed system with today's 238U/235U = U238_U235 and the Jaffey et al. (1971) decay constants. The ratio tends to LAMBDA_U235 / (U238_U235 * LAMBDA_U238) at zero age.",
+   "extra": "LAMBDA_U238 = 1.55125e-10/year; LAMBDA_U235 = 9.8485e-10/year; U238_U235 = 137.88",
+   "output_unit": "1"
+  },
+  {
+   "name": "lead_lead_age",
+   "title": "Age from a radiogenic 207Pb/206Pb ratio",
+   "params": [
+    {
+     "name": "lead_ratio",
+     "unit": "1, radiogenic 207Pb*/206Pb* or the slope of a Pb-Pb isochron",
+     "kind": "between the ratios at one year (about 0.0461) and at 10 Ga"
+    }
+   ],
+   "expr": "radiogenic_lead_ratio(age) = lead_ratio",
+   "args": [
+    0.5838503844760619
+   ],
+   "expected": "np.log(2) / LAMBDA_U238",
+   "why": "Patterson dated the Earth from the slope of a meteorite lead isochron, which equals this ratio.",
+   "limit": "Inverts radiogenic_lead_ratio by Brent's method between one year and 10 Ga; same closed-system assumptions.",
+   "extra": "require(radiogenic_lead_ratio(1 year) <= lead_ratio <= radiogenic_lead_ratio(10 Ga)); solved with brentq",
+   "output_unit": "s"
+  },
+  {
+   "name": "concordia_ratios",
+   "title": "Point on the Wetherill U-Pb concordia",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "[np.expm1(LAMBDA_U235 * time), np.expm1(LAMBDA_U238 * time)]",
+   "args": [
+    1.4100926004988576e+17
+   ],
+   "expected": "[2 ** (9.8485 / 1.55125) - 1, 1]",
+   "why": "Both uranium-lead clocks agree only on this curve, so a zircon off it has lost lead and its chord dates the loss.",
+   "limit": "Wetherill (1956): closed system with the Jaffey et al. (1971) decay constants. Episodic lead loss puts samples on a straight chord (discordia) between the concordia points of formation and loss.",
+   "extra": "LAMBDA_U238 = 1.55125e-10/year; LAMBDA_U235 = 9.8485e-10/year",
+   "output_unit": "[1, 1]"
+  },
+  {
+   "name": "isochron_fit",
+   "title": "Age and initial ratio from a whole-rock or mineral isochron",
+   "params": [
+    {
+     "name": "parent_ratio",
+     "unit": "1, parent over a stable reference isotope (e.g. 87Rb/86Sr)",
+     "kind": "nonnegative, not all equal"
+    },
+    {
+     "name": "daughter_ratio",
+     "unit": "1, daughter over the same reference isotope (e.g. 87Sr/86Sr)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "positive scalar"
+    }
+   ],
+   "expr": "daughter_ratio = initial_ratio + parent_ratio * np.expm1(decay_constant * age)",
+   "args": [
+    [
+     0,
+     1,
+     2
+    ],
+    [
+     0.7,
+     2.418281828459045,
+     4.13656365691809
+    ],
+    1
+   ],
+   "expected": "[1, 0.7]",
+   "why": "Cogenetic minerals with different parent contents line up on a straight line whose slope gives the age without knowing the initial daughter.",
+   "limit": "Nicolaysen (1961): every sample formed at the same time with the same initial ratio and stayed closed; ordinary least squares without measurement-error weighting (a York fit would weight them). The slope must be positive.",
+   "extra": "require(slope > 0); parent_ratio must vary and match daughter_ratio",
+   "output_unit": "[s, 1]"
+  },
+  {
+   "name": "rayleigh_fractionation",
+   "title": "Isotope ratio of a reservoir depleted by Rayleigh distillation",
+   "params": [
+    {
+     "name": "initial_ratio",
+     "unit": "1, heavy-to-light isotope ratio of the reservoir at the start",
+     "kind": "positive"
+    },
+    {
+     "name": "remaining_fraction",
+     "unit": "1, fraction of the reservoir left",
+     "kind": "fraction above zero"
+    },
+    {
+     "name": "fractionation_factor",
+     "unit": "1, product ratio over reservoir ratio at each instant",
+     "kind": "positive"
+    }
+   ],
+   "expr": "initial_ratio * remaining_fraction**(fractionation_factor - 1)",
+   "args": [
+    2,
+    0.25,
+    0.5
+   ],
+   "expected": "4",
+   "why": "Removing a product that is always slightly enriched in one isotope drives the remaining reservoir further and further from its starting composition.",
+   "limit": "Rayleigh (1896): the product leaves as soon as it forms, the reservoir stays well mixed and the factor is constant.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "delta_value",
+   "title": "Isotope delta value relative to a standard",
+   "params": [
+    {
+     "name": "ratio",
+     "unit": "1, heavy-to-light isotope ratio of the sample",
+     "kind": "positive"
+    },
+    {
+     "name": "standard_ratio",
+     "unit": "1, the same ratio in the standard (e.g. VSMOW, VPDB)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(ratio / standard_ratio - 1) * 1000",
+   "args": [
+    1.01,
+    1
+   ],
+   "expected": "10",
+   "why": "Isotope ratios vary in the fourth decimal place, so geochemists report deviations from a standard in per mil.",
+   "limit": "Linear in the ratio; delta values of different standards must be converted before they are compared.",
+   "extra": "",
+   "output_unit": "per mil"
+  },
+  {
+   "name": "fractional_crystallization_melt",
+   "title": "Trace-element concentration in a melt during fractional crystallization",
+   "params": [
+    {
+     "name": "initial_concentration",
+     "unit": "Concentration in the parent melt (any unit, e.g. ppm)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "melt_fraction",
+     "unit": "1, fraction of melt remaining",
+     "kind": "fraction above zero"
+    },
+    {
+     "name": "partition_coefficient",
+     "unit": "1, bulk solid/melt concentration ratio",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "initial_concentration * melt_fraction**(partition_coefficient - 1)",
+   "args": [
+    10,
+    0.25,
+    0.5
+   ],
+   "expected": "20",
+   "why": "Crystals removed as soon as they form leave the residual melt enriched in the elements they reject.",
+   "limit": "Rayleigh fractional crystallization (Bowen 1928; Gast 1968): crystals do not re-equilibrate and the bulk partition coefficient is constant.",
+   "extra": "",
+   "output_unit": "unit of initial_concentration"
+  },
+  {
+   "name": "equilibrium_crystallization_melt",
+   "title": "Trace-element concentration in a melt during equilibrium crystallization",
+   "params": [
+    {
+     "name": "initial_concentration",
+     "unit": "Concentration in the parent melt (any unit, e.g. ppm)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "melt_fraction",
+     "unit": "1, fraction of melt remaining",
+     "kind": "fraction"
+    },
+    {
+     "name": "partition_coefficient",
+     "unit": "1, bulk solid/melt concentration ratio",
+     "kind": "positive"
+    }
+   ],
+   "expr": "initial_concentration / (partition_coefficient + melt_fraction * (1 - partition_coefficient))",
+   "args": [
+    10,
+    0.5,
+    0.5
+   ],
+   "expected": "40 / 3",
+   "why": "Crystals that keep reacting with the melt, as in Bowen's continuous series, limit how far the melt can evolve.",
+   "limit": "Batch mass balance (Shaw 1970): solid and melt stay in equilibrium, so an incompatible element is enriched at most by 1 / partition_coefficient.",
+   "extra": "",
+   "output_unit": "unit of initial_concentration"
+  },
+  {
+   "name": "lattice_strain_partition",
+   "title": "Mineral-melt partition coefficient from the strain of the crystal lattice",
+   "params": [
+    {
+     "name": "ionic_radius",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "optimal_radius",
+     "unit": "m, radius that fits the site without strain",
+     "kind": "positive"
+    },
+    {
+     "name": "peak_partition",
+     "unit": "1, partition coefficient of an ion of the optimal radius",
+     "kind": "positive"
+    },
+    {
+     "name": "youngs_modulus",
+     "unit": "Pa, apparent Young's modulus of the site",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "peak_partition * np.exp(-4 * np.pi * youngs_modulus * AVOGADRO * (optimal_radius / 2 * (ionic_radius - optimal_radius)**2 + (ionic_radius - optimal_radius)**3 / 3) / (R_GAS * temperature))",
+   "args": [
+    2e-10,
+    1e-10,
+    3,
+    1318422678.149293,
+    1000
+   ],
+   "expected": "3 * np.exp(-1)",
+   "why": "Ions close in size to the site they replace enter a crystal easily, which is Goldschmidt's first rule of substitution.",
+   "limit": "Blundy and Wood (1994) quantification of Goldschmidt (1937) for isovalent ions on one site; charge differences need a separate parabola.",
+   "extra": "AVOGADRO = 6.02214076e23; R_GAS = 8.31446261815324",
+   "output_unit": "1"
+  },
+  {
+   "name": "isotope_temperature",
+   "title": "Calcite-water oxygen-isotope paleotemperature",
+   "params": [
+    {
+     "name": "delta_calcite",
+     "unit": "per mil, delta18O of the carbonate (CO2 from the calcite, PDB scale)",
+     "kind": "real"
+    },
+    {
+     "name": "delta_water",
+     "unit": "per mil, delta18O of the water on the same scale",
+     "kind": "real"
+    }
+   ],
+   "expr": "273.15 + 16.5 - 4.3 * d + 0.14 * d**2",
+   "args": [
+    1,
+    0
+   ],
+   "expected": "273.15 + 16.5 - 4.3 + 0.14",
+   "why": "The oxygen-isotope fractionation between a shell and the water it grew in falls with temperature, so fossil shells record ancient ocean temperatures.",
+   "limit": "Urey (1947) predicted the effect; this is the empirical calibration of Epstein, Buchsbaum, Lowenstam and Urey (1953), valid for about 7-30 degC and equilibrium calcite.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "arrhenius_viscosity",
+   "title": "Arrhenius temperature dependence of melt viscosity",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_viscosity",
+     "unit": "Pa s, viscosity at the reference temperature",
+     "kind": "positive"
+    },
+    {
+     "name": "activation_energy",
+     "unit": "J/mol",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "reference_temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "reference_viscosity * np.exp(activation_energy / R_GAS * (1 / temperature - 1 / reference_temperature))",
+   "args": [
+    1000,
+    10,
+    8314.46261815324,
+    500
+   ],
+   "expected": "10 * np.exp(-1)",
+   "why": "Silicate melts stiffen by orders of magnitude as they cool, which controls how lava flows and how magma erupts.",
+   "limit": "Constant activation energy over the range of interest; crystal- and bubble-free Newtonian melt.",
+   "extra": "",
+   "output_unit": "Pa s"
+  },
+  {
+   "name": "shaw_viscosity",
+   "title": "Shaw's empirical viscosity of an anhydrous or hydrous silicate melt",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "1, Shaw's s from the molar composition (about 2-3 for basalt, 3.5-4 for rhyolite)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "0.1 * np.exp(slope * (1e4 / temperature) - 1.5 * slope - 6.4)",
+   "args": [
+    6666.666666666667,
+    2
+   ],
+   "expected": "0.1 * np.exp(-6.4)",
+   "why": "One composition-dependent slope predicts the viscosity of melts from basalt to rhyolite.",
+   "limit": "Shaw (1972), Am. J. Sci. 272: 870-893; all lines pass near ln(eta [poise]) = -6.4 at 1e4/T = 1.5. Crystal- and bubble-free Newtonian melt; about 0.2 log units of accuracy.",
+   "extra": "",
+   "output_unit": "Pa s"
+  },
+  {
+   "name": "water_solubility",
+   "title": "Dissolved water in a melt saturated at a given pressure",
+   "params": [
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "solubility_constant",
+     "unit": "1/sqrt(Pa), mass fraction per root pascal (about 4.1e-6 for rhyolite)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "solubility_constant * np.sqrt(pressure)",
+   "args": [
+    400000000.0,
+    4e-06
+   ],
+   "expected": "0.08",
+   "why": "Water dissolves as hydroxyl, so its solubility grows as the square root of pressure and ascending magma exsolves bubbles.",
+   "limit": "Square-root (Henry-type) law for pure water vapour, valid up to a few hundred MPa; ignores CO2 and temperature.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "dike_ascent_velocity",
+   "title": "Mean laminar velocity of buoyant magma in a dike",
+   "params": [
+    {
+     "name": "width",
+     "unit": "m, full dike width",
+     "kind": "positive"
+    },
+    {
+     "name": "density_contrast",
+     "unit": "kg/m^3, host rock minus magma",
+     "kind": "real"
+    },
+    {
+     "name": "viscosity",
+     "unit": "Pa s",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "width**2 * density_contrast * gravity / (12 * viscosity)",
+   "args": [
+    2,
+    300,
+    100,
+    10
+   ],
+   "expected": "10",
+   "why": "Buoyancy drives magma up a planar crack, and the viscous drag on its walls sets how fast it rises.",
+   "limit": "Wilson and Head (1981): plane Poiseuille flow between parallel walls driven by buoyancy alone; check that the Reynolds number ``magma_density * velocity * width / viscosity`` stays below about 2000.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "mogi_displacement",
+   "title": "Surface displacement above an inflating point source",
+   "params": [
+    {
+     "name": "radial_distance",
+     "unit": "m, horizontal distance from the point above the source",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "volume_change",
+     "unit": "m^3, signed change of the source volume",
+     "kind": "real"
+    },
+    {
+     "name": "poisson_ratio",
+     "unit": "1",
+     "kind": "between 0 and 0.5"
+    }
+   ],
+   "expr": "(1 - poisson_ratio) * volume_change / np.pi * [radial_distance, depth] / (radial_distance**2 + depth**2)**1.5",
+   "args": [
+    0,
+    1000,
+    3.141592653589793,
+    0.5
+   ],
+   "expected": "[0, 5e-7]",
+   "why": "Magma entering a chamber lifts the ground in a bell-shaped dome whose width reveals the chamber depth.",
+   "limit": "Mogi (1958) point source in an elastic half-space; the chamber radius must be small compared with its depth. The uplift halves at ``radial_distance = 0.766 * depth``.",
+   "extra": "",
+   "output_unit": "[m, m]"
+  },
+  {
+   "name": "plume_rise_height",
+   "title": "Maximum height of a buoyant plume in a stratified fluid",
+   "params": [
+    {
+     "name": "buoyancy_flux",
+     "unit": "m^4/s^3, source ``reduced_gravity * velocity * radius**2`` (the factor pi omitted)",
+     "kind": "positive"
+    },
+    {
+     "name": "buoyancy_frequency",
+     "unit": "1/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "5.0 * buoyancy_flux**0.25 * buoyancy_frequency**-0.75",
+   "args": [
+    16,
+    0.0625
+   ],
+   "expected": "80",
+   "why": "Turbulent entrainment dilutes a plume until the stratification removes its buoyancy, which caps its height at a value set by only the source buoyancy flux and the stratification.",
+   "limit": "Morton, Taylor and Turner (1956) for a steady point source of buoyancy in uniform stratification, with Briggs's constant 5.0 (entrainment about 0.1); source momentum, wind and moisture are neglected.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "column_height",
+   "title": "Height of a Plinian eruption column from its heat flux",
+   "params": [
+    {
+     "name": "heat_flux",
+     "unit": "W, rate of heat release ``mass_eruption_rate * specific_heat * temperature_excess``",
+     "kind": "positive"
+    }
+   ],
+   "expr": "8.2 * heat_flux**0.25",
+   "args": [
+    1000000000000.0
+   ],
+   "expected": "8200",
+   "why": "The thermal energy released at the vent, not the eruption velocity, controls how high a volcanic column rises.",
+   "limit": "Wilson, Sparks, Huang and Watkins (1978), JGR 83: 1829-1836, for a standard atmosphere and a strong steady column; wind bends weak plumes lower.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "volcanic_explosivity_index",
+   "title": "Volcanic Explosivity Index from the erupted tephra volume",
+   "params": [
+    {
+     "name": "erupted_volume",
+     "unit": "m^3, bulk tephra volume",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "np.where(erupted_volume < 1e4, 0, np.where(erupted_volume < 1e6, 1, np.clip(np.floor(np.log10(erupted_volume)) - 4, 2, 8)))",
+   "args": [
+    50000000.0
+   ],
+   "expected": "3",
+   "why": "A single logarithmic number lets eruptions of very different style and size be compared and catalogued.",
+   "limit": "Newhall and Self (1982), volume criterion only: VEI 0 below 1e4 m^3, 1 below 1e6 m^3, then one step per factor of ten up to VEI 8 at 1e12 m^3 and above. Column height and other criteria are not used.",
+   "extra": "",
+   "output_unit": "1"
+  }
+ ]
+}

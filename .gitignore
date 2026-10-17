@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+.coverage
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+docs/_build/
+docs/source/_generated/
+docs/source/api/gallery/
+docs/source/gen_modules/
+.coverage.*
+coverage.json
+coverage.xml
+installed-coverage.json
+htmlcov/
+.venv/
+.DS_Store
+docs/source/sg_execution_times.rst
+
+# jupyterlite-sphinx build artifacts
+docs/source/.jupyterlite.doit.db
+docs/source/_contents/
+docs/source/jupyterlite_contents/
+docs/link-validation.json
