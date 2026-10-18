@@ -6,7 +6,7 @@ SI units unless stated otherwise.
 import numpy as np
 
 from earthsciencekit._validation import model, quantity, require, safe_arithmetic
-from earthsciencekit.constants import GRAVITY, ICE_DENSITY
+from earthsciencekit.constants import GRAVITY, ICE_DENSITY, SECONDS_PER_YEAR
 from earthsciencekit.results import TimeSeries
 
 __all__ = [
@@ -194,8 +194,9 @@ def simulate_flowline_glacier(
     Solves ``dH/dt = b(b_bed + H) - dq/dx`` with the shallow-ice flux ``q = -D ds/dx`` of
     :func:`shallow_ice_diffusivity` and the balance of :func:`linear_mass_balance`, by the method of lines on a
     staggered grid in Mahaffy's (1976) form, with ``integrators.integrate_ode`` (BDF) in time. The ends carry no
-    flux, the thickness is kept nonnegative (ice-free nodes cannot ablate), and there is no sliding, calving,
-    width variation or isostasy.
+    flux, the thickness is kept nonnegative (ablation tapers to zero over the last metre of ice, and a solver overshoot
+    below zero relaxes back over about a year, so the right-hand side stays continuous), and there is no sliding,
+    calving, width variation or isostasy.
     """
     from earthsciencekit._validation import time_grid
     from earthsciencekit.integrators import integrate_ode
@@ -224,7 +225,9 @@ def simulate_flowline_glacier(
         flux = -stiffness * mean ** (exponent + 2) * np.abs(slope) ** (exponent - 1) * slope
         divergence = np.diff(np.concatenate([[0.0], flux, [0.0]])) / spacing
         rate = gradient * (surface - ela) - divergence
-        return np.where((state <= 0) & (rate < 0), 0.0, rate)
+        # A discontinuous clamp at zero lets BDF overshoot an ice-free node and freeze the terminus there.
+        rate = np.where(rate < 0, rate * np.clip(state, 0.0, 1.0), rate)
+        return rate - np.minimum(state, 0.0) / SECONDS_PER_YEAR
 
     result = integrate_ode(rhs, initial, time, method="BDF", rtol=1e-6, atol=1e-6)
     thickness = np.maximum(result.values, 0.0)

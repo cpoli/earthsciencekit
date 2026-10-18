@@ -16,7 +16,7 @@ the table at the end). Those six items are summarized under
 
 | # | Item | State |
 |---|---|---|
-| 1 | Version control, CI and releases | 0.2.0 released (PyPI, docs site, Zenodo DOI); the conda-forge recipe awaits review, and CI on `main` fails one glaciology test |
+| 1 | Version control, CI and releases | 0.2.0 released (PyPI, docs site, Zenodo DOI); the conda-forge recipe awaits review |
 | 8 | Deeper models in the existing domains | Not started, apart from a simplified TEOS-10 fit |
 | 9 | Course material | Not started |
 | 10 | Typing and coverage | Not started |
@@ -79,14 +79,6 @@ conda-forge/staged-recipes#35239 (branch `earthsciencekit` of
   post the maintainer-confirmation comment the checklist asks for, then
   add a conda-forge badge and `conda install` line to the README as in
   mathematicskit.
-- CI on `main` (ea527a8) fails
-  `glaciology/tests/test_physics.py::test_raising_the_equilibrium_line_shrinks_the_glacier`
-  on Linux with Python 3.10, 3.12 and 3.13 (it passes on 3.11 and on
-  macOS with the same NumPy 2.5.4 and SciPy 1.18.1). On Linux the step
-  run starts from an area of 1.81e6 m^2 rather than the ELA-2600 steady
-  state of 2.42e6 m^2, so the first `simulate_flowline_glacier` run goes
-  wrong there; separately, the 1e-8 monotonicity tolerance sits at the
-  solver's noise level (`atol=1e-3` breaks it on macOS). Fix before 0.3.0.
 - On every release, replace the version DOI in `CITATION.cff` and the
   README badge with that release's own (never the concept DOI).
 

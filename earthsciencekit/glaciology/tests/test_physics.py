@@ -168,7 +168,8 @@ def test_raising_the_equilibrium_line_shrinks_the_glacier():
     time = np.linspace(0, 1000, 21) * SECONDS_PER_YEAR
     steady = simulate_flowline_glacier(BED, 200.0, 2600.0, GRADIENT, time).values[-1, 2:]
     warmer = simulate_flowline_glacier(BED, 200.0, 2700.0, GRADIENT, time, initial_thickness=steady)
-    assert np.all(np.diff(warmer.values[:, 1]) <= 1e-8 * warmer.values[0, 1]) and warmer.values[-1, 0] < warmer.values[0, 0]
+    assert np.isclose(warmer.values[0, 1], 2.424125e6, rtol=1e-6)
+    assert np.all(np.diff(warmer.values[:, 1]) <= 1e-6 * warmer.values[0, 1]) and warmer.values[-1, 0] < warmer.values[0, 0]
     bare = simulate_flowline_glacier(BED, 200.0, 3500.0, GRADIENT, time[:3])
     np.testing.assert_array_equal(bare.values, 0)
 

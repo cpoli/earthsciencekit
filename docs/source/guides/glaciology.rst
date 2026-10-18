@@ -463,8 +463,10 @@ Flowline glacier
 the ice thickness ``H`` on equally spaced nodes over a given bed ``b``,
 ``dH/dt = beta (b + H - ELA) - dq/dx`` with the shallow-ice flux
 ``q = -D ds/dx`` evaluated between nodes, as in Mahaffy (1976), by the method
-of lines with SciPy's BDF integrator. The ends carry no flux and ice-free
-nodes cannot ablate. Pass the steady thickness for one equilibrium line as
+of lines with SciPy's BDF integrator. The ends carry no flux, ablation
+tapers to zero over the last metre of ice, and a solver overshoot below zero
+relaxes back over about a year, which keeps the right-hand side continuous so
+the terminus cannot stall on rounding. Pass the steady thickness for one equilibrium line as
 ``initial_thickness`` with another to follow the response to a step. It
 returns the length (nodes with more than 1 m of ice), the area per unit width
 and the thickness at every node.
