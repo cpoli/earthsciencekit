@@ -1,9 +1,8 @@
 Scope and limitations
 =====================
 
-Version 0.2.0 contains plate_tectonics, seismology, atmosphere, climate,
-oceanography, geophysics and volcanology; the unreleased development version
-adds hydrology and glaciology. Its data are deterministic synthetic examples, not bundled
+Version 0.3.0 contains plate_tectonics, seismology, atmosphere, climate,
+oceanography, geophysics, volcanology, hydrology and glaciology. Its data are deterministic synthetic examples, not bundled
 observational products. It provides educational baselines with documented
 assumptions, not an integrated Earth-system model.
 

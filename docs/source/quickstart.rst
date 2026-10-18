@@ -7,7 +7,7 @@ Install from PyPI or an editable checkout::
     # From a source checkout:
     python -m pip install -e '.[dev]'
 
-The import name is ``earthsciencekit``. Version 0.2.0 contains seven domain
+The import name is ``earthsciencekit``. Version 0.3.0 contains nine domain
 subpackages; shared utilities support them.
 
 Plate motion with explicit units

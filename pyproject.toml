@@ -3,7 +3,7 @@ requires=["setuptools>=77.0.3","wheel"]
 build-backend="setuptools.build_meta"
 [project]
 name="earthsciencekit"
-version="0.2.0"
+version="0.3.0"
 description="Inspectable Earth-system models for learning and teaching."
 readme="README.md"
 requires-python=">=3.10"

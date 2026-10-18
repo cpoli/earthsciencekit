@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-EarthScienceKit (v0.2.0, on PyPI) is an educational Python library of inspectable Earth-system models: nine domain subpackages (`plate_tectonics`, `seismology`, `atmosphere`, `climate`, `oceanography`, `geophysics`, `volcanology`, `hydrology`, `glaciology`) holding 237 algebraic models and eleven sampled dynamic models; 0.2.0 shipped the first seven, and `hydrology` and `glaciology` are unreleased. It follows the "MathematicsKit family" structure (see `docs/README.md` for the reference commit). Runtime deps are only NumPy, SciPy and Matplotlib; Python >= 3.10.
+EarthScienceKit (v0.3.0, on PyPI) is an educational Python library of inspectable Earth-system models: nine domain subpackages (`plate_tectonics`, `seismology`, `atmosphere`, `climate`, `oceanography`, `geophysics`, `volcanology`, `hydrology`, `glaciology`) holding 237 algebraic models and eleven sampled dynamic models; 0.2.0 shipped the first seven and 0.3.0 added `hydrology` and `glaciology`. It follows the "MathematicsKit family" structure (see `docs/README.md` for the reference commit). Runtime deps are only NumPy, SciPy and Matplotlib; Python >= 3.10.
 
 ## Commands
 

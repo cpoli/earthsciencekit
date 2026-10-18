@@ -11,7 +11,7 @@ Inspectable Earth-system computations for learning and teaching.
 
 EarthScienceKit follows the MathematicsKit family structure with nine
 subpackages and 248 domain models: 237 algebraic equations and eleven sampled
-dynamic models. Release **0.2.0** has the first seven; `hydrology` and `glaciology` are unreleased. Every model documents its units, input bounds and applicability.
+dynamic models. Release **0.3.0** has all nine. Every model documents its units, input bounds and applicability.
 NumPy and SciPy supply mature numerical foundations.
 
 | Subpackage | Models | Focus |

@@ -1,24 +1,25 @@
-# EarthScienceKit 0.2.0 verification
+# EarthScienceKit 0.3.0 verification
 
 ## Verified release scope
 
-The release contains seven domain subpackages: plate_tectonics (23 models),
+The release contains nine domain subpackages: plate_tectonics (23 models),
 seismology (23), atmosphere (22), climate (24), oceanography (24),
-geophysics (31) and volcanology (24). These comprise 162 algebraic models and
-nine dynamic models. Shared integration, results, visualization, units and
+geophysics (31), volcanology (24), hydrology (39) and glaciology (38). These
+comprise 237 algebraic models and eleven dynamic models. Shared integration, results, visualization, units and
 constants support them.
 
 ## Results
 
-Verified on 2026-10-17 with Python 3.14 before the first push.
+Verified on 2026-10-18 with Python 3.14 before tagging v0.3.0.
 
-- Workspace: 2003 tests pass with warnings treated as errors.
-- Production statement coverage: 100% (1579/1579 statements, zero misses).
-- Distribution metadata and earthsciencekit.__version__ both equal 0.2.0.
-- Ruff lint/format checks pass. Shared results/integration Mypy checks pass with
-  check-untyped-defs, ignore-missing-imports and silent dependency following.
+- Workspace: 2915 tests pass with warnings treated as errors.
+- Production statement coverage: 100% (2251/2251 statements, zero misses).
+- Distribution metadata and earthsciencekit.__version__ both equal 0.3.0.
+- Ruff lint/format checks pass. The shared results/integration Mypy check
+  (check-untyped-defs, ignore-missing-imports, silent dependency following)
+  was not run locally; CI runs it.
 - Sphinx HTML builds from a clean gallery with warnings treated as errors; all
-  114 scripts execute, and each has a JupyterLite button whose notebook starts
+  147 scripts execute, and each has a JupyterLite button whose notebook starts
   with `%pip install earthsciencekit`.
 - Sphinx doctests: nine tests pass with zero failures.
 - Source distribution and wheel build and pass `twine check --strict`.
@@ -36,7 +37,7 @@ Dynamic checks in each domain's test_physics.py compare sampled histories with
 analytic responses, conserved quantities or limiting cases. Results are tested for
 copied read-only arrays, labels, summaries, figure axes and real Pillow GIF export.
 
-The 2003 count includes parameterized invalid-input cases; it is not 2003
+The 2915 count includes parameterized invalid-input cases; it is not 2915
 distinct scientific benchmarks. Guides and primary university/agency references explain
 physical scope. Bounds cannot establish whether a model applies to observations.
 

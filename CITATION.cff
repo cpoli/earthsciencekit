@@ -4,9 +4,8 @@ title: "EarthScienceKit: inspectable Earth-system computations"
 authors:
   - family-names: Poli
     given-names: Charles
-version: 0.2.0
-date-released: 2026-10-17
-doi: 10.5281/zenodo.23441034
+version: 0.3.0
+date-released: 2026-10-18
 license: MIT
 repository-code: "https://github.com/cpoli/earthsciencekit"
 url: "https://cpoli.github.io/earthsciencekit/"

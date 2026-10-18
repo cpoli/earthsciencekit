@@ -7,7 +7,7 @@ every domain to the family layout (item 2), rewritten the history pages
 as dated breakthroughs with one example each (item 3), and added
 `geophysics` (item 6) and `volcanology` (item 7). Those four make up
 0.2.0, released on PyPI on 2026-10-17 (item 1). `hydrology` (item 4) and `glaciology` (item 5) came after
-it and are unreleased. The package now has nine domains, 237 algebraic and
+it and make up 0.3.0, tagged on 2026-10-18. The package now has nine domains, 237 algebraic and
 eleven dynamic models, 100% statement coverage and an executed gallery (see
 the table at the end). Those six items are summarized under
 [Done](#done); item numbers are kept because CHANGELOG.md cites them.
@@ -16,7 +16,7 @@ the table at the end). Those six items are summarized under
 
 | # | Item | State |
 |---|---|---|
-| 1 | Version control, CI and releases | 0.2.0 released (PyPI, docs site, Zenodo DOI); the conda-forge recipe awaits review |
+| 1 | Version control, CI and releases | 0.3.0 tagged (its Zenodo version DOI goes into CITATION.cff and the README badge once archived); the conda-forge recipe awaits review |
 | 8 | Deeper models in the existing domains | Not started, apart from a simplified TEOS-10 fit |
 | 9 | Course material | Not started |
 | 10 | Typing and coverage | Not started |
@@ -69,8 +69,8 @@ domains. Every gallery example has a JupyterLite button, and
 0.2.0 commit, so `hydrology` and `glaciology` stay unreleased): it is on
 PyPI, the GitHub Release exists, the docs are served from `gh-pages` at
 https://cpoli.github.io/earthsciencekit/, and Zenodo archived it as the
-version DOI 10.5281/zenodo.23441034 (concept record 23441033), now in
-`CITATION.cff` and the README badge. The conda-forge recipe is
+version DOI 10.5281/zenodo.23441034 (concept record 23441033), which was in
+`CITATION.cff` and the README badge until 0.3.0. The conda-forge recipe is
 conda-forge/staged-recipes#35239 (branch `earthsciencekit` of
 `cpoli/staged-recipes`), with the name written inline.
 
@@ -144,7 +144,7 @@ exercises, and the only cross-domain material is the README example.
 Finished items move here with the release they shipped in, as in
 CHANGELOG.md.
 
-### Unreleased
+### 0.3.0 (2026-10-18)
 
 - **5. `glaciology`.** 37 algebraic models in `rheology`, `ice_sheets`,
   `glaciers`, `sea_ice`, `rebound` and `ice_cores`, the dynamic
