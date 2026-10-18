@@ -75,10 +75,11 @@ conda-forge/staged-recipes#35239 (branch `earthsciencekit` of
 `cpoli/staged-recipes`), with the name written inline.
 
 **Still to do.**
-- Merge of conda-forge/staged-recipes#35239: answer review comments,
-  post the maintainer-confirmation comment the checklist asks for, then
-  add a conda-forge badge and `conda install` line to the README as in
-  mathematicskit.
+- Merge of conda-forge/staged-recipes#35239: the maintainer
+  confirmation was posted on 2026-10-18 (its checklist box still needs
+  ticking) and the linter passes; answer review comments once a reviewer
+  responds, then add a conda-forge badge and `conda install` line to the
+  README as in mathematicskit.
 - On every release, replace the version DOI in `CITATION.cff` and the
   README badge with that release's own (never the concept DOI).
 
