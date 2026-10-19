@@ -56,8 +56,8 @@ MPLBACKEND=Agg python -m pytest --cov=earthsciencekit --cov-report=term-missing
 python -m ruff check .
 python -m ruff format --check .
 python -m mypy earthsciencekit/results.py earthsciencekit/integrators --ignore-missing-imports --follow-imports=silent --check-untyped-defs
-MPLBACKEND=Agg python -m sphinx -E -W --keep-going -b html docs/source docs/_build/html
-python -m sphinx -W -b doctest docs/source docs/_build/doctest
+cd docs && make html
+make -C docs doctest
 python -m build
 ```
 

@@ -13,11 +13,11 @@ Failures abort the build. API links and guide equations expose the same models.
 Each example has a JupyterLite button (jupyterlite-sphinx) whose notebook starts
 with `%pip install earthsciencekit`, so it runs the PyPI release in the browser.
 
-Build from the project root:
+Build from the project root (or run `make html` inside docs/):
 
 ```bash
 python -m pip install -e '.[dev]'
-MPLBACKEND=Agg python -m sphinx -E -W --keep-going -b html docs/source docs/_build/html
+cd docs && make html
 ```
 
-Open docs/_build/html/index.html. The offline ZIP starts at index.html.
+Open docs/build/html/index.html. The offline ZIP starts at index.html.

@@ -64,7 +64,7 @@ provides figures and Python/notebook downloads.
 MPLBACKEND=Agg python -m pytest --cov=earthsciencekit --cov-report=term-missing
 python -m ruff check .
 python -m ruff format --check .
-MPLBACKEND=Agg python -m sphinx -E -W --keep-going -b html docs/source docs/_build/html
+cd docs && make html
 python -m build
 ```
 

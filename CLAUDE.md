@@ -23,8 +23,8 @@ python -m ruff format --check .
 python -m mypy earthsciencekit/results.py earthsciencekit/integrators --ignore-missing-imports --follow-imports=silent --check-untyped-defs
 
 # Docs: warnings are errors and all gallery scripts are executed
-MPLBACKEND=Agg python -m sphinx -E -W --keep-going -b html docs/source docs/_build/html
-python -m sphinx -W -b doctest docs/source docs/_build/doctest
+cd docs && make html
+make -C docs doctest
 
 python -m build
 ```

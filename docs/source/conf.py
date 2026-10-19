@@ -70,7 +70,7 @@ html_theme_options = {
     "navigation_with_keys": True,
     "navigation_depth": 2,
 }
-exclude_patterns = ["_build", "jupyterlite_contents", "_contents", "_generated/nav/*", "_generated/grid_*.rst", "_generated/vars.rst"]
+exclude_patterns = ["_build", "build", "jupyterlite_contents", "_contents", "_generated/nav/*", "_generated/grid_*.rst", "_generated/vars.rst"]
 
 SUBPACKAGES = [
     {

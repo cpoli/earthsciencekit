@@ -66,8 +66,8 @@ Reproduce from the source checkout::
     MPLBACKEND=Agg python -m pytest --cov=earthsciencekit --cov-report=term-missing
     python -m ruff check .
     python -m ruff format --check .
-    MPLBACKEND=Agg python -m sphinx -E -W --keep-going -b html docs/source docs/_build/html
-    python -m sphinx -W -b doctest docs/source docs/_build/doctest
+    cd docs && make html
+    make -C docs doctest
     python -m build
 
 The release's exact test counts, installed-wheel checks and link checks are
