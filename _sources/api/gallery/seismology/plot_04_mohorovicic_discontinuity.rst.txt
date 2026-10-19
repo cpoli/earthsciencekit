@@ -78,7 +78,7 @@ speeds below are of the size he used.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.085 seconds)
+   **Total running time of the script:** (0 minutes 0.084 seconds)
 
 
 .. _sphx_glr_download_api_gallery_seismology_plot_04_mohorovicic_discontinuity.py:

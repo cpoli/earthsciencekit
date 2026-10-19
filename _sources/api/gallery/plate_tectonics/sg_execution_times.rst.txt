@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:02.402** total execution time for 17 files **from api/gallery/plate_tectonics**:
+**00:02.404** total execution time for 17 files **from api/gallery/plate_tectonics**:
 
 .. container::
 
@@ -36,49 +36,49 @@ Computation times
      - 00:00.335
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_06_holmes_mantle_convection.py` (``plot_06_holmes_mantle_convection.py``)
-     - 00:00.294
+     - 00:00.296
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_03_kelvin_cooling_earth_grid.py` (``plot_03_kelvin_cooling_earth_grid.py``)
      - 00:00.235
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_11_isacks_oliver_sykes_subducting_slabs.py` (``plot_11_isacks_oliver_sykes_subducting_slabs.py``)
-     - 00:00.208
+     - 00:00.206
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_15_parsons_sclater_depth_age.py` (``plot_15_parsons_sclater_depth_age.py``)
-     - 00:00.170
+     - 00:00.169
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_09_wilson_transform_faults.py` (``plot_09_wilson_transform_faults.py``)
-     - 00:00.166
+     - 00:00.165
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_08_vine_matthews_magnetic_stripes.py` (``plot_08_vine_matthews_magnetic_stripes.py``)
-     - 00:00.128
+     - 00:00.129
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_04_hertz_floating_plate.py` (``plot_04_hertz_floating_plate.py``)
-     - 00:00.123
+     - 00:00.122
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_01_euler_rotation_theorem.py` (``plot_01_euler_rotation_theorem.py``)
-     - 00:00.101
+     - 00:00.104
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_07_hess_seafloor_spreading.py` (``plot_07_hess_seafloor_spreading.py``)
-     - 00:00.100
+     - 00:00.099
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_02_airy_isostasy.py` (``plot_02_airy_isostasy.py``)
+     - 00:00.084
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_14_forsyth_uyeda_slab_pull.py` (``plot_14_forsyth_uyeda_slab_pull.py``)
      - 00:00.084
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_13_morgan_hotspot_tracks.py` (``plot_13_morgan_hotspot_tracks.py``)
-     - 00:00.083
-     - 0.0
-   * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_02_airy_isostasy.py` (``plot_02_airy_isostasy.py``)
      - 00:00.082
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_12_walcott_lithospheric_flexure.py` (``plot_12_walcott_lithospheric_flexure.py``)
      - 00:00.079
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_05_wegener_continental_drift.py` (``plot_05_wegener_continental_drift.py``)
-     - 00:00.076
+     - 00:00.078
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_10_mckenzie_parker_plates_on_sphere.py` (``plot_10_mckenzie_parker_plates_on_sphere.py``)
-     - 00:00.070
+     - 00:00.069
      - 0.0
    * - :ref:`sphx_glr_api_gallery_plate_tectonics_plot_16_nuvel1_euler_circuit.py` (``plot_16_nuvel1_euler_circuit.py``)
      - 00:00.068

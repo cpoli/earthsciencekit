@@ -1,0 +1,28 @@
+earthsciencekit.glaciology
+==========================
+
+Glen's flow law, plastic and shallow-ice profiles, sliding, crevasses, mass balance, sea-ice growth, postglacial rebound, ice-core dating and marine grounding lines.
+
+.. grid:: 1 2 3 3
+   :gutter: 2
+
+   .. grid-item-card:: History
+      :link: /history/glaciology_breakthroughs
+      :link-type: doc
+
+      Foundational ideas linked to the implementation.
+
+   .. grid-item-card:: Examples
+      :link: /api/gallery/glaciology/index
+      :link-type: doc
+
+      Executed scripts, plots, source and notebook downloads.
+
+   .. grid-item-card:: API reference
+      :link: /api/glaciology
+      :link-type: doc
+
+      Public classes, functions and result objects.
+
+
+:doc:`Units, assumptions and numerical validation </guides/glaciology>`.

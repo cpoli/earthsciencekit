@@ -70,7 +70,7 @@ part of the relative motion normal to the trench is convergence.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.208 seconds)
+   **Total running time of the script:** (0 minutes 0.206 seconds)
 
 
 .. _sphx_glr_download_api_gallery_plate_tectonics_plot_11_isacks_oliver_sykes_subducting_slabs.py:

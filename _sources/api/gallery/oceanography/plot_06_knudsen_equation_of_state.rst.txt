@@ -63,7 +63,7 @@ density in the temperature-salinity plane have slope ``alpha / beta``.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.106 seconds)
+   **Total running time of the script:** (0 minutes 0.105 seconds)
 
 
 .. _sphx_glr_download_api_gallery_oceanography_plot_06_knudsen_equation_of_state.py:

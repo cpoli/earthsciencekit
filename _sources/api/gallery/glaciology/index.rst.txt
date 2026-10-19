@@ -1,0 +1,342 @@
+:orphan:
+
+.. include:: /_generated/nav/glaciology.rst
+
+Glaciology examples
+===================
+
+One executed example per breakthrough in :doc:`/history/glaciology_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/glaciology` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Louis Agassiz read the erratic boulders, polished rock and moraines of the Jura as the work of glaciers far larger than those of the Alps today, and proposed a great ice age. A modest cooling is enough: the equilibrium line, above which snow survives the summer, falls by the cooling divided by the lapse rate, and the area of a mountain range above it grows quickly. The example uses a synthetic range with a normal distribution of elevations.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_01_agassiz_ice_age_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_01_agassiz_ice_age`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Agassiz's ice age (1840)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="James David Forbes surveyed the Mer de Glace and found that its centre moves faster than its margins, and its surface faster than its depths, with a speed that changes with the seasons. He concluded that a glacier is &quot;an imperfect fluid&quot; flowing under its own weight. For a slab of uniform viscosity the velocity is a parabola in height, and its depth average is two-thirds of the surface speed.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_02_forbes_viscous_glacier_flow_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_02_forbes_viscous_glacier_flow`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Forbes's viscous glacier flow (1843)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Thomas Jamieson explained the raised beaches of Scotland, now far above the sea, by the weight of the ice sheet that once covered the country: the land sank under the ice and has risen since it melted. In equilibrium the mantle gives way until the displaced rock weighs as much as the ice, so the bed sinks by the ice thickness times the density ratio, about 0.28.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_03_jamieson_glacial_isostasy_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_03_jamieson_glacial_isostasy`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Jamieson's glacial isostasy (1865)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Josef Stefan treated the growth of polar sea ice as a moving-boundary problem: the latent heat released as water freezes at the base must be conducted up through the ice already formed. The thickness then grows as the square root of the freezing degree-days, so four times the cold makes only twice the ice. The example integrates a synthetic Arctic winter.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_04_stefan_sea_ice_growth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_04_stefan_sea_ice_growth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stefan's sea-ice growth (1891)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Norman Haskell treated the mantle under Fennoscandia as a viscous half-space and asked how fast a depression the size of the former ice sheet would recover. Matching the raised shorelines gave a viscosity of about 1e21 Pa s, still the standard value. The example builds a synthetic uplift history for a 3000 km depression and recovers the viscosity from the slope of its logarithm.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_05_haskell_mantle_viscosity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_05_haskell_mantle_viscosity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Haskell's mantle viscosity from rebound (1935)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Nye noticed that the basal shear stress under glaciers varies little, between about 50 and 150 kPa, and treated ice as a perfectly plastic solid that yields at a fixed stress. On a flat bed the ice sheet is then a parabola whose height depends only on the distance from its margin: an ice sheet 1000 km wide stands about 3.3 km high at its centre, as Greenland and Antarctica do.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_06_nye_perfectly_plastic_ice_sheet_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_06_nye_perfectly_plastic_ice_sheet`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nye's perfectly plastic ice sheet (1951)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Glen loaded cylinders of polycrystalline ice in compression at constant stress and temperature and measured their steady creep. The strain rate rose as about the cube of the stress, with a rate factor that grows steeply towards the melting point. A Glen glacier therefore shears mostly near its bed and moves almost as a block above it.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_07_glen_flow_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_07_glen_flow_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Glen's flow law (1955)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Nye argued that a crevasse stays open only down to the depth where the pressure of the overlying ice equals the tensile stress from stretching, which Glen&#x27;s law gives from the strain rate. Dry crevasses therefore reach only a few tens of metres. Water in a crevasse adds its own pressure and drives it deeper, which is how meltwater can fracture an entire ice shelf.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_08_nye_crevasse_depth_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_08_nye_crevasse_depth`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nye's crevasse depth (1955)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Johannes Weertman asked how temperate ice gets past the bumps of its bed. It melts on the upstream side of small obstacles and refreezes behind them, and it creeps faster around large ones; the obstacle size that limits both sets a sliding speed proportional to about the square of the basal stress. Sliding adds to internal deformation, and on soft or wet beds it dominates.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_09_weertman_sliding_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_09_weertman_sliding_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Weertman's sliding law (1957)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Mark Meier proposed the definitions of glacier mass budget still in use: the net balance at each point, the equilibrium line where it is zero, and the accumulation-area ratio. With a balance rising linearly with altitude, a glacier is in balance with its climate when the ablation below the equilibrium line cancels the accumulation above it, which on this synthetic valley glacier leaves about 60% of its area in the accumulation zone.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_10_meier_glacier_mass_balance_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_10_meier_glacier_mass_balance`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Meier's glacier mass balance (1962)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Willi Dansgaard collected rain and snow from stations worldwide and found that their oxygen-18 content falls by about 0.7 permil per kelvin of mean annual temperature at high latitudes: as moist air cools, its heavy molecules condense first. Read backwards, the isotope ratio of ice is a thermometer, and the glacial ice of Greenland, about 7 permil lighter than Holocene ice, records a cooling of about 10 K.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_11_dansgaard_isotope_thermometer_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_11_dansgaard_isotope_thermometer`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dansgaard's isotope thermometer (1964)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Willi Dansgaard and Sigfus Johnsen dated the first deep ice core, drilled to the bed at Camp Century in Greenland, with a flow model. Annual layers thin as they sink because the ice spreads sideways; the vertical velocity falls linearly with depth down to a kink, then quadratically to zero at the frozen bed. Integrating its reciprocal gives the age, older at depth than in Nye&#x27;s (1963) model of uniform thinning.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_12_dansgaard_johnsen_age_depth_model_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_12_dansgaard_johnsen_age_depth_model`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dansgaard and Johnsen's age-depth model (1969)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Johannes Weertman studied the junction between an ice sheet grounded below sea level and its floating shelf. The ice at the grounding line has the flotation thickness, set by the water depth, and the shelf spreads at a rate that rises as a power of that thickness. A grounding line on a bed that deepens inland therefore cannot be steady: a small retreat thickens the ice at the junction, which discharges more ice, which drives further retreat. The example compares the snowfall feeding the ice sheet with a measure of the discharge, the spreading of 10 km of cold shelf times the flotation thickness.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_13_weertman_marine_ice_sheet_instability_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_13_weertman_marine_ice_sheet_instability`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Weertman's marine ice-sheet instability (1974)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="M. W. Mahaffy built the first three-dimensional numerical ice-sheet model, for the Barnes Ice Cap. Because ice sheets are thin, the flux at each point follows from the local thickness and surface slope, and the thickness obeys a nonlinear diffusion equation solved on a staggered grid. Its steady state on a flat bed is Vialov&#x27;s (1958) profile, flatter at the dome than Nye&#x27;s parabola. simulate_flowline_glacier applies the same scheme to a mountain glacier, here grown on a bare bed and then shown responding to a 100 m rise of its equilibrium line.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_14_mahaffy_shallow_ice_model_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_14_mahaffy_shallow_ice_model`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mahaffy's shallow-ice model (1976)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jean-Marc Barnola and colleagues measured the carbon dioxide in air bubbles from the Vostok ice core through the last glacial cycle, 160,000 years. CO2 was about 190 ppm in the glacial periods and 280 ppm in the interglacials, and tracked the isotope temperature closely. The air is younger than the ice that holds it, because the firn stays open to the atmosphere until the bubbles close about 100 m down, and the gap is largest in the dry glacial climate. The example uses a synthetic record with Vostok-like amplitudes.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_15_barnola_vostok_co2_record_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_15_barnola_vostok_co2_record`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Barnola's Vostok CO2 record (1987)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Christian Schoof resolved the boundary layer where a sliding ice sheet meets its shelf and found that the flux across the grounding line is a power of the flotation thickness, about 4.75 for Glen&#x27;s n = 3 and a sliding exponent of 1/3. A grounding line is steady where this flux equals the snowfall upstream, and stable only where the bed rises inland. On an overdeepened bed the steady states come in pairs, and the inner one is unstable.">
+
+.. only:: html
+
+  .. image:: /api/gallery/glaciology/images/thumb/sphx_glr_plot_16_schoof_grounding_line_flux_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/glaciology/plot_16_schoof_grounding_line_flux`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Schoof's grounding-line flux (2007)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/glaciology/plot_01_agassiz_ice_age
+   /api/gallery/glaciology/plot_02_forbes_viscous_glacier_flow
+   /api/gallery/glaciology/plot_03_jamieson_glacial_isostasy
+   /api/gallery/glaciology/plot_04_stefan_sea_ice_growth
+   /api/gallery/glaciology/plot_05_haskell_mantle_viscosity
+   /api/gallery/glaciology/plot_06_nye_perfectly_plastic_ice_sheet
+   /api/gallery/glaciology/plot_07_glen_flow_law
+   /api/gallery/glaciology/plot_08_nye_crevasse_depth
+   /api/gallery/glaciology/plot_09_weertman_sliding_law
+   /api/gallery/glaciology/plot_10_meier_glacier_mass_balance
+   /api/gallery/glaciology/plot_11_dansgaard_isotope_thermometer
+   /api/gallery/glaciology/plot_12_dansgaard_johnsen_age_depth_model
+   /api/gallery/glaciology/plot_13_weertman_marine_ice_sheet_instability
+   /api/gallery/glaciology/plot_14_mahaffy_shallow_ice_model
+   /api/gallery/glaciology/plot_15_barnola_vostok_co2_record
+   /api/gallery/glaciology/plot_16_schoof_grounding_line_flux
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: glaciology_python.zip </api/gallery/glaciology/glaciology_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: glaciology_jupyter.zip </api/gallery/glaciology/glaciology_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

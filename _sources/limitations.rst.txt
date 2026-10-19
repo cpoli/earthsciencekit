@@ -1,8 +1,8 @@
 Scope and limitations
 =====================
 
-Version 0.2.0 contains plate_tectonics, seismology, atmosphere, climate,
-oceanography, geophysics and volcanology. Its data are deterministic synthetic examples, not bundled
+Version 0.3.0 contains plate_tectonics, seismology, atmosphere, climate,
+oceanography, geophysics, volcanology, hydrology and glaciology. Its data are deterministic synthetic examples, not bundled
 observational products. It provides educational baselines with documented
 assumptions, not an integrated Earth-system model.
 
@@ -33,6 +33,22 @@ assumptions, not an integrated Earth-system model.
   eruption column is a windless top-hat plume without a gas-thrust region,
   particle fallout or moisture. There is no thermodynamic melting model,
   conduit-flow solver, tephra dispersal or hazard assessment.
+- Hydrology uses homogeneous, isotropic media and lumped or one-dimensional
+  forms: Dupuit flow without recharge, Theis wells in an infinite confined
+  aquifer, steady Richards profiles in a Gardner soil, Green-Ampt and Horton
+  infiltration in a uniform soil, steady uniform channel flow, a linear
+  time-invariant unit hydrograph, Muskingum routing and a big-leaf
+  Penman-Monteith canopy in neutral stability. There is no transient Richards
+  solver, groundwater model, kinematic or dynamic wave routing, snowmelt,
+  catchment calibration or flood-frequency analysis.
+- Glaciology uses isothermal Glen ice with one rate factor, shallow-ice and
+  plastic profiles, a power-law sliding law, a flowline glacier of uniform
+  width with no sliding or calving, local isostasy with a single viscous
+  half-space relaxation, Stefan growth without snow or ocean heat, and steady
+  one-dimensional ice-core flow. There is no thermomechanical coupling,
+  higher-order or full-Stokes flow, ice-shelf buttressing, firn
+  densification model, positive-degree-day melt or three-dimensional ice
+  sheet.
 
 Physical constants and sample coefficients are documented references, not a
 service that automatically tracks revised measurements. Raw floats do not carry

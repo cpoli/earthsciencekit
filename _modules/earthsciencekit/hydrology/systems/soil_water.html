@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>earthsciencekit.hydrology.systems.soil_water &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../../../../_static/documentation_options.js?v=f129cdf0"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../../../../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/earthsciencekit/hydrology/systems/soil_water';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/_modules/earthsciencekit/hydrology/systems/soil_water.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.hydrology.systems.soil_water</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for earthsciencekit.hydrology.systems.soil_water</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Soil water: unsaturated Darcy flow, steady Richards profiles and the Green-Ampt and Horton infiltration laws.</span>
+
+<span class="sd">SI units unless stated otherwise. Heights and fluxes are positive upward in the unsaturated zone.</span>
+<span class="sd">"""</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">earthsciencekit._validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">require</span><span class="p">,</span> <span class="n">safe_arithmetic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">earthsciencekit.results</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeries</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"gardner_conductivity"</span><span class="p">,</span>
+    <span class="s2">"unsaturated_darcy_flux"</span><span class="p">,</span>
+    <span class="s2">"richards_steady_head"</span><span class="p">,</span>
+    <span class="s2">"green_ampt_rate"</span><span class="p">,</span>
+    <span class="s2">"green_ampt_time"</span><span class="p">,</span>
+    <span class="s2">"horton_infiltration_rate"</span><span class="p">,</span>
+    <span class="s2">"horton_cumulative_infiltration"</span><span class="p">,</span>
+    <span class="s2">"simulate_infiltration"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="gardner_conductivity">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.gardner_conductivity">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gardner_conductivity</span><span class="p">(</span><span class="n">pressure_head</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">sorptive_number</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Gardner's exponential unsaturated hydraulic conductivity.</span>
+
+<span class="sd">    Drying soil conducts water through ever thinner films and smaller pores, so its conductivity falls by orders of</span>
+<span class="sd">    magnitude as suction rises.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pressure_head : float or array_like</span>
+<span class="sd">        m, negative under suction; constraint: nonpositive.</span>
+<span class="sd">    saturated_conductivity : float or array_like</span>
+<span class="sd">        m/s; constraint: positive.</span>
+<span class="sd">    sorptive_number : float or array_like</span>
+<span class="sd">        1/m, Gardner's alpha (about 1 for clay to 10 for sand); constraint: positive.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Gardner (1958), a one-parameter fit without hysteresis; it makes the steady Richards equation solvable in closed form.</span>
+<span class="sd">    Equation: ``saturated_conductivity * np.exp(sorptive_number * pressure_head)``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">pressure_head</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"pressure_head"</span><span class="p">,</span> <span class="n">pressure_head</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">saturated_conductivity</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"saturated_conductivity"</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sorptive_number</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"sorptive_number"</span><span class="p">,</span> <span class="n">sorptive_number</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">saturated_conductivity</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sorptive_number</span> <span class="o">*</span> <span class="n">pressure_head</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="unsaturated_darcy_flux">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.unsaturated_darcy_flux">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">unsaturated_darcy_flux</span><span class="p">(</span><span class="n">conductivity</span><span class="p">,</span> <span class="n">pressure_head_gradient</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Vertical Darcy-Buckingham flux in an unsaturated soil.</span>
+
+<span class="sd">    Richards extended Darcy's law to unsaturated soil, where capillary suction and gravity together drive the water.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    conductivity : float or array_like</span>
+<span class="sd">        m/s, at the local pressure head; constraint: nonnegative.</span>
+<span class="sd">    pressure_head_gradient : float or array_like</span>
+<span class="sd">        1, d(pressure_head)/dz with z upward; constraint: real.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [m/s], positive upward. Scalar input returns a NumPy scalar; arrays broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Richards (1931): the total head is ``pressure_head + z`` and air stays at atmospheric pressure.</span>
+<span class="sd">    Equation: ``-conductivity * (pressure_head_gradient + 1)``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">conductivity</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"conductivity"</span><span class="p">,</span> <span class="n">conductivity</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">pressure_head_gradient</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"pressure_head_gradient"</span><span class="p">,</span> <span class="n">pressure_head_gradient</span><span class="p">)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">conductivity</span> <span class="o">*</span> <span class="p">(</span><span class="n">pressure_head_gradient</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="richards_steady_head">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.richards_steady_head">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">richards_steady_head</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">sorptive_number</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Steady pressure-head profile above a water table in a Gardner soil.</span>
+
+<span class="sd">    With a constant flux through the unsaturated zone, Richards's equation fixes the suction at every height: capillary</span>
+<span class="sd">    rise for evaporation, a unit-gradient tail for infiltration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    height : float or array_like</span>
+<span class="sd">        m, above the water table; constraint: nonnegative.</span>
+<span class="sd">    flux : float or array_like</span>
+<span class="sd">        m/s, positive upward (evaporation), negative downward (infiltration); constraint: greater than</span>
+<span class="sd">        ``-saturated_conductivity``.</span>
+<span class="sd">    saturated_conductivity : float or array_like</span>
+<span class="sd">        m/s; constraint: positive.</span>
+<span class="sd">    sorptive_number : float or array_like</span>
+<span class="sd">        1/m, Gardner's alpha; constraint: positive.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [m], zero at the water table and negative above it. Scalar input returns a NumPy scalar; arrays</span>
+<span class="sd">        broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Richards (1931) steady equation ``flux = -K(psi) (dpsi/dz + 1)`` with Gardner's (1958) conductivity; an upward flux</span>
+<span class="sd">    can only be sustained below ``np.log(1 + saturated_conductivity / flux) / sorptive_number``.</span>
+<span class="sd">    Equation: ``np.log(((flux + saturated_conductivity) * np.exp(-sorptive_number * height) - flux) /</span>
+<span class="sd">    saturated_conductivity) / sorptive_number``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"flux"</span><span class="p">,</span> <span class="n">flux</span><span class="p">)</span>
+    <span class="n">saturated_conductivity</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"saturated_conductivity"</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sorptive_number</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"sorptive_number"</span><span class="p">,</span> <span class="n">sorptive_number</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">flux</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">saturated_conductivity</span><span class="p">,</span> <span class="s2">"downward flux must be below the saturated conductivity"</span><span class="p">)</span>
+    <span class="n">conductivity</span> <span class="o">=</span> <span class="p">(</span><span class="n">flux</span> <span class="o">+</span> <span class="n">saturated_conductivity</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">sorptive_number</span> <span class="o">*</span> <span class="n">height</span><span class="p">)</span> <span class="o">-</span> <span class="n">flux</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">conductivity</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"height exceeds the limit of steady capillary rise"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">conductivity</span> <span class="o">/</span> <span class="n">saturated_conductivity</span><span class="p">)</span> <span class="o">/</span> <span class="n">sorptive_number</span></div>
+
+
+
+<div class="viewcode-block" id="green_ampt_rate">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.green_ampt_rate">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">green_ampt_rate</span><span class="p">(</span><span class="n">cumulative_infiltration</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">suction_head</span><span class="p">,</span> <span class="n">moisture_deficit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Green-Ampt infiltration capacity of a ponded soil.</span>
+
+<span class="sd">    A sharp wetting front moves down behind a ponded surface, pulled by capillary suction that matters less and less as the</span>
+<span class="sd">    wetted zone deepens.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cumulative_infiltration : float or array_like</span>
+<span class="sd">        m, depth infiltrated so far; constraint: positive.</span>
+<span class="sd">    saturated_conductivity : float or array_like</span>
+<span class="sd">        m/s; constraint: positive.</span>
+<span class="sd">    suction_head : float or array_like</span>
+<span class="sd">        m, capillary suction at the wetting front; constraint: positive.</span>
+<span class="sd">    moisture_deficit : float or array_like</span>
+<span class="sd">        1, saturated minus initial water content; constraint: between 0 (exclusive) and 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Green and Ampt (1911): a piston-like front in a uniform soil with a negligible ponding depth; the rate tends to the</span>
+<span class="sd">    saturated conductivity.</span>
+<span class="sd">    Equation: ``saturated_conductivity * (1 + suction_head * moisture_deficit / cumulative_infiltration)``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">cumulative_infiltration</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"cumulative_infiltration"</span><span class="p">,</span> <span class="n">cumulative_infiltration</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">saturated_conductivity</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"saturated_conductivity"</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">suction_head</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"suction_head"</span><span class="p">,</span> <span class="n">suction_head</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">moisture_deficit</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"moisture_deficit"</span><span class="p">,</span> <span class="n">moisture_deficit</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">saturated_conductivity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">suction_head</span> <span class="o">*</span> <span class="n">moisture_deficit</span> <span class="o">/</span> <span class="n">cumulative_infiltration</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="green_ampt_time">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.green_ampt_time">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">green_ampt_time</span><span class="p">(</span><span class="n">cumulative_infiltration</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">suction_head</span><span class="p">,</span> <span class="n">moisture_deficit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Time for a ponded Green-Ampt soil to absorb a given depth.</span>
+
+<span class="sd">    Integrating the Green-Ampt rate gives the time in closed form, so the infiltrated depth follows by inverting it.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cumulative_infiltration : float or array_like</span>
+<span class="sd">        m; constraint: nonnegative.</span>
+<span class="sd">    saturated_conductivity : float or array_like</span>
+<span class="sd">        m/s; constraint: positive.</span>
+<span class="sd">    suction_head : float or array_like</span>
+<span class="sd">        m; constraint: positive.</span>
+<span class="sd">    moisture_deficit : float or array_like</span>
+<span class="sd">        1; constraint: between 0 (exclusive) and 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [s], since ponding at the surface began. Scalar input returns a NumPy scalar; arrays broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Green and Ampt (1911), ponded from time zero; early on the depth grows as the square root of time.</span>
+<span class="sd">    Equation: ``(cumulative_infiltration - suction_head * moisture_deficit * np.log(1 + cumulative_infiltration /</span>
+<span class="sd">    (suction_head * moisture_deficit))) / saturated_conductivity``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">cumulative_infiltration</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"cumulative_infiltration"</span><span class="p">,</span> <span class="n">cumulative_infiltration</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">saturated_conductivity</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"saturated_conductivity"</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">suction_head</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"suction_head"</span><span class="p">,</span> <span class="n">suction_head</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">moisture_deficit</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"moisture_deficit"</span><span class="p">,</span> <span class="n">moisture_deficit</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">storage</span> <span class="o">=</span> <span class="n">suction_head</span> <span class="o">*</span> <span class="n">moisture_deficit</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">cumulative_infiltration</span> <span class="o">-</span> <span class="n">storage</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">cumulative_infiltration</span> <span class="o">/</span> <span class="n">storage</span><span class="p">))</span> <span class="o">/</span> <span class="n">saturated_conductivity</span></div>
+
+
+
+<div class="viewcode-block" id="horton_infiltration_rate">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.horton_infiltration_rate">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">horton_infiltration_rate</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">initial_rate</span><span class="p">,</span> <span class="n">final_rate</span><span class="p">,</span> <span class="n">decay_constant</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Horton's infiltration capacity during a storm.</span>
+
+<span class="sd">    Infiltration capacity falls from a high initial value to a steady one as the soil wets, and rain beyond it runs off</span>
+<span class="sd">    over the surface.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    time : float or array_like</span>
+<span class="sd">        s, since the soil began to infiltrate at capacity; constraint: nonnegative.</span>
+<span class="sd">    initial_rate : float or array_like</span>
+<span class="sd">        m/s; constraint: at least final_rate.</span>
+<span class="sd">    final_rate : float or array_like</span>
+<span class="sd">        m/s; constraint: nonnegative.</span>
+<span class="sd">    decay_constant : float or array_like</span>
+<span class="sd">        1/s; constraint: positive.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Horton (1933, 1940), an empirical law for rain at or above capacity throughout.</span>
+<span class="sd">    Equation: ``final_rate + (initial_rate - final_rate) * np.exp(-decay_constant * time)``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">initial_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"initial_rate"</span><span class="p">,</span> <span class="n">initial_rate</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">final_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"final_rate"</span><span class="p">,</span> <span class="n">final_rate</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">decay_constant</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"decay_constant"</span><span class="p">,</span> <span class="n">decay_constant</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">initial_rate</span> <span class="o">&gt;=</span> <span class="n">final_rate</span><span class="p">,</span> <span class="s2">"initial rate must be at least the final rate"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">final_rate</span> <span class="o">+</span> <span class="p">(</span><span class="n">initial_rate</span> <span class="o">-</span> <span class="n">final_rate</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">decay_constant</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="horton_cumulative_infiltration">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.horton_cumulative_infiltration">[docs]</a>
+<span class="nd">@model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">horton_cumulative_infiltration</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">initial_rate</span><span class="p">,</span> <span class="n">final_rate</span><span class="p">,</span> <span class="n">decay_constant</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Depth infiltrated under Horton's law.</span>
+
+<span class="sd">    The time integral of Horton's capacity is the water the soil can take up before the steady rate dominates.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    time : float or array_like</span>
+<span class="sd">        s; constraint: nonnegative.</span>
+<span class="sd">    initial_rate : float or array_like</span>
+<span class="sd">        m/s; constraint: at least final_rate.</span>
+<span class="sd">    final_rate : float or array_like</span>
+<span class="sd">        m/s; constraint: nonnegative.</span>
+<span class="sd">    decay_constant : float or array_like</span>
+<span class="sd">        1/s; constraint: positive.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy scalar or ndarray</span>
+<span class="sd">        Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Horton (1933, 1940), with rain at or above capacity from time zero.</span>
+<span class="sd">    Equation: ``final_rate * time + (initial_rate - final_rate) * (1 - np.exp(-decay_constant * time)) / decay_constant``.</span>
+<span class="sd">    Invalid, empty, nonreal or nonfinite inputs raise ValueError.</span>
+<span class="sd">    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</span>
+<span class="sd">    """</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">initial_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"initial_rate"</span><span class="p">,</span> <span class="n">initial_rate</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">final_rate</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"final_rate"</span><span class="p">,</span> <span class="n">final_rate</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">decay_constant</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"decay_constant"</span><span class="p">,</span> <span class="n">decay_constant</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">require</span><span class="p">(</span><span class="n">initial_rate</span> <span class="o">&gt;=</span> <span class="n">final_rate</span><span class="p">,</span> <span class="s2">"initial rate must be at least the final rate"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">final_rate</span> <span class="o">*</span> <span class="n">time</span> <span class="o">+</span> <span class="p">(</span><span class="n">initial_rate</span> <span class="o">-</span> <span class="n">final_rate</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="o">-</span><span class="n">decay_constant</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">/</span> <span class="n">decay_constant</span></div>
+
+
+
+<div class="viewcode-block" id="simulate_infiltration">
+<a class="viewcode-back" href="../../../../api/hydrology.html#earthsciencekit.hydrology.simulate_infiltration">[docs]</a>
+<span class="nd">@safe_arithmetic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_infiltration</span><span class="p">(</span><span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">suction_head</span><span class="p">,</span> <span class="n">moisture_deficit</span><span class="p">,</span> <span class="n">rainfall_rate</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Infiltration and runoff during steady rain on a Green-Ampt soil.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    saturated_conductivity : float</span>
+<span class="sd">        Positive scalar [m/s].</span>
+<span class="sd">    suction_head : float</span>
+<span class="sd">        Positive scalar wetting-front suction [m].</span>
+<span class="sd">    moisture_deficit : float</span>
+<span class="sd">        Scalar saturated minus initial water content, in (0, 1] [1].</span>
+<span class="sd">    rainfall_rate : float</span>
+<span class="sd">        Nonnegative scalar rain intensity [m/s].</span>
+<span class="sd">    time : array_like</span>
+<span class="sd">        Nonnegative strictly increasing times; the rain starts at the first sample [s].</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    TimeSeries</span>
+<span class="sd">        Cumulative infiltration [m], infiltration rate [m/s] and infiltration-excess runoff rate [m/s].</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Mein and Larson (1973): the soil absorbs all the rain until the Green-Ampt capacity</span>
+<span class="sd">    ``K (1 + psi dtheta / F)`` falls to the rain rate, at ``F = K psi dtheta / (r - K)``, and infiltrates at capacity</span>
+<span class="sd">    afterwards, so dF/dt = min(r, capacity). Rain no faster than K never ponds. The excess runs off at once; surface</span>
+<span class="sd">    storage, redistribution and a water table are neglected.</span>
+<span class="sd">    """</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">earthsciencekit._validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">time_grid</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">earthsciencekit.integrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate_ode</span>
+
+    <span class="n">conductivity</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"saturated_conductivity"</span><span class="p">,</span> <span class="n">saturated_conductivity</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">suction</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"suction_head"</span><span class="p">,</span> <span class="n">suction_head</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">deficit</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"moisture_deficit"</span><span class="p">,</span> <span class="n">moisture_deficit</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">strict_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rain</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">(</span><span class="s2">"rainfall_rate"</span><span class="p">,</span> <span class="n">rainfall_rate</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">require</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">conductivity</span><span class="p">,</span> <span class="n">suction</span><span class="p">,</span> <span class="n">deficit</span><span class="p">,</span> <span class="n">rain</span><span class="p">)),</span> <span class="s2">"infiltration parameters must be scalars"</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">time_grid</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">storage</span> <span class="o">=</span> <span class="n">suction</span> <span class="o">*</span> <span class="n">deficit</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">rate</span><span class="p">(</span><span class="n">depth</span><span class="p">):</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">ponded</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">*</span> <span class="p">(</span><span class="n">rain</span> <span class="o">-</span> <span class="n">conductivity</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">conductivity</span> <span class="o">*</span> <span class="n">storage</span>
+        <span class="n">capacity</span> <span class="o">=</span> <span class="n">conductivity</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">storage</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ponded</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ponded</span><span class="p">,</span> <span class="n">capacity</span><span class="p">,</span> <span class="n">rain</span><span class="p">)</span>
+
+    <span class="n">depth</span> <span class="o">=</span> <span class="n">integrate_ode</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">rate</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">time</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s2">"F"</span><span class="p">,),</span> <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="s2">"m"</span><span class="p">,))</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">infiltration</span> <span class="o">=</span> <span class="n">rate</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">depth</span><span class="p">,</span> <span class="n">infiltration</span><span class="p">,</span> <span class="n">rain</span> <span class="o">-</span> <span class="n">infiltration</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">TimeSeries</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="s2">"cumulative_infiltration"</span><span class="p">,</span> <span class="s2">"infiltration_rate"</span><span class="p">,</span> <span class="s2">"runoff_rate"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"m"</span><span class="p">,</span> <span class="s2">"m/s"</span><span class="p">,</span> <span class="s2">"m/s"</span><span class="p">))</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

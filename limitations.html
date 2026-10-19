@@ -10,10 +10,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cpoli.github.io/earthsciencekit/limitations.html" />
 <meta property="og:site_name" content="earthsciencekit" />
-<meta property="og:description" content="Version 0.2.0 contains plate_tectonics, seismology, atmosphere, climate, oceanography, geophysics and volcanology. Its data are deterministic synthetic examples, not bundled observational products...." />
+<meta property="og:description" content="Version 0.3.0 contains plate_tectonics, seismology, atmosphere, climate, oceanography, geophysics, volcanology, hydrology and glaciology. Its data are deterministic synthetic examples, not bundled ..." />
 <meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
 <meta property="og:image:alt" content="earthsciencekit" />
-<meta name="description" content="Version 0.2.0 contains plate_tectonics, seismology, atmosphere, climate, oceanography, geophysics and volcanology. Its data are deterministic synthetic examples, not bundled observational products...." />
+<meta name="description" content="Version 0.3.0 contains plate_tectonics, seismology, atmosphere, climate, oceanography, geophysics, volcanology, hydrology and glaciology. Its data are deterministic synthetic examples, not bundled ..." />
 
     <title>Scope and limitations &#8212; earthsciencekit</title>
   
@@ -54,7 +54,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=95e61db4"></script>
+    <script src="_static/documentation_options.js?v=f129cdf0"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -388,6 +388,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/oceanography.html">earthsciencekit.oceanography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/volcanology.html">earthsciencekit.volcanology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/geophysics.html">earthsciencekit.geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/hydrology.html">earthsciencekit.hydrology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/glaciology.html">earthsciencekit.glaciology</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="api/integrators.html">earthsciencekit.integrators</a></li>
@@ -460,8 +462,8 @@
                   
   <section id="scope-and-limitations">
 <h1>Scope and limitations<a class="headerlink" href="#scope-and-limitations" title="Link to this heading">#</a></h1>
-<p>Version 0.2.0 contains plate_tectonics, seismology, atmosphere, climate,
-oceanography, geophysics and volcanology. Its data are deterministic synthetic examples, not bundled
+<p>Version 0.3.0 contains plate_tectonics, seismology, atmosphere, climate,
+oceanography, geophysics, volcanology, hydrology and glaciology. Its data are deterministic synthetic examples, not bundled
 observational products. It provides educational baselines with documented
 assumptions, not an integrated Earth-system model.</p>
 <ul class="simple">
@@ -492,6 +494,22 @@ laminar dike flow, the Mogi source is a point in an elastic half-space, and the
 eruption column is a windless top-hat plume without a gas-thrust region,
 particle fallout or moisture. There is no thermodynamic melting model,
 conduit-flow solver, tephra dispersal or hazard assessment.</p></li>
+<li><p>Hydrology uses homogeneous, isotropic media and lumped or one-dimensional
+forms: Dupuit flow without recharge, Theis wells in an infinite confined
+aquifer, steady Richards profiles in a Gardner soil, Green-Ampt and Horton
+infiltration in a uniform soil, steady uniform channel flow, a linear
+time-invariant unit hydrograph, Muskingum routing and a big-leaf
+Penman-Monteith canopy in neutral stability. There is no transient Richards
+solver, groundwater model, kinematic or dynamic wave routing, snowmelt,
+catchment calibration or flood-frequency analysis.</p></li>
+<li><p>Glaciology uses isothermal Glen ice with one rate factor, shallow-ice and
+plastic profiles, a power-law sliding law, a flowline glacier of uniform
+width with no sliding or calving, local isostasy with a single viscous
+half-space relaxation, Stefan growth without snow or ocean heat, and steady
+one-dimensional ice-core flow. There is no thermomechanical coupling,
+higher-order or full-Stokes flow, ice-shelf buttressing, firn
+densification model, positive-degree-day melt or three-dimensional ice
+sheet.</p></li>
 </ul>
 <p>Physical constants and sample coefficients are documented references, not a
 service that automatically tracks revised measurements. Raw floats do not carry

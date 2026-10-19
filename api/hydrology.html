@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="earthsciencekit.hydrology" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cpoli.github.io/earthsciencekit/api/hydrology.html" />
+<meta property="og:site_name" content="earthsciencekit" />
+<meta property="og:description" content="Domain hub · History · Examples · API reference Inspectable hydrology models of water on and under land; SI units unless stated otherwise." />
+<meta property="og:image" content="https://cpoli.github.io/earthsciencekit/_static/images/readme_hero.png" />
+<meta property="og:image:alt" content="earthsciencekit" />
+<meta name="description" content="Domain hub · History · Examples · API reference Inspectable hydrology models of water on and under land; SI units unless stated otherwise." />
+
+    <title>earthsciencekit.hydrology &#8212; earthsciencekit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=18bd87630a240e9c25be" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_autodoc_typehints.css?v=057ac668" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyterlite_sphinx.css?v=f676e775" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=c83e6b79" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/earthsciencekit.css?v=62935cec" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=18bd87630a240e9c25be"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
+
+    <script src="../_static/documentation_options.js?v=f129cdf0"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="../_static/jupyterlite_sphinx.js?v=96e329c5"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/hydrology';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://cpoli.github.io/earthsciencekit/api/hydrology.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="earthsciencekit.glaciology" href="glaciology.html" />
+    <link rel="prev" title="earthsciencekit.geophysics" href="geophysics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">earthsciencekit</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../subpackages/index.html">
+    Subpackages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../history/index.html">
+    History
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/cpoli/earthsciencekit" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/earthsciencekit/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-python fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button type="button" id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plate_tectonics.html">earthsciencekit.plate_tectonics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seismology.html">earthsciencekit.seismology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atmosphere.html">earthsciencekit.atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climate.html">earthsciencekit.climate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oceanography.html">earthsciencekit.oceanography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volcanology.html">earthsciencekit.volcanology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geophysics.html">earthsciencekit.geophysics</a></li>
+<li class="toctree-l1 current active"><a aria-current="page" class="current reference internal" href="#">earthsciencekit.hydrology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glaciology.html">earthsciencekit.glaciology</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="integrators.html">earthsciencekit.integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">earthsciencekit.results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizers.html">earthsciencekit.visualizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">earthsciencekit.units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constants.html">earthsciencekit.constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../validation.html">Validation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../limitations.html">Scope and limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Scientific teaching references</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">earthsciencekit.hydrology</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="earthsciencekit-hydrology">
+<h1>earthsciencekit.hydrology<a class="headerlink" href="#earthsciencekit-hydrology" title="Link to this heading">#</a></h1>
+<div class="subpkg-nav docutils container">
+<p><a class="reference internal" href="../_generated/subpackages/hydrology.html"><span class="doc">Domain hub</span></a> · <a class="reference internal" href="../history/hydrology_breakthroughs.html"><span class="doc">History</span></a> · <a class="reference internal" href="gallery/hydrology/index.html"><span class="doc">Examples</span></a> · <a class="reference internal" href="#"><span class="doc">API reference</span></a></p>
+</div>
+<p id="module-earthsciencekit.hydrology">Inspectable hydrology models of water on and under land; SI units unless stated otherwise.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.aerodynamic_resistance">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">aerodynamic_resistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wind_speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measurement_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">displacement_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum_roughness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vapor_roughness</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#aerodynamic_resistance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.aerodynamic_resistance" title="Link to this definition">#</a></dt>
+<dd><p>Aerodynamic resistance to vapour transfer above a canopy.</p>
+<p>Turbulence in the logarithmic wind profile carries vapour away from the canopy, faster in stronger wind over rougher
+surfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wind_speed</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s, at the measurement height; constraint: positive.</p></li>
+<li><p><strong>measurement_height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>displacement_height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, zero-plane displacement (about two thirds of the canopy height); constraint: nonnegative.</p></li>
+<li><p><strong>momentum_roughness</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>vapor_roughness</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, often a tenth of the momentum roughness; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s/m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Neutral stability; the measurement height above the displacement height must exceed both roughness lengths. For
+FAO grass (0.12 m) at 2 m it is about <code class="docutils literal notranslate"><span class="pre">208</span> <span class="pre">/</span> <span class="pre">wind_speed</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log((measurement_height</span> <span class="pre">-</span> <span class="pre">displacement_height)</span> <span class="pre">/</span> <span class="pre">momentum_roughness)</span> <span class="pre">*</span> <span class="pre">np.log((measurement_height</span> <span class="pre">-</span>
+<span class="pre">displacement_height)</span> <span class="pre">/</span> <span class="pre">vapor_roughness)</span> <span class="pre">/</span> <span class="pre">(VON_KARMAN**2</span> <span class="pre">*</span> <span class="pre">wind_speed)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.bulk_surface_resistance">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">bulk_surface_resistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stomatal_resistance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_leaf_area_index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#bulk_surface_resistance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.bulk_surface_resistance" title="Link to this definition">#</a></dt>
+<dd><p>Bulk surface (canopy) resistance from the leaf stomatal resistance.</p>
+<p>The stomata of all leaves act as resistances in parallel, so a dense canopy offers less resistance than a single leaf.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stomatal_resistance</strong> (<em>float</em><em> or </em><em>array_like</em>) – s/m, of a single well-illuminated leaf (about 100); constraint: nonnegative.</p></li>
+<li><p><strong>active_leaf_area_index</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, sunlit leaf area per ground area (about half the leaf area index); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s/m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Monteith (1965) big-leaf canopy with parallel leaves; FAO grass has about 70 s/m.
+Equation: <code class="docutils literal notranslate"><span class="pre">stomatal_resistance</span> <span class="pre">/</span> <span class="pre">active_leaf_area_index</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.chezy_from_manning">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">chezy_from_manning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hydraulic_radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/channels.html#chezy_from_manning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.chezy_from_manning" title="Link to this definition">#</a></dt>
+<dd><p>Chezy coefficient equivalent to a Manning roughness.</p>
+<p>Manning’s formula is Chezy’s with a coefficient that grows as the sixth root of the hydraulic radius.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roughness</strong> (<em>float</em><em> or </em><em>array_like</em>) – s/m^(1/3); constraint: positive.</p></li>
+<li><p><strong>hydraulic_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^0.5/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Manning (1891), SI units.
+Equation: <code class="docutils literal notranslate"><span class="pre">hydraulic_radius**(1</span> <span class="pre">/</span> <span class="pre">6)</span> <span class="pre">/</span> <span class="pre">roughness</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.chezy_velocity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">chezy_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chezy_coefficient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hydraulic_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/channels.html#chezy_velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.chezy_velocity" title="Link to this definition">#</a></dt>
+<dd><p>Chezy’s mean velocity of uniform flow in an open channel.</p>
+<p>In uniform flow the weight of the water down the slope balances bed friction that grows as the square of the
+velocity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>chezy_coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^0.5/s, typically 30-90; constraint: positive.</p></li>
+<li><p><strong>hydraulic_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>slope</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, bed (energy) slope; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Chezy (1775): steady uniform turbulent flow; the coefficient is not a constant but depends on roughness and depth.
+Equation: <code class="docutils literal notranslate"><span class="pre">chezy_coefficient</span> <span class="pre">*</span> <span class="pre">np.sqrt(hydraulic_radius</span> <span class="pre">*</span> <span class="pre">slope)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.cooper_jacob_drawdown">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">cooper_jacob_drawdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pumping_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transmissivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storativity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#cooper_jacob_drawdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.cooper_jacob_drawdown" title="Link to this definition">#</a></dt>
+<dd><p>Cooper and Jacob’s late-time approximation to the Theis drawdown.</p>
+<p>Late in a pumping test the drawdown grows linearly with the logarithm of time, so a straight line on a semilog plot
+gives the aquifer properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pumping_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s; constraint: real.</p></li>
+<li><p><strong>transmissivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^2/s; constraint: positive.</p></li>
+<li><p><strong>storativity</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Cooper and Jacob (1946): the first two terms of the Theis series, within 1% for <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code> and meaningless (it goes
+negative) for u above about 0.56.
+Equation: <code class="docutils literal notranslate"><span class="pre">pumping_rate</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">transmissivity)</span> <span class="pre">*</span> <span class="pre">(-np.euler_gamma</span> <span class="pre">-</span> <span class="pre">np.log(radius**2</span> <span class="pre">*</span> <span class="pre">storativity</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span>
+<span class="pre">transmissivity</span> <span class="pre">*</span> <span class="pre">time)))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.cooper_jacob_transmissivity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">cooper_jacob_transmissivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pumping_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drawdown_per_log_cycle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#cooper_jacob_transmissivity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.cooper_jacob_transmissivity" title="Link to this definition">#</a></dt>
+<dd><p>Transmissivity from the slope of a Cooper-Jacob straight line.</p>
+<p>The drawdown gained per tenfold increase in time depends only on the pumping rate and the transmissivity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pumping_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s; constraint: positive.</p></li>
+<li><p><strong>drawdown_per_log_cycle</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, drawdown increase per factor of ten in time; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^2/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Cooper and Jacob (1946), from late-time data where <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">&lt;</span> <span class="pre">0.01</span></code>; the storativity follows from the zero-drawdown
+intercept <code class="docutils literal notranslate"><span class="pre">t0</span></code> as <code class="docutils literal notranslate"><span class="pre">2.25</span> <span class="pre">*</span> <span class="pre">transmissivity</span> <span class="pre">*</span> <span class="pre">t0</span> <span class="pre">/</span> <span class="pre">radius**2</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log(10)</span> <span class="pre">*</span> <span class="pre">pumping_rate</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">drawdown_per_log_cycle)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.dalton_evaporation">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">dalton_evaporation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saturation_vapor_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vapor_pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transfer_coefficient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#dalton_evaporation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.dalton_evaporation" title="Link to this definition">#</a></dt>
+<dd><p>Dalton’s evaporation from a wet surface.</p>
+<p>Evaporation is proportional to how far the air is from saturation at the temperature of the surface, and stops when
+the air is saturated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>saturation_vapor_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa, at the surface temperature; constraint: nonnegative.</p></li>
+<li><p><strong>vapor_pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa, of the air; constraint: nonnegative.</p></li>
+<li><p><strong>transfer_coefficient</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/(m^2 s Pa), a wind function that grows with wind speed; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/(m^2 s)], negative for condensation. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dalton (1802), a bulk mass-transfer law; the surface temperature it needs is rarely measured.
+Equation: <code class="docutils literal notranslate"><span class="pre">transfer_coefficient</span> <span class="pre">*</span> <span class="pre">(saturation_vapor_pressure</span> <span class="pre">-</span> <span class="pre">vapor_pressure)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.darcy_flux">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">darcy_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hydraulic_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">head_gradient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#darcy_flux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.darcy_flux" title="Link to this definition">#</a></dt>
+<dd><p>Darcy’s specific discharge through a porous medium.</p>
+<p>Darcy’s filters at Dijon showed that the flow through sand is proportional to the drop in head per unit length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hydraulic_conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>head_gradient</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, change of head per unit length along the flow direction; constraint: real.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s], volume per unit cross-sectional area and time, positive down the gradient. Scalar input
+returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Darcy (1856): laminar flow with a pore Reynolds number below about 1-10 in a saturated isotropic medium.
+Equation: <code class="docutils literal notranslate"><span class="pre">-hydraulic_conductivity</span> <span class="pre">*</span> <span class="pre">head_gradient</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.dupuit_discharge">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">dupuit_discharge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hydraulic_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downstream_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#dupuit_discharge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.dupuit_discharge" title="Link to this definition">#</a></dt>
+<dd><p>Discharge per unit width through an unconfined aquifer.</p>
+<p>In Dupuit’s approximation the flow depends on the difference of the squared heads, not of the heads.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hydraulic_conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>upstream_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, saturated thickness; constraint: nonnegative.</p></li>
+<li><p><strong>downstream_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^2/s], positive from upstream to downstream. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dupuit (1863), the Dupuit-Forchheimer discharge formula, exact for the discharge even where the head profile is not.
+Equation: <code class="docutils literal notranslate"><span class="pre">hydraulic_conductivity</span> <span class="pre">*</span> <span class="pre">(upstream_head**2</span> <span class="pre">-</span> <span class="pre">downstream_head**2)</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">length)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.dupuit_head">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">dupuit_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upstream_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downstream_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#dupuit_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.dupuit_head" title="Link to this definition">#</a></dt>
+<dd><p>Water-table height in an unconfined aquifer between two rivers.</p>
+<p>Treating the flow as horizontal turns the unconfined aquifer into a one-dimensional problem with a parabolic water
+table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, from the upstream boundary; constraint: between 0 and length.</p></li>
+<li><p><strong>upstream_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, saturated thickness above the impermeable base; constraint: nonnegative.</p></li>
+<li><p><strong>downstream_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dupuit (1863): no recharge, a horizontal base, and slopes small enough that the head is uniform on each vertical.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.sqrt(upstream_head**2</span> <span class="pre">-</span> <span class="pre">(upstream_head**2</span> <span class="pre">-</span> <span class="pre">downstream_head**2)</span> <span class="pre">*</span> <span class="pre">distance</span> <span class="pre">/</span> <span class="pre">length)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.gardner_conductivity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">gardner_conductivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturated_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorptive_number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#gardner_conductivity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.gardner_conductivity" title="Link to this definition">#</a></dt>
+<dd><p>Gardner’s exponential unsaturated hydraulic conductivity.</p>
+<p>Drying soil conducts water through ever thinner films and smaller pores, so its conductivity falls by orders of
+magnitude as suction rises.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, negative under suction; constraint: nonpositive.</p></li>
+<li><p><strong>saturated_conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>sorptive_number</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/m, Gardner’s alpha (about 1 for clay to 10 for sand); constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Gardner (1958), a one-parameter fit without hysteresis; it makes the steady Richards equation solvable in closed form.
+Equation: <code class="docutils literal notranslate"><span class="pre">saturated_conductivity</span> <span class="pre">*</span> <span class="pre">np.exp(sorptive_number</span> <span class="pre">*</span> <span class="pre">pressure_head)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.green_ampt_rate">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">green_ampt_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_infiltration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturated_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suction_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moisture_deficit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#green_ampt_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.green_ampt_rate" title="Link to this definition">#</a></dt>
+<dd><p>Green-Ampt infiltration capacity of a ponded soil.</p>
+<p>A sharp wetting front moves down behind a ponded surface, pulled by capillary suction that matters less and less as the
+wetted zone deepens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cumulative_infiltration</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, depth infiltrated so far; constraint: positive.</p></li>
+<li><p><strong>saturated_conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>suction_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, capillary suction at the wetting front; constraint: positive.</p></li>
+<li><p><strong>moisture_deficit</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, saturated minus initial water content; constraint: between 0 (exclusive) and 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Green and Ampt (1911): a piston-like front in a uniform soil with a negligible ponding depth; the rate tends to the
+saturated conductivity.
+Equation: <code class="docutils literal notranslate"><span class="pre">saturated_conductivity</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">suction_head</span> <span class="pre">*</span> <span class="pre">moisture_deficit</span> <span class="pre">/</span> <span class="pre">cumulative_infiltration)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.green_ampt_time">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">green_ampt_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_infiltration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturated_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suction_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moisture_deficit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#green_ampt_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.green_ampt_time" title="Link to this definition">#</a></dt>
+<dd><p>Time for a ponded Green-Ampt soil to absorb a given depth.</p>
+<p>Integrating the Green-Ampt rate gives the time in closed form, so the infiltrated depth follows by inverting it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cumulative_infiltration</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>saturated_conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>suction_head</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>moisture_deficit</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: between 0 (exclusive) and 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [s], since ponding at the surface began. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Green and Ampt (1911), ponded from time zero; early on the depth grows as the square root of time.
+Equation: <code class="docutils literal notranslate"><span class="pre">(cumulative_infiltration</span> <span class="pre">-</span> <span class="pre">suction_head</span> <span class="pre">*</span> <span class="pre">moisture_deficit</span> <span class="pre">*</span> <span class="pre">np.log(1</span> <span class="pre">+</span> <span class="pre">cumulative_infiltration</span> <span class="pre">/</span>
+<span class="pre">(suction_head</span> <span class="pre">*</span> <span class="pre">moisture_deficit)))</span> <span class="pre">/</span> <span class="pre">saturated_conductivity</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.horton_cumulative_infiltration">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">horton_cumulative_infiltration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_constant</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#horton_cumulative_infiltration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.horton_cumulative_infiltration" title="Link to this definition">#</a></dt>
+<dd><p>Depth infiltrated under Horton’s law.</p>
+<p>The time integral of Horton’s capacity is the water the soil can take up before the steady rate dominates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: nonnegative.</p></li>
+<li><p><strong>initial_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: at least final_rate.</p></li>
+<li><p><strong>final_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>decay_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Horton (1933, 1940), with rain at or above capacity from time zero.
+Equation: <code class="docutils literal notranslate"><span class="pre">final_rate</span> <span class="pre">*</span> <span class="pre">time</span> <span class="pre">+</span> <span class="pre">(initial_rate</span> <span class="pre">-</span> <span class="pre">final_rate)</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">np.exp(-decay_constant</span> <span class="pre">*</span> <span class="pre">time))</span> <span class="pre">/</span> <span class="pre">decay_constant</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.horton_infiltration_rate">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">horton_infiltration_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay_constant</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#horton_infiltration_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.horton_infiltration_rate" title="Link to this definition">#</a></dt>
+<dd><p>Horton’s infiltration capacity during a storm.</p>
+<p>Infiltration capacity falls from a high initial value to a steady one as the soil wets, and rain beyond it runs off
+over the surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s, since the soil began to infiltrate at capacity; constraint: nonnegative.</p></li>
+<li><p><strong>initial_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: at least final_rate.</p></li>
+<li><p><strong>final_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>decay_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Horton (1933, 1940), an empirical law for rain at or above capacity throughout.
+Equation: <code class="docutils literal notranslate"><span class="pre">final_rate</span> <span class="pre">+</span> <span class="pre">(initial_rate</span> <span class="pre">-</span> <span class="pre">final_rate)</span> <span class="pre">*</span> <span class="pre">np.exp(-decay_constant</span> <span class="pre">*</span> <span class="pre">time)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.hydraulic_head">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">hydraulic_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elevation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#hydraulic_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.hydraulic_head" title="Link to this definition">#</a></dt>
+<dd><p>Hydraulic head from elevation and pore pressure.</p>
+<p>Groundwater flows from high to low head, the sum of the elevation and pressure heads, not from high to low pressure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elevation</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, above a datum; constraint: real.</p></li>
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa, gauge pore pressure; constraint: real.</p></li>
+<li><p><strong>density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>gravity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s^2; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Slow flow with negligible velocity head and uniform fluid density.
+Equation: <code class="docutils literal notranslate"><span class="pre">elevation</span> <span class="pre">+</span> <span class="pre">pressure</span> <span class="pre">/</span> <span class="pre">(density</span> <span class="pre">*</span> <span class="pre">gravity)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.hydraulic_radius">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">hydraulic_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/channels.html#hydraulic_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.hydraulic_radius" title="Link to this definition">#</a></dt>
+<dd><p>Hydraulic radius of a rectangular channel.</p>
+<p>Friction acts on the wetted perimeter while gravity acts on the cross-section, so their ratio sets the resistance of
+a channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, bed width; constraint: positive.</p></li>
+<li><p><strong>depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, flow depth; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m], flow area over wetted perimeter. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Rectangular section; tends to the depth for a wide channel.
+Equation: <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">*</span> <span class="pre">depth</span> <span class="pre">/</span> <span class="pre">(width</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">depth)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.manning_velocity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">manning_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hydraulic_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/channels.html#manning_velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.manning_velocity" title="Link to this definition">#</a></dt>
+<dd><p>Manning’s mean velocity of uniform flow in an open channel.</p>
+<p>One roughness number per kind of channel bed predicts the velocity at any depth, which made Manning’s formula the
+standard of channel design.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roughness</strong> (<em>float</em><em> or </em><em>array_like</em>) – s/m^(1/3), Manning’s n (about 0.012 for concrete, 0.03-0.05 for natural rivers); constraint: positive.</p></li>
+<li><p><strong>hydraulic_radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: positive.</p></li>
+<li><p><strong>slope</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Manning (1891), SI form; fully rough turbulent flow, steady and uniform.
+Equation: <code class="docutils literal notranslate"><span class="pre">hydraulic_radius**(2</span> <span class="pre">/</span> <span class="pre">3)</span> <span class="pre">*</span> <span class="pre">np.sqrt(slope)</span> <span class="pre">/</span> <span class="pre">roughness</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.muskingum_coefficients">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">muskingum_coefficients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storage_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighting</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/channels.html#muskingum_coefficients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.muskingum_coefficients" title="Link to this definition">#</a></dt>
+<dd><p>Muskingum routing coefficients.</p>
+<p>Storage in a river reach is a weighted mix of inflow and outflow, which makes the outflow a fixed linear combination of
+the latest flows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>storage_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – s, Muskingum K, about the travel time through the reach; constraint: positive.</p></li>
+<li><p><strong>weighting</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, Muskingum X; constraint: between 0 and 0.5.</p></li>
+<li><p><strong>time_step</strong> (<em>float</em><em> or </em><em>array_like</em>) – s; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]: <code class="docutils literal notranslate"><span class="pre">[C0,</span> <span class="pre">C1,</span> <span class="pre">C2]</span></code>, which sum to one.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (…, 3)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>McCarthy (1938), storage <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">(X</span> <span class="pre">I</span> <span class="pre">+</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">X)</span> <span class="pre">O)</span></code>; all coefficients are nonnegative when
+<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">K</span> <span class="pre">X</span> <span class="pre">&lt;=</span> <span class="pre">time_step</span> <span class="pre">&lt;=</span> <span class="pre">2</span> <span class="pre">K</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">X)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">[time_step</span> <span class="pre">-</span> <span class="pre">2</span> <span class="pre">K</span> <span class="pre">X,</span> <span class="pre">time_step</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">K</span> <span class="pre">X,</span> <span class="pre">2</span> <span class="pre">K</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">X)</span> <span class="pre">-</span> <span class="pre">time_step]</span> <span class="pre">/</span> <span class="pre">(2</span> <span class="pre">K</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">X)</span> <span class="pre">+</span> <span class="pre">time_step)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.muskingum_routing">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">muskingum_routing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inflow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_constant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weighting</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/channels.html#muskingum_routing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.muskingum_routing" title="Link to this definition">#</a></dt>
+<dd><p>Outflow hydrograph of a river reach by the Muskingum method.</p>
+<p>Routing a flood through a reach delays and flattens its peak, the effect forecasters need downstream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inflow</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em><em>, </em><em>n &gt;= 2</em>) – m^3/s, sampled every time step; constraint: nonnegative vector.</p></li>
+<li><p><strong>storage_constant</strong> (<em>float</em>) – s; constraint: positive scalar.</p></li>
+<li><p><strong>weighting</strong> (<em>float</em>) – 1; constraint: scalar between 0 and 0.5.</p></li>
+<li><p><strong>time_step</strong> (<em>float</em>) – s; constraint: positive scalar.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^3/s], starting from a steady state <code class="docutils literal notranslate"><span class="pre">outflow[0]</span> <span class="pre">=</span> <span class="pre">inflow[0]</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n,)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>McCarthy (1938): <code class="docutils literal notranslate"><span class="pre">O[j+1]</span> <span class="pre">=</span> <span class="pre">C0</span> <span class="pre">I[j+1]</span> <span class="pre">+</span> <span class="pre">C1</span> <span class="pre">I[j]</span> <span class="pre">+</span> <span class="pre">C2</span> <span class="pre">O[j]</span></code>; choose the time step so that no coefficient is negative.
+Equation: <code class="docutils literal notranslate"><span class="pre">O[j</span> <span class="pre">+</span> <span class="pre">1]</span> <span class="pre">=</span> <span class="pre">C0</span> <span class="pre">*</span> <span class="pre">I[j</span> <span class="pre">+</span> <span class="pre">1]</span> <span class="pre">+</span> <span class="pre">C1</span> <span class="pre">*</span> <span class="pre">I[j]</span> <span class="pre">+</span> <span class="pre">C2</span> <span class="pre">*</span> <span class="pre">O[j]</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.nash_unit_hydrograph">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">nash_unit_hydrograph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reservoirs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_constant</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#nash_unit_hydrograph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.nash_unit_hydrograph" title="Link to this definition">#</a></dt>
+<dd><p>Instantaneous unit hydrograph of a cascade of linear reservoirs.</p>
+<p>A catchment that drains like a chain of equal linear reservoirs turns an instant of rain into a skewed, gamma-shaped
+pulse of river flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s, since the instant of excess rainfall; constraint: nonnegative.</p></li>
+<li><p><strong>reservoirs</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, Nash’s n; constraint: at least 1.</p></li>
+<li><p><strong>storage_constant</strong> (<em>float</em><em> or </em><em>array_like</em>) – s, Nash’s k of each reservoir; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1/s], which integrates to one; multiply by the catchment area for m^3/s per metre of excess
+rainfall. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Nash (1957), a gamma density with mean lag <code class="docutils literal notranslate"><span class="pre">reservoirs</span> <span class="pre">*</span> <span class="pre">storage_constant</span></code>; a smooth synthetic shape for Sherman’s
+unit hydrograph, linear and time-invariant.
+Equation: <code class="docutils literal notranslate"><span class="pre">time**(reservoirs</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">np.exp(-time</span> <span class="pre">/</span> <span class="pre">storage_constant)</span> <span class="pre">/</span> <span class="pre">(storage_constant**reservoirs</span> <span class="pre">*</span>
+<span class="pre">scipy.special.gamma(reservoirs))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.penman_evaporation">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">penman_evaporation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_radiation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aerodynamic_evaporation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#penman_evaporation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.penman_evaporation" title="Link to this definition">#</a></dt>
+<dd><p>Penman’s combination equation for open-water evaporation.</p>
+<p>Penman eliminated the unknown surface temperature by combining the energy balance with Dalton’s law, so evaporation
+follows from routine weather measurements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_radiation</strong> (<em>float</em><em> or </em><em>array_like</em>) – W/m^2, net radiation minus heat stored below the surface; constraint: real.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K, air temperature; constraint: between 180 and 330.</p></li>
+<li><p><strong>aerodynamic_evaporation</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/(m^2 s), Dalton’s evaporation evaluated with the air temperature, <code class="docutils literal notranslate"><span class="pre">f(u)</span> <span class="pre">(e_s(T_air)</span> <span class="pre">-</span> <span class="pre">e_air)</span></code>;
+constraint: real.</p></li>
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/(m^2 s)]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Penman (1948): the saturation curve is linearized between air and surface temperature, and heat and vapour share one
+transfer coefficient; a saturated surface (open water or wet grass).
+Equation: <code class="docutils literal notranslate"><span class="pre">(saturation_slope(temperature)</span> <span class="pre">*</span> <span class="pre">net_radiation</span> <span class="pre">/</span> <span class="pre">LATENT_HEAT_VAPORIZATION</span> <span class="pre">+</span> <span class="pre">psychrometric_constant(pressure)</span>
+<span class="pre">*</span> <span class="pre">aerodynamic_evaporation)</span> <span class="pre">/</span> <span class="pre">(saturation_slope(temperature)</span> <span class="pre">+</span> <span class="pre">psychrometric_constant(pressure))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.penman_monteith_evaporation">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">penman_monteith_evaporation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">available_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vapor_pressure_deficit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">air_density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aerodynamic_resistance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_resistance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#penman_monteith_evaporation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.penman_monteith_evaporation" title="Link to this definition">#</a></dt>
+<dd><p>Penman-Monteith evaporation from a vegetated surface.</p>
+<p>Monteith added the resistance of the stomata to Penman’s equation, so the same formula covers open water, wet leaves
+and transpiring crops.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>available_energy</strong> (<em>float</em><em> or </em><em>array_like</em>) – W/m^2, net radiation minus ground heat flux; constraint: real.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K, air temperature; constraint: between 180 and 330.</p></li>
+<li><p><strong>vapor_pressure_deficit</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa, <code class="docutils literal notranslate"><span class="pre">e_s(T_air)</span> <span class="pre">-</span> <span class="pre">e_air</span></code>; constraint: real.</p></li>
+<li><p><strong>air_density</strong> (<em>float</em><em> or </em><em>array_like</em>) – kg/m^3; constraint: positive.</p></li>
+<li><p><strong>aerodynamic_resistance</strong> (<em>float</em><em> or </em><em>array_like</em>) – s/m; constraint: positive.</p></li>
+<li><p><strong>surface_resistance</strong> (<em>float</em><em> or </em><em>array_like</em>) – s/m; constraint: nonnegative.</p></li>
+<li><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [kg/(m^2 s)]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Monteith (1965): a big-leaf canopy at one temperature, neutral stability; zero surface resistance recovers Penman
+with <code class="docutils literal notranslate"><span class="pre">aerodynamic_evaporation</span> <span class="pre">=</span> <span class="pre">air_density</span> <span class="pre">*</span> <span class="pre">CP_DRY_AIR</span> <span class="pre">*</span> <span class="pre">vapor_pressure_deficit</span> <span class="pre">/</span> <span class="pre">(psychrometric_constant</span> <span class="pre">*</span>
+<span class="pre">LATENT_HEAT_VAPORIZATION</span> <span class="pre">*</span> <span class="pre">aerodynamic_resistance)</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">(Delta</span> <span class="pre">*</span> <span class="pre">available_energy</span> <span class="pre">+</span> <span class="pre">air_density</span> <span class="pre">*</span> <span class="pre">CP_DRY_AIR</span> <span class="pre">*</span> <span class="pre">vapor_pressure_deficit</span> <span class="pre">/</span> <span class="pre">aerodynamic_resistance)</span> <span class="pre">/</span>
+<span class="pre">(LATENT_HEAT_VAPORIZATION</span> <span class="pre">*</span> <span class="pre">(Delta</span> <span class="pre">+</span> <span class="pre">gamma</span> <span class="pre">*</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">surface_resistance</span> <span class="pre">/</span> <span class="pre">aerodynamic_resistance)))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.psychrometric_constant">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">psychrometric_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#psychrometric_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.psychrometric_constant" title="Link to this definition">#</a></dt>
+<dd><p>Psychrometric constant.</p>
+<p>It converts a temperature difference into the vapour-pressure difference that carries the same energy, as sensible
+rather than latent heat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pressure</strong> (<em>float</em><em> or </em><em>array_like</em>) – Pa, air pressure; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa/K], about 65 Pa/K at sea level. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Dry-air heat capacity and constant latent heat; equal transfer coefficients for heat and vapour.
+Equation: <code class="docutils literal notranslate"><span class="pre">CP_DRY_AIR</span> <span class="pre">*</span> <span class="pre">pressure</span> <span class="pre">/</span> <span class="pre">(EPSILON_WATER</span> <span class="pre">*</span> <span class="pre">LATENT_HEAT_VAPORIZATION)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.richards_steady_head">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">richards_steady_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saturated_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorptive_number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#richards_steady_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.richards_steady_head" title="Link to this definition">#</a></dt>
+<dd><p>Steady pressure-head profile above a water table in a Gardner soil.</p>
+<p>With a constant flux through the unsaturated zone, Richards’s equation fixes the suction at every height: capillary
+rise for evaporation, a unit-gradient tail for infiltration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, above the water table; constraint: nonnegative.</p></li>
+<li><p><strong>flux</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s, positive upward (evaporation), negative downward (infiltration); constraint: greater than
+<code class="docutils literal notranslate"><span class="pre">-saturated_conductivity</span></code>.</p></li>
+<li><p><strong>saturated_conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: positive.</p></li>
+<li><p><strong>sorptive_number</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1/m, Gardner’s alpha; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m], zero at the water table and negative above it. Scalar input returns a NumPy scalar; arrays
+broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Richards (1931) steady equation <code class="docutils literal notranslate"><span class="pre">flux</span> <span class="pre">=</span> <span class="pre">-K(psi)</span> <span class="pre">(dpsi/dz</span> <span class="pre">+</span> <span class="pre">1)</span></code> with Gardner’s (1958) conductivity; an upward flux
+can only be sustained below <code class="docutils literal notranslate"><span class="pre">np.log(1</span> <span class="pre">+</span> <span class="pre">saturated_conductivity</span> <span class="pre">/</span> <span class="pre">flux)</span> <span class="pre">/</span> <span class="pre">sorptive_number</span></code>.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log(((flux</span> <span class="pre">+</span> <span class="pre">saturated_conductivity)</span> <span class="pre">*</span> <span class="pre">np.exp(-sorptive_number</span> <span class="pre">*</span> <span class="pre">height)</span> <span class="pre">-</span> <span class="pre">flux)</span> <span class="pre">/</span>
+<span class="pre">saturated_conductivity)</span> <span class="pre">/</span> <span class="pre">sorptive_number</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.runoff_coefficient">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">runoff_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precipitation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#runoff_coefficient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.runoff_coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Fraction of the precipitation that leaves a catchment as river flow.</p>
+<p>Perrault’s measurement that the Seine carries only about a sixth of the rain on its basin showed that rainfall is
+enough to feed rivers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runoff</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, runoff depth over a period; constraint: nonnegative.</p></li>
+<li><p><strong>precipitation</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, precipitation depth over the same period; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Both depths over the same area and period; long periods make the storage change negligible.
+Equation: <code class="docutils literal notranslate"><span class="pre">runoff</span> <span class="pre">/</span> <span class="pre">precipitation</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.saturation_slope">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">saturation_slope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temperature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/evaporation.html#saturation_slope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.saturation_slope" title="Link to this definition">#</a></dt>
+<dd><p>Slope of the saturation vapour-pressure curve.</p>
+<p>The steepness of the Clausius-Clapeyron curve converts a surface-to-air temperature difference into a vapour-pressure
+difference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>temperature</strong> (<em>float</em><em> or </em><em>array_like</em>) – K; constraint: between 180 and 330.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [Pa/K]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Derivative of <a class="reference internal" href="atmosphere.html#earthsciencekit.atmosphere.saturation_vapor_pressure" title="earthsciencekit.atmosphere.saturation_vapor_pressure"><code class="xref py py-func docutils literal notranslate"><span class="pre">earthsciencekit.atmosphere.saturation_vapor_pressure()</span></code></a> (constant latent heat 2.5e6 J/kg).
+Equation: <code class="docutils literal notranslate"><span class="pre">saturation_vapor_pressure(temperature)</span> <span class="pre">*</span> <span class="pre">LATENT_HEAT_VAPORIZATION</span> <span class="pre">/</span> <span class="pre">(R_VAPOR</span> <span class="pre">*</span> <span class="pre">temperature**2)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.seepage_velocity">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">seepage_velocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">darcy_flux</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">porosity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#seepage_velocity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.seepage_velocity" title="Link to this definition">#</a></dt>
+<dd><p>Mean velocity of water in the pores.</p>
+<p>Water moves only through the connected pores, so a tracer travels faster than the Darcy flux suggests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>darcy_flux</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: real.</p></li>
+<li><p><strong>porosity</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, effective porosity; constraint: between 0 (exclusive) and 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Average linear velocity; dispersion spreads tracers about it.
+Equation: <code class="docutils literal notranslate"><span class="pre">darcy_flux</span> <span class="pre">/</span> <span class="pre">porosity</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.simulate_infiltration">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">simulate_infiltration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saturated_conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suction_head</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moisture_deficit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rainfall_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#simulate_infiltration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.simulate_infiltration" title="Link to this definition">#</a></dt>
+<dd><p>Infiltration and runoff during steady rain on a Green-Ampt soil.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>saturated_conductivity</strong> (<em>float</em>) – Positive scalar [m/s].</p></li>
+<li><p><strong>suction_head</strong> (<em>float</em>) – Positive scalar wetting-front suction [m].</p></li>
+<li><p><strong>moisture_deficit</strong> (<em>float</em>) – Scalar saturated minus initial water content, in (0, 1] [1].</p></li>
+<li><p><strong>rainfall_rate</strong> (<em>float</em>) – Nonnegative scalar rain intensity [m/s].</p></li>
+<li><p><strong>time</strong> (<em>array_like</em>) – Nonnegative strictly increasing times; the rain starts at the first sample [s].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cumulative infiltration [m], infiltration rate [m/s] and infiltration-excess runoff rate [m/s].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="results.html#earthsciencekit.results.TimeSeries" title="earthsciencekit.results.TimeSeries">TimeSeries</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Mein and Larson (1973): the soil absorbs all the rain until the Green-Ampt capacity
+<code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">(1</span> <span class="pre">+</span> <span class="pre">psi</span> <span class="pre">dtheta</span> <span class="pre">/</span> <span class="pre">F)</span></code> falls to the rain rate, at <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">=</span> <span class="pre">K</span> <span class="pre">psi</span> <span class="pre">dtheta</span> <span class="pre">/</span> <span class="pre">(r</span> <span class="pre">-</span> <span class="pre">K)</span></code>, and infiltrates at capacity
+afterwards, so dF/dt = min(r, capacity). Rain no faster than K never ponds. The excess runs off at once; surface
+storage, redistribution and a water table are neglected.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.stream_length">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">stream_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_order_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#stream_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.stream_length" title="Link to this definition">#</a></dt>
+<dd><p>Mean length of the streams of a given order.</p>
+<p>Streams grow longer geometrically with order, Horton’s companion to his law of stream numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, stream order; constraint: at least 1.</p></li>
+<li><p><strong>first_order_length</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, mean length of first-order streams; constraint: positive.</p></li>
+<li><p><strong>length_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, typically 1.5-3.5; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Horton’s law of stream lengths (1945), an empirical average over a network.
+Equation: <code class="docutils literal notranslate"><span class="pre">first_order_length</span> <span class="pre">*</span> <span class="pre">length_ratio**(order</span> <span class="pre">-</span> <span class="pre">1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.stream_number">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">stream_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bifurcation_ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#stream_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.stream_number" title="Link to this definition">#</a></dt>
+<dd><p>Number of streams of a given order in a drainage network.</p>
+<p>Horton found that stream counts fall geometrically with order, so a whole river network is summarized by one
+bifurcation ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, stream order; constraint: at least 1.</p></li>
+<li><p><strong>highest_order</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, order of the main stream; constraint: at least order.</p></li>
+<li><p><strong>bifurcation_ratio</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, typically 3-5; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1], one stream of the highest order. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Horton’s law of stream numbers (1945), an empirical average; Strahler’s (1952) ordering is the usual convention.
+Equation: <code class="docutils literal notranslate"><span class="pre">bifurcation_ratio**(highest_order</span> <span class="pre">-</span> <span class="pre">order)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.theis_drawdown">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">theis_drawdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pumping_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transmissivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storativity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#theis_drawdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.theis_drawdown" title="Link to this definition">#</a></dt>
+<dd><p>Drawdown around a well pumping a confined aquifer.</p>
+<p>Theis took the heat-conduction solution for a line sink and found that the cone of depression keeps growing as the
+well draws water from storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pumping_rate</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^3/s; constraint: real.</p></li>
+<li><p><strong>transmissivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^2/s; constraint: positive.</p></li>
+<li><p><strong>storativity</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1; constraint: positive.</p></li>
+<li><p><strong>radius</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, from the well axis; constraint: positive.</p></li>
+<li><p><strong>time</strong> (<em>float</em><em> or </em><em>array_like</em>) – s, since pumping began; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m], positive downward. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Theis (1935): constant rate, a fully penetrating well of negligible radius in an infinite, homogeneous, isotropic
+confined aquifer with water released instantly from storage.
+Equation: <code class="docutils literal notranslate"><span class="pre">pumping_rate</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">np.pi</span> <span class="pre">*</span> <span class="pre">transmissivity)</span> <span class="pre">*</span> <span class="pre">scipy.special.exp1(radius**2</span> <span class="pre">*</span> <span class="pre">storativity</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span>
+<span class="pre">transmissivity</span> <span class="pre">*</span> <span class="pre">time))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.topmodel_baseflow">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">topmodel_baseflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saturated_transmissivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_deficit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#topmodel_baseflow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.topmodel_baseflow" title="Link to this definition">#</a></dt>
+<dd><p>TOPMODEL subsurface drainage from the catchment-mean deficit.</p>
+<p>Baseflow falls exponentially as the catchment dries, the recession behaviour TOPMODEL is built on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>saturated_transmissivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m^2/s, transmissivity when the soil is saturated to the surface; constraint: positive.</p></li>
+<li><p><strong>mean_index</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, catchment mean of <code class="docutils literal notranslate"><span class="pre">ln(a</span> <span class="pre">/</span> <span class="pre">tan(beta))</span></code> with a in metres; constraint: real.</p></li>
+<li><p><strong>mean_deficit</strong> (<em>float</em><em> or </em><em>array_like</em>) – m; constraint: nonnegative.</p></li>
+<li><p><strong>scaling_depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, TOPMODEL’s m; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s], discharge per unit catchment area. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Beven and Kirkby (1979): exponential transmissivity profile, water table parallel to the surface.
+Equation: <code class="docutils literal notranslate"><span class="pre">saturated_transmissivity</span> <span class="pre">*</span> <span class="pre">np.exp(-mean_index)</span> <span class="pre">*</span> <span class="pre">np.exp(-mean_deficit</span> <span class="pre">/</span> <span class="pre">scaling_depth)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.topmodel_deficit">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">topmodel_deficit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean_deficit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topographic_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling_depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#topmodel_deficit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.topmodel_deficit" title="Link to this definition">#</a></dt>
+<dd><p>Local storage deficit of TOPMODEL from the catchment mean.</p>
+<p>Each point’s deficit departs from the catchment mean in proportion to how much wetter its topographic index is than
+average, so one state variable maps the saturated area.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean_deficit</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, catchment-mean storage deficit; constraint: nonnegative.</p></li>
+<li><p><strong>topographic_index</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, local <code class="docutils literal notranslate"><span class="pre">ln(a</span> <span class="pre">/</span> <span class="pre">tan(beta))</span></code>; constraint: real.</p></li>
+<li><p><strong>mean_index</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, catchment mean of the index; constraint: real.</p></li>
+<li><p><strong>scaling_depth</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, TOPMODEL’s m, the deficit that reduces transmissivity by a factor e; constraint: positive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m]; zero or negative where the ground is saturated (negative values are return flow). Scalar input
+returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Beven and Kirkby (1979) with uniform transmissivity at saturation and quasi-steady drainage.
+Equation: <code class="docutils literal notranslate"><span class="pre">mean_deficit</span> <span class="pre">+</span> <span class="pre">scaling_depth</span> <span class="pre">*</span> <span class="pre">(mean_index</span> <span class="pre">-</span> <span class="pre">topographic_index)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.topographic_index">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">topographic_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specific_area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#topographic_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.topographic_index" title="Link to this definition">#</a></dt>
+<dd><p>TOPMODEL topographic wetness index.</p>
+<p>Ground that drains a large upslope area through a gentle slope is the first to saturate, so one number from the
+topography maps where runoff starts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>specific_area</strong> (<em>float</em><em> or </em><em>array_like</em>) – m, upslope area drained per unit contour width; constraint: positive.</p></li>
+<li><p><strong>slope</strong> (<em>float</em><em> or </em><em>array_like</em>) – rad, local surface slope; constraint: between 0 and pi/2, exclusive.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1], with the specific area in metres. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Beven and Kirkby (1979): steady recharge, a water table parallel to the surface and transmissivity falling
+exponentially with deficit.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.log(specific_area</span> <span class="pre">/</span> <span class="pre">np.tan(slope))</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.unit_hydrograph_convolution">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">unit_hydrograph_convolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excess_rainfall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_hydrograph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#unit_hydrograph_convolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.unit_hydrograph_convolution" title="Link to this definition">#</a></dt>
+<dd><p>Storm hydrograph from excess rainfall and a unit hydrograph.</p>
+<p>If a catchment responds linearly, the flood from any storm is the sum of unit-hydrograph responses to its successive
+bursts of excess rainfall, each shifted and scaled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excess_rainfall</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>)</em>) – m, excess (effective) rainfall depth in each interval; constraint: nonnegative vector.</p></li>
+<li><p><strong>unit_hydrograph</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>m</em><em>,</em><em>)</em>) – m^3/s per metre of excess rainfall, ordinates at the same interval; constraint: nonnegative vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m^3/s], the direct runoff at the same interval.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray, shape (n + m - 1,)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Sherman (1932): linear superposition and time invariance; baseflow and losses are removed beforehand.
+Equation: <code class="docutils literal notranslate"><span class="pre">np.convolve(excess_rainfall,</span> <span class="pre">unit_hydrograph)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.unsaturated_darcy_flux">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">unsaturated_darcy_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conductivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pressure_head_gradient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/soil_water.html#unsaturated_darcy_flux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.unsaturated_darcy_flux" title="Link to this definition">#</a></dt>
+<dd><p>Vertical Darcy-Buckingham flux in an unsaturated soil.</p>
+<p>Richards extended Darcy’s law to unsaturated soil, where capillary suction and gravity together drive the water.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conductivity</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s, at the local pressure head; constraint: nonnegative.</p></li>
+<li><p><strong>pressure_head_gradient</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, d(pressure_head)/dz with z upward; constraint: real.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s], positive upward. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Richards (1931): the total head is <code class="docutils literal notranslate"><span class="pre">pressure_head</span> <span class="pre">+</span> <span class="pre">z</span></code> and air stays at atmospheric pressure.
+Equation: <code class="docutils literal notranslate"><span class="pre">-conductivity</span> <span class="pre">*</span> <span class="pre">(pressure_head_gradient</span> <span class="pre">+</span> <span class="pre">1)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.water_balance">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">water_balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">precipitation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evapotranspiration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runoff</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/catchments.html#water_balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.water_balance" title="Link to this definition">#</a></dt>
+<dd><p>Rate of change of the water stored in a catchment.</p>
+<p>Whatever falls on a catchment and neither evaporates nor leaves by its river must be stored in its soil, aquifers and
+lakes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>precipitation</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s, depth per unit time over the catchment; constraint: nonnegative.</p></li>
+<li><p><strong>evapotranspiration</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s; constraint: nonnegative.</p></li>
+<li><p><strong>runoff</strong> (<em>float</em><em> or </em><em>array_like</em>) – m/s, river discharge divided by the catchment area; constraint: nonnegative.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [m/s], positive when storage grows. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Perrault (1674): a closed catchment with no groundwater exchange across its divide; any common depth rate (such as
+mm/day) may be used throughout.
+Equation: <code class="docutils literal notranslate"><span class="pre">precipitation</span> <span class="pre">-</span> <span class="pre">evapotranspiration</span> <span class="pre">-</span> <span class="pre">runoff</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="earthsciencekit.hydrology.well_function">
+<span class="sig-prename descclassname"><span class="pre">earthsciencekit.hydrology.</span></span><span class="sig-name descname"><span class="pre">well_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/earthsciencekit/hydrology/systems/groundwater.html#well_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#earthsciencekit.hydrology.well_function" title="Link to this definition">#</a></dt>
+<dd><p>Theis well function W(u).</p>
+<p>The drawdown around a pumped well is a universal curve of one combination of distance, time and aquifer properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>float</em><em> or </em><em>array_like</em>) – 1, <code class="docutils literal notranslate"><span class="pre">radius**2</span> <span class="pre">*</span> <span class="pre">storativity</span> <span class="pre">/</span> <span class="pre">(4</span> <span class="pre">*</span> <span class="pre">transmissivity</span> <span class="pre">*</span> <span class="pre">time)</span></code>; constraint: positive.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy scalar or ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The exponential integral E1, <code class="docutils literal notranslate"><span class="pre">-0.5772</span> <span class="pre">-</span> <span class="pre">ln(u)</span> <span class="pre">+</span> <span class="pre">u</span> <span class="pre">-</span> <span class="pre">...</span></code> for small u.
+Equation: <code class="docutils literal notranslate"><span class="pre">scipy.special.exp1(u)</span></code>.
+Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+NumPy broadcasting applies; singular and overflowing outputs raise ValueError.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="geophysics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">earthsciencekit.geophysics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="glaciology.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">earthsciencekit.glaciology</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.aerodynamic_resistance"><code class="docutils literal notranslate"><span class="pre">aerodynamic_resistance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.bulk_surface_resistance"><code class="docutils literal notranslate"><span class="pre">bulk_surface_resistance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.chezy_from_manning"><code class="docutils literal notranslate"><span class="pre">chezy_from_manning()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.chezy_velocity"><code class="docutils literal notranslate"><span class="pre">chezy_velocity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.cooper_jacob_drawdown"><code class="docutils literal notranslate"><span class="pre">cooper_jacob_drawdown()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.cooper_jacob_transmissivity"><code class="docutils literal notranslate"><span class="pre">cooper_jacob_transmissivity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.dalton_evaporation"><code class="docutils literal notranslate"><span class="pre">dalton_evaporation()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.darcy_flux"><code class="docutils literal notranslate"><span class="pre">darcy_flux()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.dupuit_discharge"><code class="docutils literal notranslate"><span class="pre">dupuit_discharge()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.dupuit_head"><code class="docutils literal notranslate"><span class="pre">dupuit_head()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.gardner_conductivity"><code class="docutils literal notranslate"><span class="pre">gardner_conductivity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.green_ampt_rate"><code class="docutils literal notranslate"><span class="pre">green_ampt_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.green_ampt_time"><code class="docutils literal notranslate"><span class="pre">green_ampt_time()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.horton_cumulative_infiltration"><code class="docutils literal notranslate"><span class="pre">horton_cumulative_infiltration()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.horton_infiltration_rate"><code class="docutils literal notranslate"><span class="pre">horton_infiltration_rate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.hydraulic_head"><code class="docutils literal notranslate"><span class="pre">hydraulic_head()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.hydraulic_radius"><code class="docutils literal notranslate"><span class="pre">hydraulic_radius()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.manning_velocity"><code class="docutils literal notranslate"><span class="pre">manning_velocity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.muskingum_coefficients"><code class="docutils literal notranslate"><span class="pre">muskingum_coefficients()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.muskingum_routing"><code class="docutils literal notranslate"><span class="pre">muskingum_routing()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.nash_unit_hydrograph"><code class="docutils literal notranslate"><span class="pre">nash_unit_hydrograph()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.penman_evaporation"><code class="docutils literal notranslate"><span class="pre">penman_evaporation()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.penman_monteith_evaporation"><code class="docutils literal notranslate"><span class="pre">penman_monteith_evaporation()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.psychrometric_constant"><code class="docutils literal notranslate"><span class="pre">psychrometric_constant()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.richards_steady_head"><code class="docutils literal notranslate"><span class="pre">richards_steady_head()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.runoff_coefficient"><code class="docutils literal notranslate"><span class="pre">runoff_coefficient()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.saturation_slope"><code class="docutils literal notranslate"><span class="pre">saturation_slope()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.seepage_velocity"><code class="docutils literal notranslate"><span class="pre">seepage_velocity()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.simulate_infiltration"><code class="docutils literal notranslate"><span class="pre">simulate_infiltration()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.stream_length"><code class="docutils literal notranslate"><span class="pre">stream_length()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.stream_number"><code class="docutils literal notranslate"><span class="pre">stream_number()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.theis_drawdown"><code class="docutils literal notranslate"><span class="pre">theis_drawdown()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.topmodel_baseflow"><code class="docutils literal notranslate"><span class="pre">topmodel_baseflow()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.topmodel_deficit"><code class="docutils literal notranslate"><span class="pre">topmodel_deficit()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.topographic_index"><code class="docutils literal notranslate"><span class="pre">topographic_index()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.unit_hydrograph_convolution"><code class="docutils literal notranslate"><span class="pre">unit_hydrograph_convolution()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.unsaturated_darcy_flux"><code class="docutils literal notranslate"><span class="pre">unsaturated_darcy_flux()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.water_balance"><code class="docutils literal notranslate"><span class="pre">water_balance()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthsciencekit.hydrology.well_function"><code class="docutils literal notranslate"><span class="pre">well_function()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/hydrology.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.23.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

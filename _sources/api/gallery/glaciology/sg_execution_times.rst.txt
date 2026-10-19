@@ -1,0 +1,82 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_glaciology_sg_execution_times:
+
+
+Computation times
+=================
+**00:05.163** total execution time for 16 files **from api/gallery/glaciology**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_14_mahaffy_shallow_ice_model.py` (``plot_14_mahaffy_shallow_ice_model.py``)
+     - 00:02.518
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_07_glen_flow_law.py` (``plot_07_glen_flow_law.py``)
+     - 00:00.452
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_10_meier_glacier_mass_balance.py` (``plot_10_meier_glacier_mass_balance.py``)
+     - 00:00.304
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_12_dansgaard_johnsen_age_depth_model.py` (``plot_12_dansgaard_johnsen_age_depth_model.py``)
+     - 00:00.279
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_16_schoof_grounding_line_flux.py` (``plot_16_schoof_grounding_line_flux.py``)
+     - 00:00.264
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_01_agassiz_ice_age.py` (``plot_01_agassiz_ice_age.py``)
+     - 00:00.258
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_15_barnola_vostok_co2_record.py` (``plot_15_barnola_vostok_co2_record.py``)
+     - 00:00.229
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_13_weertman_marine_ice_sheet_instability.py` (``plot_13_weertman_marine_ice_sheet_instability.py``)
+     - 00:00.125
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_08_nye_crevasse_depth.py` (``plot_08_nye_crevasse_depth.py``)
+     - 00:00.115
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_06_nye_perfectly_plastic_ice_sheet.py` (``plot_06_nye_perfectly_plastic_ice_sheet.py``)
+     - 00:00.096
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_03_jamieson_glacial_isostasy.py` (``plot_03_jamieson_glacial_isostasy.py``)
+     - 00:00.095
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_02_forbes_viscous_glacier_flow.py` (``plot_02_forbes_viscous_glacier_flow.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_09_weertman_sliding_law.py` (``plot_09_weertman_sliding_law.py``)
+     - 00:00.091
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_04_stefan_sea_ice_growth.py` (``plot_04_stefan_sea_ice_growth.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_11_dansgaard_isotope_thermometer.py` (``plot_11_dansgaard_isotope_thermometer.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_glaciology_plot_05_haskell_mantle_viscosity.py` (``plot_05_haskell_mantle_viscosity.py``)
+     - 00:00.076
+     - 0.0

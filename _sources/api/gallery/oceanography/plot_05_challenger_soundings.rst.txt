@@ -67,7 +67,7 @@ the instruments at that depth had to survive more than 800 atmospheres.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.072 seconds)
+   **Total running time of the script:** (0 minutes 0.071 seconds)
 
 
 .. _sphx_glr_download_api_gallery_oceanography_plot_05_challenger_soundings.py:

@@ -14,3 +14,5 @@ Subpackages
    /_generated/subpackages/oceanography
    /_generated/subpackages/volcanology
    /_generated/subpackages/geophysics
+   /_generated/subpackages/hydrology
+   /_generated/subpackages/glaciology

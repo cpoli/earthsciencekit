@@ -74,7 +74,7 @@ polarity intervals of very unequal length, as in the geological record.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.846 seconds)
+   **Total running time of the script:** (0 minutes 1.835 seconds)
 
 
 .. _sphx_glr_download_api_gallery_geophysics_plot_13_rikitake_two_disc_dynamo.py:

@@ -101,7 +101,7 @@ way and recovers them from site directions.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.213 seconds)
+   **Total running time of the script:** (0 minutes 0.202 seconds)
 
 
 .. _sphx_glr_download_api_gallery_geophysics_plot_12_runcorn_apparent_polar_wander.py:

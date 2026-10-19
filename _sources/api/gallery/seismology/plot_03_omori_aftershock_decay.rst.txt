@@ -71,7 +71,7 @@ slope -p for t >> c. The parameters here are synthetic.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.232 seconds)
+   **Total running time of the script:** (0 minutes 0.230 seconds)
 
 
 .. _sphx_glr_download_api_gallery_seismology_plot_03_omori_aftershock_decay.py:

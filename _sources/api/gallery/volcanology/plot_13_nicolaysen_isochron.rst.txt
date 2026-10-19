@@ -74,7 +74,7 @@ slope gives the age and whose intercept gives the initial ratio.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.089 seconds)
+   **Total running time of the script:** (0 minutes 0.086 seconds)
 
 
 .. _sphx_glr_download_api_gallery_volcanology_plot_13_nicolaysen_isochron.py:

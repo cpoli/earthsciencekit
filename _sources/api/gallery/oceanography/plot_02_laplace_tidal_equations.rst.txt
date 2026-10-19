@@ -69,7 +69,7 @@ tides are a forced dynamic response, not an equilibrium.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.141 seconds)
+   **Total running time of the script:** (0 minutes 0.142 seconds)
 
 
 .. _sphx_glr_download_api_gallery_oceanography_plot_02_laplace_tidal_equations.py:

@@ -79,7 +79,7 @@ mixed layer, sampled every month for 4000 years.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.634 seconds)
+   **Total running time of the script:** (0 minutes 0.663 seconds)
 
 
 .. _sphx_glr_download_api_gallery_climate_plot_11_hasselmann_stochastic_climate.py:

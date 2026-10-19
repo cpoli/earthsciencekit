@@ -77,7 +77,7 @@ tracking one satellite had improved on two centuries of arc measurements.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.098 seconds)
+   **Total running time of the script:** (0 minutes 0.101 seconds)
 
 
 .. _sphx_glr_download_api_gallery_geophysics_plot_14_king_hele_satellite_flattening.py:

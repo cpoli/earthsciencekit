@@ -77,7 +77,7 @@ taller, which is why pumps cannot lift water more than about 10 m.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.166 seconds)
+   **Total running time of the script:** (0 minutes 0.169 seconds)
 
 
 .. _sphx_glr_download_api_gallery_atmosphere_plot_01_torricelli_barometer.py:

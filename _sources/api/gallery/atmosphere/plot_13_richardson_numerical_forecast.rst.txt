@@ -82,7 +82,7 @@ level, is enough to reproduce his result.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.172 seconds)
+   **Total running time of the script:** (0 minutes 0.170 seconds)
 
 
 .. _sphx_glr_download_api_gallery_atmosphere_plot_13_richardson_numerical_forecast.py:

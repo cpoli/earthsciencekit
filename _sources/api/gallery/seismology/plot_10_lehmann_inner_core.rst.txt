@@ -85,7 +85,7 @@ shadow zone of the 1914 example.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.085 seconds)
+   **Total running time of the script:** (0 minutes 0.083 seconds)
 
 
 .. _sphx_glr_download_api_gallery_seismology_plot_10_lehmann_inner_core.py:

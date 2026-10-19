@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:02.220** total execution time for 16 files **from api/gallery/oceanography**:
+**00:02.238** total execution time for 16 files **from api/gallery/oceanography**:
 
 .. container::
 
@@ -33,28 +33,28 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_10_gustafson_kullenberg_inertial_oscillations.py` (``plot_10_gustafson_kullenberg_inertial_oscillations.py``)
-     - 00:00.318
+     - 00:00.324
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_14_stommel_thermohaline_boxes.py` (``plot_14_stommel_thermohaline_boxes.py``)
-     - 00:00.307
+     - 00:00.314
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_13_stommel_western_intensification.py` (``plot_13_stommel_western_intensification.py``)
-     - 00:00.199
+     - 00:00.200
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_04_stokes_deep_water_waves.py` (``plot_04_stokes_deep_water_waves.py``)
-     - 00:00.175
+     - 00:00.173
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_15_munk_abyssal_recipes.py` (``plot_15_munk_abyssal_recipes.py``)
-     - 00:00.166
+     - 00:00.167
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_02_laplace_tidal_equations.py` (``plot_02_laplace_tidal_equations.py``)
-     - 00:00.141
+     - 00:00.142
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_11_rossby_adjustment_radius.py` (``plot_11_rossby_adjustment_radius.py``)
-     - 00:00.130
+     - 00:00.134
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_06_knudsen_equation_of_state.py` (``plot_06_knudsen_equation_of_state.py``)
-     - 00:00.106
+     - 00:00.105
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_16_teos10_seawater_density.py` (``plot_16_teos10_seawater_density.py``)
      - 00:00.099
@@ -63,7 +63,7 @@ Computation times
      - 00:00.096
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_08_ekman_dead_water.py` (``plot_08_ekman_dead_water.py``)
-     - 00:00.091
+     - 00:00.092
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_03_gerstner_trochoidal_wave.py` (``plot_03_gerstner_trochoidal_wave.py``)
      - 00:00.086
@@ -72,11 +72,11 @@ Computation times
      - 00:00.085
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_09_ekman_spiral.py` (``plot_09_ekman_spiral.py``)
-     - 00:00.077
+     - 00:00.078
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_12_sverdrup_balance.py` (``plot_12_sverdrup_balance.py``)
      - 00:00.072
      - 0.0
    * - :ref:`sphx_glr_api_gallery_oceanography_plot_05_challenger_soundings.py` (``plot_05_challenger_soundings.py``)
-     - 00:00.072
+     - 00:00.071
      - 0.0

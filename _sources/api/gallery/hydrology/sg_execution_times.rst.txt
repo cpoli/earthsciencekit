@@ -1,0 +1,85 @@
+
+:orphan:
+
+.. _sphx_glr_api_gallery_hydrology_sg_execution_times:
+
+
+Computation times
+=================
+**00:02.613** total execution time for 17 files **from api/gallery/hydrology**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_11_theis_well_solution.py` (``plot_11_theis_well_solution.py``)
+     - 00:00.474
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_17_beven_kirkby_topmodel.py` (``plot_17_beven_kirkby_topmodel.py``)
+     - 00:00.374
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_06_manning_formula.py` (``plot_06_manning_formula.py``)
+     - 00:00.318
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_13_horton_laws_of_stream_numbers.py` (``plot_13_horton_laws_of_stream_numbers.py``)
+     - 00:00.143
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_14_cooper_jacob_straight_line_method.py` (``plot_14_cooper_jacob_straight_line_method.py``)
+     - 00:00.125
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_15_penman_evaporation.py` (``plot_15_penman_evaporation.py``)
+     - 00:00.116
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_01_perrault_catchment_water_balance.py` (``plot_01_perrault_catchment_water_balance.py``)
+     - 00:00.116
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_08_richards_equation.py` (``plot_08_richards_equation.py``)
+     - 00:00.109
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_07_green_ampt_infiltration.py` (``plot_07_green_ampt_infiltration.py``)
+     - 00:00.107
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_12_mccarthy_muskingum_routing.py` (``plot_12_mccarthy_muskingum_routing.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_05_dupuit_unconfined_flow.py` (``plot_05_dupuit_unconfined_flow.py``)
+     - 00:00.101
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_02_chezy_open_channel_formula.py` (``plot_02_chezy_open_channel_formula.py``)
+     - 00:00.098
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_16_monteith_canopy_resistance.py` (``plot_16_monteith_canopy_resistance.py``)
+     - 00:00.095
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_03_dalton_evaporation_law.py` (``plot_03_dalton_evaporation_law.py``)
+     - 00:00.092
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_04_darcy_law.py` (``plot_04_darcy_law.py``)
+     - 00:00.085
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_10_horton_infiltration_capacity.py` (``plot_10_horton_infiltration_capacity.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_api_gallery_hydrology_plot_09_sherman_unit_hydrograph.py` (``plot_09_sherman_unit_hydrograph.py``)
+     - 00:00.080
+     - 0.0

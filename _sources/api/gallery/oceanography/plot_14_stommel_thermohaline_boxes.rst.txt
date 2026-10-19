@@ -75,7 +75,7 @@ settles in depends on where it starts.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.307 seconds)
+   **Total running time of the script:** (0 minutes 0.314 seconds)
 
 
 .. _sphx_glr_download_api_gallery_oceanography_plot_14_stommel_thermohaline_boxes.py:

@@ -1,0 +1,360 @@
+:orphan:
+
+.. include:: /_generated/nav/hydrology.rst
+
+Hydrology examples
+==================
+
+One executed example per breakthrough in :doc:`/history/hydrology_breakthroughs`,
+in chronological order, each with an asserted check of the result it shows.
+Download the Python source or notebook from each page. :doc:`/guides/hydrology` records units and
+limits; all examples use deterministic synthetic inputs and require no downloads.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Pierre Perrault measured the rain at Paris for three years and estimated the flow of the Seine above Aignay-le-Duc. The river carried only about a sixth of the rain that fell on its basin, so rainfall was more than enough to feed it, against the old view that rivers rise from the sea through the ground. The water balance makes the same bookkeeping explicit for a year of synthetic monthly rain, evaporation and runoff: the storage it implies rises in winter, falls in summer and returns to its starting value.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_01_perrault_catchment_water_balance_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_01_perrault_catchment_water_balance`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Perrault's catchment water balance (1674)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Antoine de Chézy was asked to size a canal bringing the water of the Yvette to Paris. He reasoned that in uniform flow the weight of the water down the slope balances a bed friction that grows as the square of the velocity, so the mean velocity is C sqrt(R S), with R the cross-sectional area over the wetted perimeter. The example evaluates a rectangular canal: deepening it raises the hydraulic radius and the velocity, which tends to the wide-channel limit where R equals the depth.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_02_chezy_open_channel_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_02_chezy_open_channel_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Chézy's open-channel formula (1775)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Dalton measured the water lost from heated vessels and found that the rate of evaporation is proportional to the difference between the vapour pressure at the temperature of the water and the vapour pressure already in the air, and grows with the wind. Evaporation stops when the air is saturated and turns into condensation when the air holds more vapour than the surface.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_03_dalton_evaporation_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_03_dalton_evaporation_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dalton's evaporation law (1802)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Henry Darcy built sand filters for the fountains of Dijon and measured the flow through a vertical column of sand under different heads. The discharge was proportional to the head lost across the column divided by its length, with a constant that depends on the sand, now the hydraulic conductivity. The example repeats the experiment: heads read on the manometers combine elevation and pressure, every sand gives a straight line through the origin, and water in the pores moves faster than the flux by the inverse porosity.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_04_darcy_law_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_04_darcy_law`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Darcy's law (1856)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Jules Dupuit assumed that groundwater beneath a gently sloping water table moves horizontally with a velocity uniform on each vertical, driven by the slope of the water table. Darcy&#x27;s law then gives a discharge proportional to the thickness times the slope, which is constant between two rivers, so the square of the water-table height varies linearly and the profile is a parabola. The example draws the profile and checks that every section carries the same discharge.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_05_dupuit_unconfined_flow_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_05_dupuit_unconfined_flow`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dupuit's unconfined flow (1863)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Manning compared the many empirical formulas proposed after Chézy with the gaugings of rivers and canals, and found that the Chézy coefficient grows roughly as the sixth root of the hydraulic radius for a given bed. The mean velocity then becomes R(2/3) S(1/2) / n, with one roughness number per kind of channel. The example shows that Chézy&#x27;s C is not a constant, and that Manning&#x27;s formula is Chézy&#x27;s with C = R(1/6) / n.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_06_manning_formula_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_06_manning_formula`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Manning's formula (1889)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="W. Heber Green and G. A. Ampt pictured water entering a soil as a sharp wetting front, saturated above and dry below, pulled down by gravity and by the capillary suction at the front. The infiltration rate starts high, falls as the wetted zone deepens and tends to the saturated conductivity. Under steady rain the soil first absorbs everything; once its capacity falls to the rain rate the surface ponds and the excess runs off, as in Mein and Larson&#x27;s (1973) treatment, which simulate_infiltration integrates.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_07_green_ampt_infiltration_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_07_green_ampt_infiltration`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Green and Ampt's infiltration (1911)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Lorenzo Richards extended Darcy&#x27;s law to unsaturated soil, where the conductivity depends on the capillary suction, and combined it with conservation of water into the equation that bears his name. In steady flow the flux is the same at every height, and for Gardner&#x27;s exponential conductivity the suction profile above a water table has a closed form: hydrostatic without flow, a unit-gradient tail under infiltration, and a limit height above which evaporation cannot be supplied from below.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_08_richards_equation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_08_richards_equation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Richards's equation (1931)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="LeRoy Sherman proposed that a catchment responds linearly to rain: one centimetre of excess rainfall in a given interval always produces the same hydrograph, and a storm produces the sum of these responses, shifted and scaled by its bursts of rain. The example takes a Nash (1957) cascade of reservoirs as the unit hydrograph of a 50 km^2 catchment, convolves it with a three-hour storm, and checks that the flood carries the volume of the excess rain.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_09_sherman_unit_hydrograph_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_09_sherman_unit_hydrograph`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sherman's unit hydrograph (1932)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Horton described the soil surface as a separator: rain up to the infiltration capacity enters the soil and feeds groundwater, and rain beyond it runs off over the surface. The capacity falls exponentially during a storm from an initial to a steady value. Overland flow produced this way, Hortonian or infiltration-excess runoff, is the shaded area where the rain exceeds the capacity.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_10_horton_infiltration_capacity_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_10_horton_infiltration_capacity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Horton's infiltration capacity (1933)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Charles Theis noticed that groundwater flow to a well obeys the same equation as heat conduction, and borrowed the solution for a line sink. The drawdown grows without limit as the well takes water from storage, at a rate fixed by the transmissivity, and every observation well falls on one type curve when the drawdown is plotted against t / r2.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_11_theis_well_solution_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_11_theis_well_solution`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Theis's well solution (1935)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Gerald McCarthy, working on flood control in the Muskingum basin of Ohio, wrote the storage of a river reach as a weighted mix of its inflow and outflow, S = K (X I + (1 - X) O). Combined with continuity, the outflow becomes a fixed linear combination of the latest inflows and the previous outflow. Routing a flood through a reach delays it by about K and lowers its peak, more so when X is small, while conserving its volume.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_12_mccarthy_muskingum_routing_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_12_mccarthy_muskingum_routing`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">McCarthy's Muskingum routing (1938)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Robert Horton ordered the streams of a basin, from unbranched headwaters up to the main river, and found that the number of streams of each order falls in a geometric series while their mean length grows in another. Two ratios, the bifurcation ratio and the length ratio, summarize the whole network. The example fits both to a synthetic fifth-order basin (with Strahler&#x27;s 1952 ordering) and compares the counts with Horton&#x27;s law.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_13_horton_laws_of_stream_numbers_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_13_horton_laws_of_stream_numbers`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Horton's laws of stream numbers (1945)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Hilton Cooper and Charles Jacob noticed that once u is small the Theis well function is just -0.5772 - ln u, so late drawdowns fall on a straight line against the logarithm of time. The drawdown gained per tenfold increase in time gives the transmissivity, and the time at which the line crosses zero drawdown gives the storativity, without matching a type curve. The example recovers both from a synthetic pumping test.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_14_cooper_jacob_straight_line_method_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_14_cooper_jacob_straight_line_method`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cooper and Jacob's straight-line method (1946)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Howard Penman combined the energy balance of a wet surface with Dalton&#x27;s law, and linearized the saturation curve between the air and the surface, so the unknown surface temperature drops out. Evaporation becomes a weighted mean of a radiation term and a drying-power term that need only the net radiation and standard measurements at screen height. The example solves the full energy balance for the surface temperature and shows that Penman&#x27;s equation agrees to within a few per cent.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_15_penman_evaporation_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_15_penman_evaporation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Penman's evaporation (1948)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="John Monteith treated a vegetated surface as one big leaf whose stomata add a surface resistance in series with the aerodynamic resistance of the air above it. Penman&#x27;s equation becomes the Penman-Monteith equation, which reduces to Penman&#x27;s for a wet surface and falls as the stomata close. The example computes the aerodynamic and surface resistances of the FAO reference grass and the evaporation it gives, a few millimetres a day.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_16_monteith_canopy_resistance_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_16_monteith_canopy_resistance`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Monteith's canopy resistance (1965)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Keith Beven and Mike Kirkby argued that runoff comes mostly from saturated ground that expands and contracts with the wetness of a catchment, and that where it forms is predictable from the topography. Their topographic index ln(a / tan(beta)) is high where a large area drains through a gentle slope, at the foot of hillslopes and in hollows. One catchment-mean deficit then sets the local deficit everywhere, the saturated area and an exponentially receding baseflow.">
+
+.. only:: html
+
+  .. image:: /api/gallery/hydrology/images/thumb/sphx_glr_plot_17_beven_kirkby_topmodel_thumb.png
+    :alt:
+
+  :doc:`/api/gallery/hydrology/plot_17_beven_kirkby_topmodel`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beven and Kirkby's TOPMODEL (1979)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /api/gallery/hydrology/plot_01_perrault_catchment_water_balance
+   /api/gallery/hydrology/plot_02_chezy_open_channel_formula
+   /api/gallery/hydrology/plot_03_dalton_evaporation_law
+   /api/gallery/hydrology/plot_04_darcy_law
+   /api/gallery/hydrology/plot_05_dupuit_unconfined_flow
+   /api/gallery/hydrology/plot_06_manning_formula
+   /api/gallery/hydrology/plot_07_green_ampt_infiltration
+   /api/gallery/hydrology/plot_08_richards_equation
+   /api/gallery/hydrology/plot_09_sherman_unit_hydrograph
+   /api/gallery/hydrology/plot_10_horton_infiltration_capacity
+   /api/gallery/hydrology/plot_11_theis_well_solution
+   /api/gallery/hydrology/plot_12_mccarthy_muskingum_routing
+   /api/gallery/hydrology/plot_13_horton_laws_of_stream_numbers
+   /api/gallery/hydrology/plot_14_cooper_jacob_straight_line_method
+   /api/gallery/hydrology/plot_15_penman_evaporation
+   /api/gallery/hydrology/plot_16_monteith_canopy_resistance
+   /api/gallery/hydrology/plot_17_beven_kirkby_topmodel
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: hydrology_python.zip </api/gallery/hydrology/hydrology_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: hydrology_jupyter.zip </api/gallery/hydrology/hydrology_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

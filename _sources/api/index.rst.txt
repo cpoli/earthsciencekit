@@ -14,6 +14,8 @@ API
    oceanography
    volcanology
    geophysics
+   hydrology
+   glaciology
 
 Shared tools and validation
 ---------------------------

@@ -75,7 +75,7 @@ as rigid as steel has k2 near 0.47; the real Earth, with a fluid core, has
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.153 seconds)
+   **Total running time of the script:** (0 minutes 0.152 seconds)
 
 
 .. _sphx_glr_download_api_gallery_geophysics_plot_09_love_numbers.py:

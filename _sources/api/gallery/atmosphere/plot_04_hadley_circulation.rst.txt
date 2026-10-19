@@ -82,7 +82,7 @@ latitude is ``f + u tan(phi) / a``.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.188 seconds)
+   **Total running time of the script:** (0 minutes 0.186 seconds)
 
 
 .. _sphx_glr_download_api_gallery_atmosphere_plot_04_hadley_circulation.py:

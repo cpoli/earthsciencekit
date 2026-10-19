@@ -78,7 +78,7 @@ temperature, which traces every equilibrium at once.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.079 seconds)
+   **Total running time of the script:** (0 minutes 0.081 seconds)
 
 
 .. _sphx_glr_download_api_gallery_climate_plot_10_budyko_sellers_ice_albedo.py:

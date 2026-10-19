@@ -77,7 +77,7 @@ whole mantle is far above that threshold.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.294 seconds)
+   **Total running time of the script:** (0 minutes 0.296 seconds)
 
 
 .. _sphx_glr_download_api_gallery_plate_tectonics_plot_06_holmes_mantle_convection.py:

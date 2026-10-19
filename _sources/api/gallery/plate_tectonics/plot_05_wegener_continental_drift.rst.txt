@@ -63,7 +63,7 @@ kilometres. The rate here is a representative value, not a reconstruction.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.076 seconds)
+   **Total running time of the script:** (0 minutes 0.078 seconds)
 
 
 .. _sphx_glr_download_api_gallery_plate_tectonics_plot_05_wegener_continental_drift.py:

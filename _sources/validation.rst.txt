@@ -4,7 +4,7 @@ Validation policy
 Validation has three separate goals: reject invalid inputs, verify numerical
 implementation and explain physical applicability. None substitutes for another.
 
-Tests include fixed reference values for all 162 algebraic models, elementwise
+Tests include fixed reference values for all 237 algebraic models, elementwise
 physical bounds, finite/real contracts and broadcasting. Cross-model tests cover
 Euler-vector tangency and circuit closure, the load balance of a flexed plate,
 ocean subsidence against integrated heat loss, wave-interface energy conservation, magnitude inversion,
@@ -28,13 +28,29 @@ ratio, that both concordia clocks agree and lead loss falls on a chord, that the
 isochron recovers its age, that fractional crystallization conserves mass, that
 lattice strain peaks at the optimal radius, that Shaw's lines share their pivot
 and that the Mogi uplift integrates to ``2 (1 - nu) dV``.
+Hydrology tests check that every section of Dupuit's water table carries the
+Dupuit discharge, that steady Richards profiles carry a constant flux, that the
+Green-Ampt time inverts its rate, that Manning is Chézy with ``R**(1/6) / n``,
+that the unit hydrograph conserves volume and superposes, that Theis tends to
+Cooper-Jacob, that Muskingum routing conserves volume, that Penman-Monteith
+with zero surface resistance is Penman and that TOPMODEL baseflow falls by
+``e`` per scaling depth.
+Glaciology tests check that Glen's profile with ``n = 1`` is Forbes's viscous
+slab, that the shallow-ice flux is the depth integral of Glen's profile, that
+Nye's plastic profile carries the yield stress and Vialov's profile the
+accumulated snowfall, that Stefan's thickness grows at Stefan's rate, that
+Haskell's viscosity inverts the relaxation time, that the Dansgaard-Johnsen
+age integrates its velocity and tends to Nye's, and that Schoof's flux rises
+as the 4.75 power of the grounding thickness.
 
 Dynamic tests compare the seismic oscillator with its damped analytic solution,
 climate adjustment with its closed form, dry ascent with conserved potential
 temperature, inertial motion with analytic rotation/decay, the thermohaline
 boxes with both steady states of their equilibrium curve, the Rikitake dynamo
 with its steady states and spontaneous reversals, the eruption column with the
-pure-plume similarity solution and the Morton-Taylor-Turner height, and periodic diffusion
+pure-plume similarity solution and the Morton-Taylor-Turner height, Green-Ampt
+infiltration under rain with the Mein-Larson ponding time and closed form, the
+flowline glacier with a steady flux equal to the mass balance accumulated upstream, and periodic diffusion
 with a discrete Fourier eigenmode and conserved mean. Plot labels, result
 immutability, summaries and GIF export are exercised.
 

@@ -70,7 +70,7 @@ record the same rotation. Positions and ages here are synthetic.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.083 seconds)
+   **Total running time of the script:** (0 minutes 0.082 seconds)
 
 
 .. _sphx_glr_download_api_gallery_plate_tectonics_plot_13_morgan_hotspot_tracks.py:

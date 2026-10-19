@@ -63,7 +63,7 @@ The distance correction used here is Hutton and Boore's 1987 calibration.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.187 seconds)
+   **Total running time of the script:** (0 minutes 0.182 seconds)
 
 
 .. _sphx_glr_download_api_gallery_seismology_plot_09_richter_magnitude.py:

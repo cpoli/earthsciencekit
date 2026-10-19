@@ -9,7 +9,7 @@ its history, run its examples and inspect its API. NumPy and SciPy provide the
 numerical foundations; this package connects them to Earth-system concepts.
 
 .. image:: _static/images/readme_hero.png
-   :alt: Plate cooling, seismic pulse, atmospheric pressure, climate warming and inertial current
+   :alt: Plate cooling, seismic pulse, atmospheric pressure, dynamo reversals, climate warming, inertial current, volcano inflation, storm infiltration and a flowline glacier
    :width: 100%
 
 Browse by domain

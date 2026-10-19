@@ -54,7 +54,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=18bd87630a240e9c25be" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=18bd87630a240e9c25be" />
 
-    <script src="_static/documentation_options.js?v=95e61db4"></script>
+    <script src="_static/documentation_options.js?v=f129cdf0"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -388,6 +388,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/oceanography.html">earthsciencekit.oceanography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/volcanology.html">earthsciencekit.volcanology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/geophysics.html">earthsciencekit.geophysics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/hydrology.html">earthsciencekit.hydrology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/glaciology.html">earthsciencekit.glaciology</a></li>
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="api/integrators.html">earthsciencekit.integrators</a></li>
@@ -462,7 +464,7 @@
 <h1>Validation policy<a class="headerlink" href="#validation-policy" title="Link to this heading">#</a></h1>
 <p>Validation has three separate goals: reject invalid inputs, verify numerical
 implementation and explain physical applicability. None substitutes for another.</p>
-<p>Tests include fixed reference values for all 162 algebraic models, elementwise
+<p>Tests include fixed reference values for all 237 algebraic models, elementwise
 physical bounds, finite/real contracts and broadcasting. Cross-model tests cover
 Euler-vector tangency and circuit closure, the load balance of a flexed plate,
 ocean subsidence against integrated heat loss, wave-interface energy conservation, magnitude inversion,
@@ -485,13 +487,29 @@ age equation inverts accumulation, that the Pb-Pb age inverts the radiogenic lea
 ratio, that both concordia clocks agree and lead loss falls on a chord, that the
 isochron recovers its age, that fractional crystallization conserves mass, that
 lattice strain peaks at the optimal radius, that Shaw’s lines share their pivot
-and that the Mogi uplift integrates to <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">nu)</span> <span class="pre">dV</span></code>.</p>
+and that the Mogi uplift integrates to <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">nu)</span> <span class="pre">dV</span></code>.
+Hydrology tests check that every section of Dupuit’s water table carries the
+Dupuit discharge, that steady Richards profiles carry a constant flux, that the
+Green-Ampt time inverts its rate, that Manning is Chézy with <code class="docutils literal notranslate"><span class="pre">R**(1/6)</span> <span class="pre">/</span> <span class="pre">n</span></code>,
+that the unit hydrograph conserves volume and superposes, that Theis tends to
+Cooper-Jacob, that Muskingum routing conserves volume, that Penman-Monteith
+with zero surface resistance is Penman and that TOPMODEL baseflow falls by
+<code class="docutils literal notranslate"><span class="pre">e</span></code> per scaling depth.
+Glaciology tests check that Glen’s profile with <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">1</span></code> is Forbes’s viscous
+slab, that the shallow-ice flux is the depth integral of Glen’s profile, that
+Nye’s plastic profile carries the yield stress and Vialov’s profile the
+accumulated snowfall, that Stefan’s thickness grows at Stefan’s rate, that
+Haskell’s viscosity inverts the relaxation time, that the Dansgaard-Johnsen
+age integrates its velocity and tends to Nye’s, and that Schoof’s flux rises
+as the 4.75 power of the grounding thickness.</p>
 <p>Dynamic tests compare the seismic oscillator with its damped analytic solution,
 climate adjustment with its closed form, dry ascent with conserved potential
 temperature, inertial motion with analytic rotation/decay, the thermohaline
 boxes with both steady states of their equilibrium curve, the Rikitake dynamo
 with its steady states and spontaneous reversals, the eruption column with the
-pure-plume similarity solution and the Morton-Taylor-Turner height, and periodic diffusion
+pure-plume similarity solution and the Morton-Taylor-Turner height, Green-Ampt
+infiltration under rain with the Mein-Larson ponding time and closed form, the
+flowline glacier with a steady flux equal to the mass balance accumulated upstream, and periodic diffusion
 with a discrete Fourier eigenmode and conserved mean. Plot labels, result
 immutability, summaries and GIF export are exercised.</p>
 <p>Coverage includes every production module, including private validation and
