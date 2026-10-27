@@ -22,7 +22,7 @@ jobs:
       # plot_gallery=0 skips executing the examples; docs.yml already runs them.
       - run: cd docs && make linkcheck SPHINXOPTS="-E --keep-going -D plot_gallery=0"
       - if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: linkcheck-output
           path: docs/build/linkcheck/output.*
