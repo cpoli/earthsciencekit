@@ -1,5 +1,7 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+from typing import Any
+
 import numpy as np
 import pytest
 
@@ -806,3 +808,51 @@ def test_topmodel_baseflow_physical_bound(index, value):
     args[index] = value
     with pytest.raises(ValueError):
         domain.topmodel_baseflow(*args)
+
+
+_DEEPER_CASES: dict[str, tuple[list[Any], Any]] = {
+    "exponential_water_content": ([-1, 0.4, 0.05, 2], 0.05 + 0.35 * np.exp(-2)),
+    "kinematic_wave_celerity": ([1.5, 5 / 3], 2.5),
+    "degree_day_melt": ([278.15, 2, 273.15], 10.0),
+    "snowpack_water_equivalent": ([[270, 275], [0.01, 0.002], 1e-3, 273.15, 2], [[0.01, 0], [0.0063, 0.0057]]),
+}
+
+
+@pytest.mark.parametrize("name", sorted(_DEEPER_CASES))
+def test_deeper_hydrology_reference(name):
+    args, expected = _DEEPER_CASES[name]
+    np.testing.assert_allclose(getattr(domain, name)(*args), expected, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+@pytest.mark.parametrize("name", sorted(_DEEPER_CASES))
+def test_deeper_hydrology_rejects_invalid(name, bad):
+    args = list(_DEEPER_CASES[name][0])
+    args[0] = bad
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+@pytest.mark.parametrize(
+    "name,args",
+    [
+        ("exponential_water_content", [1, 0.4, 0.05, 2]),
+        ("exponential_water_content", [-1, 0.04, 0.05, 2]),
+        ("exponential_water_content", [-1, 1.2, 0.05, 2]),
+        ("exponential_water_content", [-1, 0.4, -0.05, 2]),
+        ("exponential_water_content", [-1, 0.4, 0.05, 0]),
+        ("kinematic_wave_celerity", [-1, 5 / 3]),
+        ("kinematic_wave_celerity", [1, 0]),
+        ("degree_day_melt", [0, 2, 273.15]),
+        ("degree_day_melt", [278.15, -2, 273.15]),
+        ("degree_day_melt", [278.15, 2, 0]),
+        ("snowpack_water_equivalent", [[270, 275], [0.01], 1e-3, 273.15, 2]),
+        ("snowpack_water_equivalent", [[270, 275], [0.01, -0.01], 1e-3, 273.15, 2]),
+        ("snowpack_water_equivalent", [[270, 275], [0.01, 0.002], [1e-3, 1e-3], 273.15, 2]),
+        ("snowpack_water_equivalent", [[270, 275], [0.01, 0.002], 1e-3, 273.15, [2, 2]]),
+        ("snowpack_water_equivalent", [[270, 275], [0.01, 0.002], 1e-3, 273.15, 0]),
+    ],
+)
+def test_deeper_hydrology_physical_bound(name, args):
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)

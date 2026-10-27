@@ -51,6 +51,12 @@ def love_number_h2(rigidity, density, gravity, radius):
     Equation: ``2.5 / (1 + 19 * rigidity / (2 * density * gravity * radius))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import love_number_h2
+    >>> float(love_number_h2(1.5, 1, 1, 9.5))
+    1.0
     """
     return 2.5 / (1 + _rigidity_ratio(rigidity, density, gravity, radius))
 
@@ -83,6 +89,12 @@ def love_number_k2(rigidity, density, gravity, radius):
     Equation: ``1.5 / (1 + 19 * rigidity / (2 * density * gravity * radius))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import love_number_k2
+    >>> float(love_number_k2(1.5, 1, 1, 9.5))
+    0.6
     """
     return 1.5 / (1 + _rigidity_ratio(rigidity, density, gravity, radius))
 
@@ -111,6 +123,12 @@ def tidal_gravimetric_factor(h2, k2):
     Equation: ``1 + h2 - 1.5 * k2``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import tidal_gravimetric_factor
+    >>> round(float(tidal_gravimetric_factor(0.6, 0.3)), 5)
+    1.15
     """
     h2 = quantity("h2", h2, lower=0)
     k2 = quantity("k2", k2, lower=0)
@@ -150,6 +168,12 @@ def equivalent_water_height(coefficient_change, degree, load_love_number, radius
     Equation: ``radius * mean_density * (2 * degree + 1) * coefficient_change / (3 * water_density * (1 + load_love_number))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import equivalent_water_height
+    >>> float(equivalent_water_height(2, 1, 0.5, 3, 3, 2))
+    6.0
     """
     coefficient_change = quantity("coefficient_change", coefficient_change)
     degree = quantity("degree", degree, lower=0)

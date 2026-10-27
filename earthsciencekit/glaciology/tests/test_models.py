@@ -4,8 +4,13 @@ import numpy as np
 import pytest
 
 from earthsciencekit import glaciology as domain
+from earthsciencekit.constants import R_GAS, SECONDS_PER_YEAR
 
 BAD = [np.nan, np.inf, -np.inf, [], "bad", True, 1j]
+# Herron-Langway stage slopes [1/m] and critical depth [m] at 248.15 K, 1e-9 m/s of ice and 350 kg/m^3 at the surface
+HL_UPPER = 0.917 * 11 * np.exp(-10160 / (R_GAS * 248.15))
+HL_LOWER = 0.917 * 575 * np.exp(-21400 / (R_GAS * 248.15)) / np.sqrt(1e-09 * SECONDS_PER_YEAR * 0.917)
+HL_CRITICAL = (np.log(550 / 367) - np.log(350 / 567)) / HL_UPPER
 
 
 def test_ela_shift_reference():
@@ -785,6 +790,111 @@ def test_schoof_grounding_line_flux_physical_bound(index, value):
         domain.schoof_grounding_line_flux(*args)
 
 
+def test_herron_langway_density_reference():
+    result = domain.herron_langway_density(*[50, 248.15, 1e-09, 350])
+    np.testing.assert_allclose(result, 917 / (1 + np.exp(-(np.log(550 / 367) + HL_LOWER * (50 - HL_CRITICAL)))), rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", BAD)
+def test_herron_langway_density_rejects_invalid(bad):
+    args = [50, 248.15, 1e-09, 350]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.herron_langway_density(*args)
+
+
+@pytest.mark.parametrize("index,value", [(0, -1), (1, 0), (1, 274), (2, 0), (3, 0), (3, 550)])
+def test_herron_langway_density_physical_bound(index, value):
+    args = [50, 248.15, 1e-09, 350]
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.herron_langway_density(*args)
+
+
+def test_herron_langway_depth_reference():
+    result = domain.herron_langway_depth(*[830, 248.15, 1e-09, 350])
+    np.testing.assert_allclose(result, HL_CRITICAL + (np.log(830 / 87) - np.log(550 / 367)) / HL_LOWER, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", BAD)
+def test_herron_langway_depth_rejects_invalid(bad):
+    args = [830, 248.15, 1e-09, 350]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.herron_langway_depth(*args)
+
+
+@pytest.mark.parametrize("index,value", [(0, 0), (0, 917), (1, 0), (2, 0), (3, 0)])
+def test_herron_langway_depth_physical_bound(index, value):
+    args = [830, 248.15, 1e-09, 350]
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.herron_langway_depth(*args)
+
+
+def test_herron_langway_mean_density_reference():
+    result = domain.herron_langway_mean_density(*[50, 248.15, 1e-09, 350])
+    np.testing.assert_allclose(result, 710.4412496420827, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", BAD)
+def test_herron_langway_mean_density_rejects_invalid(bad):
+    args = [50, 248.15, 1e-09, 350]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.herron_langway_mean_density(*args)
+
+
+@pytest.mark.parametrize("index,value", [(0, 0), (1, 0), (2, 0), (3, 0)])
+def test_herron_langway_mean_density_physical_bound(index, value):
+    args = [50, 248.15, 1e-09, 350]
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.herron_langway_mean_density(*args)
+
+
+def test_expected_positive_degree_days_reference():
+    result = domain.expected_positive_degree_days(*[273.15, 5, 86400])
+    np.testing.assert_allclose(result, 86400 * 5 / np.sqrt(2 * np.pi), rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", BAD)
+def test_expected_positive_degree_days_rejects_invalid(bad):
+    args = [273.15, 5, 86400]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.expected_positive_degree_days(*args)
+
+
+@pytest.mark.parametrize("index,value", [(0, 0), (1, 0), (2, -1)])
+def test_expected_positive_degree_days_physical_bound(index, value):
+    args = [273.15, 5, 86400]
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.expected_positive_degree_days(*args)
+
+
+def test_pdd_surface_melt_reference():
+    result = domain.pdd_surface_melt(*[500 * 86400, 0.5, 3e-3 / 86400, 8e-3 / 86400, 0.6])
+    np.testing.assert_allclose(result, [0.5, 8 / 3, 8 / 3 + 0.2], rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", BAD)
+def test_pdd_surface_melt_rejects_invalid(bad):
+    args = [500 * 86400, 0.5, 3e-3 / 86400, 8e-3 / 86400, 0.6]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.pdd_surface_melt(*args)
+
+
+@pytest.mark.parametrize("index,value", [(0, -1), (1, -1), (2, 0), (3, 0), (4, -0.1), (4, 1.1)])
+def test_pdd_surface_melt_physical_bound(index, value):
+    args = [500 * 86400, 0.5, 3e-3 / 86400, 8e-3 / 86400, 0.6]
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.pdd_surface_melt(*args)
+
+
 @pytest.mark.parametrize(
     "name,args",
     [
@@ -801,6 +911,7 @@ def test_schoof_grounding_line_flux_physical_bound(index, value):
         ("dansgaard_johnsen_age", [3000, 3000, 500, 1e-08]),
         ("dansgaard_johnsen_age", [1000, 3000, 3001, 1e-08]),
         ("gas_age_difference", [100, 950, 900, 1e-09]),
+        ("herron_langway_depth", [300, 248.15, 1e-09, 350]),
     ],
 )
 def test_cross_parameter_rejections(name, args):

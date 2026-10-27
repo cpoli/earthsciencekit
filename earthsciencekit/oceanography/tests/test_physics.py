@@ -2,6 +2,7 @@
 
 import numpy as np
 import pytest
+from scipy.integrate import trapezoid
 
 from earthsciencekit.oceanography.systems.circulation import (
     ekman_spiral_velocity,
@@ -40,8 +41,8 @@ def test_ekman_spiral_integrates_to_ekman_transport():
     depth = np.linspace(0, 1000, 100001)
     for coriolis in [1e-4, -1e-4]:
         velocity = ekman_spiral_velocity(depth, 0.1, 1025, 0.05, coriolis)
-        assert np.isclose(np.trapezoid(velocity[:, 0], depth), 0, atol=1e-6)
-        assert np.isclose(np.trapezoid(velocity[:, 1], depth), ekman_transport(0.1, 1025, coriolis), rtol=1e-6)
+        assert np.isclose(trapezoid(velocity[:, 0], depth), 0, atol=1e-6)
+        assert np.isclose(trapezoid(velocity[:, 1], depth), ekman_transport(0.1, 1025, coriolis), rtol=1e-6)
         assert np.isclose(abs(np.arctan2(velocity[0, 1], velocity[0, 0])), np.pi / 4)
 
 
@@ -100,3 +101,32 @@ def test_gerstner_orbits_decay_one_wavelength_down():
     k = 2 * np.pi / 100
     ratio = gerstner_orbit_radius(100, 1.0, k) / gerstner_orbit_radius(0, 1.0, k)
     assert np.isclose(ratio, np.exp(-2 * np.pi))
+
+
+@pytest.mark.parametrize(
+    "absolute_salinity,celsius,decibar,density",
+    [
+        # GSW-C gsw_check_data.h (TEOS-10 v3.06.16), the computed check values of gsw_rho for the test casts.
+        (34.468236430490606, 27.996436412058213, 0.0, 1021.8863044505447),
+        (34.67238066266718, 27.30397518400217, 40.0, 1022.4287988266693),
+        (34.86377002371946, 1.0291291795169686, 5098.0, 1050.5884824364505),
+        (10.389468455026284, 4.611397992798779, 101.0, 1008.6875042532482),
+    ],
+)
+def test_teos10_density_matches_teos10_check_values(absolute_salinity, celsius, decibar, density):
+    from earthsciencekit.oceanography import teos10_density
+
+    np.testing.assert_allclose(teos10_density(celsius + 273.15, absolute_salinity, decibar * 1e4), density, rtol=1e-13)
+
+
+def test_teos10_density_brackets_the_fits_and_is_thermobaric():
+    from earthsciencekit.oceanography import teos10_density
+
+    kelvin, salinity = np.meshgrid(np.linspace(272, 300, 15), np.linspace(33, 37, 9))
+    exact = teos10_density(kelvin, salinity, 0)
+    # Roquet et al. (2015) tune the S-EOS to TEOS-10 gradients; its absolute density stays within a few kg/m^3.
+    assert np.max(np.abs(simplified_seawater_density(kelvin, salinity, 0) - exact)) < 3
+    cold, warm = (teos10_density(t, 35, [0, 4e7]) for t in (275.15, 285.15))
+    # Thermal expansion grows with pressure (thermobaricity), and seawater is compressed by about 4.5 % per 100 MPa.
+    assert cold[0] - warm[0] < cold[1] - warm[1]
+    assert 0.015 < cold[1] / cold[0] - 1 < 0.02

@@ -16,6 +16,7 @@ API
    geophysics
    hydrology
    glaciology
+   geomorphology
 
 Shared tools and validation
 ---------------------------

@@ -42,6 +42,12 @@ def absorbed_solar(solar_constant, albedo):
     Equation: ``solar_constant * (1 - albedo) / 4``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import absorbed_solar
+    >>> round(float(absorbed_solar(1360, 0.3)), 3)
+    238.0
     """
     solar_constant = quantity("solar_constant", solar_constant, lower=0)
     albedo = quantity("albedo", albedo, lower=0, upper=1)
@@ -72,6 +78,12 @@ def effective_temperature(absorbed_flux, emissivity):
     Equation: ``(absorbed_flux / (emissivity * SIGMA_SB))**0.25``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import effective_temperature
+    >>> float(effective_temperature(459.300327939, 1))
+    300.0
     """
     absorbed_flux = quantity("absorbed_flux", absorbed_flux, lower=0)
     emissivity = quantity("emissivity", emissivity, lower=0, upper=1, strict_lower=True)
@@ -102,6 +114,12 @@ def outgoing_longwave(temperature, emissivity):
     Equation: ``emissivity * SIGMA_SB * temperature**4``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import outgoing_longwave
+    >>> round(float(outgoing_longwave(300, 1)), 3)
+    459.3
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     emissivity = quantity("emissivity", emissivity, lower=0, upper=1)
@@ -132,6 +150,12 @@ def greenhouse_surface_temperature(absorbed_flux, layer_emissivity):
     Equation: ``(2 * absorbed_flux / ((2 - layer_emissivity) * SIGMA_SB))**0.25``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import greenhouse_surface_temperature
+    >>> float(greenhouse_surface_temperature(459.300327939, 0))
+    300.0
     """
     absorbed_flux = quantity("absorbed_flux", absorbed_flux, lower=0)
     layer_emissivity = quantity("layer_emissivity", layer_emissivity, lower=0, upper=1)
@@ -167,6 +191,12 @@ def daily_insolation(solar_constant, latitude, declination, distance_ratio):
     with ``phi = latitude``, ``delta = declination`` and ``h0 = arccos(clip(-tan(phi) * tan(delta), -1, 1))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import daily_insolation
+    >>> round(float(daily_insolation(1361, 0, 0, 1)), 3)
+    433.22
     """
     solar_constant = quantity("solar_constant", solar_constant, lower=0)
     latitude = quantity("latitude", latitude, lower=-np.pi / 2, upper=np.pi / 2)
@@ -206,6 +236,12 @@ def radiative_convective_temperature(height, effective_temperature, lapse_rate, 
     Equation: ``np.maximum(effective_temperature + lapse_rate * (emission_height - height), effective_temperature / 2**0.25)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import radiative_convective_temperature
+    >>> float(radiative_convective_temperature(0, 255, 0.0065, 5000))
+    287.5
     """
     height = quantity("height", height, lower=0)
     effective_temperature = quantity("effective_temperature", effective_temperature, lower=0, strict_lower=True)

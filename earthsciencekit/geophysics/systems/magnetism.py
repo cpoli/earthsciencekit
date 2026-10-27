@@ -4,7 +4,7 @@ SI units unless stated otherwise; latitude, longitude, declination and inclinati
 """
 
 import numpy as np
-from scipy.special import lpmv
+from scipy.special import gammaln, lpmv
 
 from earthsciencekit._validation import model, quantity, require
 from earthsciencekit.constants import MU0
@@ -19,6 +19,8 @@ __all__ = [
     "direction_angle",
     "virtual_geomagnetic_pole",
     "block_magnetic_anomaly",
+    "schmidt_legendre",
+    "geomagnetic_field",
 ]
 
 
@@ -52,6 +54,13 @@ def dipole_field(latitude, distance, moment):
     Equation: ``MU0 * moment / (4 * np.pi * distance**3) * [np.cos(latitude), 2 * np.sin(latitude)]``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import dipole_field
+    >>> np.round(dipole_field(0, 1, 10000000), 5).tolist()
+    [1.0, 0.0]
     """
     latitude = _latitude("latitude", latitude)
     distance = quantity("distance", distance, lower=0, strict_lower=True)
@@ -82,6 +91,12 @@ def dipole_inclination(latitude):
     Equation: ``np.arctan2(2 * np.sin(latitude), np.cos(latitude))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import dipole_inclination
+    >>> round(float(dipole_inclination(0.7853981633974483)), 5)
+    1.10715
     """
     latitude = _latitude("latitude", latitude)
     return np.arctan2(2 * np.sin(latitude), np.cos(latitude))
@@ -109,6 +124,12 @@ def paleolatitude(inclination):
     Equation: ``np.arctan2(np.sin(inclination), 2 * np.cos(inclination))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import paleolatitude
+    >>> round(float(paleolatitude(1.1071487177940906)), 6)
+    0.785398
     """
     inclination = _latitude("inclination", inclination)
     return np.arctan2(np.sin(inclination), 2 * np.cos(inclination))
@@ -146,6 +167,13 @@ def zonal_field(latitude, distance, degree, coefficient, reference_radius):
     ``x = np.sin(latitude)``, ``a = reference_radius``, ``r = distance`` and ``n = degree``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import zonal_field
+    >>> np.round(zonal_field(0.5235987755982988, 1, 2, 1, 1), 5).tolist()
+    [-1.29904, 0.375]
     """
     latitude = _latitude("latitude", latitude)
     distance = quantity("distance", distance, lower=0, strict_lower=True)
@@ -184,6 +212,12 @@ def gauss_dipole_moment(g10, g11, h11, reference_radius):
     Equation: ``4 * np.pi * reference_radius**3 / MU0 * np.sqrt(g10**2 + g11**2 + h11**2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import gauss_dipole_moment
+    >>> float(gauss_dipole_moment(3, 4, 12, 1))
+    130000000.0
     """
     g10 = quantity("g10", g10)
     g11 = quantity("g11", g11)
@@ -214,6 +248,13 @@ def field_elements(north, east, down):
     Equation: ``[np.arctan2(east, north), np.arctan2(down, np.hypot(north, east)), np.sqrt(north**2 + east**2 + down**2)]``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import field_elements
+    >>> np.round(field_elements(1, 1, 1.4142135623730951), 5).tolist()
+    [0.7854, 0.7854, 2.0]
     """
     north = quantity("north", north)
     east = quantity("east", east)
@@ -249,6 +290,12 @@ def direction_angle(declination_a, inclination_a, declination_b, inclination_b):
     Equation: ``np.arccos(np.sin(Ia) * np.sin(Ib) + np.cos(Ia) * np.cos(Ib) * np.cos(Da - Db))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import direction_angle
+    >>> round(float(direction_angle(0, 0.5, 0, -0.5)), 6)
+    1.0
     """
     declination_a = quantity("declination_a", declination_a)
     inclination_a = _latitude("inclination_a", inclination_a)
@@ -291,6 +338,13 @@ def virtual_geomagnetic_pole(site_latitude, site_longitude, declination, inclina
     position vector and local north and east unit vectors; latitude ``np.arctan2(z, np.hypot(x, y))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import virtual_geomagnetic_pole
+    >>> np.round(virtual_geomagnetic_pole(0, 0, 1.5707963267948966, 0), 5).tolist()
+    [0.0, 1.5708]
     """
     site_latitude = _latitude("site_latitude", site_latitude)
     site_longitude = quantity("site_longitude", site_longitude)
@@ -338,6 +392,12 @@ def block_magnetic_anomaly(x, left, right, top, bottom, magnetization):
     ``phi(z) = np.arctan((right - x) / z) - np.arctan((left - x) / z)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import block_magnetic_anomaly
+    >>> round(float(block_magnetic_anomaly(0, -1, 1, 1, 1.7320508075688772, 9549296.58551372)), 6)
+    1.0
     """
     x = quantity("x", x)
     left = quantity("left", left)
@@ -352,3 +412,126 @@ def block_magnetic_anomaly(x, left, right, top, bottom, magnetization):
         return np.arctan((right - x) / depth) - np.arctan((left - x) / depth)
 
     return MU0 * magnetization / (2 * np.pi) * (subtended(top) - subtended(bottom))
+
+
+def _ferrers(order, degree, x):
+    """Associated Legendre function without the Condon-Shortley phase; zero for order > degree."""
+    return (-1.0) ** order * lpmv(order, degree, x) if order <= degree else np.zeros_like(x)
+
+
+def _schmidt_factor(degree, order):
+    return np.sqrt(np.where(order == 0, 1.0, 2.0) * np.exp(gammaln(degree - order + 1) - gammaln(degree + order + 1)))
+
+
+@model
+def schmidt_legendre(degree, order, latitude):
+    """Schmidt semi-normalized associated Legendre function of the sine of latitude.
+
+    Geomagnetism normalizes its spherical harmonics so that every order of one degree carries the same mean square,
+    which makes Gauss coefficients of different orders directly comparable.
+
+    Parameters
+    ----------
+    degree : float or array_like
+        1; constraint: integer >= 0.
+    order : float or array_like
+        1; constraint: integer, 0 <= order <= degree.
+    latitude : float or array_like
+        rad; constraint: -pi/2 <= latitude <= pi/2. Geocentric latitude.
+
+    Returns
+    -------
+    numpy scalar or ndarray
+        Model value [1]. Scalar input returns a NumPy scalar; arrays broadcast.
+
+    Notes
+    -----
+    Without the Condon-Shortley phase, as in the IGRF (Winch et al. 2005); over the sphere
+    ``mean((S_n^m cos(m lon))**2) = 1 / (2 n + 1)``. Degrees above about 150 lose accuracy in ``lpmv``.
+    Equation: ``np.sqrt((2 - (order == 0)) * factorial(n - m) / factorial(n + m)) * (-1)**m * lpmv(m, n, np.sin(latitude))``.
+    Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import schmidt_legendre
+    >>> round(float(schmidt_legendre(2, 1, 0.5235987755982988)), 6)
+    0.75
+    """
+    degree = quantity("degree", degree, lower=0)
+    order = quantity("order", order, lower=0)
+    require((degree == np.round(degree)) & (order == np.round(order)), "degree and order must be integers")
+    require(order <= degree, "order must not exceed degree")
+    latitude = _latitude("latitude", latitude)
+    return _schmidt_factor(degree, order) * (-1.0) ** order * lpmv(order, degree, np.sin(latitude))
+
+
+@model
+def geomagnetic_field(latitude, longitude, distance, g, h, reference_radius):
+    """Magnetic field of an internal spherical-harmonic model from its Gauss coefficients.
+
+    A table of Gauss coefficients, such as the International Geomagnetic Reference Field, fixes the main field and its
+    declination and inclination everywhere above the core.
+
+    Parameters
+    ----------
+    latitude : float or array_like
+        rad; constraint: -pi/2 < latitude < pi/2. Geocentric latitude.
+    longitude : float or array_like
+        rad, east; constraint: real.
+    distance : float or array_like
+        m, from the Earth's centre; constraint: positive.
+    g, h : array_like, shape (N + 1, N + 1), N >= 1
+        T, Gauss coefficients ``g[n, m]`` and ``h[n, m]``; constraint: real, zero where ``m > n``, in row ``n = 0``
+        and in ``h[:, 0]``.
+    reference_radius : float
+        m; constraint: positive scalar, 6371.2 km for the IGRF.
+
+    Returns
+    -------
+    ndarray, shape (..., 3)
+        Model value [T]: the northward, eastward and downward components on the last axis.
+
+    Notes
+    -----
+    Potential ``V = a * sum((a / r)**(n + 1) * (g[n, m] cos(m lon) + h[n, m] sin(m lon)) * S_n^m)`` with
+    :func:`schmidt_legendre` ``S_n^m`` of the colatitude ``theta``, and ``B = -grad V``. Spherical Earth, internal
+    sources only; the m = 0 terms equal :func:`zonal_field`. The east component divides by ``sin(theta)``, so the
+    geographic poles are excluded.
+    Equation: ``sum((a / r)**(n + 2) * [(g cos + h sin) dS/dtheta, m (g sin - h cos) S / sin(theta),
+    -(n + 1) (g cos + h sin) S])``.
+    Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+    NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import geomagnetic_field
+    >>> (np.round(geomagnetic_field(0, 1.5707963267948966, 1, [[0, 0], [0, 1]], [[0, 0], [0, 0]], 1), 5) + 0.0).tolist()
+    [0.0, 1.0, 0.0]
+    """
+    latitude = quantity("latitude", latitude, lower=-np.pi / 2, upper=np.pi / 2, strict_lower=True, strict_upper=True)
+    longitude = quantity("longitude", longitude)
+    distance = quantity("distance", distance, lower=0, strict_lower=True)
+    g, h = quantity("g", g), quantity("h", h)
+    reference_radius = quantity("reference_radius", reference_radius, lower=0, strict_lower=True)
+    require(reference_radius.ndim == 0, "reference_radius must be a scalar")
+    require(g.ndim == 2 and g.shape[0] == g.shape[1] >= 2 and h.shape == g.shape, "g and h must be square (N + 1, N + 1) tables")
+    require((np.triu(g, 1) == 0).all() & (np.triu(h, 1) == 0).all(), "coefficients with m > n must be zero")
+    require((g[0] == 0).all() & (h[0] == 0).all() & (h[:, 0] == 0).all(), "row n = 0 and h[:, 0] must be zero")
+    latitude, longitude, distance = np.broadcast_arrays(latitude, longitude, distance)
+    x, sine = np.sin(latitude), np.cos(latitude)
+    north, east, down = np.zeros_like(x), np.zeros_like(x), np.zeros_like(x)
+    for n in range(1, g.shape[0]):
+        scale = (reference_radius / distance) ** (n + 2)
+        for m in range(n + 1):
+            factor = _schmidt_factor(n, m)
+            cosine, sinusoid = np.cos(m * longitude), np.sin(m * longitude)
+            even = g[n, m] * cosine + h[n, m] * sinusoid
+            odd = g[n, m] * sinusoid - h[n, m] * cosine
+            value = factor * _ferrers(m, n, x)
+            slope = -_ferrers(1, n, x) if m == 0 else (n + m) * (n - m + 1) * _ferrers(m - 1, n, x) / 2 - _ferrers(m + 1, n, x) / 2
+            north += scale * even * factor * slope
+            east += scale * m * odd * value / sine
+            down -= scale * (n + 1) * even * value
+    return np.stack([north, east, down], axis=-1)

@@ -43,6 +43,12 @@ def angular_speed(rotation_angle, time):
     Equation: ``rotation_angle / time``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import angular_speed
+    >>> float(angular_speed(0.1, 10))
+    0.01
     """
     rotation_angle = quantity("rotation_angle", rotation_angle)
     time = quantity("time", time, lower=0, strict_lower=True)
@@ -75,6 +81,12 @@ def plate_speed(angular_speed, radius, angular_distance):
     Equation: ``angular_speed * radius * np.sin(angular_distance)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import plate_speed
+    >>> float(plate_speed(1e-09, 6000000.0, 1.5707963267948966))
+    0.006
     """
     angular_speed = quantity("angular_speed", angular_speed, lower=0)
     radius = quantity("radius", radius, lower=0, strict_lower=True)
@@ -111,6 +123,12 @@ def euler_velocity_x(omega_y, omega_z, position_y, position_z):
     Equation: ``omega_y * position_z - omega_z * position_y``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import euler_velocity_x
+    >>> float(euler_velocity_x(1, 2, 3, 4))
+    -2.0
     """
     omega_y = quantity("omega_y", omega_y)
     omega_z = quantity("omega_z", omega_z)
@@ -147,6 +165,12 @@ def euler_velocity_y(omega_z, omega_x, position_z, position_x):
     Equation: ``omega_z * position_x - omega_x * position_z``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import euler_velocity_y
+    >>> float(euler_velocity_y(2, 1, 4, 3))
+    2.0
     """
     omega_z = quantity("omega_z", omega_z)
     omega_x = quantity("omega_x", omega_x)
@@ -183,6 +207,12 @@ def euler_velocity_z(omega_x, omega_y, position_x, position_y):
     Equation: ``omega_x * position_y - omega_y * position_x``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import euler_velocity_z
+    >>> float(euler_velocity_z(1, 2, 3, 4))
+    -2.0
     """
     omega_x = quantity("omega_x", omega_x)
     omega_y = quantity("omega_y", omega_y)
@@ -215,6 +245,12 @@ def plate_displacement(speed, time):
     Equation: ``speed * time``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import plate_displacement
+    >>> float(plate_displacement(0.01, 100))
+    1.0
     """
     speed = quantity("speed", speed)
     time = quantity("time", time, lower=0)
@@ -246,6 +282,13 @@ def compose_euler_vectors(omega_ab, omega_bc):
     Equation: ``omega_ab + omega_bc``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.plate_tectonics import compose_euler_vectors
+    >>> np.round(compose_euler_vectors([1, 2, 3], [4, -5, 6]), 5).tolist()
+    [5.0, -3.0, 9.0]
     """
     omega_ab = quantity("omega_ab", omega_ab)
     omega_bc = quantity("omega_bc", omega_bc)
@@ -282,6 +325,12 @@ def hotspot_age(track_length, angular_speed, radius, pole_distance):
     Equation: ``track_length / (angular_speed * radius * np.sin(pole_distance))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import hotspot_age
+    >>> float(hotspot_age(6, 1, 2, 1.5707963267948966))
+    3.0
     """
     track_length = quantity("track_length", track_length, lower=0)
     angular_speed = quantity("angular_speed", angular_speed, lower=0, strict_lower=True)

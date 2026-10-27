@@ -15,9 +15,11 @@ from earthsciencekit.hydrology.systems.channels import (
     chezy_from_manning,
     chezy_velocity,
     hydraulic_radius,
+    kinematic_wave_celerity,
     manning_velocity,
     muskingum_coefficients,
     muskingum_routing,
+    simulate_kinematic_wave,
 )
 from earthsciencekit.hydrology.systems.evaporation import (
     aerodynamic_resistance,
@@ -39,7 +41,12 @@ from earthsciencekit.hydrology.systems.groundwater import (
     theis_drawdown,
     well_function,
 )
+from earthsciencekit.hydrology.systems.snow import (
+    degree_day_melt,
+    snowpack_water_equivalent,
+)
 from earthsciencekit.hydrology.systems.soil_water import (
+    exponential_water_content,
     gardner_conductivity,
     green_ampt_rate,
     green_ampt_time,
@@ -47,6 +54,7 @@ from earthsciencekit.hydrology.systems.soil_water import (
     horton_infiltration_rate,
     richards_steady_head,
     simulate_infiltration,
+    simulate_richards_column,
     unsaturated_darcy_flux,
 )
 
@@ -89,5 +97,11 @@ __all__ = [
     "topographic_index",
     "topmodel_deficit",
     "topmodel_baseflow",
+    "exponential_water_content",
+    "kinematic_wave_celerity",
+    "degree_day_melt",
+    "snowpack_water_equivalent",
     "simulate_infiltration",
+    "simulate_richards_column",
+    "simulate_kinematic_wave",
 ]

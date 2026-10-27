@@ -1,5 +1,7 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+from typing import Any
+
 import numpy as np
 import pytest
 
@@ -202,7 +204,7 @@ def test_attenuated_amplitude_rejects_invalid(bad):
 
 
 def test_p_wave_speed_broadcasting():
-    args = [12, 3, 4]
+    args: list[Any] = [12, 3, 4]
     reference = domain.p_wave_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.p_wave_speed(*args)
@@ -232,7 +234,7 @@ def test_p_wave_speed_density_physical_bound():
 
 
 def test_s_wave_speed_broadcasting():
-    args = [16, 4]
+    args: list[Any] = [16, 4]
     reference = domain.s_wave_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.s_wave_speed(*args)
@@ -255,7 +257,7 @@ def test_s_wave_speed_density_physical_bound():
 
 
 def test_poisson_ratio_broadcasting():
-    args = [2, 1]
+    args: list[Any] = [2, 1]
     reference = domain.poisson_ratio(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.poisson_ratio(*args)
@@ -278,7 +280,7 @@ def test_poisson_ratio_s_speed_physical_bound():
 
 
 def test_travel_time_broadcasting():
-    args = [3000, 1500]
+    args: list[Any] = [3000, 1500]
     reference = domain.travel_time(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.travel_time(*args)
@@ -301,7 +303,7 @@ def test_travel_time_speed_physical_bound():
 
 
 def test_seismic_impedance_broadcasting():
-    args = [2000, 3000]
+    args: list[Any] = [2000, 3000]
     reference = domain.seismic_impedance(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.seismic_impedance(*args)
@@ -324,7 +326,7 @@ def test_seismic_impedance_speed_physical_bound():
 
 
 def test_reflection_coefficient_broadcasting():
-    args = [2, 6]
+    args: list[Any] = [2, 6]
     reference = domain.reflection_coefficient(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.reflection_coefficient(*args)
@@ -347,7 +349,7 @@ def test_reflection_coefficient_impedance2_physical_bound():
 
 
 def test_transmission_coefficient_broadcasting():
-    args = [2, 6]
+    args: list[Any] = [2, 6]
     reference = domain.transmission_coefficient(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.transmission_coefficient(*args)
@@ -370,7 +372,7 @@ def test_transmission_coefficient_impedance2_physical_bound():
 
 
 def test_critical_angle_broadcasting():
-    args = [1, 2]
+    args: list[Any] = [1, 2]
     reference = domain.critical_angle(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.critical_angle(*args)
@@ -393,7 +395,7 @@ def test_critical_angle_speed2_physical_bound():
 
 
 def test_seismic_moment_broadcasting():
-    args = [30000000000.0, 1000000.0, 1]
+    args: list[Any] = [30000000000.0, 1000000.0, 1]
     reference = domain.seismic_moment(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.seismic_moment(*args)
@@ -423,7 +425,7 @@ def test_seismic_moment_slip_physical_bound():
 
 
 def test_moment_magnitude_broadcasting():
-    args = [1.2589254117941714e18]
+    args: list[Any] = [1.2589254117941714e18]
     reference = domain.moment_magnitude(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.moment_magnitude(*args)
@@ -439,7 +441,7 @@ def test_moment_magnitude_moment_physical_bound():
 
 
 def test_moment_from_magnitude_broadcasting():
-    args = [6]
+    args: list[Any] = [6]
     reference = domain.moment_from_magnitude(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.moment_from_magnitude(*args)
@@ -448,7 +450,7 @@ def test_moment_from_magnitude_broadcasting():
 
 
 def test_gutenberg_richter_broadcasting():
-    args = [4, 1, 3]
+    args: list[Any] = [4, 1, 3]
     reference = domain.gutenberg_richter(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.gutenberg_richter(*args)
@@ -464,7 +466,7 @@ def test_gutenberg_richter_b_physical_bound():
 
 
 def test_omori_rate_broadcasting():
-    args = [10, 1, 1, 1]
+    args: list[Any] = [10, 1, 1, 1]
     reference = domain.omori_rate(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.omori_rate(*args)
@@ -501,7 +503,7 @@ def test_omori_rate_time_physical_bound():
 
 
 def test_ricker_wavelet_broadcasting():
-    args = [0, 10]
+    args: list[Any] = [0, 10]
     reference = domain.ricker_wavelet(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.ricker_wavelet(*args)
@@ -517,7 +519,7 @@ def test_ricker_wavelet_frequency_physical_bound():
 
 
 def test_attenuated_amplitude_broadcasting():
-    args = [2, 1, 1, 4.532360141827194]
+    args: list[Any] = [2, 1, 1, 4.532360141827194]
     reference = domain.attenuated_amplitude(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.attenuated_amplitude(*args)
@@ -560,7 +562,7 @@ def test_rayleigh_wave_speed_rejects_invalid(bad):
 
 
 def test_rayleigh_wave_speed_broadcasting():
-    args = [1.7320508075688772, 1]
+    args: list[Any] = [1.7320508075688772, 1]
     reference = domain.rayleigh_wave_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.rayleigh_wave_speed(*args)
@@ -596,7 +598,7 @@ def test_head_wave_travel_time_rejects_invalid(bad):
 
 
 def test_head_wave_travel_time_broadcasting():
-    args = [4, 1, 1, 2]
+    args: list[Any] = [4, 1, 1, 2]
     reference = domain.head_wave_travel_time(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.head_wave_travel_time(*args)
@@ -646,7 +648,7 @@ def test_crossover_distance_rejects_invalid(bad):
 
 
 def test_crossover_distance_broadcasting():
-    args = [1, 1, 3]
+    args: list[Any] = [1, 1, 3]
     reference = domain.crossover_distance(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.crossover_distance(*args)
@@ -689,7 +691,7 @@ def test_love_wave_angular_frequency_rejects_invalid(bad):
 
 
 def test_love_wave_angular_frequency_broadcasting():
-    args = [1.4142135623730951, 1, 1, 2, 1, 1]
+    args: list[Any] = [1.4142135623730951, 1, 1, 2, 1, 1]
     reference = domain.love_wave_angular_frequency(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.love_wave_angular_frequency(*args)
@@ -753,7 +755,7 @@ def test_ray_parameter_rejects_invalid(bad):
 
 
 def test_ray_parameter_broadcasting():
-    args = [2, 4, 0.5235987755982988]
+    args: list[Any] = [2, 4, 0.5235987755982988]
     reference = domain.ray_parameter(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.ray_parameter(*args)
@@ -796,7 +798,7 @@ def test_local_magnitude_rejects_invalid(bad):
 
 
 def test_local_magnitude_broadcasting():
-    args = [1e-3, 1e5]
+    args: list[Any] = [1e-3, 1e5]
     reference = domain.local_magnitude(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.local_magnitude(*args)
@@ -850,3 +852,44 @@ def test_vertical_travel_time_speed_physical_bound():
 def test_vertical_travel_time_requires_profile(depth, speed):
     with pytest.raises(ValueError):
         domain.vertical_travel_time(depth, speed)
+
+
+_LAYERED_RAY_ARGS = [1, [0, 1.5], [1, 1], 2]
+
+
+@pytest.mark.parametrize(
+    "name,expected",
+    [("layered_ray_distance", 2 * np.pi / 3), ("layered_ray_travel_time", 2 * np.sqrt(3))],
+)
+def test_layered_ray_reference(name, expected):
+    np.testing.assert_allclose(getattr(domain, name)(*_LAYERED_RAY_ARGS), expected, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+@pytest.mark.parametrize("name", ["layered_ray_distance", "layered_ray_travel_time"])
+def test_layered_ray_rejects_invalid(name, bad):
+    args = list(_LAYERED_RAY_ARGS)
+    args[0] = bad
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+@pytest.mark.parametrize(
+    "args",
+    [
+        [2, [0, 1.5], [1, 1], 2],
+        [0, [0, 1.5], [1, 1], 2],
+        [1, [0.5, 1.5], [1, 1], 2],
+        [1, [0, 2], [1, 1], 2],
+        [1, [0, 1.5, 1], [1, 1, 1], 2],
+        [1, [0, 1.5], [1, 0.1], 2],
+        [1, [0, 1.5], [1, 1, 1], 2],
+        [1, [0], [1], 2],
+        [1, [0, 1.5], [1, 1], [2, 2]],
+        [0.1, [0, 1], [1, 1], 2],
+    ],
+)
+def test_layered_ray_physical_bound(args):
+    for function in (domain.layered_ray_distance, domain.layered_ray_travel_time):
+        with pytest.raises(ValueError):
+            function(*args)

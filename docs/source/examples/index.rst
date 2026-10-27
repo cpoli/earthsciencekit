@@ -16,6 +16,7 @@ Examples
    /api/gallery/geophysics/index
    /api/gallery/hydrology/index
    /api/gallery/glaciology/index
+   /api/gallery/geomorphology/index
 
 Tutorials and model guides
 --------------------------
@@ -34,3 +35,4 @@ Tutorials and model guides
    /guides/geophysics
    /guides/hydrology
    /guides/glaciology
+   /guides/geomorphology

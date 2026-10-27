@@ -21,6 +21,16 @@ The single-exponential carbon reservoir omits the multiple removal timescales
 of atmospheric carbon dioxide. Steric sea level is a constant-coefficient slab
 approximation; added water mass is distributed over a supplied fixed area.
 
+The two-box model of Held et al. (2010) couples a surface layer of heat
+capacity ``C`` to a deep ocean ``C0`` through an exchange coefficient
+``gamma``, both feedback and exchange in W/(m^2 K). ``two_box_timescales``
+returns the fast and slow timescales on the last axis. The latitudinal
+energy-balance model is North's (1975) diffusive model for one hemisphere, on
+equal steps of the sine of latitude ``x``. Its outgoing longwave is linear,
+``A + B (T - 273.15)``, its ice edge is where the temperature falls to the
+freezing temperature (-10 degC by default), and ``ice_edge`` is a latitude in
+radians: ``pi / 2`` when there is no ice and 0 for a snowball.
+
 Input contracts
 ---------------
 
@@ -288,6 +298,81 @@ Output: **[W/m^2, W/(m^2 K)]**. Least-squares line through (temperature_change, 
 
     imbalance = forcing - restoring * temperature_change
 
+two_box_timescales
+~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.climate.two_box_timescales`
+
+Output: **s**, the fast and the slow timescale on the last axis. Held et al. (2010) linear two-box model; minus the reciprocal eigenvalues of the system.
+
+.. code-block:: python
+
+    b = (feedback + exchange) / C + exchange / C0
+    determinant = feedback * exchange / (C * C0)
+    fast = (b + np.sqrt(b**2 - 4 * determinant)) / 2
+    [1 / fast, fast / determinant]
+
+two_box_fast_warming
+~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.climate.two_box_fast_warming`
+
+Output: **K**. The surface warming after the fast adjustment with the deep ocean still cold; approximates the transient climate response.
+
+.. code-block:: python
+
+    forcing / (feedback + exchange)
+
+insolation_distribution
+~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.climate.insolation_distribution`
+
+Output: **1**, with global mean 1. North's (1975) two-term Legendre fit to the annual mean.
+
+.. code-block:: python
+
+    1 + second_legendre_coefficient * (3 * sine_latitude**2 - 1) / 2
+
+north_temperature_profile
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.climate.north_temperature_profile`
+
+Output: **K**. North (1975) with a fixed albedo; the second Legendre polynomial is an eigenfunction of the diffusion operator.
+
+.. code-block:: python
+
+    Q = solar_constant / 4
+    273.15 + (Q * (1 - albedo) - A) / B + Q * (1 - albedo) * s2 / (B + 6 * D) * (3 * x**2 - 1) / 2
+
+Two-box response
+~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.climate.simulate_two_box` integrates the surface and
+deep anomalies under a constant forcing. Start from a warmed state with zero
+forcing to repeat Held's abrupt return to preindustrial forcing.
+
+.. code-block:: python
+
+    C dT/dt = F - feedback * T - exchange * (T - T0)
+    C0 dT0/dt = exchange * (T - T0)
+
+Latitudinal energy balance
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.climate.simulate_latitudinal_energy_balance`
+integrates the temperature of equal-area cells from the equator to the pole
+with SciPy's BDF integrator. The diffusive flux vanishes at both ends, the
+albedo is the smooth ``ice_albedo`` step between ice and an ice-free albedo
+``warm_albedo + warm_albedo_gradient * P2(x)``, and the defaults give an ice
+edge near 71 degrees for today's Sun. Pass the final state of one run as
+``initial_temperature`` of the next to trace the hysteresis loop.
+
+.. code-block:: python
+
+    C dT/dt = (S / 4) s(x) (1 - albedo(T)) - (A + B (T - 273.15)) + D d/dx[(1 - x**2) dT/dx]
+
 Independent validation
 ----------------------
 
@@ -298,6 +383,10 @@ constant, that the radiative-convective profile passes through the effective
 temperature, that every ice-albedo equilibrium closes the energy balance, that
 the red-noise spectrum integrates to its variance, that the Myhre formulas
 reproduce the IPCC values for 1750-1998, and that the Gregory regression
-recovers the parameters of a one-box run. The shared suite adds cross-model identities, energy/conservation
+recovers the parameters of a one-box run. The two-box run matches the matrix
+exponential and its timescales the eigenvalues, the fast plateau is
+``F / (lambda + gamma)``, the latitudinal model without ice feedback converges
+to North's two-mode solution, closes its global energy balance, and has a warm
+and a snowball state for the same Sun. The shared suite adds cross-model identities, energy/conservation
 checks and independent analytic solutions for dynamics. See :doc:`/validation`
 for the exact evidence and :doc:`/numerical_methods` for numerical conventions.

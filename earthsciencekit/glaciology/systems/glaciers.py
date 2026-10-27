@@ -42,6 +42,12 @@ def ela_shift(temperature_change, lapse_rate):
     Equation: ``temperature_change / lapse_rate``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import ela_shift
+    >>> round(float(ela_shift(-6, 0.0065)), 3)
+    -923.077
     """
     temperature_change = quantity("temperature_change", temperature_change)
     lapse_rate = quantity("lapse_rate", lapse_rate, lower=0, strict_lower=True)
@@ -76,6 +82,12 @@ def linear_mass_balance(elevation, equilibrium_line_altitude, balance_gradient):
     Equation: ``balance_gradient * (elevation - equilibrium_line_altitude)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import linear_mass_balance
+    >>> round(float(linear_mass_balance(3000, 2500, 1e-10)), 13)
+    5e-08
     """
     elevation = quantity("elevation", elevation)
     equilibrium_line_altitude = quantity("equilibrium_line_altitude", equilibrium_line_altitude)
@@ -107,6 +119,12 @@ def accumulation_area_ratio(accumulation_area, glacier_area):
     Equation: ``accumulation_area / glacier_area``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import accumulation_area_ratio
+    >>> float(accumulation_area_ratio(6, 10))
+    0.6
     """
     accumulation_area = quantity("accumulation_area", accumulation_area, lower=0)
     glacier_area = quantity("glacier_area", glacier_area, lower=0, strict_lower=True)
@@ -139,6 +157,12 @@ def glacier_response_time(thickness, terminus_ablation):
     Equation: ``thickness / terminus_ablation``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import glacier_response_time
+    >>> float(glacier_response_time(200, 1e-07))
+    2000000000.0
     """
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
     terminus_ablation = quantity("terminus_ablation", terminus_ablation, lower=0, strict_lower=True)

@@ -1,5 +1,15 @@
 """Inspectable atmosphere models; SI units unless stated otherwise."""
 
+from earthsciencekit.atmosphere.systems.convection import (
+    convective_available_potential_energy,
+    convective_inhibition,
+    lcl_height,
+    lcl_pressure,
+    lcl_temperature,
+    moist_adiabatic_lapse_rate,
+    parcel_temperature_profile,
+    simulate_moist_ascent,
+)
 from earthsciencekit.atmosphere.systems.dynamics import (
     coriolis_parameter,
     geostrophic_speed,
@@ -52,6 +62,14 @@ __all__ = [
     "richardson_number",
     "surface_pressure_tendency",
     "rossby_wave_speed",
+    "lcl_temperature",
+    "lcl_pressure",
+    "lcl_height",
+    "moist_adiabatic_lapse_rate",
+    "parcel_temperature_profile",
+    "convective_available_potential_energy",
+    "convective_inhibition",
     "simulate_dry_ascent",
     "simulate_barotropic_vorticity",
+    "simulate_moist_ascent",
 ]

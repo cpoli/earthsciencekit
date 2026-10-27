@@ -45,6 +45,12 @@ def rayleigh_fractionation(initial_ratio, remaining_fraction, fractionation_fact
     Equation: ``initial_ratio * remaining_fraction**(fractionation_factor - 1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import rayleigh_fractionation
+    >>> float(rayleigh_fractionation(2, 0.25, 0.5))
+    4.0
     """
     initial_ratio = quantity("initial_ratio", initial_ratio, lower=0, strict_lower=True)
     remaining_fraction = quantity("remaining_fraction", remaining_fraction, lower=0, upper=1, strict_lower=True)
@@ -76,6 +82,12 @@ def delta_value(ratio, standard_ratio):
     Equation: ``(ratio / standard_ratio - 1) * 1000``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import delta_value
+    >>> round(float(delta_value(1.01, 1)), 4)
+    10.0
     """
     ratio = quantity("ratio", ratio, lower=0, strict_lower=True)
     standard_ratio = quantity("standard_ratio", standard_ratio, lower=0, strict_lower=True)
@@ -109,6 +121,12 @@ def fractional_crystallization_melt(initial_concentration, melt_fraction, partit
     Equation: ``initial_concentration * melt_fraction**(partition_coefficient - 1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import fractional_crystallization_melt
+    >>> float(fractional_crystallization_melt(10, 0.25, 0.5))
+    20.0
     """
     initial_concentration = quantity("initial_concentration", initial_concentration, lower=0)
     melt_fraction = quantity("melt_fraction", melt_fraction, lower=0, upper=1, strict_lower=True)
@@ -143,6 +161,12 @@ def equilibrium_crystallization_melt(initial_concentration, melt_fraction, parti
     Equation: ``initial_concentration / (partition_coefficient + melt_fraction * (1 - partition_coefficient))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import equilibrium_crystallization_melt
+    >>> round(float(equilibrium_crystallization_melt(10, 0.5, 0.5)), 4)
+    13.3333
     """
     initial_concentration = quantity("initial_concentration", initial_concentration, lower=0)
     melt_fraction = quantity("melt_fraction", melt_fraction, lower=0, upper=1)
@@ -182,6 +206,12 @@ def lattice_strain_partition(ionic_radius, optimal_radius, peak_partition, young
     + (ionic_radius - optimal_radius)**3 / 3) / (R_GAS * temperature))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import lattice_strain_partition
+    >>> round(float(lattice_strain_partition(2e-10, 1e-10, 3, 1318422678.149293, 1000)), 5)
+    1.10364
     """
     ionic_radius = quantity("ionic_radius", ionic_radius, lower=0, strict_lower=True)
     optimal_radius = quantity("optimal_radius", optimal_radius, lower=0, strict_lower=True)
@@ -219,6 +249,12 @@ def isotope_temperature(delta_calcite, delta_water):
     Equation: ``273.15 + 16.5 - 4.3 * d + 0.14 * d**2`` with ``d = delta_calcite - delta_water``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import isotope_temperature
+    >>> round(float(isotope_temperature(1, 0)), 3)
+    285.49
     """
     delta_calcite = quantity("delta_calcite", delta_calcite)
     delta_water = quantity("delta_water", delta_water)

@@ -16,3 +16,4 @@ Subpackages
    /_generated/subpackages/geophysics
    /_generated/subpackages/hydrology
    /_generated/subpackages/glaciology
+   /_generated/subpackages/geomorphology

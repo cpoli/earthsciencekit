@@ -169,3 +169,59 @@ def test_rikitake_fixed_point_is_steady_and_flow_reverses():
             simulate_rikitake_dynamo(*args, time)
     with pytest.raises(ValueError):
         simulate_rikitake_dynamo(mu, k, 1.0, time, initial_state=[1, 0])
+
+
+def _random_coefficients(degree, seed):
+    rng = np.random.default_rng(seed)
+    g, h = np.tril(rng.normal(size=(degree + 1, degree + 1))), np.tril(rng.normal(size=(degree + 1, degree + 1)))
+    g[0], h[0], h[:, 0] = 0, 0, 0
+    return g, h
+
+
+def test_schmidt_functions_have_the_igrf_normalization():
+    from earthsciencekit.geophysics import schmidt_legendre
+
+    for n in range(5):
+        for m in range(n + 1):
+            # The longitude mean of cos(m lon)**2 is 1/2 for m > 0, which Schmidt's factor 2 compensates.
+            mean = quad(lambda lat: schmidt_legendre(n, m, lat) ** 2 * np.cos(lat), -np.pi / 2, np.pi / 2)[0] / 2
+            np.testing.assert_allclose(mean * (0.5 if m else 1.0), 1 / (2 * n + 1), rtol=1e-10)
+
+
+def test_geomagnetic_field_is_minus_the_gradient_of_its_potential():
+    from earthsciencekit.geophysics import geomagnetic_field, schmidt_legendre
+
+    g, h = _random_coefficients(4, 7)
+    a = 6371.2e3
+
+    def potential(latitude, longitude, radius):
+        return a * sum(
+            (a / radius) ** (n + 1) * (g[n, m] * np.cos(m * longitude) + h[n, m] * np.sin(m * longitude)) * schmidt_legendre(n, m, latitude)
+            for n in range(1, 5)
+            for m in range(n + 1)
+        )
+
+    lat, lon, r, step = 0.4, -1.1, 1.3 * a, 1e-5
+    field = geomagnetic_field(lat, lon, r, g, h, a)
+    # North is -B_theta = -(1/r) dV/dlatitude, east -dV/dlon / (r cos(lat)), down dV/dr.
+    north = -(potential(lat + step, lon, r) - potential(lat - step, lon, r)) / (2 * step * r)
+    east = -(potential(lat, lon + step, r) - potential(lat, lon - step, r)) / (2 * step * r * np.cos(lat))
+    down = (potential(lat, lon, r * (1 + step)) - potential(lat, lon, r * (1 - step))) / (2 * step * r)
+    np.testing.assert_allclose(field, [north, east, down], rtol=1e-7)
+
+
+def test_geomagnetic_field_zonal_terms_and_dipole():
+    from earthsciencekit.geophysics import dipole_field, gauss_dipole_moment, geomagnetic_field, zonal_field
+
+    g, h = _random_coefficients(3, 3)
+    zonal_g = g * (np.arange(4)[None, :] == 0)
+    latitude = np.linspace(-1.4, 1.4, 9)
+    field = geomagnetic_field(latitude, 0.7, 7e6, zonal_g, np.zeros_like(h), 6.4e6)
+    expected = sum(zonal_field(latitude, 7e6, n, zonal_g[n, 0], 6.4e6) for n in range(1, 4))
+    np.testing.assert_allclose(field[:, [0, 2]], expected, rtol=1e-12, atol=1e-30)
+    np.testing.assert_allclose(field[:, 1], 0, atol=1e-30)
+    axial = np.zeros((2, 2))
+    axial[1, 0] = -3e-5
+    moment = gauss_dipole_moment(-3e-5, 0, 0, 6.4e6)
+    dipole = dipole_field(latitude, 7e6, moment)
+    np.testing.assert_allclose(geomagnetic_field(latitude, 0.2, 7e6, axial, np.zeros((2, 2)), 6.4e6)[:, [0, 2]], dipole, rtol=1e-12)

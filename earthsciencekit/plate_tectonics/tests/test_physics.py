@@ -2,6 +2,7 @@
 
 import numpy as np
 import pytest
+from scipy.integrate import trapezoid
 
 from earthsciencekit.plate_tectonics.systems.cooling import diffuse_temperature, halfspace_heat_flux, mantle_rayleigh_number, ocean_depth
 from earthsciencekit.plate_tectonics.systems.isostasy import flexural_deflection, flexural_parameter
@@ -26,9 +27,9 @@ def test_periodic_diffusion_conservation_and_eigenmode():
     expected = 300 + (initial - 300)[None, :] * np.exp(-rate * (time - time[0]))[:, None]
     np.testing.assert_allclose(result.values, expected, atol=1e-12)
     assert result.values.min() >= initial.min() and result.values.max() <= initial.max()
-    for initial, diffusion, spacing in [([300, 310], 1, 1), ([[300] * 3], 1, 1), ([300] * 3, [1, 2], 1), ([300] * 3, 0, 1)]:
+    for bad_initial, diffusion, spacing in [([300, 310], 1, 1), ([[300] * 3], 1, 1), ([300] * 3, [1, 2], 1), ([300] * 3, 0, 1)]:
         with pytest.raises(ValueError):
-            diffuse_temperature(initial, [0, 1], diffusion, spacing)
+            diffuse_temperature(bad_initial, [0, 1], diffusion, spacing)
 
 
 def test_plate_rotation_tangent_and_speed():
@@ -52,7 +53,7 @@ def test_flexure_balances_load_and_places_bulge():
     alpha = flexural_parameter(rigidity, contrast, gravity)
     x = np.linspace(-25 * alpha, 25 * alpha, 200001)
     w = flexural_deflection(x, load, rigidity, contrast, gravity)
-    assert np.isclose(np.trapezoid(contrast * gravity * w, x), load, rtol=1e-6)
+    assert np.isclose(trapezoid(contrast * gravity * w, x), load, rtol=1e-6)
     w0 = flexural_deflection(0, load, rigidity, contrast, gravity)
     assert np.isclose(flexural_deflection(3 * np.pi * alpha / 4, load, rigidity, contrast, gravity), 0, atol=1e-12 * w0)
     assert np.isclose(flexural_deflection(np.pi * alpha, load, rigidity, contrast, gravity), -np.exp(-np.pi) * w0)
@@ -92,3 +93,59 @@ def test_mantle_rayleigh_number_cubic_in_thickness():
     ratio = mantle_rayleigh_number(*args[:4], 2 * args[4], *args[5:]) / mantle_rayleigh_number(*args)
     assert np.isclose(ratio, 8)
     assert mantle_rayleigh_number(3e-5, 4000, 9.8, 0, 1e6, 1e-6, 1e21) == 0
+
+
+def _rotations(seed, size):
+    rng = np.random.default_rng(seed)
+    return np.arcsin(rng.uniform(-1, 1, size)), rng.uniform(-np.pi, np.pi, size), rng.uniform(-3, 3, size)
+
+
+def test_finite_rotation_matrix_is_a_proper_rotation_about_its_pole():
+    from earthsciencekit.plate_tectonics import finite_rotation_matrix, rotate_position
+
+    latitude, longitude, angle = _rotations(1, 20)
+    matrix = finite_rotation_matrix(latitude, longitude, angle)
+    np.testing.assert_allclose(matrix @ np.swapaxes(matrix, -1, -2), np.broadcast_to(np.eye(3), matrix.shape), atol=1e-14)
+    np.testing.assert_allclose(np.linalg.det(matrix), 1)
+    pole = np.stack([np.cos(latitude) * np.cos(longitude), np.cos(latitude) * np.sin(longitude), np.sin(latitude)], axis=-1)
+    np.testing.assert_allclose(np.einsum("nij,nj->ni", matrix, pole), pole, atol=1e-14)
+    np.testing.assert_allclose(np.arccos(np.clip((np.trace(matrix, axis1=1, axis2=2) - 1) / 2, -1, 1)), np.abs(angle), atol=1e-7)
+    point_lat, point_lon = _rotations(2, 20)[:2]
+    moved = rotate_position(point_lat, point_lon, latitude, longitude, angle)
+    before = np.stack([np.cos(point_lat) * np.cos(point_lon), np.cos(point_lat) * np.sin(point_lon), np.sin(point_lat)], axis=-1)
+    after = np.stack([np.cos(moved[:, 0]) * np.cos(moved[:, 1]), np.cos(moved[:, 0]) * np.sin(moved[:, 1]), np.sin(moved[:, 0])], axis=-1)
+    np.testing.assert_allclose(after, np.einsum("nij,nj->ni", matrix, before), atol=1e-14)
+    # A rotation keeps every point at its angular distance from the pole: points move along small circles.
+    np.testing.assert_allclose(np.sum(after * pole, axis=-1), np.sum(before * pole, axis=-1), atol=1e-14)
+
+
+def test_composed_rotations_are_matrix_products_and_do_not_commute():
+    from earthsciencekit.plate_tectonics import compose_finite_rotations, finite_rotation_matrix
+
+    first, second = _rotations(3, 30), _rotations(4, 30)
+    composite = compose_finite_rotations(*first, *second)
+    product = finite_rotation_matrix(*second) @ finite_rotation_matrix(*first)
+    np.testing.assert_allclose(finite_rotation_matrix(*np.moveaxis(composite, -1, 0)), product, atol=1e-13)
+    assert np.all((composite[:, 2] >= 0) & (composite[:, 2] <= np.pi))
+    reversed_order = compose_finite_rotations(*second, *first)
+    assert not np.allclose(composite, reversed_order)
+    identity = compose_finite_rotations(*first, first[0], first[1], -first[2])
+    np.testing.assert_allclose(identity, np.broadcast_to([np.pi / 2, 0, 0], identity.shape), atol=1e-7)
+
+
+def test_interpolated_rotation_turns_steadily_about_the_stage_pole():
+    from earthsciencekit.plate_tectonics import compose_finite_rotations, finite_rotation_matrix, interpolate_finite_rotation
+
+    first, second = (0.8, -0.6, 0.3), (0.2, 0.4, 1.1)
+    for fraction, expected in ((0, first), (1, second)):
+        rotation = interpolate_finite_rotation(*first, *second, fraction)
+        np.testing.assert_allclose(finite_rotation_matrix(*rotation), finite_rotation_matrix(*expected), atol=1e-13)
+    stage = compose_finite_rotations(first[0], first[1], -first[2], *second)
+    fractions = np.linspace(0, 1, 11)
+    path = interpolate_finite_rotation(*first, *second, fractions)
+    # The stage pole is fixed in the reference frame, so each step is the same rotation about it.
+    turned = compose_finite_rotations(first[0], first[1], -first[2], *np.moveaxis(path, -1, 0))
+    np.testing.assert_allclose(turned[1:, 2], fractions[1:] * stage[2], atol=1e-12)
+    np.testing.assert_allclose(turned[1:, :2], np.broadcast_to(stage[:2], (10, 2)), atol=1e-9)
+    same_pole = interpolate_finite_rotation(0.5, 1.0, 0.2, 0.5, 1.0, 0.6, 0.25)
+    np.testing.assert_allclose(same_pole, [0.5, 1.0, 0.3], atol=1e-12)

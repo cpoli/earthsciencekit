@@ -35,6 +35,12 @@ Isostatic depressions are positive downward and assume local isostasy;
 lithosphere. Stefan's law takes the freezing degree-time in K s, the time
 integral of the freezing point minus the surface temperature.
 
+The Herron-Langway firn models take accumulation in m/s of ice, like
+``gas_age_difference``, and convert it to the metres of water per year of
+their fit; the ice density is ``ICE_DENSITY``. Positive degree-days are in
+K s (divide by 86400 for degree-days), and the degree-day factors and melt
+are water equivalent, as in ``hydrology.degree_day_melt``.
+
 Input contracts
 ---------------
 
@@ -456,6 +462,63 @@ Output: **m^2/s**. Schoof (2007): a flowline with a power-law sliding bed, an un
 
     (A * (rho_i * gravity)**(n + 1) * (1 - rho_i / rho_w)**n / (4**n * C))**(1 / (m + 1)) * h**((m + n + 3) / (m + 1))
 
+herron_langway_density
+~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.glaciology.herron_langway_density`
+
+Output: **kg/m^3**. Herron and Langway (1980): empirical steady-state dry firn in two stages split at 550 kg/m^3, fitted with densities in Mg/m^3 and accumulation in m/yr of water; no melt, layering or transient climate. Below, logit(rho) = ln(rho / (ICE_DENSITY - rho)), rho_i k0 and rho_i k1 / A**0.5 are the stage slopes with k0 = 11 exp(-10160 / (R T)), k1 = 575 exp(-21400 / (R T)) and A the accumulation in m/yr of water.
+
+.. code-block:: python
+
+    ICE_DENSITY / (1 + np.exp(-x))  # x = logit(surface_density) + rho_i k0 * depth, then logit(550) + rho_i k1 / A**0.5 * (depth - critical_depth)
+
+herron_langway_depth
+~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.glaciology.herron_langway_depth`
+
+Output: **m**. The inverse of herron_langway_density, with the same empirical limits; 830 kg/m^3 gives the pore close-off depth.
+
+.. code-block:: python
+
+    (logit(density) - logit(surface_density)) / (rho_i k0)  # then critical_depth + (logit(density) - logit(550)) * A**0.5 / (rho_i k1)
+
+herron_langway_mean_density
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.glaciology.herron_langway_mean_density`
+
+Output: **kg/m^3**. The exact integral of herron_langway_density over the column, divided by its depth; at the close-off depth it feeds gas_age_difference.
+
+.. code-block:: python
+
+    (stage-one mass + stage-two mass) / depth  # each stage: ICE_DENSITY / slope * ln((ICE_DENSITY - a) / (ICE_DENSITY - b))
+
+expected_positive_degree_days
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.glaciology.expected_positive_degree_days`
+
+Output: **K s**. Reeh (1991), in the closed form of Calov and Greve (2005): temperature normally distributed about a fixed mean over the period, without day-to-day correlation or a diurnal cycle. Below, c = mean_temperature - 273.15 and s = standard_deviation.
+
+.. code-block:: python
+
+    duration * (s / np.sqrt(2 * np.pi) * np.exp(-c**2 / (2 * s**2)) + c / 2 * erfc(-c / (np.sqrt(2) * s)))
+
+pdd_surface_melt
+~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.glaciology.pdd_surface_melt`
+
+Output: **m**. Reeh (1991) with Braithwaite's factors: one annual layer in which snow melts before ice and refreezing retains up to refreezing_fraction of the snowfall; no rain, superimposed ice, albedo feedback or firn warming. Returns snow melt, ice melt and runoff on the last axis.
+
+.. code-block:: python
+
+    snow = np.minimum(snow_factor * pdd, snowfall)
+    ice = ice_factor * np.maximum(pdd - snowfall / snow_factor, 0)
+    runoff = snow + ice - np.minimum(refreezing_fraction * snowfall, snow + ice)
+
 Flowline glacier
 ~~~~~~~~~~~~~~~~
 
@@ -485,7 +548,13 @@ a crevasse, that Stefan's thickness grows at Stefan's rate, that Haskell's
 viscosity inverts the relaxation time and the uplift rate integrates to the
 recovered depression, that Dansgaard's thermometer inverts, that the
 Dansgaard-Johnsen age integrates the reciprocal of its velocity and tends to
-Nye's age, that Schoof's flux rises as the 4.75 power of the grounding
+Nye's age, that the Herron-Langway profile rises continuously to ice,
+inverts, is independent of accumulation in its first stage and integrates
+to its mean density, that the gas-age difference from that mean density is
+Herron and Langway's own age equation, that the expected positive
+degree-days are the normal expectation and tend to the positive mean as the
+spread vanishes, that degree-day melt takes the snow before the ice and
+refreezing caps runoff, that Schoof's flux rises as the 4.75 power of the grounding
 thickness, and that ``simulate_flowline_glacier`` reaches a steady state whose
 flux equals the mass balance accumulated upstream, shrinks when the
 equilibrium line rises and stays ice-free above the summit. See

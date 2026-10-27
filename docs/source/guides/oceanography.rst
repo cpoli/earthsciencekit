@@ -37,7 +37,10 @@ polar sinking and the salt forcing is a virtual salt flux in g/kg m^3/s. The
 abyssal profile measures height upward from the bottom of the column. The
 simplified seawater density is the Roquet et al. (2015) S-EOS with NEMO's
 default coefficients; it reproduces TEOS-10 gradients, including cabbeling and
-thermobaricity, but not TEOS-10 absolute density.
+thermobaricity, but not TEOS-10 absolute density. ``teos10_density`` is the
+75-term polynomial of the GSW toolbox, which matches TEOS-10 itself; it takes
+the sea pressure (absolute pressure minus 101325 Pa) in pascals rather than a
+depth.
 
 Input contracts
 ---------------
@@ -302,6 +305,20 @@ Output: **kg/m^3**. Roquet et al. (2015) fit to TEOS-10 gradients; not TEOS-10 a
     t, s = conservative_temperature - 283.15, absolute_salinity - 35
     1026 - a0 * (1 + lambda1 * t / 2 + mu1 * depth) * t + b0 * (1 - lambda2 * s / 2 - mu2 * depth) * s - nu * t * s
 
+teos10_density
+~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.oceanography.teos10_density`
+
+Output: **kg/m^3**. Roquet et al. (2015) 75-term polynomial for the specific volume, as in the GSW toolbox's ``gsw_rho``; it matches the TEOS-10 Gibbs function within the oceanographic range (about 0-42 g/kg, -2-40 degC and 0-80 MPa).
+
+.. code-block:: python
+
+    ys = (conservative_temperature - 273.15) / 40
+    xs = np.sqrt(0.0248826675584615 * absolute_salinity + 0.5971840214030754)
+    z = sea_pressure / 1e8
+    1 / sum(v_ijk * ys**i * xs**j * z**k)  # the 75 coefficients v_ijk of GSW-C
+
 Thermohaline boxes
 ~~~~~~~~~~~~~~~~~~
 
@@ -317,5 +334,8 @@ Independent validation
 
 Every algebraic API has a fixed-value check, broadcasting check and invalid-input
 contracts. The shared suite adds cross-model identities, energy/conservation
-checks and independent analytic solutions for dynamics. See :doc:`/validation`
+checks and independent analytic solutions for dynamics. ``teos10_density``
+reproduces the TEOS-10 check values of the GSW-C toolbox to 1e-13, stays within
+3 kg/m^3 of the simplified fit, and expands more with temperature at depth
+(thermobaricity). See :doc:`/validation`
 for the exact evidence and :doc:`/numerical_methods` for numerical conventions.

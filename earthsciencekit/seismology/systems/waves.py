@@ -44,6 +44,12 @@ def p_wave_speed(bulk_modulus, shear_modulus, density):
     Equation: ``np.sqrt((bulk_modulus + 4 * shear_modulus / 3) / density)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import p_wave_speed
+    >>> float(p_wave_speed(12, 3, 4))
+    2.0
     """
     bulk_modulus = quantity("bulk_modulus", bulk_modulus, lower=0, strict_lower=True)
     shear_modulus = quantity("shear_modulus", shear_modulus, lower=0)
@@ -75,6 +81,12 @@ def s_wave_speed(shear_modulus, density):
     Equation: ``np.sqrt(shear_modulus / density)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import s_wave_speed
+    >>> float(s_wave_speed(16, 4))
+    2.0
     """
     shear_modulus = quantity("shear_modulus", shear_modulus, lower=0)
     density = quantity("density", density, lower=0, strict_lower=True)
@@ -105,6 +117,12 @@ def poisson_ratio(p_speed, s_speed):
     Equation: ``(p_speed**2 - 2 * s_speed**2) / (2 * (p_speed**2 - s_speed**2))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import poisson_ratio
+    >>> round(float(poisson_ratio(2, 1)), 6)
+    0.333333
     """
     p_speed = quantity("p_speed", p_speed, lower=0, strict_lower=True)
     s_speed = quantity("s_speed", s_speed, lower=0, strict_lower=True)
@@ -139,6 +157,12 @@ def rayleigh_wave_speed(p_speed, s_speed):
     ``gamma = (s_speed / p_speed)**2``, found by bisection to machine precision.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import rayleigh_wave_speed
+    >>> round(float(rayleigh_wave_speed(1.7320508075688772, 1)), 6)
+    0.919402
     """
     p_speed = quantity("p_speed", p_speed, lower=0, strict_lower=True)
     s_speed = quantity("s_speed", s_speed, lower=0, strict_lower=True)
@@ -188,6 +212,12 @@ def love_wave_angular_frequency(phase_speed, thickness, layer_s_speed, halfspace
     Equation: ``phase_speed * np.arctan(halfspace_rigidity * s2 / (layer_rigidity * s1)) / (thickness * s1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import love_wave_angular_frequency
+    >>> round(float(love_wave_angular_frequency(1.4142135623730951, 1, 1, 2, 1, 1)), 6)
+    0.87042
     """
     phase_speed = quantity("phase_speed", phase_speed, lower=0, strict_lower=True)
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
@@ -226,6 +256,12 @@ def ricker_wavelet(time, frequency):
     Equation: ``(1 - 2 * (np.pi * frequency * time)**2) * np.exp(-(np.pi * frequency * time)**2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import ricker_wavelet
+    >>> float(ricker_wavelet(0, 10))
+    1.0
     """
     time = quantity("time", time)
     frequency = quantity("frequency", frequency, lower=0, strict_lower=True)
@@ -260,6 +296,12 @@ def attenuated_amplitude(amplitude, frequency, time, quality_factor):
     Equation: ``amplitude * np.exp(-np.pi * frequency * time / quality_factor)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import attenuated_amplitude
+    >>> round(float(attenuated_amplitude(2, 1, 1, 4.532360141827194)), 5)
+    1.0
     """
     amplitude = quantity("amplitude", amplitude)
     frequency = quantity("frequency", frequency, lower=0)

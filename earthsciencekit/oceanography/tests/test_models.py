@@ -1,5 +1,7 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+from typing import Any
+
 import numpy as np
 import pytest
 
@@ -202,7 +204,7 @@ def test_tidal_elevation_rejects_invalid(bad):
 
 
 def test_hydrostatic_pressure_broadcasting():
-    args = [1000, 100, 10]
+    args: list[Any] = [1000, 100, 10]
     reference = domain.hydrostatic_pressure(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.hydrostatic_pressure(*args)
@@ -232,7 +234,7 @@ def test_hydrostatic_pressure_gravity_physical_bound():
 
 
 def test_linear_density_broadcasting():
-    args = [1000, 1, 0, 0.0002, 0.0008]
+    args: list[Any] = [1000, 1, 0, 0.0002, 0.0008]
     reference = domain.linear_density(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.linear_density(*args)
@@ -262,7 +264,7 @@ def test_linear_density_haline_contraction_physical_bound():
 
 
 def test_buoyancy_frequency_squared_broadcasting():
-    args = [1000, -0.01, 10]
+    args: list[Any] = [1000, -0.01, 10]
     reference = domain.buoyancy_frequency_squared(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.buoyancy_frequency_squared(*args)
@@ -285,7 +287,7 @@ def test_buoyancy_frequency_squared_gravity_physical_bound():
 
 
 def test_geostrophic_current_broadcasting():
-    args = [1e-05, 0.0001, 10]
+    args: list[Any] = [1e-05, 0.0001, 10]
     reference = domain.geostrophic_current(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.geostrophic_current(*args)
@@ -308,7 +310,7 @@ def test_geostrophic_current_gravity_physical_bound():
 
 
 def test_ekman_transport_broadcasting():
-    args = [0.1, 1000, 0.0001]
+    args: list[Any] = [0.1, 1000, 0.0001]
     reference = domain.ekman_transport(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.ekman_transport(*args)
@@ -331,7 +333,7 @@ def test_ekman_transport_coriolis_physical_bound():
 
 
 def test_inertial_period_broadcasting():
-    args = [0.0001]
+    args: list[Any] = [0.0001]
     reference = domain.inertial_period(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.inertial_period(*args)
@@ -347,7 +349,7 @@ def test_inertial_period_coriolis_physical_bound():
 
 
 def test_shallow_wave_speed_broadcasting():
-    args = [100, 10]
+    args: list[Any] = [100, 10]
     reference = domain.shallow_wave_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.shallow_wave_speed(*args)
@@ -370,7 +372,7 @@ def test_shallow_wave_speed_gravity_physical_bound():
 
 
 def test_deep_wave_speed_broadcasting():
-    args = [6.283185307179586, 10]
+    args: list[Any] = [6.283185307179586, 10]
     reference = domain.deep_wave_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.deep_wave_speed(*args)
@@ -393,7 +395,7 @@ def test_deep_wave_speed_gravity_physical_bound():
 
 
 def test_wave_angular_frequency_broadcasting():
-    args = [1, 1, 10]
+    args: list[Any] = [1, 1, 10]
     reference = domain.wave_angular_frequency(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.wave_angular_frequency(*args)
@@ -423,7 +425,7 @@ def test_wave_angular_frequency_gravity_physical_bound():
 
 
 def test_deep_group_speed_broadcasting():
-    args = [6.283185307179586, 10]
+    args: list[Any] = [6.283185307179586, 10]
     reference = domain.deep_group_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.deep_group_speed(*args)
@@ -446,7 +448,7 @@ def test_deep_group_speed_gravity_physical_bound():
 
 
 def test_rossby_radius_broadcasting():
-    args = [0.01, 1000, 0.0001]
+    args: list[Any] = [0.01, 1000, 0.0001]
     reference = domain.rossby_radius(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.rossby_radius(*args)
@@ -476,7 +478,7 @@ def test_rossby_radius_coriolis_physical_bound():
 
 
 def test_reduced_gravity_broadcasting():
-    args = [2, 1000, 10]
+    args: list[Any] = [2, 1000, 10]
     reference = domain.reduced_gravity(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.reduced_gravity(*args)
@@ -506,7 +508,7 @@ def test_reduced_gravity_gravity_physical_bound():
 
 
 def test_internal_wave_speed_broadcasting():
-    args = [0.02, 100, 100]
+    args: list[Any] = [0.02, 100, 100]
     reference = domain.internal_wave_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.internal_wave_speed(*args)
@@ -536,7 +538,7 @@ def test_internal_wave_speed_lower_depth_physical_bound():
 
 
 def test_volume_transport_broadcasting():
-    args = [1, 1000, 100]
+    args: list[Any] = [1, 1000, 100]
     reference = domain.volume_transport(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.volume_transport(*args)
@@ -559,7 +561,7 @@ def test_volume_transport_depth_physical_bound():
 
 
 def test_tidal_elevation_broadcasting():
-    args = [0, 2, 12, 0]
+    args: list[Any] = [0, 2, 12, 0]
     reference = domain.tidal_elevation(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.tidal_elevation(*args)
@@ -595,7 +597,7 @@ def test_gerstner_orbit_radius_rejects_invalid(bad):
 
 
 def test_gerstner_orbit_radius_broadcasting():
-    args = [0.6931471805599453, 0.5, 1]
+    args: list[Any] = [0.6931471805599453, 0.5, 1]
     reference = domain.gerstner_orbit_radius(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.gerstner_orbit_radius(*args)
@@ -638,7 +640,7 @@ def test_sverdrup_transport_rejects_invalid(bad):
 
 
 def test_sverdrup_transport_broadcasting():
-    args = [6, 2, 3]
+    args: list[Any] = [6, 2, 3]
     reference = domain.sverdrup_transport(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.sverdrup_transport(*args)
@@ -674,7 +676,7 @@ def test_stommel_streamfunction_rejects_invalid(bad):
 
 
 def test_stommel_streamfunction_broadcasting():
-    args = [1, 0.5 * np.pi, 1, 2, np.pi, 1, 0, 1]
+    args: list[Any] = [1, 0.5 * np.pi, 1, 2, np.pi, 1, 0, 1]
     reference = domain.stommel_streamfunction(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.stommel_streamfunction(*args)
@@ -745,7 +747,7 @@ def test_thermohaline_forcing_rejects_invalid(bad):
 
 
 def test_thermohaline_forcing_broadcasting():
-    args = [-1, 2, 3]
+    args: list[Any] = [-1, 2, 3]
     reference = domain.thermohaline_forcing(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.thermohaline_forcing(*args)
@@ -781,7 +783,7 @@ def test_abyssal_temperature_rejects_invalid(bad):
 
 
 def test_abyssal_temperature_broadcasting():
-    args = [0.6931471805599453, 1, 4, 1.3862943611198906, 1, 1]
+    args: list[Any] = [0.6931471805599453, 1, 4, 1.3862943611198906, 1, 1]
     reference = domain.abyssal_temperature(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.abyssal_temperature(*args)
@@ -845,7 +847,7 @@ def test_simplified_seawater_density_rejects_invalid(bad):
 
 
 def test_simplified_seawater_density_broadcasting():
-    args = [293.15, 36, 0]
+    args: list[Any] = [293.15, 36, 0]
     reference = domain.simplified_seawater_density(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.simplified_seawater_density(*args)
@@ -914,3 +916,24 @@ def test_ekman_spiral_velocity_physical_bound(index, value):
 def test_new_model_cross_parameter_rejections(function, args):
     with pytest.raises(ValueError):
         function(*args)
+
+
+def test_teos10_density_reference():
+    result = domain.teos10_density(*[283.15, 30, 1e7])
+    np.testing.assert_allclose(result, 1 / 9.732819627722660e-4, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+def test_teos10_density_rejects_invalid(bad):
+    args = [283.15, 30, 1e7]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.teos10_density(*args)
+
+
+@pytest.mark.parametrize("index,value", [(0, 0), (1, -1), (2, -1)])
+def test_teos10_density_physical_bound(index, value):
+    args = [283.15, 30, 1e7]
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.teos10_density(*args)

@@ -7,8 +7,10 @@ from the Vostok ice core through the last glacial cycle, 160,000 years. CO2
 was about 190 ppm in the glacial periods and 280 ppm in the interglacials,
 and tracked the isotope temperature closely. The air is younger than the ice
 that holds it, because the firn stays open to the atmosphere until the
-bubbles close about 100 m down, and the gap is largest in the dry glacial
-climate. The example uses a synthetic record with Vostok-like amplitudes.
+bubbles close about 100 m down, and the gap is largest in the cold, dry
+glacial climate. The example uses a synthetic record with Vostok-like
+amplitudes and computes the gap from Herron and Langway's (1980) firn
+densification at each climate.
 """
 
 import matplotlib.pyplot as plt
@@ -16,16 +18,20 @@ import numpy as np
 
 from earthsciencekit.climate import co2_forcing
 from earthsciencekit.constants import ICE_DENSITY, SECONDS_PER_YEAR
-from earthsciencekit.glaciology import gas_age_difference
+from earthsciencekit.glaciology import gas_age_difference, herron_langway_depth, herron_langway_mean_density
 
 age = np.linspace(0, 160e3, 1601)  # years, ice age
 warmth = 0.5 * (1 + np.cos(2 * np.pi * (age - 5e3) / 100e3)) ** 2 / 2  # 0 glacial, 1 interglacial
 warmth = warmth / warmth.max()
 temperature_change = -9 + 9 * warmth  # K, relative to today
 accumulation = (0.012 + 0.011 * warmth) / SECONDS_PER_YEAR  # m ice/s
-offset = gas_age_difference(95.0, 600.0, ICE_DENSITY, accumulation) / SECONDS_PER_YEAR
+firn_temperature = 218.15 + temperature_change  # K, Vostok today about -55 degC
+close_off = herron_langway_depth(830.0, firn_temperature, accumulation, 350.0)
+mean_density = herron_langway_mean_density(close_off, firn_temperature, accumulation, 350.0)
+offset = gas_age_difference(close_off, mean_density, ICE_DENSITY, accumulation) / SECONDS_PER_YEAR
 co2 = 190 + 90 * warmth  # ppm at the gas age
-assert 2e3 < offset.min() < offset.max() < 6e3
+assert 80 < close_off.min() < close_off.max() < 120 and 2e3 < offset.min() < offset.max() < 7e3
+assert offset[np.argmin(warmth)] == offset.max()
 forcing = co2_forcing(co2, 280, 5.35)
 assert np.isclose(forcing.min(), 5.35 * np.log(190 / 280)) and np.corrcoef(forcing, temperature_change)[0, 1] > 0.99
 

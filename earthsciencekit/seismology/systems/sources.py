@@ -44,6 +44,12 @@ def seismic_moment(rigidity, area, slip):
     Equation: ``rigidity * area * slip``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import seismic_moment
+    >>> float(seismic_moment(30000000000.0, 1000000.0, 1))
+    3e+16
     """
     rigidity = quantity("rigidity", rigidity, lower=0, strict_lower=True)
     area = quantity("area", area, lower=0, strict_lower=True)
@@ -73,6 +79,12 @@ def moment_magnitude(moment):
     Equation: ``(2 / 3) * (np.log10(moment) - 9.1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import moment_magnitude
+    >>> round(float(moment_magnitude(1.2589254117941714e+18)), 5)
+    6.0
     """
     moment = quantity("moment", moment, lower=0, strict_lower=True)
     return (2 / 3) * (np.log10(moment) - 9.1)
@@ -100,6 +112,12 @@ def moment_from_magnitude(magnitude):
     Equation: ``10 ** (1.5 * magnitude + 9.1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import moment_from_magnitude
+    >>> round(float(moment_from_magnitude(6)), 0)
+    1.2589254117941714e+18
     """
     magnitude = quantity("magnitude", magnitude)
     return 10 ** (1.5 * magnitude + 9.1)
@@ -130,6 +148,12 @@ def local_magnitude(amplitude, distance):
     Equation: ``np.log10(amplitude / 1e-3) + 1.11 * np.log10(distance / 1e5) + 1.89e-6 * (distance - 1e5) + 3``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import local_magnitude
+    >>> float(local_magnitude(0.001, 100000.0))
+    3.0
     """
     amplitude = quantity("amplitude", amplitude, lower=0, strict_lower=True)
     distance = quantity("distance", distance, lower=0, strict_lower=True)
@@ -162,6 +186,12 @@ def gutenberg_richter(a, b, magnitude):
     Equation: ``10 ** (a - b * magnitude)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import gutenberg_richter
+    >>> float(gutenberg_richter(4, 1, 3))
+    10.0
     """
     a = quantity("a", a)
     b = quantity("b", b, lower=0, strict_lower=True)
@@ -197,6 +227,12 @@ def omori_rate(productivity, offset, exponent, time):
     Equation: ``productivity / (offset + time)**exponent``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import omori_rate
+    >>> float(omori_rate(10, 1, 1, 1))
+    5.0
     """
     productivity = quantity("productivity", productivity, lower=0)
     offset = quantity("offset", offset, lower=0, strict_lower=True)

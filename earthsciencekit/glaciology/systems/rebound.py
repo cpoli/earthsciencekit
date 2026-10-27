@@ -43,6 +43,12 @@ def isostatic_depression(ice_thickness, ice_density, mantle_density):
     Equation: ``ice_thickness * ice_density / mantle_density``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import isostatic_depression
+    >>> round(float(isostatic_depression(3000, 900, 3300)), 3)
+    818.182
     """
     ice_thickness = quantity("ice_thickness", ice_thickness, lower=0)
     ice_density = quantity("ice_density", ice_density, lower=0, strict_lower=True)
@@ -79,6 +85,12 @@ def viscous_relaxation_time(wavelength, viscosity, density, gravity):
     Equation: ``4 * np.pi * viscosity / (density * gravity * wavelength)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import viscous_relaxation_time
+    >>> round(float(viscous_relaxation_time(1000000.0, 1e+21, 3300, 10)), 0)
+    380799109526.0
     """
     wavelength = quantity("wavelength", wavelength, lower=0, strict_lower=True)
     viscosity = quantity("viscosity", viscosity, lower=0, strict_lower=True)
@@ -115,6 +127,12 @@ def haskell_viscosity(relaxation_time, wavelength, density, gravity):
     Equation: ``density * gravity * wavelength * relaxation_time / (4 * np.pi)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import haskell_viscosity
+    >>> round(float(haskell_viscosity(100000000000.0, 1000000.0, 3300, 10)), 0)
+    2.6260565610162733e+20
     """
     relaxation_time = quantity("relaxation_time", relaxation_time, lower=0, strict_lower=True)
     wavelength = quantity("wavelength", wavelength, lower=0, strict_lower=True)
@@ -150,6 +168,12 @@ def remaining_depression(time, initial_depression, relaxation_time):
     Equation: ``initial_depression * np.exp(-time / relaxation_time)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import remaining_depression
+    >>> round(float(remaining_depression(1000.0, 300, 1000.0)), 3)
+    110.364
     """
     time = quantity("time", time, lower=0)
     initial_depression = quantity("initial_depression", initial_depression, lower=0)
@@ -183,6 +207,12 @@ def rebound_uplift_rate(time, initial_depression, relaxation_time):
     Equation: ``initial_depression / relaxation_time * np.exp(-time / relaxation_time)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import rebound_uplift_rate
+    >>> round(float(rebound_uplift_rate(1000.0, 300, 1000.0)), 6)
+    0.110364
     """
     time = quantity("time", time, lower=0)
     initial_depression = quantity("initial_depression", initial_depression, lower=0)

@@ -39,6 +39,12 @@ def coriolis_parameter(latitude):
     Equation: ``2 * OMEGA_EARTH * np.sin(latitude)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import coriolis_parameter
+    >>> float(coriolis_parameter(0))
+    0.0
     """
     latitude = quantity("latitude", latitude, lower=-np.pi / 2, upper=np.pi / 2)
     return 2 * OMEGA_EARTH * np.sin(latitude)
@@ -70,6 +76,12 @@ def geostrophic_speed(pressure_gradient, density, coriolis):
     Equation: ``pressure_gradient / (density * coriolis)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import geostrophic_speed
+    >>> float(geostrophic_speed(0.001, 1, 0.0001))
+    10.0
     """
     pressure_gradient = quantity("pressure_gradient", pressure_gradient)
     density = quantity("density", density, lower=0, strict_lower=True)
@@ -104,6 +116,12 @@ def rossby_number(speed, length, coriolis):
     Equation: ``speed / (np.abs(coriolis) * length)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import rossby_number
+    >>> float(rossby_number(10, 1000000.0, 0.0001))
+    0.1
     """
     speed = quantity("speed", speed, lower=0)
     length = quantity("length", length, lower=0, strict_lower=True)
@@ -138,6 +156,12 @@ def rossby_wave_speed(zonal_wind, beta, wavenumber):
     Equation: ``zonal_wind - beta / wavenumber**2``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import rossby_wave_speed
+    >>> float(rossby_wave_speed(10, 2e-11, 1e-06))
+    -10.0
     """
     zonal_wind = quantity("zonal_wind", zonal_wind)
     beta = quantity("beta", beta, lower=0)

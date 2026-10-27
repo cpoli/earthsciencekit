@@ -213,6 +213,28 @@ Séismologique International, Série A, Travaux Scientifiques* 14 (1936):
 
 .. minigallery:: ../../examples/seismology/plot_10_lehmann_inner_core.py
 
+1940 -- Jeffreys and Bullen's Travel-Time Tables
+------------------------------------------------
+
+Harold Jeffreys and Keith Bullen fitted the arrival times of thousands of
+earthquakes to a spherically symmetric Earth. They published travel times of
+P, S and the core phases out to 180 degrees, and their tables located
+earthquakes for half a century. A ray keeps its ray parameter
+:math:`r \sin i / v` all the way down and back, so tracing rays through a
+layered sphere gives the travel-time curve, and the slope of that curve is
+the ray parameter.
+
+*Implementation:* :func:`~earthsciencekit.seismology.layered_ray_distance`
+(*new*) and :func:`~earthsciencekit.seismology.layered_ray_travel_time`
+(*new*), exact for speeds that follow the Mohorovičić law ``v = a r^b``
+between tabulated depths. The example traces P and core phases through
+rounded PREM-like speeds and finds the shadow zone.
+
+*References:* H. Jeffreys and K. E. Bullen, *Seismological Tables* (London:
+British Association for the Advancement of Science, Gray-Milne Trust, 1940).
+
+.. minigallery:: ../../examples/seismology/plot_11_jeffreys_bullen_travel_times.py
+
 1944 -- Gutenberg and Richter's Frequency-Magnitude Law
 -------------------------------------------------------
 
@@ -230,7 +252,7 @@ maximum-likelihood estimator.
 California," *Bulletin of the Seismological Society of America* 34 (1944):
 185-188.
 
-.. minigallery:: ../../examples/seismology/plot_11_gutenberg_richter_law.py
+.. minigallery:: ../../examples/seismology/plot_12_gutenberg_richter_law.py
 
 1953 -- Ricker's Wavelet
 ------------------------
@@ -247,7 +269,7 @@ example checks the zero crossings, the zero mean and the spectral peak.
 *References:* N. Ricker, "The form and laws of propagation of seismic
 wavelets," *Geophysics* 18 (1953): 10-40.
 
-.. minigallery:: ../../examples/seismology/plot_12_ricker_wavelet.py
+.. minigallery:: ../../examples/seismology/plot_13_ricker_wavelet.py
 
 1964 -- Knopoff's Q
 -------------------
@@ -264,7 +286,7 @@ The example recovers :math:`Q` by the spectral-ratio method.
 
 *References:* L. Knopoff, "Q," *Reviews of Geophysics* 2 (1964): 625-660.
 
-.. minigallery:: ../../examples/seismology/plot_13_knopoff_q.py
+.. minigallery:: ../../examples/seismology/plot_14_knopoff_q.py
 
 1966 -- Aki's Seismic Moment
 ----------------------------
@@ -282,7 +304,7 @@ Niigata earthquake of June 16, 1964. Part 2. Estimation of earthquake moment,
 released energy, and stress-strain drop from the G wave spectrum,"
 *Bulletin of the Earthquake Research Institute* 44 (1966): 73-88.
 
-.. minigallery:: ../../examples/seismology/plot_14_aki_seismic_moment.py
+.. minigallery:: ../../examples/seismology/plot_15_aki_seismic_moment.py
 
 1979 -- Hanks and Kanamori's Moment Magnitude
 ---------------------------------------------
@@ -300,7 +322,7 @@ about 32. In SI units the IASPEI standard writes it as
 *References:* T. C. Hanks and H. Kanamori, "A moment magnitude scale,"
 *Journal of Geophysical Research* 84 (1979): 2348-2350.
 
-.. minigallery:: ../../examples/seismology/plot_15_hanks_kanamori_moment_magnitude.py
+.. minigallery:: ../../examples/seismology/plot_16_hanks_kanamori_moment_magnitude.py
 
 1981 -- Dziewonski and Anderson's PREM
 --------------------------------------
@@ -320,7 +342,7 @@ integrates a rounded PREM P-wave profile from the surface to the centre.
 Earth model," *Physics of the Earth and Planetary Interiors* 25 (1981):
 297-356.
 
-.. minigallery:: ../../examples/seismology/plot_16_prem_travel_time.py
+.. minigallery:: ../../examples/seismology/plot_17_prem_travel_time.py
 
 See also
 --------

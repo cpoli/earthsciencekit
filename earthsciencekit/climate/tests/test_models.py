@@ -1,7 +1,10 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+from typing import Any
+
 import numpy as np
 import pytest
+from scipy.integrate import trapezoid
 
 from earthsciencekit import climate as domain
 
@@ -202,7 +205,7 @@ def test_water_equivalent_sea_level_rejects_invalid(bad):
 
 
 def test_absorbed_solar_broadcasting():
-    args = [1360, 0.3]
+    args: list[Any] = [1360, 0.3]
     reference = domain.absorbed_solar(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.absorbed_solar(*args)
@@ -225,7 +228,7 @@ def test_absorbed_solar_albedo_physical_bound():
 
 
 def test_effective_temperature_broadcasting():
-    args = [459.300327939, 1]
+    args: list[Any] = [459.300327939, 1]
     reference = domain.effective_temperature(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.effective_temperature(*args)
@@ -248,7 +251,7 @@ def test_effective_temperature_emissivity_physical_bound():
 
 
 def test_outgoing_longwave_broadcasting():
-    args = [300, 1]
+    args: list[Any] = [300, 1]
     reference = domain.outgoing_longwave(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.outgoing_longwave(*args)
@@ -264,14 +267,14 @@ def test_outgoing_longwave_temperature_physical_bound():
 
 
 def test_outgoing_longwave_emissivity_physical_bound():
-    args = [300, 1]
+    args: list[Any] = [300, 1]
     args[1] = 1.1
     with pytest.raises(ValueError):
         domain.outgoing_longwave(*args)
 
 
 def test_planck_feedback_broadcasting():
-    args = [300, 1]
+    args: list[Any] = [300, 1]
     reference = domain.planck_feedback(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.planck_feedback(*args)
@@ -294,7 +297,7 @@ def test_planck_feedback_emissivity_physical_bound():
 
 
 def test_co2_forcing_broadcasting():
-    args = [560, 280, 5.35]
+    args: list[Any] = [560, 280, 5.35]
     reference = domain.co2_forcing(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.co2_forcing(*args)
@@ -324,7 +327,7 @@ def test_co2_forcing_coefficient_physical_bound():
 
 
 def test_equilibrium_warming_broadcasting():
-    args = [4, 2]
+    args: list[Any] = [4, 2]
     reference = domain.equilibrium_warming(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.equilibrium_warming(*args)
@@ -340,7 +343,7 @@ def test_equilibrium_warming_restoring_physical_bound():
 
 
 def test_heat_capacity_column_broadcasting():
-    args = [1000, 4000, 50]
+    args: list[Any] = [1000, 4000, 50]
     reference = domain.heat_capacity_column(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.heat_capacity_column(*args)
@@ -370,7 +373,7 @@ def test_heat_capacity_column_depth_physical_bound():
 
 
 def test_response_timescale_broadcasting():
-    args = [200000000.0, 2]
+    args: list[Any] = [200000000.0, 2]
     reference = domain.response_timescale(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.response_timescale(*args)
@@ -393,7 +396,7 @@ def test_response_timescale_restoring_physical_bound():
 
 
 def test_step_temperature_broadcasting():
-    args = [4, 2, 2, 0]
+    args: list[Any] = [4, 2, 2, 0]
     reference = domain.step_temperature(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.step_temperature(*args)
@@ -423,7 +426,7 @@ def test_step_temperature_time_physical_bound():
 
 
 def test_heat_uptake_broadcasting():
-    args = [200000000.0, 2]
+    args: list[Any] = [200000000.0, 2]
     reference = domain.heat_uptake(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.heat_uptake(*args)
@@ -439,7 +442,7 @@ def test_heat_uptake_areal_heat_capacity_physical_bound():
 
 
 def test_ice_albedo_broadcasting():
-    args = [273, 0.6, 0.2, 273, 5]
+    args: list[Any] = [273, 0.6, 0.2, 273, 5]
     reference = domain.ice_albedo(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.ice_albedo(*args)
@@ -483,7 +486,7 @@ def test_ice_albedo_width_physical_bound():
 
 
 def test_carbon_airborne_fraction_broadcasting():
-    args = [4, 10]
+    args: list[Any] = [4, 10]
     reference = domain.carbon_airborne_fraction(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.carbon_airborne_fraction(*args)
@@ -506,7 +509,7 @@ def test_carbon_airborne_fraction_emissions_physical_bound():
 
 
 def test_carbon_decay_broadcasting():
-    args = [2, 1, 0.6931471805599453]
+    args: list[Any] = [2, 1, 0.6931471805599453]
     reference = domain.carbon_decay(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.carbon_decay(*args)
@@ -536,7 +539,7 @@ def test_carbon_decay_time_physical_bound():
 
 
 def test_thermal_expansion_sea_level_broadcasting():
-    args = [0.0002, 1000, 1]
+    args: list[Any] = [0.0002, 1000, 1]
     reference = domain.thermal_expansion_sea_level(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.thermal_expansion_sea_level(*args)
@@ -559,7 +562,7 @@ def test_thermal_expansion_sea_level_depth_physical_bound():
 
 
 def test_water_equivalent_sea_level_broadcasting():
-    args = [1000000000000.0, 1000000000000.0, 1000]
+    args: list[Any] = [1000000000000.0, 1000000000000.0, 1000]
     reference = domain.water_equivalent_sea_level(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.water_equivalent_sea_level(*args)
@@ -602,7 +605,7 @@ def test_greenhouse_surface_temperature_rejects_invalid(bad):
 
 
 def test_greenhouse_surface_temperature_broadcasting():
-    args = [459.300327939, 0]
+    args: list[Any] = [459.300327939, 0]
     reference = domain.greenhouse_surface_temperature(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.greenhouse_surface_temperature(*args)
@@ -638,7 +641,7 @@ def test_daily_insolation_rejects_invalid(bad):
 
 
 def test_daily_insolation_broadcasting():
-    args = [1361, 0, 0, 1]
+    args: list[Any] = [1361, 0, 0, 1]
     reference = domain.daily_insolation(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.daily_insolation(*args)
@@ -688,7 +691,7 @@ def test_radiative_convective_temperature_rejects_invalid(bad):
 
 
 def test_radiative_convective_temperature_broadcasting():
-    args = [0, 255, 0.0065, 5000]
+    args: list[Any] = [0, 255, 0.0065, 5000]
     reference = domain.radiative_convective_temperature(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.radiative_convective_temperature(*args)
@@ -738,7 +741,7 @@ def test_equilibrium_solar_constant_rejects_invalid(bad):
 
 
 def test_equilibrium_solar_constant_broadcasting():
-    args = [288, 1, 0.6, 0.2, 288, 5]
+    args: list[Any] = [288, 1, 0.6, 0.2, 288, 5]
     reference = domain.equilibrium_solar_constant(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.equilibrium_solar_constant(*args)
@@ -802,7 +805,7 @@ def test_red_noise_spectrum_rejects_invalid(bad):
 
 
 def test_red_noise_spectrum_broadcasting():
-    args = [0, 4, 2, 1]
+    args: list[Any] = [0, 4, 2, 1]
     reference = domain.red_noise_spectrum(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.red_noise_spectrum(*args)
@@ -845,7 +848,7 @@ def test_methane_forcing_rejects_invalid(bad):
 
 
 def test_methane_forcing_broadcasting():
-    args = [900, 400, 1e-16]
+    args: list[Any] = [900, 400, 1e-16]
     reference = domain.methane_forcing(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.methane_forcing(*args)
@@ -888,7 +891,7 @@ def test_nitrous_oxide_forcing_rejects_invalid(bad):
 
 
 def test_nitrous_oxide_forcing_broadcasting():
-    args = [400, 100, 1e-16]
+    args: list[Any] = [400, 100, 1e-16]
     reference = domain.nitrous_oxide_forcing(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.nitrous_oxide_forcing(*args)
@@ -950,7 +953,7 @@ def test_greenhouse_layer_balances_top_of_atmosphere():
 def test_daily_insolation_global_mean_is_quarter_solar_constant(declination):
     latitude = np.linspace(-np.pi / 2, np.pi / 2, 40001)
     flux = domain.daily_insolation(1361, latitude, declination, 1)
-    assert np.isclose(np.trapezoid(flux * np.cos(latitude), latitude) / 2, 1361 / 4, rtol=1e-7)
+    assert np.isclose(trapezoid(flux * np.cos(latitude), latitude) / 2, 1361 / 4, rtol=1e-7)
 
 
 def test_daily_insolation_polar_day_night_and_distance():
@@ -1013,3 +1016,57 @@ def test_gregory_regression_recovers_one_box_parameters():
     temperature = domain.simulate_one_box(7.4, 1.1, 3e8, time).values[:, 0]
     forcing, restoring = domain.gregory_regression(temperature, 7.4 - 1.1 * temperature)
     np.testing.assert_allclose([forcing, restoring], [7.4, 1.1])
+
+
+_ENERGY_BALANCE_CASES: dict[str, tuple[list[Any], Any]] = {
+    "two_box_timescales": ([1, 1, 1, 1], [(3 - np.sqrt(5)) / 2, (3 + np.sqrt(5)) / 2]),
+    "two_box_fast_warming": ([3.7, 1.2, 0.7], 3.7 / 1.9),
+    "insolation_distribution": ([1, -0.482], 0.518),
+    "north_temperature_profile": ([1, 1360, 0.3, 210, 2, 0.5, -0.482], 287.15 + 238 * -0.482 / 5),
+}
+
+
+@pytest.mark.parametrize("name", sorted(_ENERGY_BALANCE_CASES))
+def test_energy_balance_reference(name):
+    args, expected = _ENERGY_BALANCE_CASES[name]
+    np.testing.assert_allclose(getattr(domain, name)(*args), expected, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+@pytest.mark.parametrize("name", sorted(_ENERGY_BALANCE_CASES))
+def test_energy_balance_rejects_invalid(name, bad):
+    args = list(_ENERGY_BALANCE_CASES[name][0])
+    args[0] = bad
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+@pytest.mark.parametrize(
+    "name,index,value",
+    [
+        ("two_box_timescales", 0, 0),
+        ("two_box_timescales", 1, 0),
+        ("two_box_timescales", 3, -1),
+        ("two_box_fast_warming", 1, 0),
+        ("two_box_fast_warming", 2, -1),
+        ("insolation_distribution", 0, 1.5),
+        ("insolation_distribution", 1, -2),
+        ("north_temperature_profile", 0, -2),
+        ("north_temperature_profile", 1, 0),
+        ("north_temperature_profile", 2, 1.5),
+        ("north_temperature_profile", 4, 0),
+        ("north_temperature_profile", 5, -1),
+        ("north_temperature_profile", 6, 3),
+    ],
+)
+def test_energy_balance_physical_bound(name, index, value):
+    args = list(_ENERGY_BALANCE_CASES[name][0])
+    args[index] = value
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+def test_two_box_timescales_broadcasting():
+    result = domain.two_box_timescales(np.array([[1.0], [2.0]]), 1, 1, 1)
+    assert result.shape == (2, 1, 2)
+    np.testing.assert_allclose(result[0, 0], _ENERGY_BALANCE_CASES["two_box_timescales"][1])

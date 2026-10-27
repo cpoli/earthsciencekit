@@ -37,7 +37,9 @@ from earthsciencekit.geophysics.systems.magnetism import (
     direction_angle,
     field_elements,
     gauss_dipole_moment,
+    geomagnetic_field,
     paleolatitude,
+    schmidt_legendre,
     virtual_geomagnetic_pole,
     zonal_field,
 )
@@ -73,5 +75,7 @@ __all__ = [
     "love_number_k2",
     "tidal_gravimetric_factor",
     "equivalent_water_height",
+    "schmidt_legendre",
+    "geomagnetic_field",
     "simulate_rikitake_dynamo",
 ]

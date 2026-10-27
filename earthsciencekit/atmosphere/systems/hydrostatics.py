@@ -42,6 +42,12 @@ def dry_air_density(pressure, temperature):
     Equation: ``pressure / (R_DRY_AIR * temperature)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import dry_air_density
+    >>> float(dry_air_density(86115.0, 300))
+    1.0
     """
     pressure = quantity("pressure", pressure, lower=0, strict_lower=True)
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
@@ -72,6 +78,12 @@ def scale_height(temperature, gravity):
     Equation: ``R_DRY_AIR * temperature / gravity``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import scale_height
+    >>> float(scale_height(300, 10))
+    8611.5
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
@@ -106,6 +118,12 @@ def barometric_pressure(surface_pressure, height, temperature, gravity):
     Equation: ``surface_pressure * np.exp(-gravity * height / (R_DRY_AIR * temperature))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import barometric_pressure
+    >>> float(barometric_pressure(100000.0, 0, 300, 10))
+    100000.0
     """
     surface_pressure = quantity("surface_pressure", surface_pressure, lower=0, strict_lower=True)
     height = quantity("height", height)
@@ -140,6 +158,12 @@ def barometer_column_height(pressure, liquid_density, gravity):
     Equation: ``pressure / (liquid_density * gravity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import barometer_column_height
+    >>> float(barometer_column_height(12, 2, 3))
+    2.0
     """
     pressure = quantity("pressure", pressure, lower=0)
     liquid_density = quantity("liquid_density", liquid_density, lower=0, strict_lower=True)
@@ -175,6 +199,12 @@ def two_layer_temperature(height, surface_temperature, lapse_rate, tropopause_he
     Equation: ``surface_temperature - lapse_rate * np.minimum(height, tropopause_height)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import two_layer_temperature
+    >>> float(two_layer_temperature(5000, 288, 0.006, 10000))
+    258.0
     """
     height = quantity("height", height, lower=0)
     surface_temperature = quantity("surface_temperature", surface_temperature, lower=0, strict_lower=True)
@@ -208,6 +238,12 @@ def surface_pressure_tendency(mean_divergence, surface_pressure):
     Equation: ``-surface_pressure * mean_divergence``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import surface_pressure_tendency
+    >>> float(surface_pressure_tendency(1e-05, 100000.0))
+    -1.0
     """
     mean_divergence = quantity("mean_divergence", mean_divergence)
     surface_pressure = quantity("surface_pressure", surface_pressure, lower=0, strict_lower=True)

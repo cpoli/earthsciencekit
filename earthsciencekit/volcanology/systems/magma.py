@@ -45,6 +45,12 @@ def arrhenius_viscosity(temperature, reference_viscosity, activation_energy, ref
     Equation: ``reference_viscosity * np.exp(activation_energy / R_GAS * (1 / temperature - 1 / reference_temperature))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import arrhenius_viscosity
+    >>> round(float(arrhenius_viscosity(1000, 10, 8314.46261815324, 500)), 5)
+    3.67879
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     reference_viscosity = quantity("reference_viscosity", reference_viscosity, lower=0, strict_lower=True)
@@ -78,6 +84,12 @@ def shaw_viscosity(temperature, slope):
     Equation: ``0.1 * np.exp(slope * (1e4 / temperature) - 1.5 * slope - 6.4)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import shaw_viscosity
+    >>> round(float(shaw_viscosity(6666.666666666667, 2)), 9)
+    0.000166156
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     slope = quantity("slope", slope, lower=0, strict_lower=True)
@@ -109,6 +121,12 @@ def water_solubility(pressure, solubility_constant):
     Equation: ``solubility_constant * np.sqrt(pressure)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import water_solubility
+    >>> float(water_solubility(400000000.0, 4e-06))
+    0.08
     """
     pressure = quantity("pressure", pressure, lower=0)
     solubility_constant = quantity("solubility_constant", solubility_constant, lower=0, strict_lower=True)
@@ -144,6 +162,12 @@ def dike_ascent_velocity(width, density_contrast, viscosity, gravity):
     Equation: ``width**2 * density_contrast * gravity / (12 * viscosity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import dike_ascent_velocity
+    >>> float(dike_ascent_velocity(2, 300, 100, 10))
+    10.0
     """
     width = quantity("width", width, lower=0, strict_lower=True)
     density_contrast = quantity("density_contrast", density_contrast)
@@ -181,6 +205,13 @@ def mogi_displacement(radial_distance, depth, volume_change, poisson_ratio):
     Equation: ``(1 - poisson_ratio) * volume_change / np.pi * [radial_distance, depth] / (radial_distance**2 + depth**2)**1.5``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.volcanology import mogi_displacement
+    >>> np.round(mogi_displacement(0, 1000, 3.141592653589793, 0.5), 12).tolist()
+    [0.0, 5e-07]
     """
     radial_distance = quantity("radial_distance", radial_distance, lower=0)
     depth = quantity("depth", depth, lower=0, strict_lower=True)

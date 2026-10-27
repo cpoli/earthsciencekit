@@ -41,7 +41,7 @@ Geophysics
 ----------
 
 - `MIT: Essentials of Geophysics lecture notes <https://ocw.mit.edu/courses/12-201-essentials-of-geophysics-fall-2004/pages/lecture-notes/>`_
-- `NOAA NCEI: Geomagnetism <https://www.ncei.noaa.gov/products/geomagnetism>`_
+- `NOAA NCEI: Geomagnetism <https://www.ncei.noaa.gov/products/geomagnetic-data>`_
 - `NASA: GRACE <https://grace.jpl.nasa.gov/>`_
 
 Volcanology
@@ -54,10 +54,15 @@ Hydrology
 ---------
 
 - `USGS Water Science School <https://www.usgs.gov/special-topics/water-science-school>`_
-- `FAO Irrigation and Drainage Paper 56: Crop evapotranspiration <https://www.fao.org/3/x0490e/x0490e00.htm>`_
+- `FAO Irrigation and Drainage Paper 56: Crop evapotranspiration <https://www.fao.org/4/x0490e/x0490e00.htm>`_
 
 Glaciology
 ----------
 
 - `National Snow and Ice Data Center: Learn <https://nsidc.org/learn>`_
 - `AntarcticGlaciers.org <https://www.antarcticglaciers.org/>`_
+
+Geomorphology
+-------------
+
+- `Community Surface Dynamics Modeling System <https://csdms.colorado.edu/>`_

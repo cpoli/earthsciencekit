@@ -168,7 +168,18 @@ def test_dynamic_overflow_is_normalized():
 
 @pytest.mark.parametrize(
     "name",
-    ["plate_tectonics", "seismology", "atmosphere", "climate", "oceanography", "geophysics", "volcanology", "hydrology", "glaciology"],
+    [
+        "plate_tectonics",
+        "seismology",
+        "atmosphere",
+        "climate",
+        "oceanography",
+        "geophysics",
+        "volcanology",
+        "hydrology",
+        "glaciology",
+        "geomorphology",
+    ],
 )
 def test_domain_family_layout(name):
     import importlib
@@ -181,4 +192,5 @@ def test_domain_family_layout(name):
     assert plots.plot_series is plot_series and plots.animate_series is animate_series
     for public in domain.__all__:
         function = getattr(domain, public)
-        assert inspect.getmodule(function).__name__.startswith(f"earthsciencekit.{name}.systems."), public
+        module = inspect.getmodule(function)
+        assert module is not None and module.__name__.startswith(f"earthsciencekit.{name}.systems."), public

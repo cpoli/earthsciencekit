@@ -4,6 +4,14 @@ from earthsciencekit.climate.systems.carbon import (
     carbon_airborne_fraction,
     carbon_decay,
 )
+from earthsciencekit.climate.systems.energy_balance import (
+    insolation_distribution,
+    north_temperature_profile,
+    simulate_latitudinal_energy_balance,
+    simulate_two_box,
+    two_box_fast_warming,
+    two_box_timescales,
+)
 from earthsciencekit.climate.systems.forcing import (
     co2_forcing,
     methane_forcing,
@@ -59,5 +67,11 @@ __all__ = [
     "methane_forcing",
     "nitrous_oxide_forcing",
     "gregory_regression",
+    "two_box_timescales",
+    "two_box_fast_warming",
+    "insolation_distribution",
+    "north_temperature_profile",
     "simulate_one_box",
+    "simulate_two_box",
+    "simulate_latitudinal_energy_balance",
 ]

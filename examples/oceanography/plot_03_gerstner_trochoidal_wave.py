@@ -12,6 +12,7 @@ below the level of the orbit centres. The wave travels at the deep-water speed
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import trapezoid
 
 from earthsciencekit.constants import GRAVITY
 from earthsciencekit.oceanography import deep_wave_speed, gerstner_orbit_radius
@@ -28,7 +29,7 @@ def surface(rest_x, depth, phase=0.0):
 
 rest = np.linspace(0, wavelength, 4001)
 x, z = surface(rest, 0.0)
-assert np.isclose(np.trapezoid(z, x) / wavelength, -k * amplitude**2 / 2, rtol=1e-6)
+assert np.isclose(trapezoid(z, x) / wavelength, -k * amplitude**2 / 2, rtol=1e-6)
 
 fig, ax = plt.subplots(figsize=(8, 4.5))
 rest = np.linspace(-wavelength, 2 * wavelength, 6001)

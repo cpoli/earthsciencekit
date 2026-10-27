@@ -16,3 +16,4 @@ History
    geophysics_breakthroughs
    hydrology_breakthroughs
    glaciology_breakthroughs
+   geomorphology_breakthroughs

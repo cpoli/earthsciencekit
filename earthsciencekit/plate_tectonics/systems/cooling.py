@@ -47,6 +47,12 @@ def halfspace_temperature(depth, age, diffusivity, surface_temperature, mantle_t
     Equation: ``surface_temperature + (mantle_temperature - surface_temperature) * erf(depth / (2 * np.sqrt(diffusivity * age)))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import halfspace_temperature
+    >>> float(halfspace_temperature(0, 1, 1, 300, 1300))
+    300.0
     """
     depth = quantity("depth", depth, lower=0)
     age = quantity("age", age, lower=0, strict_lower=True)
@@ -87,6 +93,12 @@ def halfspace_heat_flux(age, diffusivity, conductivity, surface_temperature, man
     Equation: ``conductivity * (mantle_temperature - surface_temperature) / np.sqrt(np.pi * diffusivity * age)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import halfspace_heat_flux
+    >>> round(float(halfspace_heat_flux(1, 1, 1, 300, 1300)), 3)
+    564.19
     """
     age = quantity("age", age, lower=0, strict_lower=True)
     diffusivity = quantity("diffusivity", diffusivity, lower=0, strict_lower=True)
@@ -134,6 +146,12 @@ def ocean_depth(age, ridge_depth, mantle_density, water_density, thermal_expansi
     / (mantle_density - water_density) * np.sqrt(diffusivity * age / np.pi)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import ocean_depth
+    >>> float(ocean_depth(0.7853981633974483, 2500, 2, 1, 0.5, 1, 300, 1300))
+    3500.0
     """
     age = quantity("age", age, lower=0)
     ridge_depth = quantity("ridge_depth", ridge_depth, lower=0)
@@ -183,6 +201,12 @@ def mantle_rayleigh_number(thermal_expansivity, density, gravity, temperature_di
     Equation: ``thermal_expansivity * density * gravity * temperature_difference * thickness**3 / (diffusivity * viscosity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import mantle_rayleigh_number
+    >>> round(float(mantle_rayleigh_number(1, 2, 3, 4, 5, 6, 7)), 4)
+    71.4286
     """
     thermal_expansivity = quantity("thermal_expansivity", thermal_expansivity, lower=0, strict_lower=True)
     density = quantity("density", density, lower=0, strict_lower=True)

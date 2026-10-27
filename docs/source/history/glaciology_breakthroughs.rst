@@ -10,8 +10,10 @@ ice a material: Haskell measured the mantle by its rebound, Nye and Glen gave
 ice a plastic and then a power-law rheology, and from them came crevasse
 depths, sliding and the shallow-ice models that now simulate whole ice
 sheets. Meier set the vocabulary of mass balance, Dansgaard turned ice cores
-into thermometers and, with Johnsen, into clocks, and Barnola read the
-atmosphere of past glacial cycles from their bubbles. Weertman and Schoof
+into thermometers and, with Johnsen, into clocks. Herron and Langway showed
+how firn closes into bubbles, and Barnola read the atmosphere of past glacial
+cycles from them. Reeh computed an ice sheet's melt from its air temperature,
+and Weertman and Schoof
 showed why marine ice sheets can collapse. This chronology traces the results
 behind :mod:`earthsciencekit.glaciology`. Every example uses deterministic
 synthetic inputs; none inverts real measurements.
@@ -300,6 +302,30 @@ Geophysical Research* 81 (1976): 1059-1066.
 
 .. minigallery:: ../../examples/glaciology/plot_14_mahaffy_shallow_ice_model.py
 
+1980 -- Herron and Langway's Firn Densification
+-----------------------------------------------
+
+Michael Herron and Chester Langway fitted the density-depth profiles of
+firn cores from Greenland and Antarctica with an empirical model in two
+stages. Above 550 kg/m^3 grains settle and pack at a rate set by
+temperature alone; below it they sinter more slowly, at a rate that also
+grows with the square root of the accumulation. In each stage
+``ln(density / (ice density - density))`` is linear in depth. The model puts
+the pore close-off, near 830 kg/m^3, at 70 to 100 m and turns the gap
+between the age of the ice and the age of its air into a computed quantity.
+
+*Implementation:* :func:`~earthsciencekit.glaciology.herron_langway_density`
+(*new*), :func:`~earthsciencekit.glaciology.herron_langway_depth` (*new*) and
+:func:`~earthsciencekit.glaciology.herron_langway_mean_density` (*new*),
+with :func:`~earthsciencekit.glaciology.gas_age_difference`. The example
+compares the profiles at four core sites and maps the ice-age minus gas-age
+difference against temperature and accumulation.
+
+*References:* M. M. Herron and C. C. Langway, "Firn densification: an
+empirical model," *Journal of Glaciology* 25 (1980): 373-385.
+
+.. minigallery:: ../../examples/glaciology/plot_15_herron_langway_firn_densification.py
+
 1987 -- Barnola's Vostok CO2 Record
 -----------------------------------
 
@@ -312,13 +338,39 @@ a gap of several thousand years at Vostok.
 
 *Implementation:* :func:`~earthsciencekit.glaciology.gas_age_difference`
 (*new*), with :func:`~earthsciencekit.climate.co2_forcing`. The example
-places a synthetic CO2 record at its ice depth and computes its forcing.
+places a synthetic CO2 record at its ice depth, with the gap computed from
+Herron and Langway's firn at each climate, and computes its forcing.
 
 *References:* J. M. Barnola, D. Raynaud, Y. S. Korotkevich and C. Lorius,
 "Vostok ice core provides 160,000-year record of atmospheric CO2," *Nature*
 329 (1987): 408-414.
 
-.. minigallery:: ../../examples/glaciology/plot_15_barnola_vostok_co2_record.py
+.. minigallery:: ../../examples/glaciology/plot_16_barnola_vostok_co2_record.py
+
+1991 -- Reeh's Positive-Degree-Day Model
+----------------------------------------
+
+Niels Reeh estimated the melt of the whole Greenland ice sheet from air
+temperature alone. He treated daily temperature as normally distributed
+about a sinusoidal annual cycle, so that the expected positive degree-days
+stay positive where the mean never thaws. The degree-days melt the year's
+snow first, at about 3 mm of water per degree-day, then the ice beneath at
+about 8, after Braithwaite's measurements. Meltwater refreezes in the snow
+up to 60% of the snowfall before any runs off. Calov and Greve (2005) later
+gave the expected degree-days in closed form. Reeh's volume of
+*Polarforschung* is dated 1989 but appeared in 1991.
+
+*Implementation:* :func:`~earthsciencekit.glaciology.expected_positive_degree_days`
+(*new*) and :func:`~earthsciencekit.glaciology.pdd_surface_melt` (*new*). The
+example finds the equilibrium line along a synthetic Greenland flow line.
+
+*References:* N. Reeh, "Parameterization of melt rate and surface
+temperature on the Greenland ice sheet," *Polarforschung* 59 (1989, printed
+1991): 113-128. R. Calov and R. Greve, "A semi-analytical solution for the
+positive degree-day model with stochastic temperature variations," *Journal
+of Glaciology* 51 (2005): 173-175.
+
+.. minigallery:: ../../examples/glaciology/plot_17_reeh_positive_degree_day_melt.py
 
 2007 -- Schoof's Grounding-Line Flux
 ------------------------------------
@@ -338,7 +390,7 @@ overdeepened bed.
 stability, and hysteresis," *Journal of Geophysical Research* 112 (2007):
 F03S28.
 
-.. minigallery:: ../../examples/glaciology/plot_16_schoof_grounding_line_flux.py
+.. minigallery:: ../../examples/glaciology/plot_18_schoof_grounding_line_flux.py
 
 See also
 --------

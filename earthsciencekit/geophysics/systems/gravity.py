@@ -47,6 +47,13 @@ def sphere_gravity(x, depth, radius, density_contrast):
     Equation: ``G * M * [-x, depth] / (x**2 + depth**2) ** 1.5``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import sphere_gravity
+    >>> np.round(sphere_gravity(3, 4, 1, 447111334967.41797), 5).tolist()
+    [-3.0, 4.0]
     """
     x = quantity("x", x)
     depth = quantity("depth", depth)
@@ -84,6 +91,12 @@ def bouguer_correction(density, thickness):
     Equation: ``2 * np.pi * G * density * thickness``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import bouguer_correction
+    >>> float(bouguer_correction(2384593786.492896, 3))
+    3.0
     """
     density = quantity("density", density, lower=0, strict_lower=True)
     thickness = quantity("thickness", thickness)
@@ -116,6 +129,12 @@ def free_air_correction(height, gravity, radius):
     Equation: ``2 * gravity * height / radius``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import free_air_correction
+    >>> round(float(free_air_correction(100, 9.8, 6400000)), 9)
+    0.00030625
     """
     height = quantity("height", height)
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
@@ -154,6 +173,12 @@ def bouguer_anomaly(observed_gravity, normal_gravity, height, density, radius):
     Equation: ``observed_gravity - normal_gravity + 2 * normal_gravity * height / radius - 2 * np.pi * G * density * height``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import bouguer_anomaly
+    >>> round(float(bouguer_anomaly(9.81, 9.8, 100, 2384.5937864928956, 6400000)), 7)
+    0.0102062
     """
     observed_gravity = quantity("observed_gravity", observed_gravity, lower=0, strict_lower=True)
     normal_gravity = quantity("normal_gravity", normal_gravity, lower=0, strict_lower=True)
@@ -193,6 +218,12 @@ def torsion_balance_gravitational_constant(arm_length, separation, deflection, a
     Equation: ``2 * np.pi**2 * arm_length * separation**2 * deflection / (attracting_mass * period**2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import torsion_balance_gravitational_constant
+    >>> round(float(torsion_balance_gravitational_constant(1, 2, 3, 4, 5)), 5)
+    2.36871
     """
     arm_length = quantity("arm_length", arm_length, lower=0, strict_lower=True)
     separation = quantity("separation", separation, lower=0, strict_lower=True)
@@ -228,6 +259,12 @@ def earth_mean_density(gravity, radius, gravitational_constant=G):
     Equation: ``3 * gravity / (4 * np.pi * gravitational_constant * radius)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import earth_mean_density
+    >>> float(earth_mean_density(12.566370614359172, 3, 1))
+    1.0
     """
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
     radius = quantity("radius", radius, lower=0, strict_lower=True)

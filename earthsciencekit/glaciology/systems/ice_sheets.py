@@ -49,6 +49,12 @@ def driving_stress(thickness, surface_slope, density, gravity):
     Equation: ``density * gravity * thickness * surface_slope``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import driving_stress
+    >>> float(driving_stress(1000, 0.1, 900, 10))
+    900000.0
     """
     thickness = quantity("thickness", thickness, lower=0)
     surface_slope = quantity("surface_slope", surface_slope, lower=0)
@@ -86,6 +92,12 @@ def nye_plastic_profile(distance, yield_stress, density, gravity):
     Equation: ``np.sqrt(2 * yield_stress * distance / (density * gravity))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import nye_plastic_profile
+    >>> round(float(nye_plastic_profile(100000.0, 100000.0, 1000, 10)), 2)
+    1414.21
     """
     distance = quantity("distance", distance, lower=0)
     yield_stress = quantity("yield_stress", yield_stress, lower=0, strict_lower=True)
@@ -121,6 +133,12 @@ def weertman_sliding_velocity(basal_stress, sliding_coefficient, exponent):
     Equation: ``sliding_coefficient * basal_stress**exponent``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import weertman_sliding_velocity
+    >>> round(float(weertman_sliding_velocity(100000.0, 1e-17, 2)), 12)
+    1e-07
     """
     basal_stress = quantity("basal_stress", basal_stress, lower=0)
     sliding_coefficient = quantity("sliding_coefficient", sliding_coefficient, lower=0, strict_lower=True)
@@ -155,6 +173,12 @@ def flotation_thickness(bed_depth, ice_density, water_density):
     Equation: ``water_density * bed_depth / ice_density``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import flotation_thickness
+    >>> float(flotation_thickness(900, 900, 1000))
+    1000.0
     """
     bed_depth = quantity("bed_depth", bed_depth, lower=0)
     ice_density = quantity("ice_density", ice_density, lower=0, strict_lower=True)
@@ -194,6 +218,12 @@ def ice_shelf_strain_rate(thickness, rate_factor, exponent, ice_density, water_d
     Equation: ``rate_factor * (ice_density * gravity * thickness * (1 - ice_density / water_density) / 4) ** exponent``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import ice_shelf_strain_rate
+    >>> round(float(ice_shelf_strain_rate(400, 1e-24, 3, 900, 1000, 10)), 15)
+    7.29e-10
     """
     thickness = quantity("thickness", thickness, lower=0)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)
@@ -237,6 +267,12 @@ def shallow_ice_flux(thickness, surface_slope, rate_factor, exponent, density, g
     Equation: ``2 * rate_factor / (exponent + 2) * (density * gravity * surface_slope) ** exponent * thickness ** (exponent + 2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import shallow_ice_flux
+    >>> float(shallow_ice_flux(100, 0.1, 1e-24, 3, 1000, 10))
+    4e-06
     """
     thickness = quantity("thickness", thickness, lower=0)
     surface_slope = quantity("surface_slope", surface_slope, lower=0)
@@ -281,6 +317,12 @@ def shallow_ice_diffusivity(thickness, surface_slope, rate_factor, exponent, den
     Equation: ``2 * A / (n + 2) * (density * gravity) ** n * thickness ** (n + 2) * surface_slope ** (n - 1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import shallow_ice_diffusivity
+    >>> float(shallow_ice_diffusivity(100, 0.1, 1e-24, 3, 1000, 10))
+    4e-05
     """
     thickness = quantity("thickness", thickness, lower=0)
     surface_slope = quantity("surface_slope", surface_slope, lower=0)
@@ -325,6 +367,12 @@ def vialov_dome_height(half_width, accumulation, rate_factor, exponent, density,
     Equation: ``(2 * ((n + 2) * accumulation / (2 * A * (density * gravity) ** n)) ** (1 / n)) ** (n / (2 * n + 2)) * np.sqrt(half_width)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import vialov_dome_height
+    >>> round(float(vialov_dome_height(1000000.0, 1e-08, 1e-24, 3, 1000, 10)), 2)
+    4598.63
     """
     half_width = quantity("half_width", half_width, lower=0, strict_lower=True)
     accumulation = quantity("accumulation", accumulation, lower=0, strict_lower=True)
@@ -365,6 +413,12 @@ def vialov_profile(distance, half_width, dome_height, exponent):
     Equation: ``dome_height * (1 - (distance / half_width) ** ((exponent + 1) / exponent)) ** (exponent / (2 * exponent + 2))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import vialov_profile
+    >>> round(float(vialov_profile(0.5, 1, 100, 3)), 4)
+    82.7293
     """
     distance = quantity("distance", distance, lower=0)
     half_width = quantity("half_width", half_width, lower=0, strict_lower=True)
@@ -415,6 +469,12 @@ def schoof_grounding_line_flux(
     Equation: ``(A * (rho_i * gravity)**(n + 1) * (1 - rho_i / rho_w)**n / (4**n * C))**(1 / (m + 1)) * h**((m + n + 3) / (m + 1))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import schoof_grounding_line_flux
+    >>> round(float(schoof_grounding_line_flux(1000, 1e-24, 3, 1000000.0, 1, 900, 1000, 10)), 4)
+    10.125
     """
     grounding_thickness = quantity("grounding_thickness", grounding_thickness, lower=0)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)

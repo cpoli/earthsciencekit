@@ -1,5 +1,6 @@
 """Inspectable glaciology models of glaciers, ice sheets, sea ice, rebound and ice cores; SI units unless stated otherwise."""
 
+from earthsciencekit.glaciology.systems.firn import herron_langway_density, herron_langway_depth, herron_langway_mean_density
 from earthsciencekit.glaciology.systems.glaciers import (
     accumulation_area_ratio,
     ela_shift,
@@ -27,6 +28,7 @@ from earthsciencekit.glaciology.systems.ice_sheets import (
     vialov_profile,
     weertman_sliding_velocity,
 )
+from earthsciencekit.glaciology.systems.melt import expected_positive_degree_days, pdd_surface_melt
 from earthsciencekit.glaciology.systems.rebound import (
     haskell_viscosity,
     isostatic_depression,
@@ -85,5 +87,10 @@ __all__ = [
     "glacier_response_time",
     "gas_age_difference",
     "schoof_grounding_line_flux",
+    "herron_langway_density",
+    "herron_langway_depth",
+    "herron_langway_mean_density",
+    "expected_positive_degree_days",
+    "pdd_surface_melt",
     "simulate_flowline_glacier",
 ]

@@ -176,6 +176,31 @@ ridges," *Nature* 199 (1963): 947-949.
 
 .. minigallery:: ../../examples/plate_tectonics/plot_08_vine_matthews_magnetic_stripes.py
 
+1965 -- Bullard's Fit of the Continents
+---------------------------------------
+
+Edward Bullard, Jim Everett and Alan Smith fitted the continents around the
+Atlantic by computer. They matched the 500-fathom contours of the continental
+slopes, not the coastlines, and for each pair found the finite rotation about
+one Euler pole that minimised the misfit. South America closes onto Africa by
+about 57 degrees about a pole near 44 degN, 31 degW. Finite rotations do not
+add like angles. Two in succession make a third about a new pole, and the
+bookkeeping of such rotations became the language of plate reconstructions.
+
+*Implementation:* :func:`~earthsciencekit.plate_tectonics.finite_rotation_matrix`
+(*new*), :func:`~earthsciencekit.plate_tectonics.rotate_position` (*new*),
+:func:`~earthsciencekit.plate_tectonics.compose_finite_rotations` (*new*) and
+:func:`~earthsciencekit.plate_tectonics.interpolate_finite_rotation` (*new*).
+The example closes a synthetic South American margin onto a coarse African one
+and interpolates the opening.
+
+*References:* E. Bullard, J. E. Everett and A. G. Smith, "The fit of the
+continents around the Atlantic," *Philosophical Transactions of the Royal
+Society of London A* 258 (1965): 41-51. A. Cox and R. B. Hart, *Plate
+Tectonics: How It Works* (Palo Alto: Blackwell Scientific, 1986).
+
+.. minigallery:: ../../examples/plate_tectonics/plot_09_bullard_fit_of_the_continents.py
+
 1965 -- Wilson's Transform Faults
 ---------------------------------
 
@@ -191,7 +216,7 @@ slip and none is convergence.
 *References:* J. T. Wilson, "A new class of faults and their bearing on
 continental drift," *Nature* 207 (1965): 343-347.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_09_wilson_transform_faults.py
+.. minigallery:: ../../examples/plate_tectonics/plot_10_wilson_transform_faults.py
 
 1967 -- McKenzie and Parker's Plates on a Sphere
 ------------------------------------------------
@@ -206,7 +231,7 @@ Jason Morgan reached the same result from Atlantic transforms in 1968.
 *References:* D. P. McKenzie and R. L. Parker, "The North Pacific: an example
 of tectonics on a sphere," *Nature* 216 (1967): 1276-1280.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_10_mckenzie_parker_plates_on_sphere.py
+.. minigallery:: ../../examples/plate_tectonics/plot_11_mckenzie_parker_plates_on_sphere.py
 
 1968 -- Isacks, Oliver and Sykes's Subducting Slabs
 ---------------------------------------------------
@@ -223,7 +248,7 @@ and :func:`~earthsciencekit.plate_tectonics.convergence_rate`.
 *References:* B. Isacks, J. Oliver and L. R. Sykes, "Seismology and the new
 global tectonics," *Journal of Geophysical Research* 73 (1968): 5855-5899.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_11_isacks_oliver_sykes_subducting_slabs.py
+.. minigallery:: ../../examples/plate_tectonics/plot_12_isacks_oliver_sykes_subducting_slabs.py
 
 1970 -- Walcott's Lithospheric Flexure under Loads
 --------------------------------------------------
@@ -241,7 +266,7 @@ the load.
 *References:* R. I. Walcott, "Flexural rigidity, thickness, and viscosity of
 the lithosphere," *Journal of Geophysical Research* 75 (1970): 3941-3954.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_12_walcott_lithospheric_flexure.py
+.. minigallery:: ../../examples/plate_tectonics/plot_13_walcott_lithospheric_flexure.py
 
 1971 -- Morgan's Hotspot Tracks
 -------------------------------
@@ -258,7 +283,7 @@ pole move at different speeds but record the same rotation.
 *References:* W. J. Morgan, "Convection plumes in the lower mantle," *Nature*
 230 (1971): 42-43.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_13_morgan_hotspot_tracks.py
+.. minigallery:: ../../examples/plate_tectonics/plot_14_morgan_hotspot_tracks.py
 
 1975 -- Forsyth and Uyeda's Slab Pull
 -------------------------------------
@@ -275,7 +300,7 @@ an order of magnitude.
 driving forces of plate motion," *Geophysical Journal of the Royal
 Astronomical Society* 43 (1975): 163-200.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_14_forsyth_uyeda_slab_pull.py
+.. minigallery:: ../../examples/plate_tectonics/plot_15_forsyth_uyeda_slab_pull.py
 
 1977 -- Parsons and Sclater's Depth-Age Law
 -------------------------------------------
@@ -296,7 +321,7 @@ the half-space has lost.
 ocean floor bathymetry and heat flow with age," *Journal of Geophysical
 Research* 82 (1977): 803-827.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_15_parsons_sclater_depth_age.py
+.. minigallery:: ../../examples/plate_tectonics/plot_16_parsons_sclater_depth_age.py
 
 1990 -- NUVEL-1 Relative Plate Motions
 --------------------------------------
@@ -314,7 +339,7 @@ closed triangle.
 *References:* C. DeMets, R. G. Gordon, D. F. Argus and S. Stein, "Current
 plate motions," *Geophysical Journal International* 101 (1990): 425-478.
 
-.. minigallery:: ../../examples/plate_tectonics/plot_16_nuvel1_euler_circuit.py
+.. minigallery:: ../../examples/plate_tectonics/plot_17_nuvel1_euler_circuit.py
 
 See also
 --------

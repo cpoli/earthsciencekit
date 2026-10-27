@@ -49,6 +49,12 @@ def hydraulic_head(elevation, pressure, density, gravity):
     Equation: ``elevation + pressure / (density * gravity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import hydraulic_head
+    >>> float(hydraulic_head(10, 9810, 1000, 9.81))
+    11.0
     """
     elevation = quantity("elevation", elevation)
     pressure = quantity("pressure", pressure)
@@ -82,6 +88,12 @@ def darcy_flux(hydraulic_conductivity, head_gradient):
     Equation: ``-hydraulic_conductivity * head_gradient``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import darcy_flux
+    >>> round(float(darcy_flux(0.0001, -0.01)), 11)
+    1e-06
     """
     hydraulic_conductivity = quantity("hydraulic_conductivity", hydraulic_conductivity, lower=0)
     head_gradient = quantity("head_gradient", head_gradient)
@@ -112,6 +124,12 @@ def seepage_velocity(darcy_flux, porosity):
     Equation: ``darcy_flux / porosity``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import seepage_velocity
+    >>> float(seepage_velocity(1e-06, 0.25))
+    4e-06
     """
     darcy_flux = quantity("darcy_flux", darcy_flux)
     porosity = quantity("porosity", porosity, lower=0, upper=1, strict_lower=True)
@@ -147,6 +165,12 @@ def dupuit_head(distance, upstream_head, downstream_head, length):
     Equation: ``np.sqrt(upstream_head**2 - (upstream_head**2 - downstream_head**2) * distance / length)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import dupuit_head
+    >>> round(float(dupuit_head(50, 5, 3, 100)), 5)
+    4.12311
     """
     distance = quantity("distance", distance, lower=0)
     upstream_head = quantity("upstream_head", upstream_head, lower=0)
@@ -184,6 +208,12 @@ def dupuit_discharge(hydraulic_conductivity, upstream_head, downstream_head, len
     Equation: ``hydraulic_conductivity * (upstream_head**2 - downstream_head**2) / (2 * length)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import dupuit_discharge
+    >>> float(dupuit_discharge(2, 5, 3, 4))
+    4.0
     """
     hydraulic_conductivity = quantity("hydraulic_conductivity", hydraulic_conductivity, lower=0)
     upstream_head = quantity("upstream_head", upstream_head, lower=0)
@@ -214,6 +244,12 @@ def well_function(u):
     Equation: ``scipy.special.exp1(u)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import well_function
+    >>> round(float(well_function(1)), 6)
+    0.219384
     """
     u = quantity("u", u, lower=0, strict_lower=True)
     return exp1(u)
@@ -252,6 +288,12 @@ def theis_drawdown(pumping_rate, transmissivity, storativity, radius, time):
     transmissivity * time))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import theis_drawdown
+    >>> round(float(theis_drawdown(12.566370614359172, 1, 4, 1, 1)), 6)
+    0.219384
     """
     pumping_rate = quantity("pumping_rate", pumping_rate)
     transmissivity = quantity("transmissivity", transmissivity, lower=0, strict_lower=True)
@@ -294,6 +336,12 @@ def cooper_jacob_drawdown(pumping_rate, transmissivity, storativity, radius, tim
     transmissivity * time)))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import cooper_jacob_drawdown
+    >>> round(float(cooper_jacob_drawdown(12.566370614359172, 1, 4, 1, 1)), 6)
+    -0.577216
     """
     pumping_rate = quantity("pumping_rate", pumping_rate)
     transmissivity = quantity("transmissivity", transmissivity, lower=0, strict_lower=True)
@@ -329,6 +377,12 @@ def cooper_jacob_transmissivity(pumping_rate, drawdown_per_log_cycle):
     Equation: ``np.log(10) * pumping_rate / (4 * np.pi * drawdown_per_log_cycle)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import cooper_jacob_transmissivity
+    >>> float(cooper_jacob_transmissivity(12.566370614359172, 2.302585092994046))
+    1.0
     """
     pumping_rate = quantity("pumping_rate", pumping_rate, lower=0, strict_lower=True)
     drawdown_per_log_cycle = quantity("drawdown_per_log_cycle", drawdown_per_log_cycle, lower=0, strict_lower=True)

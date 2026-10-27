@@ -9,6 +9,8 @@ from earthsciencekit.seismology.systems.rays import (
     critical_angle,
     crossover_distance,
     head_wave_travel_time,
+    layered_ray_distance,
+    layered_ray_travel_time,
     ray_parameter,
     travel_time,
     vertical_travel_time,
@@ -55,5 +57,7 @@ __all__ = [
     "ray_parameter",
     "local_magnitude",
     "vertical_travel_time",
+    "layered_ray_distance",
+    "layered_ray_travel_time",
     "simulate_oscillator",
 ]

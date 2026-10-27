@@ -12,6 +12,7 @@ is a quarter of the solar constant.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import trapezoid
 
 from earthsciencekit.climate import daily_insolation
 
@@ -20,7 +21,7 @@ day = np.arange(365)
 declination = np.arcsin(np.sin(obliquity) * np.sin(2 * np.pi * (day - 80) / 365.25))
 latitude = np.deg2rad(np.linspace(-90, 90, 181))
 flux = daily_insolation(1361, latitude[:, None], declination[None, :], 1)
-global_mean = np.trapezoid(flux * np.cos(latitude)[:, None], latitude, axis=0) / 2
+global_mean = trapezoid(flux * np.cos(latitude)[:, None], latitude, axis=0) / 2
 np.testing.assert_allclose(global_mean, 1361 / 4, rtol=1e-3)
 assert np.isclose(daily_insolation(1361, np.pi / 2, obliquity, 1), 1361 * np.sin(obliquity))
 

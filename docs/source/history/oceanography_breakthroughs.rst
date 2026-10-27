@@ -316,17 +316,21 @@ Temperature. Its density is nonlinear: it curves with temperature
 Mixing two water masses of equal density therefore gives a denser mixture,
 which a linear equation of state cannot show.
 
-*Implementation:* :func:`~earthsciencekit.oceanography.simplified_seawater_density`
-(*new*), the simplified fit of Roquet et al. (2015), compared with
-:func:`~earthsciencekit.oceanography.linear_density`. It is not the full
-TEOS-10 polynomial.
+*Implementation:* :func:`~earthsciencekit.oceanography.teos10_density`
+(*new*), the 75-term polynomial of the GSW toolbox, compared with the
+simplified fit :func:`~earthsciencekit.oceanography.simplified_seawater_density`
+(*new*) of Roquet et al. (2015) and with
+:func:`~earthsciencekit.oceanography.linear_density`.
 
 *References:* IOC, SCOR and IAPSO, *The International Thermodynamic Equation
 of Seawater -- 2010: Calculation and Use of Thermodynamic Properties*,
 Intergovernmental Oceanographic Commission, Manuals and Guides 56 (UNESCO,
 2010). F. Roquet, G. Madec, L. Brodeau and J. Nycander, "Defining a
 simplified yet 'realistic' equation of state for seawater," *Journal of
-Physical Oceanography* 45 (2015): 2564-2579.
+Physical Oceanography* 45 (2015): 2564-2579. F. Roquet, G. Madec, T. J.
+McDougall and P. M. Barker, "Accurate polynomial expressions for the density
+and specific volume of seawater using the TEOS-10 standard," *Ocean
+Modelling* 90 (2015): 29-43.
 
 .. minigallery:: ../../examples/oceanography/plot_16_teos10_seawater_density.py
 

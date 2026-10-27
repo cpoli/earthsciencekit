@@ -6,6 +6,7 @@ authors:
     given-names: Charles
 version: 0.3.0
 date-released: 2026-10-18
+doi: 10.5281/zenodo.23465493
 license: MIT
 repository-code: "https://github.com/cpoli/earthsciencekit"
 url: "https://cpoli.github.io/earthsciencekit/"

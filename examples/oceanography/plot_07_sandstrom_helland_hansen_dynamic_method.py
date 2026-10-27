@@ -11,6 +11,7 @@ slope then drives a geostrophic current.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import trapezoid
 
 from earthsciencekit.atmosphere import coriolis_parameter
 from earthsciencekit.constants import GRAVITY
@@ -20,10 +21,8 @@ reference, distance = 1027.0, 100e3
 depth = np.linspace(0, 1000, 2001)
 stations = {"warm": 15 * np.exp(-depth / 300), "cold": 5 * np.exp(-depth / 300)}
 density = {name: linear_density(reference, anomaly, 0, 2e-4, 7.6e-4) for name, anomaly in stations.items()}
-height = {name: np.trapezoid(reference - rho, depth) / reference for name, rho in density.items()}
-bottom = {
-    name: hydrostatic_pressure(reference, height[name], GRAVITY) + GRAVITY * np.trapezoid(rho, depth) for name, rho in density.items()
-}
+height = {name: trapezoid(reference - rho, depth) / reference for name, rho in density.items()}
+bottom = {name: hydrostatic_pressure(reference, height[name], GRAVITY) + GRAVITY * trapezoid(rho, depth) for name, rho in density.items()}
 assert np.isclose(bottom["warm"], bottom["cold"])
 
 slope = (height["warm"] - height["cold"]) / distance

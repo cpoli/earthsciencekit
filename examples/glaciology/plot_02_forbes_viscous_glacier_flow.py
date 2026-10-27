@@ -12,6 +12,7 @@ surface speed.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import trapezoid
 
 from earthsciencekit.constants import GRAVITY, ICE_DENSITY, SECONDS_PER_YEAR
 from earthsciencekit.glaciology import driving_stress, viscous_slab_velocity
@@ -21,7 +22,7 @@ height = np.linspace(0, thickness, 201)
 fig, ax = plt.subplots()
 for viscosity in (2e13, 5e13, 1e14):
     velocity = viscous_slab_velocity(height, thickness, slope, viscosity, ICE_DENSITY, GRAVITY)
-    mean = np.trapezoid(velocity, height) / thickness
+    mean = trapezoid(velocity, height) / thickness
     assert np.isclose(mean, 2 / 3 * velocity[-1], rtol=1e-4)
     ax.plot(velocity * SECONDS_PER_YEAR, height, label=f"viscosity {viscosity:.0e} Pa s")
 stress = driving_stress(thickness, slope, ICE_DENSITY, GRAVITY)

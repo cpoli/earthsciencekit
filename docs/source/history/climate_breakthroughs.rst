@@ -9,7 +9,8 @@ gases do it, and Stefan's law put a number on planetary emission. Arrhenius and
 Callendar asked what more carbon dioxide would do, and Milanković linked the
 ice ages to the Earth's orbit. After 1950 the questions became quantitative:
 how much carbon stays in the air, how convection shapes the atmosphere, how
-feedbacks amplify a forcing, and how long the ocean delays the response. This
+feedbacks amplify a forcing, how ice makes a climate with two stable states,
+and how long the ocean delays the response. This
 chronology traces the results behind :mod:`earthsciencekit.climate`. Every
 example uses deterministic synthetic inputs and illustrative coefficients;
 none is a calibrated projection.
@@ -205,6 +206,31 @@ climatic model based on the energy balance of the earth-atmosphere system,"
 
 .. minigallery:: ../../examples/climate/plot_10_budyko_sellers_ice_albedo.py
 
+1975 -- North's Diffusive Energy-Balance Model
+----------------------------------------------
+
+Gerald North gave the Budyko-Sellers model an analytic solution. He carried
+heat poleward by diffusion in the sine of latitude and fitted the annual
+insolation with two Legendre polynomials. Without ice the temperature then
+has just two modes. With an ice edge the model has several equilibria for one
+Sun. As the Sun dims, the ice cap grows slowly until it passes a critical size
+and the planet freezes over, and a small polar cap is unstable: a hysteresis
+loop in latitude.
+
+*Implementation:* :func:`~earthsciencekit.climate.insolation_distribution`
+(*new*), :func:`~earthsciencekit.climate.north_temperature_profile` (*new*)
+and :func:`~earthsciencekit.climate.simulate_latitudinal_energy_balance`
+(*new*), which integrates the model on equal-area cells. The example sweeps
+the solar constant down from an ice-free planet and up from a snowball.
+
+*References:* G. R. North, "Analytical solution to a simple climate model
+with diffusive heat transport," *Journal of the Atmospheric Sciences* 32
+(1975): 1301-1307. G. R. North, R. F. Cahalan and J. A. Coakley, "Energy
+balance climate models," *Reviews of Geophysics and Space Physics* 19 (1981):
+91-121.
+
+.. minigallery:: ../../examples/climate/plot_11_north_diffusive_energy_balance.py
+
 1976 -- Hasselmann's Stochastic Climate
 ---------------------------------------
 
@@ -221,7 +247,7 @@ variance.
 *References:* K. Hasselmann, "Stochastic climate models. Part I. Theory,"
 *Tellus* 28 (1976): 473-485.
 
-.. minigallery:: ../../examples/climate/plot_11_hasselmann_stochastic_climate.py
+.. minigallery:: ../../examples/climate/plot_12_hasselmann_stochastic_climate.py
 
 1979 -- The Charney Report's Sensitivity Range
 ----------------------------------------------
@@ -238,7 +264,7 @@ sensitive climate also responds more slowly.
 *References:* J. G. Charney et al., *Carbon Dioxide and Climate: A Scientific
 Assessment* (Washington, DC: National Academy of Sciences, 1979).
 
-.. minigallery:: ../../examples/climate/plot_12_charney_report_sensitivity.py
+.. minigallery:: ../../examples/climate/plot_13_charney_report_sensitivity.py
 
 1981 -- Hansen's Ocean Heat Uptake
 ----------------------------------
@@ -257,7 +283,7 @@ the integrated imbalance between forcing and radiative restoring.
 and G. Russell, "Climate impact of increasing atmospheric carbon dioxide,"
 *Science* 213 (1981): 957-966.
 
-.. minigallery:: ../../examples/climate/plot_13_hansen_ocean_heat_uptake.py
+.. minigallery:: ../../examples/climate/plot_14_hansen_ocean_heat_uptake.py
 
 1998 -- Myhre's Forcing Formulas
 --------------------------------
@@ -276,7 +302,7 @@ coefficient 5.35), :func:`~earthsciencekit.climate.methane_forcing` and
 estimates of radiative forcing due to well mixed greenhouse gases,"
 *Geophysical Research Letters* 25 (1998): 2715-2718.
 
-.. minigallery:: ../../examples/climate/plot_14_myhre_forcing_formulas.py
+.. minigallery:: ../../examples/climate/plot_15_myhre_forcing_formulas.py
 
 2004 -- Gregory's Forcing-Feedback Regression
 ---------------------------------------------
@@ -297,7 +323,7 @@ Stott, R. B. Thorpe, J. A. Lowe, T. C. Johns and K. D. Williams, "A new method
 for diagnosing radiative forcing and climate sensitivity," *Geophysical
 Research Letters* 31 (2004): L03205.
 
-.. minigallery:: ../../examples/climate/plot_15_gregory_forcing_feedback_regression.py
+.. minigallery:: ../../examples/climate/plot_16_gregory_forcing_feedback_regression.py
 
 2005 -- Thermal Expansion and Ice Melt in the Sea-Level Budget
 --------------------------------------------------------------
@@ -316,7 +342,29 @@ and :func:`~earthsciencekit.climate.water_equivalent_sea_level`.
 *References:* J. I. Antonov, S. Levitus and T. P. Boyer, "Thermosteric sea
 level rise, 1955-2003," *Geophysical Research Letters* 32 (2005): L12602.
 
-.. minigallery:: ../../examples/climate/plot_16_sea_level_budget.py
+.. minigallery:: ../../examples/climate/plot_17_sea_level_budget.py
+
+2010 -- Held's Fast and Slow Responses
+--------------------------------------
+
+Isaac Held and colleagues quadrupled CO2 in a climate model and then returned
+it abruptly to preindustrial forcing. Most of the warming vanished within a
+few years. A remnant, the recalcitrant warming held in the deep ocean, decayed
+only over centuries. A two-box model, a mixed layer coupled to a deep ocean,
+reproduces both. Under a step forcing the surface first reaches a plateau near
+``F / (lambda + gamma)``, then creeps towards ``F / lambda``.
+
+*Implementation:* :func:`~earthsciencekit.climate.two_box_timescales`
+(*new*), :func:`~earthsciencekit.climate.two_box_fast_warming` (*new*) and
+:func:`~earthsciencekit.climate.simulate_two_box` (*new*). The example
+applies a step forcing and then removes it.
+
+*References:* I. M. Held, M. Winton, K. Takahashi, T. Delworth, F. Zeng and
+G. K. Vallis, "Probing the fast and slow components of global warming by
+returning abruptly to preindustrial forcing," *Journal of Climate* 23 (2010):
+2418-2427.
+
+.. minigallery:: ../../examples/climate/plot_18_held_fast_slow_response.py
 
 See also
 --------

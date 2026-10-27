@@ -1,5 +1,11 @@
 """Inspectable volcanology and geochemistry models; SI units unless stated otherwise."""
 
+from earthsciencekit.volcanology.systems.bubbles import (
+    diffusive_supersaturation,
+    scriven_bubble_radius,
+    scriven_growth_constant,
+    simulate_bubble_growth,
+)
 from earthsciencekit.volcanology.systems.eruptions import (
     column_height,
     plume_rise_height,
@@ -57,5 +63,9 @@ __all__ = [
     "dike_ascent_velocity",
     "water_solubility",
     "volcanic_explosivity_index",
+    "diffusive_supersaturation",
+    "scriven_growth_constant",
+    "scriven_bubble_radius",
     "simulate_eruption_column",
+    "simulate_bubble_growth",
 ]

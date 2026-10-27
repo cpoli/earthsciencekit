@@ -43,6 +43,12 @@ def shallow_wave_speed(depth, gravity):
     Equation: ``np.sqrt(gravity * depth)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import shallow_wave_speed
+    >>> round(float(shallow_wave_speed(100, 10)), 4)
+    31.6228
     """
     depth = quantity("depth", depth, lower=0, strict_lower=True)
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
@@ -73,6 +79,12 @@ def deep_wave_speed(wavelength, gravity):
     Equation: ``np.sqrt(gravity * wavelength / (2 * np.pi))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import deep_wave_speed
+    >>> round(float(deep_wave_speed(6.283185307179586, 10)), 5)
+    3.16228
     """
     wavelength = quantity("wavelength", wavelength, lower=0, strict_lower=True)
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
@@ -105,6 +117,12 @@ def wave_angular_frequency(wavenumber, depth, gravity):
     Equation: ``np.sqrt(gravity * wavenumber * np.tanh(wavenumber * depth))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import wave_angular_frequency
+    >>> round(float(wave_angular_frequency(1, 1, 10)), 5)
+    2.7597
     """
     wavenumber = quantity("wavenumber", wavenumber, lower=0, strict_lower=True)
     depth = quantity("depth", depth, lower=0, strict_lower=True)
@@ -136,6 +154,12 @@ def deep_group_speed(wavelength, gravity):
     Equation: ``0.5 * np.sqrt(gravity * wavelength / (2 * np.pi))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import deep_group_speed
+    >>> round(float(deep_group_speed(6.283185307179586, 10)), 5)
+    1.58114
     """
     wavelength = quantity("wavelength", wavelength, lower=0, strict_lower=True)
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
@@ -171,6 +195,12 @@ def gerstner_orbit_radius(rest_depth, amplitude, wavenumber):
     Equation: ``amplitude * np.exp(-wavenumber * rest_depth)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import gerstner_orbit_radius
+    >>> float(gerstner_orbit_radius(0.6931471805599453, 0.5, 1))
+    0.25
     """
     rest_depth = quantity("rest_depth", rest_depth, lower=0)
     amplitude = quantity("amplitude", amplitude, lower=0)
@@ -205,6 +235,12 @@ def reduced_gravity(density_difference, reference_density, gravity):
     Equation: ``gravity * density_difference / reference_density``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import reduced_gravity
+    >>> float(reduced_gravity(2, 1000, 10))
+    0.02
     """
     density_difference = quantity("density_difference", density_difference, lower=0)
     reference_density = quantity("reference_density", reference_density, lower=0, strict_lower=True)
@@ -238,6 +274,12 @@ def internal_wave_speed(reduced_gravity, upper_depth, lower_depth):
     Equation: ``np.sqrt(reduced_gravity * upper_depth * lower_depth / (upper_depth + lower_depth))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import internal_wave_speed
+    >>> float(internal_wave_speed(0.02, 100, 100))
+    1.0
     """
     reduced_gravity = quantity("reduced_gravity", reduced_gravity, lower=0, strict_lower=True)
     upper_depth = quantity("upper_depth", upper_depth, lower=0, strict_lower=True)
@@ -273,6 +315,12 @@ def tidal_elevation(time, amplitude, period, phase):
     Equation: ``amplitude * np.cos(2 * np.pi * time / period + phase)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import tidal_elevation
+    >>> float(tidal_elevation(0, 2, 12, 0))
+    2.0
     """
     time = quantity("time", time)
     amplitude = quantity("amplitude", amplitude, lower=0)

@@ -777,6 +777,188 @@
    "limit": "Instantaneous rotations only; inputs and output have three Cartesian components on the last axis.",
    "extra": "require(omega_ab.shape[-1] == 3 and omega_bc.shape[-1] == 3, \"three Cartesian components on the last axis\")",
    "output_unit": "rad/s"
+  },
+  {
+   "name": "finite_rotation_matrix",
+   "title": "Rotation matrix of a finite rotation about an Euler pole",
+   "params": [
+    {
+     "name": "pole_latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "pole_longitude",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "angle",
+     "unit": "rad, counterclockwise seen from above the pole",
+     "kind": "real"
+    }
+   ],
+   "expr": "np.cos(angle) * I + np.sin(angle) * [n]x + (1 - np.cos(angle)) * n n^T",
+   "args": [
+    1.5707963267948966,
+    0,
+    1.5707963267948966
+   ],
+   "expected": "[[0, -1, 0], [1, 0, 0], [0, 0, 1]]",
+   "why": "Any displacement of a rigid plate on a sphere is a rotation about one pole, so a matrix carries every point of a plate to its reconstructed position.",
+   "limit": "Rodrigues's formula on geocentric unit vectors; last two axes hold the 3 x 3 matrix.",
+   "extra": "n = [np.cos(lat) * np.cos(lon), np.cos(lat) * np.sin(lon), np.sin(lat)] of the pole",
+   "output_unit": "1"
+  },
+  {
+   "name": "rotate_position",
+   "title": "Position of a point after a finite rotation",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "longitude",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "pole_latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "pole_longitude",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "angle",
+     "unit": "rad",
+     "kind": "real"
+    }
+   ],
+   "expr": "R(pole, angle) @ [np.cos(lat) * np.cos(lon), np.cos(lat) * np.sin(lon), np.sin(lat)]",
+   "args": [
+    0,
+    0,
+    1.5707963267948966,
+    0,
+    1.5707963267948966
+   ],
+   "expected": "[0, np.pi / 2]",
+   "why": "Rotating a plate's present coastline or magnetic anomalies back by its total reconstruction rotation shows where they lay in the past.",
+   "limit": "Rigid rotation on a sphere; last axis holds latitude and longitude in (-pi, pi].",
+   "extra": "",
+   "output_unit": "rad"
+  },
+  {
+   "name": "compose_finite_rotations",
+   "title": "Single finite rotation equal to one rotation followed by another",
+   "params": [
+    {
+     "name": "pole_latitude_1",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "pole_longitude_1",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "angle_1",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "pole_latitude_2",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "pole_longitude_2",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "angle_2",
+     "unit": "rad",
+     "kind": "real"
+    }
+   ],
+   "expr": "pole_and_angle(q2 * q1)",
+   "args": [
+    1.5707963267948966,
+    0,
+    1.5707963267948966,
+    1.5707963267948966,
+    0,
+    1.5707963267948966
+   ],
+   "expected": "[np.pi / 2, 0, np.pi]",
+   "why": "Rotations add around a plate circuit only as finite rotations, not as angles: B relative to A followed by C relative to B gives C relative to A about a new pole.",
+   "limit": "R2 @ R1 with unit quaternions (Cox and Hart 1986); last axis holds pole latitude, longitude and angle in [0, pi]; the north pole for no rotation.",
+   "extra": "q = [np.cos(angle / 2), np.sin(angle / 2) * n]",
+   "output_unit": "rad"
+  },
+  {
+   "name": "interpolate_finite_rotation",
+   "title": "Finite rotation part of the way between two reconstructions",
+   "params": [
+    {
+     "name": "pole_latitude_1",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "pole_longitude_1",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "angle_1",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "pole_latitude_2",
+     "unit": "rad",
+     "kind": "latitude"
+    },
+    {
+     "name": "pole_longitude_2",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "angle_2",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "fraction",
+     "unit": "1",
+     "kind": "between 0 and 1"
+    }
+   ],
+   "expr": "pole_and_angle((q2 * conj(q1))**fraction * q1)",
+   "args": [
+    1.5707963267948966,
+    0,
+    0,
+    1.5707963267948966,
+    0,
+    1,
+    0.5
+   ],
+   "expected": "[np.pi / 2, 0, 0.5]",
+   "why": "Between two dated reconstructions a plate is assumed to turn steadily about the stage pole, which gives its position at any intermediate age.",
+   "limit": "Constant-rate rotation about the fixed-frame stage pole, the shorter way round (quaternion slerp); last axis holds pole latitude, longitude and angle.",
+   "extra": "",
+   "output_unit": "rad"
   }
  ],
  "seismology": [
@@ -1435,6 +1617,94 @@
    "limit": "Speed linear in depth between tabulated points; a repeated depth marks a discontinuity.",
    "extra": "require(depth.ndim == 1 and depth.size >= 2, \"depth must be a vector with at least two samples\"); require(speed.shape == depth.shape, \"speed must have the same shape as depth\"); require(np.all(np.diff(depth) >= 0), \"depth must not decrease\")",
    "output_unit": "s"
+  },
+  {
+   "name": "layered_ray_distance",
+   "title": "Epicentral distance of a ray through a radially layered Earth",
+   "params": [
+    {
+     "name": "ray_parameter",
+     "unit": "s/rad",
+     "kind": "positive, below the surface radius / speed"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nondecreasing_vector from 0, below planet_radius"
+    },
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "positive_vector with radius / speed decreasing with depth in every layer"
+    },
+    {
+     "name": "planet_radius",
+     "unit": "m",
+     "kind": "positive scalar"
+    }
+   ],
+   "expr": "2 * sum(np.arccos(p / eta_top) - np.arccos(p / eta_bottom)) / (1 - b)",
+   "args": [
+    1,
+    [
+     0,
+     1.5
+    ],
+    [
+     1,
+     1
+    ],
+    2
+   ],
+   "expected": "2 * np.pi / 3",
+   "why": "Rays bend back to the surface because speed grows with depth, and the distance each ray travels maps the velocity structure, including the shadow cast by a slower core.",
+   "limit": "Mohorovicic-law speed v = a r**b between tabulated points; surface source and receiver; the ray must turn above the deepest level; can exceed pi.",
+   "extra": "eta = (planet_radius - depth) / speed; 1 / (1 - b) = np.log(r_top / r_bottom) / np.log(eta_top / eta_bottom); a ray turns where eta falls to p or at the top of a layer it cannot enter",
+   "output_unit": "rad"
+  },
+  {
+   "name": "layered_ray_travel_time",
+   "title": "Travel time of a ray through a radially layered Earth",
+   "params": [
+    {
+     "name": "ray_parameter",
+     "unit": "s/rad",
+     "kind": "positive, below the surface radius / speed"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nondecreasing_vector from 0, below planet_radius"
+    },
+    {
+     "name": "speed",
+     "unit": "m/s",
+     "kind": "positive_vector with radius / speed decreasing with depth in every layer"
+    },
+    {
+     "name": "planet_radius",
+     "unit": "m",
+     "kind": "positive scalar"
+    }
+   ],
+   "expr": "2 * sum(np.sqrt(eta_top**2 - p**2) - np.sqrt(eta_bottom**2 - p**2)) / (1 - b)",
+   "args": [
+    1,
+    [
+     0,
+     1.5
+    ],
+    [
+     1,
+     1
+    ],
+    2
+   ],
+   "expected": "2 * np.sqrt(3)",
+   "why": "Paired with the epicentral distance it gives the travel-time curve, the table every earthquake location rests on.",
+   "limit": "Same rays as layered_ray_distance; dT/d(distance) equals the ray parameter.",
+   "extra": "eta = (planet_radius - depth) / speed",
+   "output_unit": "s"
   }
  ],
  "atmosphere": [
@@ -2005,6 +2275,239 @@
    "limit": "Nondivergent barotropic flow on a beta plane; positive values are eastward.",
    "extra": "",
    "output_unit": "m/s"
+  },
+  {
+   "name": "lcl_temperature",
+   "title": "Temperature at the lifting condensation level",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "at least dewpoint"
+    },
+    {
+     "name": "dewpoint",
+     "unit": "K",
+     "kind": "above 56 K"
+    }
+   ],
+   "expr": "1 / (1 / (dewpoint - 56) + np.log(temperature / dewpoint) / 800) + 56",
+   "args": [
+    300,
+    290
+   ],
+   "expected": "1 / (1 / 234 + np.log(300 / 290) / 800) + 56",
+   "why": "Air lifted dry-adiabatically cools faster than its dew point falls, and condenses where the two meet: the base of a cumulus cloud.",
+   "limit": "Bolton (1980, equation 15), accurate to about 0.1 K; independent of pressure.",
+   "extra": "require(dewpoint <= temperature, \"dewpoint must not exceed the temperature\")",
+   "output_unit": "K"
+  },
+  {
+   "name": "lcl_pressure",
+   "title": "Pressure at the lifting condensation level",
+   "params": [
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "lcl_temperature",
+     "unit": "K",
+     "kind": "positive, at most temperature"
+    }
+   ],
+   "expr": "pressure * (lcl_temperature / temperature)**(CP_DRY_AIR / R_DRY_AIR)",
+   "args": [
+    100000.0,
+    300,
+    270
+   ],
+   "expected": "1e5 * 0.9 ** (1004 / 287.05)",
+   "why": "Below cloud base the lifted parcel keeps its potential temperature, so the condensation temperature fixes the condensation pressure.",
+   "limit": "Poisson's dry adiabat with constant heat capacity.",
+   "extra": "require(lcl_temperature <= temperature, \"lcl_temperature must not exceed the temperature\")",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "lcl_height",
+   "title": "Height of the lifting condensation level above the starting level",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "lcl_temperature",
+     "unit": "K",
+     "kind": "positive, at most temperature"
+    }
+   ],
+   "expr": "CP_DRY_AIR * (temperature - lcl_temperature) / GRAVITY",
+   "args": [
+    300,
+    290
+   ],
+   "expected": "1004 * 10 / 9.80665",
+   "why": "The dry adiabatic lapse rate turns the cooling needed for condensation into a cloud-base height, about 125 m per kelvin of dew-point depression.",
+   "limit": "Dry adiabatic ascent without mixing.",
+   "extra": "require(lcl_temperature <= temperature, \"lcl_temperature must not exceed the temperature\")",
+   "output_unit": "m"
+  },
+  {
+   "name": "moist_adiabatic_lapse_rate",
+   "title": "Pseudo-adiabatic lapse rate of saturated rising air",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "180 to 330 K"
+    },
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "above the saturation vapour pressure"
+    }
+   ],
+   "expr": "GRAVITY * (1 + L * r_s / (R_DRY_AIR * temperature)) / (CP_DRY_AIR + L**2 * r_s * EPSILON_WATER / (R_DRY_AIR * temperature**2))",
+   "args": [
+    300,
+    100000.0
+   ],
+   "expected": "GRAVITY * (1 + 2.5e6 * 0.023269008928186837 / (287.05 * 300)) / (1004 + 2.5e6**2 * 0.023269008928186837 * EPSILON_WATER / (287.05 * 300**2))",
+   "why": "Condensation releases latent heat inside a rising cloud, so saturated air cools more slowly with height than dry air.",
+   "limit": "Pseudo-adiabatic, AMS Glossary form; condensate falls out and the heat capacities of vapour and water are neglected.",
+   "extra": "r_s = mixing_ratio(saturation_vapor_pressure(temperature), pressure), 0.023269008928186837 at the reference; L = LATENT_HEAT_VAPORIZATION",
+   "output_unit": "K/m"
+  },
+  {
+   "name": "parcel_temperature_profile",
+   "title": "Temperature of a lifted surface parcel, dry below cloud base and moist above",
+   "params": [
+    {
+     "name": "pressure",
+     "unit": "Pa",
+     "kind": "strictly decreasing positive vector"
+    },
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive scalar"
+    },
+    {
+     "name": "dewpoint",
+     "unit": "K",
+     "kind": "scalar above 56 K, at most temperature"
+    }
+   ],
+   "expr": "temperature * (pressure / pressure[0])**(R_DRY_AIR / CP_DRY_AIR) below the LCL; dT/d(ln p) = moist_adiabatic_lapse_rate * R_DRY_AIR * T / GRAVITY above",
+   "args": [
+    [
+     100000.0,
+     90000.0
+    ],
+    300,
+    250
+   ],
+   "expected": "[300, 300 * 0.9 ** (287.05 / 1004)]",
+   "why": "The parcel curve on a sounding is the reference against which buoyancy, and hence convective energy, is measured.",
+   "limit": "Bolton's LCL, then the pseudo-adiabat integrated with integrators.integrate_ode; 180-330 K above cloud base.",
+   "extra": "require(pressure.ndim == 1 and pressure.size >= 2); require(np.all(np.diff(pressure) < 0)); temperature and dewpoint scalars",
+   "output_unit": "K"
+  },
+  {
+   "name": "convective_available_potential_energy",
+   "title": "Convective available potential energy (CAPE) of a sounding",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "strictly increasing vector"
+    },
+    {
+     "name": "parcel_virtual_temperature",
+     "unit": "K",
+     "kind": "positive vector"
+    },
+    {
+     "name": "environment_virtual_temperature",
+     "unit": "K",
+     "kind": "positive vector"
+    }
+   ],
+   "expr": "sum(integral of max(GRAVITY * (Tv_parcel - Tv_env) / Tv_env, 0) dz)",
+   "args": [
+    [
+     0,
+     1000,
+     2000
+    ],
+    [
+     300,
+     302,
+     300
+    ],
+    [
+     300,
+     300,
+     300
+    ]
+   ],
+   "expected": "9.80665 * 20 / 3",
+   "why": "The work buoyancy can do on a lifted parcel bounds the updraught speed of a thunderstorm, about np.sqrt(2 * CAPE).",
+   "limit": "Moncrieff and Miller (1976); exact for buoyancy linear between levels; no condensate loading or entrainment.",
+   "extra": "height, parcel and environment have the same vector shape; height strictly increases",
+   "output_unit": "J/kg"
+  },
+  {
+   "name": "convective_inhibition",
+   "title": "Convective inhibition (CIN) below the level of free convection",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m",
+     "kind": "strictly increasing vector"
+    },
+    {
+     "name": "parcel_virtual_temperature",
+     "unit": "K",
+     "kind": "positive vector"
+    },
+    {
+     "name": "environment_virtual_temperature",
+     "unit": "K",
+     "kind": "positive vector"
+    }
+   ],
+   "expr": "-sum(integral of max(-GRAVITY * (Tv_parcel - Tv_env) / Tv_env, 0) dz) below the level of free convection",
+   "args": [
+    [
+     0,
+     1000,
+     2000
+    ],
+    [
+     300,
+     299,
+     301
+    ],
+    [
+     300,
+     300,
+     300
+    ]
+   ],
+   "expected": "-2.5 * 9.80665",
+   "why": "A stable layer above the surface can hold back a very unstable sounding until lifting supplies this much energy.",
+   "limit": "Up to the first buoyant level, or the whole profile if the parcel is never buoyant; exact for buoyancy linear between levels.",
+   "extra": "height, parcel and environment have the same vector shape; height strictly increases",
+   "output_unit": "J/kg"
   }
  ],
  "climate": [
@@ -2745,6 +3248,158 @@
    "limit": "Assumes constant forcing and feedback; returns [forcing W/m^2, restoring W/(m^2 K)].",
    "extra": "require(temperature_change.ndim == 1 and temperature_change.size >= 2, \"vector of at least two samples\")",
    "output_unit": "[W/m^2, W/(m^2 K)]"
+  },
+  {
+   "name": "two_box_timescales",
+   "title": "Fast and slow e-folding times of the two-box climate",
+   "params": [
+    {
+     "name": "feedback",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "exchange",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_heat_capacity",
+     "unit": "J/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "deep_heat_capacity",
+     "unit": "J/(m^2 K)",
+     "kind": "positive"
+    }
+   ],
+   "expr": "[1 / fast, fast / determinant] with fast = (b + np.sqrt(b**2 - 4 * determinant)) / 2",
+   "args": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "expected": "[(3 - np.sqrt(5)) / 2, (3 + np.sqrt(5)) / 2]",
+   "why": "A shallow mixed layer coupled to a deep ocean responds on two timescales: years for the surface to adjust, and centuries for the deep ocean to fill with heat.",
+   "limit": "Held et al. (2010) linear two-box model; last axis holds the fast and the slow timescale.",
+   "extra": "b = (feedback + exchange) / surface_heat_capacity + exchange / deep_heat_capacity; determinant = feedback * exchange / (surface_heat_capacity * deep_heat_capacity)",
+   "output_unit": "s"
+  },
+  {
+   "name": "two_box_fast_warming",
+   "title": "Warming reached once the fast response is over, while the deep ocean is still cold",
+   "params": [
+    {
+     "name": "forcing",
+     "unit": "W/m^2",
+     "kind": "real"
+    },
+    {
+     "name": "feedback",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "exchange",
+     "unit": "W/(m^2 K)",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "forcing / (feedback + exchange)",
+   "args": [
+    3.7,
+    1.2,
+    0.7
+   ],
+   "expected": "3.7 / 1.9",
+   "why": "After a few years the surface sits on a plateau, held down by the heat the deep ocean still absorbs; the rest of the equilibrium warming arrives over centuries.",
+   "limit": "Held et al. (2010) two-box surface temperature with the deep ocean at its initial temperature; approximates the transient climate response.",
+   "extra": "",
+   "output_unit": "K"
+  },
+  {
+   "name": "insolation_distribution",
+   "title": "Annual-mean insolation relative to its global mean",
+   "params": [
+    {
+     "name": "sine_latitude",
+     "unit": "1",
+     "kind": "between -1 and 1"
+    },
+    {
+     "name": "second_legendre_coefficient",
+     "unit": "1",
+     "kind": "between -1 and 2"
+    }
+   ],
+   "expr": "1 + second_legendre_coefficient * (3 * sine_latitude**2 - 1) / 2",
+   "args": [
+    1,
+    -0.482
+   ],
+   "expected": "0.518",
+   "why": "The tropics receive more than twice the annual sunshine of the poles, the contrast that drives poleward heat transport.",
+   "limit": "North (1975) two-term Legendre fit to the annual mean for the present obliquity.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "north_temperature_profile",
+   "title": "Steady temperature of North's diffusive energy-balance model with a fixed albedo",
+   "params": [
+    {
+     "name": "sine_latitude",
+     "unit": "1",
+     "kind": "between -1 and 1"
+    },
+    {
+     "name": "solar_constant",
+     "unit": "W/m^2",
+     "kind": "positive"
+    },
+    {
+     "name": "albedo",
+     "unit": "1",
+     "kind": "fraction"
+    },
+    {
+     "name": "outgoing_intercept",
+     "unit": "W/m^2",
+     "kind": "real"
+    },
+    {
+     "name": "outgoing_slope",
+     "unit": "W/(m^2 K)",
+     "kind": "positive"
+    },
+    {
+     "name": "diffusion",
+     "unit": "W/(m^2 K)",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "second_legendre_coefficient",
+     "unit": "1",
+     "kind": "between -1 and 2"
+    }
+   ],
+   "expr": "273.15 + (Q * (1 - albedo) - A) / B + Q * (1 - albedo) * s2 / (B + 6 * D) * (3 * x**2 - 1) / 2",
+   "args": [
+    1,
+    1360,
+    0.3,
+    210,
+    2,
+    0.5,
+    -0.482
+   ],
+   "expected": "287.15 + 238 * -0.482 / 5",
+   "why": "Diffusive heat transport flattens the equator-to-pole contrast of absorbed sunshine, the more so the larger the diffusivity.",
+   "limit": "North (1975): fixed albedo, outgoing longwave linear in temperature, two Legendre modes.",
+   "extra": "Q = solar_constant / 4; x = sine_latitude; A = outgoing_intercept; B = outgoing_slope; D = diffusion; s2 = second_legendre_coefficient",
+   "output_unit": "K"
   }
  ],
  "oceanography": [
@@ -3498,6 +4153,38 @@
    "why": "Cabbeling and thermobaricity make seawater density nonlinear in temperature, salinity and pressure.",
    "limit": "Roquet et al. (2015) S-EOS with NEMO default coefficients; reproduces TEOS-10 gradients, absolute density off by about 1 kg/m^3.",
    "extra": "t = conservative_temperature - 283.15; s = absolute_salinity - 35; a0 = 0.16550; b0 = 0.76554; lambda1 = 5.9520e-2; lambda2 = 7.4914e-4; mu1 = 1.4970e-4; mu2 = 1.1090e-5; nu = 2.4341e-3",
+   "output_unit": "kg/m^3"
+  },
+  {
+   "name": "teos10_density",
+   "title": "TEOS-10 in-situ density from the 75-term polynomial",
+   "params": [
+    {
+     "name": "conservative_temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "absolute_salinity",
+     "unit": "g/kg",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "sea_pressure",
+     "unit": "Pa, absolute pressure minus 101325 Pa",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "1 / sum(v_ijk * ys**i * xs**j * z**k)",
+   "args": [
+    283.15,
+    30,
+    10000000.0
+   ],
+   "expected": "1 / 9.732819627722660e-4",
+   "why": "One equation of state for all oceanographic work fixes density, and every buoyancy-driven current, to within the accuracy of the measurements behind the TEOS-10 Gibbs function.",
+   "limit": "Roquet et al. (2015) 75-term polynomial as in GSW gsw_rho; oceanographic range about 0-42 g/kg, -2-40 degC, 0-80 MPa.",
+   "extra": "ys = (conservative_temperature - 273.15) / 40; xs = np.sqrt(0.0248826675584615 * absolute_salinity + 0.5971840214030754); z = sea_pressure / 1e8; v_ijk are the 75 GSW-C specific-volume coefficients",
    "output_unit": "kg/m^3"
   }
  ],
@@ -4509,6 +5196,106 @@
    "limit": "Thin surface layer on an elastic Earth (Wahr et al., 1998), fully normalized coefficients.",
    "extra": "require(degree == np.round(degree), \"degree must be an integer\")",
    "output_unit": "m"
+  },
+  {
+   "name": "schmidt_legendre",
+   "title": "Schmidt semi-normalized associated Legendre function of the sine of latitude",
+   "params": [
+    {
+     "name": "degree",
+     "unit": "1",
+     "kind": "integer >= 0"
+    },
+    {
+     "name": "order",
+     "unit": "1",
+     "kind": "integer, 0 <= order <= degree"
+    },
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "latitude"
+    }
+   ],
+   "expr": "np.sqrt((2 - (order == 0)) * factorial(n - m) / factorial(n + m)) * (-1)**m * lpmv(m, n, np.sin(latitude))",
+   "args": [
+    2,
+    1,
+    0.5235987755982988
+   ],
+   "expected": "0.75",
+   "why": "Geomagnetism normalizes its spherical harmonics so that every order of one degree carries the same mean square, which makes Gauss coefficients of different orders directly comparable.",
+   "limit": "No Condon-Shortley phase, as in the IGRF; mean square of S_n^m cos(m lon) over the sphere is 1 / (2 n + 1).",
+   "extra": "require(degree and order are integers); require(order <= degree)",
+   "output_unit": "1"
+  },
+  {
+   "name": "geomagnetic_field",
+   "title": "Magnetic field of an internal spherical-harmonic model from its Gauss coefficients",
+   "params": [
+    {
+     "name": "latitude",
+     "unit": "rad",
+     "kind": "open latitude, poles excluded"
+    },
+    {
+     "name": "longitude",
+     "unit": "rad",
+     "kind": "real"
+    },
+    {
+     "name": "distance",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "g",
+     "unit": "T",
+     "kind": "square (N + 1, N + 1) table, zero where m > n and in row 0"
+    },
+    {
+     "name": "h",
+     "unit": "T",
+     "kind": "square (N + 1, N + 1) table, zero where m > n, in row 0 and column 0"
+    },
+    {
+     "name": "reference_radius",
+     "unit": "m",
+     "kind": "positive scalar"
+    }
+   ],
+   "expr": "sum((a / r)**(n + 2) * [(g cos + h sin) dS/dtheta, m (g sin - h cos) S / sin(theta), -(n + 1) (g cos + h sin) S])",
+   "args": [
+    0,
+    1.5707963267948966,
+    1,
+    [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ],
+    [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    1
+   ],
+   "expected": "[0, 1, 0]",
+   "why": "A table of Gauss coefficients, such as the International Geomagnetic Reference Field, fixes the main field and its declination and inclination everywhere above the core.",
+   "limit": "Spherical Earth, internal sources; last axis holds north, east and down components; the m = 0 terms equal zonal_field.",
+   "extra": "S = schmidt_legendre(n, m, latitude); theta = pi / 2 - latitude; a = reference_radius; r = distance",
+   "output_unit": "T"
   }
  ],
  "volcanology": [
@@ -5159,6 +5946,102 @@
    "limit": "Newhall and Self (1982), volume criterion only: VEI 0 below 1e4 m^3, 1 below 1e6 m^3, then one step per factor of ten up to VEI 8 at 1e12 m^3 and above. Column height and other criteria are not used.",
    "extra": "",
    "output_unit": "1"
+  },
+  {
+   "name": "diffusive_supersaturation",
+   "title": "Dimensionless supersaturation that drives diffusive bubble growth",
+   "params": [
+    {
+     "name": "initial_water",
+     "unit": "1, mass fraction far from the bubble",
+     "kind": "between surface_water and 1"
+    },
+    {
+     "name": "surface_water",
+     "unit": "1, mass fraction at the bubble wall",
+     "kind": "fraction"
+    },
+    {
+     "name": "melt_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gas_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "melt_density * (initial_water - surface_water) / gas_density",
+   "args": [
+    0.05,
+    0.03,
+    2300,
+    100
+   ],
+   "expected": "0.46",
+   "why": "After decompression the melt holds more water than it can keep in solution, and the excess, measured in volumes of gas, sets how fast bubbles grow.",
+   "limit": "The mass-transfer analogue of the Jakob number; input of scriven_growth_constant.",
+   "extra": "require(initial_water >= surface_water)",
+   "output_unit": "1"
+  },
+  {
+   "name": "scriven_growth_constant",
+   "title": "Growth constant of a bubble growing by diffusion from a supersaturated liquid",
+   "params": [
+    {
+     "name": "supersaturation",
+     "unit": "1",
+     "kind": "positive, below 1 / density_ratio"
+    },
+    {
+     "name": "density_ratio",
+     "unit": "1, gas over melt density",
+     "kind": "between 0 and 1"
+    }
+   ],
+   "expr": "supersaturation = 2 * beta**3 * np.exp(beta**2 + 2 * e * beta**2) * integral(x**-2 * np.exp(-x**2 - 2 * e * beta**3 / x), x from beta to infinity)",
+   "args": [
+    0.4842556877173758,
+    1
+   ],
+   "expected": "1.0",
+   "why": "A bubble nucleated in a supersaturated melt grows as the square root of time, at a rate set by how much excess gas the melt holds and by how fast it diffuses.",
+   "limit": "Scriven (1959) self-similar growth from zero radius at constant supersaturation, dilute solution; no surface tension, viscosity or inertia; solved by root finding.",
+   "extra": "e = 1 - density_ratio; require(supersaturation * density_ratio < 1); for density_ratio = 1 the right-hand side is 2 * beta**2 - 2 * np.sqrt(np.pi) * beta**3 * np.exp(beta**2) * erfc(beta)",
+   "output_unit": "1"
+  },
+  {
+   "name": "scriven_bubble_radius",
+   "title": "Radius of a bubble growing by diffusion at constant supersaturation",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "growth_constant",
+     "unit": "1",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "2 * growth_constant * np.sqrt(diffusivity * time)",
+   "args": [
+    4,
+    1,
+    0.5
+   ],
+   "expected": "2",
+   "why": "Diffusion-limited growth slows as the depleted shell around the bubble thickens, so the radius grows only as the square root of time.",
+   "limit": "Scriven (1959): growth from zero radius in an unbounded melt with constant diffusivity.",
+   "extra": "",
+   "output_unit": "m"
   }
  ],
  "hydrology": [
@@ -6424,6 +7307,152 @@
    "limit": "Beven and Kirkby (1979): exponential transmissivity profile, water table parallel to the surface.",
    "extra": "",
    "output_unit": "m/s"
+  },
+  {
+   "name": "exponential_water_content",
+   "title": "Volumetric water content of an exponential (Gardner-Russo) soil",
+   "params": [
+    {
+     "name": "pressure_head",
+     "unit": "m, negative under suction",
+     "kind": "nonpositive"
+    },
+    {
+     "name": "saturated_water_content",
+     "unit": "1",
+     "kind": "at most 1, above residual_water_content"
+    },
+    {
+     "name": "residual_water_content",
+     "unit": "1",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "sorptive_number",
+     "unit": "1/m, Gardner's alpha",
+     "kind": "positive"
+    }
+   ],
+   "expr": "residual_water_content + (saturated_water_content - residual_water_content) * np.exp(sorptive_number * pressure_head)",
+   "args": [
+    -1,
+    0.4,
+    0.05,
+    2
+   ],
+   "expected": "0.05 + 0.35 * np.exp(-2)",
+   "why": "Water drains from the largest pores first, so the water content falls with suction; with the same exponent as Gardner's conductivity, Richards's equation becomes linear.",
+   "limit": "Russo (1988) retention paired with Gardner's (1958) conductivity; no air-entry value or hysteresis.",
+   "extra": "require(saturated_water_content > residual_water_content)",
+   "output_unit": "1"
+  },
+  {
+   "name": "kinematic_wave_celerity",
+   "title": "Speed at which a flood wave travels down a channel",
+   "params": [
+    {
+     "name": "velocity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, m in Q = a A**m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "exponent * velocity",
+   "args": [
+    1.5,
+    1.6666666666666667
+   ],
+   "expected": "2.5",
+   "why": "A flood crest moves faster than the water in it, because deeper water flows faster: by 5/3 for Manning's law in a wide channel.",
+   "limit": "Lighthill and Whitham (1955): single-valued rating, friction balancing the bed slope; no attenuation.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "degree_day_melt",
+   "title": "Snowmelt rate from the air temperature by the degree-day method",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive"
+    },
+    {
+     "name": "degree_day_factor",
+     "unit": "m/(K s) of water equivalent",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "threshold_temperature",
+     "unit": "K",
+     "kind": "positive"
+    }
+   ],
+   "expr": "degree_day_factor * np.maximum(temperature - threshold_temperature, 0)",
+   "args": [
+    278.15,
+    2,
+    273.15
+   ],
+   "expected": "10",
+   "why": "Air temperature alone, the one weather variable measured almost everywhere, predicts melt well over days because it tracks most of the energy that reaches the snow.",
+   "limit": "Finsterwalder and Schunk (1887): periods of a day or longer with snow present; the factor varies with season, site and snow age.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "snowpack_water_equivalent",
+   "title": "Snow water equivalent and water released by a degree-day snowpack",
+   "params": [
+    {
+     "name": "temperature",
+     "unit": "K",
+     "kind": "positive vector"
+    },
+    {
+     "name": "precipitation",
+     "unit": "m of water equivalent per step",
+     "kind": "nonnegative vector"
+    },
+    {
+     "name": "degree_day_factor",
+     "unit": "m/(K s)",
+     "kind": "nonnegative scalar"
+    },
+    {
+     "name": "threshold_temperature",
+     "unit": "K",
+     "kind": "positive scalar"
+    },
+    {
+     "name": "time_step",
+     "unit": "s",
+     "kind": "positive scalar"
+    }
+   ],
+   "expr": "melt = min(swe + snowfall, degree_day_factor * max(T - T0, 0) * time_step); swe = swe + snowfall - melt",
+   "args": [
+    [
+     270,
+     275
+    ],
+    [
+     0.01,
+     0.002
+    ],
+    0.001,
+    273.15,
+    2
+   ],
+   "expected": "[[0.01, 0], [0.0063, 0.0057]]",
+   "why": "Snow stores winter precipitation and releases it as melt in spring, the delay that shapes the hydrograph of every mountain river.",
+   "limit": "Single-layer degree-day snowpack starting bare; one threshold for snowfall and melt; no refreezing, liquid storage or sublimation; last axis holds SWE and released water.",
+   "extra": "temperature and precipitation are matching vectors",
+   "output_unit": "m"
   }
  ],
  "glaciology": [
@@ -7862,6 +8891,1538 @@
    "limit": "Schoof (2007): a flowline with a power-law sliding bed, an unbuttressed shelf and a boundary layer at the grounding line; steady states are stable only where the bed rises inland. Below, A = rate_factor, n = exponent, C = friction_coefficient, m = friction_exponent, rho_i = ice_density, rho_w = water_density, h = grounding_thickness.",
    "extra": "ice_density < water_density",
    "output_unit": "m^2/s"
+  },
+  {
+   "name": "herron_langway_density",
+   "title": "Density of steady-state firn at a depth, by the Herron-Langway model",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m below the surface",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "temperature",
+     "unit": "K, mean annual firn temperature",
+     "kind": "positive, at most 273.15"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_density",
+     "unit": "kg/m^3",
+     "kind": "positive, below 550"
+    }
+   ],
+   "expr": "ICE_DENSITY / (1 + np.exp(-x)), x = logit(surface_density) + rho_i k0 * depth above the critical depth and logit(550) + rho_i k1 / A**0.5 * (depth - critical_depth) below it",
+   "args": [
+    50,
+    248.15,
+    1e-09,
+    350
+   ],
+   "expected": "917 / (1 + np.exp(-(np.log(550 / 367) + (0.917 * 575 * np.exp(-21400 / (R_GAS * 248.15)) / np.sqrt(1e-09 * SECONDS_PER_YEAR * 0.917)) * (50 - ((np.log(550 / 367) - np.log(350 / 567)) / (0.917 * 11 * np.exp(-10160 / (R_GAS * 248.15))))))))",
+   "why": "Snow compacts under its own weight into firn and then into ice, so the density profile sets how deep air stays open to the atmosphere and how much the ice is younger than the snow it buries.",
+   "limit": "Herron and Langway (1980): empirical steady-state dry firn, two stages split at 550 kg/m^3, fitted with densities in Mg/m^3 and accumulation in m/yr of water; no melt, layering or transient climate.",
+   "extra": "logit(rho) = ln(rho / (ICE_DENSITY - rho)); k0 = 11 exp(-10160 / (R T)), k1 = 575 exp(-21400 / (R T)); A = accumulation * SECONDS_PER_YEAR * ICE_DENSITY / 1000; surface_density < 550",
+   "output_unit": "kg/m^3"
+  },
+  {
+   "name": "herron_langway_depth",
+   "title": "Depth at which steady-state Herron-Langway firn reaches a density",
+   "params": [
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "at least surface_density, below ICE_DENSITY"
+    },
+    {
+     "name": "temperature",
+     "unit": "K, mean annual firn temperature",
+     "kind": "positive, at most 273.15"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_density",
+     "unit": "kg/m^3",
+     "kind": "positive, below 550"
+    }
+   ],
+   "expr": "(logit(density) - logit(surface_density)) / (rho_i k0) up to 550 kg/m^3, then critical_depth + (logit(density) - logit(550)) * A**0.5 / (rho_i k1)",
+   "args": [
+    830,
+    248.15,
+    1e-09,
+    350
+   ],
+   "expected": "((np.log(550 / 367) - np.log(350 / 567)) / (0.917 * 11 * np.exp(-10160 / (R_GAS * 248.15)))) + (np.log(830 / 87) - np.log(550 / 367)) / (0.917 * 575 * np.exp(-21400 / (R_GAS * 248.15)) / np.sqrt(1e-09 * SECONDS_PER_YEAR * 0.917))",
+   "why": "The depth of the pore close-off density, about 830 kg/m^3, is where the air in the firn is sealed into bubbles.",
+   "limit": "Herron and Langway (1980): empirical steady-state dry firn, two stages split at 550 kg/m^3, fitted with densities in Mg/m^3 and accumulation in m/yr of water; no melt, layering or transient climate.",
+   "extra": "density >= surface_density",
+   "output_unit": "m"
+  },
+  {
+   "name": "herron_langway_mean_density",
+   "title": "Mean density of steady-state Herron-Langway firn between the surface and a depth",
+   "params": [
+    {
+     "name": "depth",
+     "unit": "m below the surface",
+     "kind": "positive"
+    },
+    {
+     "name": "temperature",
+     "unit": "K, mean annual firn temperature",
+     "kind": "positive, at most 273.15"
+    },
+    {
+     "name": "accumulation",
+     "unit": "m/s of ice",
+     "kind": "positive"
+    },
+    {
+     "name": "surface_density",
+     "unit": "kg/m^3",
+     "kind": "positive, below 550"
+    }
+   ],
+   "expr": "(stage-one mass + stage-two mass) / depth, each stage of slope c holding ICE_DENSITY / c * ln((ICE_DENSITY - a) / (ICE_DENSITY - b)) between densities a and b",
+   "args": [
+    50,
+    248.15,
+    1e-09,
+    350
+   ],
+   "expected": "(917 / (0.917 * 11 * np.exp(-10160 / (R_GAS * 248.15))) * np.log(567 / 367) + 917 / (0.917 * 575 * np.exp(-21400 / (R_GAS * 248.15)) / np.sqrt(1e-09 * SECONDS_PER_YEAR * 0.917)) * np.log(367 / (917 - 917 / (1 + np.exp(-(np.log(550 / 367) + (0.917 * 575 * np.exp(-21400 / (R_GAS * 248.15)) / np.sqrt(1e-09 * SECONDS_PER_YEAR * 0.917)) * (50 - ((np.log(550 / 367) - np.log(350 / 567)) / (0.917 * 11 * np.exp(-10160 / (R_GAS * 248.15))))))))))) / 50",
+   "why": "The firn mass above the close-off depth, divided by the yearly accumulation, is the age of the ice there and so the ice-age minus gas-age difference.",
+   "limit": "Herron and Langway (1980): empirical steady-state dry firn, two stages split at 550 kg/m^3, fitted with densities in Mg/m^3 and accumulation in m/yr of water; no melt, layering or transient climate. Exact integral of herron_langway_density.",
+   "extra": "evaluated through ln(1 + exp(x)) differences",
+   "output_unit": "kg/m^3"
+  },
+  {
+   "name": "expected_positive_degree_days",
+   "title": "Expected positive degree-days of a period with normally distributed temperature",
+   "params": [
+    {
+     "name": "mean_temperature",
+     "unit": "K, mean air temperature of the period",
+     "kind": "positive"
+    },
+    {
+     "name": "standard_deviation",
+     "unit": "K, of the daily temperature about that mean",
+     "kind": "positive"
+    },
+    {
+     "name": "duration",
+     "unit": "s, length of the period",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "duration * (s / np.sqrt(2 * np.pi) * np.exp(-c**2 / (2 * s**2)) + c / 2 * erfc(-c / (np.sqrt(2) * s))), c = mean_temperature - 273.15, s = standard_deviation",
+   "args": [
+    273.15,
+    5,
+    86400
+   ],
+   "expected": "86400 * 5 / np.sqrt(2 * np.pi)",
+   "why": "A month whose mean is below freezing still has warm days that melt ice, so ice-sheet models count the positive part of a fluctuating temperature rather than of its mean.",
+   "limit": "Reeh (1991), closed form of Calov and Greve (2005): normal temperature about a fixed mean over the period; no day-to-day correlation or diurnal cycle.",
+   "output_unit": "K s"
+  },
+  {
+   "name": "pdd_surface_melt",
+   "title": "Snow melt, ice melt and runoff of an ice-sheet surface from its positive degree-days",
+   "params": [
+    {
+     "name": "positive_degree_days",
+     "unit": "K s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "snowfall",
+     "unit": "m of water equivalent",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "snow_factor",
+     "unit": "m/(K s) of water equivalent",
+     "kind": "positive"
+    },
+    {
+     "name": "ice_factor",
+     "unit": "m/(K s) of water equivalent",
+     "kind": "positive"
+    },
+    {
+     "name": "refreezing_fraction",
+     "unit": "1, of the snowfall",
+     "kind": "between 0 and 1"
+    }
+   ],
+   "expr": "snow = np.minimum(snow_factor * pdd, snowfall); ice = ice_factor * np.maximum(pdd - snowfall / snow_factor, 0); runoff = snow + ice - np.minimum(refreezing_fraction * snowfall, snow + ice)",
+   "args": [
+    43200000,
+    0.5,
+    3.4722222222222227e-08,
+    9.259259259259259e-08,
+    0.6
+   ],
+   "expected": "[0.5, 8e-3 / 86400 * (43200000 - 0.5 / (3e-3 / 86400)), 8e-3 / 86400 * (43200000 - 0.5 / (3e-3 / 86400)) + 0.2]",
+   "why": "The positive degree-days melt the year's snow first and then the darker ice beneath, and part of the meltwater refreezes in the cold snow, so runoff is less than melt.",
+   "limit": "Reeh (1991) with Braithwaite's factors: one annual layer; no rain, superimposed ice, albedo feedback or firn warming.",
+   "extra": "returns snow melt, ice melt and runoff on the last axis",
+   "output_unit": "m of water equivalent"
+  }
+ ],
+ "geomorphology": [
+  {
+   "name": "stokes_settling_velocity",
+   "title": "Stokes settling velocity of a small sphere",
+   "params": [
+    {
+     "name": "diameter",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "sediment_density",
+     "unit": "kg/m^3",
+     "kind": "greater than fluid_density"
+    },
+    {
+     "name": "fluid_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "viscosity",
+     "unit": "Pa s, dynamic viscosity of the fluid",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(sediment_density - fluid_density) * gravity * diameter**2 / (18 * viscosity)",
+   "args": [
+    0.0001,
+    2650,
+    1000,
+    0.001,
+    9.81
+   ],
+   "expected": "1650 * 9.81 * 1e-8 / 18e-3",
+   "why": "Fine grains fall so slowly that viscosity alone resists them, which is why silt and clay stay in suspension.",
+   "limit": "Stokes (1851): a smooth sphere at particle Reynolds number below about 1, roughly quartz finer than 0.1 mm in water.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "ferguson_church_settling_velocity",
+   "title": "Settling velocity of natural sand grains at any size",
+   "params": [
+    {
+     "name": "diameter",
+     "unit": "m, sieve diameter",
+     "kind": "positive"
+    },
+    {
+     "name": "sediment_density",
+     "unit": "kg/m^3",
+     "kind": "greater than fluid_density"
+    },
+    {
+     "name": "fluid_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "kinematic_viscosity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "R * gravity * diameter**2 / (18 * kinematic_viscosity + np.sqrt(0.75 * R * gravity * diameter**3)); R = sediment_density / fluid_density - 1",
+   "args": [
+    0.0001,
+    2650,
+    1000,
+    1e-06,
+    9.81
+   ],
+   "expected": "1.65 * 9.81 * 1e-8 / (18e-6 + np.sqrt(0.75 * 1.65 * 9.81 * 1e-12))",
+   "why": "One formula spans viscous settling of silt and drag-dominated settling of gravel, joining Stokes's law to the turbulent limit.",
+   "limit": "Ferguson and Church (2004) with C1 = 18 and C2 = 1 for natural grains; Stokes's law for fine grains and a constant drag coefficient for coarse ones; spheres need C2 = 0.4.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "bed_shear_stress",
+   "title": "Mean bed shear stress of steady uniform flow",
+   "params": [
+    {
+     "name": "hydraulic_radius",
+     "unit": "m, the depth in a wide channel",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "slope",
+     "unit": "1, tangent of the water-surface slope",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3 of the fluid",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "density * gravity * hydraulic_radius * slope",
+   "args": [
+    2,
+    0.001,
+    1000,
+    9.81
+   ],
+   "expected": "19.62",
+   "why": "The weight of the water resolved down the slope is balanced by friction on the bed, and that friction moves the sediment.",
+   "limit": "The depth-slope product of steady uniform flow; bank friction and bedforms take part of it in real channels.",
+   "extra": "",
+   "output_unit": "Pa"
+  },
+  {
+   "name": "shear_velocity",
+   "title": "Shear velocity of a flow over its bed",
+   "params": [
+    {
+     "name": "shear_stress",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3 of the fluid",
+     "kind": "positive"
+    }
+   ],
+   "expr": "np.sqrt(shear_stress / density)",
+   "args": [
+    19.62,
+    1000
+   ],
+   "expected": "np.sqrt(0.01962)",
+   "why": "The bed shear stress expressed as a velocity sets the scale of near-bed turbulence.",
+   "limit": "A definition; it applies to any turbulent boundary layer, in water or air.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "shields_number",
+   "title": "Shields number, the dimensionless bed shear stress",
+   "params": [
+    {
+     "name": "shear_stress",
+     "unit": "Pa",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diameter",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "sediment_density",
+     "unit": "kg/m^3",
+     "kind": "greater than fluid_density"
+    },
+    {
+     "name": "fluid_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "shear_stress / ((sediment_density - fluid_density) * gravity * diameter)",
+   "args": [
+    19.62,
+    0.01,
+    2650,
+    1000,
+    9.81
+   ],
+   "expected": "19.62 / (1650 * 9.81 * 0.01)",
+   "why": "The ratio of the force that drives a grain to the submerged weight that holds it decides whether the bed moves.",
+   "limit": "Shields (1936): uniform cohesionless grains on a nearly flat bed.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "dimensionless_grain_size",
+   "title": "Dimensionless grain size of a sediment in a fluid",
+   "params": [
+    {
+     "name": "diameter",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "sediment_density",
+     "unit": "kg/m^3",
+     "kind": "greater than fluid_density"
+    },
+    {
+     "name": "fluid_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "kinematic_viscosity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "diameter * ((sediment_density / fluid_density - 1) * gravity / kinematic_viscosity**2)**(1 / 3)",
+   "args": [
+    0.001,
+    2650,
+    1000,
+    1e-06,
+    9.81
+   ],
+   "expected": "1e-3 * (1.65 * 9.81 / 1e-12) ** (1 / 3)",
+   "why": "One number combines grain size, density and viscosity, so that a single curve gives the threshold of motion for sand in water and in air.",
+   "limit": "Soulsby and Whitehouse (1997); about 25 per millimetre of quartz in water at 20 degC.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "critical_shields_number",
+   "title": "Critical Shields number for the threshold of motion",
+   "params": [
+    {
+     "name": "dimensionless_grain_size",
+     "unit": "1, from :func:`dimensionless_grain_size`",
+     "kind": "positive"
+    }
+   ],
+   "expr": "0.30 / (1 + 1.2 * D) + 0.055 * (1 - np.exp(-0.020 * D)); D = dimensionless_grain_size",
+   "args": [
+    10
+   ],
+   "expected": "0.30 / 13 + 0.055 * (1 - np.exp(-0.2))",
+   "why": "The Shields curve falls from fine to medium sand and levels off for gravel, where a grain moves once the bed stress reaches about 5% of its submerged weight per unit area.",
+   "limit": "Soulsby and Whitehouse (1997) fit to Shields's (1936) data, with the rise for fine grains; uniform cohesionless grains on a flat bed, with a scatter of about a factor of two.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "keulegan_mean_velocity",
+   "title": "Depth-averaged velocity of a rough turbulent channel flow",
+   "params": [
+    {
+     "name": "shear_velocity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "greater than roughness_height / 11"
+    },
+    {
+     "name": "roughness_height",
+     "unit": "m, Nikuradse's equivalent sand roughness, about 2.5 grain diameters on a flat bed",
+     "kind": "positive"
+    }
+   ],
+   "expr": "shear_velocity / VON_KARMAN * np.log(11 * depth / roughness_height)",
+   "args": [
+    0.1,
+    2,
+    0.022
+   ],
+   "expected": "0.1 / VON_KARMAN * np.log(1000)",
+   "why": "Integrating the logarithmic velocity profile over the depth turns a bed shear stress into the mean velocity a current meter would record.",
+   "limit": "Keulegan (1938): fully rough flow in a wide channel with the von Karman constant 0.41; the depth should exceed the roughness several times.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "rouse_number",
+   "title": "Rouse number of suspended sediment",
+   "params": [
+    {
+     "name": "settling_velocity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "shear_velocity",
+     "unit": "m/s",
+     "kind": "positive"
+    }
+   ],
+   "expr": "settling_velocity / (VON_KARMAN * shear_velocity)",
+   "args": [
+    0.041,
+    0.1
+   ],
+   "expected": "0.041 / (VON_KARMAN * 0.1)",
+   "why": "Settling pulls grains down while turbulence mixes them up; the ratio of the two sets how evenly they fill the flow.",
+   "limit": "Rouse (1937), with the eddy diffusivity of sediment equal to that of momentum and the von Karman constant 0.41.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "rouse_concentration",
+   "title": "Rouse profile of suspended-sediment concentration",
+   "params": [
+    {
+     "name": "height",
+     "unit": "m above the bed",
+     "kind": "between reference_height and depth"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "greater than reference_height"
+    },
+    {
+     "name": "reference_height",
+     "unit": "m, where the concentration is known",
+     "kind": "positive"
+    },
+    {
+     "name": "reference_concentration",
+     "unit": "Any concentration unit, at the reference height",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rouse_number",
+     "unit": "1, from :func:`rouse_number`",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "reference_concentration * ((depth - height) / height * reference_height / (depth - reference_height))**rouse_number",
+   "args": [
+    0.5,
+    1,
+    0.05,
+    2,
+    1
+   ],
+   "expected": "2 * 0.05 / 0.95",
+   "why": "The balance of settling and turbulent mixing concentrates sediment near the bed, the more so the coarser the grains.",
+   "limit": "Rouse (1937): steady uniform flow with a parabolic eddy diffusivity and dilute suspension; zero at the surface.",
+   "extra": "",
+   "output_unit": "same as reference_concentration"
+  },
+  {
+   "name": "meyer_peter_muller_transport",
+   "title": "Meyer-Peter and Müller dimensionless bedload transport rate",
+   "params": [
+    {
+     "name": "shields_number",
+     "unit": "1, from :func:`shields_number`",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "critical_shields_number",
+     "unit": "1, 0.047 in the original fit",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "8 * np.maximum(shields_number - critical_shields_number, 0)**1.5",
+   "args": [
+    0.147,
+    0.047
+   ],
+   "expected": "8 * 0.1 ** 1.5",
+   "why": "Bedload grows as the 3/2 power of the excess of the bed stress over its threshold, so a modest flood moves far more gravel than a long ordinary flow.",
+   "limit": "Meyer-Peter and Müller (1948): flume data for well-sorted sand and gravel on a plane bed, with the skin friction part of the stress; Wong and Parker (2006) correct it to ``3.97 (theta - 0.0495)**1.5``.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "bedload_flux",
+   "title": "Volumetric bedload flux per unit width from the Einstein number",
+   "params": [
+    {
+     "name": "transport_rate",
+     "unit": "1, the Einstein number of :func:`meyer_peter_muller_transport`",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diameter",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "sediment_density",
+     "unit": "kg/m^3",
+     "kind": "greater than fluid_density"
+    },
+    {
+     "name": "fluid_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "transport_rate * np.sqrt((sediment_density / fluid_density - 1) * gravity * diameter) * diameter",
+   "args": [
+    1,
+    0.01,
+    2650,
+    1000,
+    9.81
+   ],
+   "expected": "np.sqrt(1.65 * 9.81 * 0.01) * 0.01",
+   "why": "The dimensionless transport rate scales back to a volume of grains crossing each metre of channel width per second.",
+   "limit": "Einstein (1950) scaling; uniform grains.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "diffusive_hillslope_flux",
+   "title": "Linear diffusive sediment flux of soil creep",
+   "params": [
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s, the hillslope transport coefficient",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "gradient",
+     "unit": "1, the elevation gradient dz/dx",
+     "kind": "real"
+    }
+   ],
+   "expr": "-diffusivity * gradient",
+   "args": [
+    0.01,
+    0.2
+   ],
+   "expected": "-0.002",
+   "why": "Creep moves soil downhill at a rate proportional to the slope, so convex hilltops lower and their profiles obey a diffusion equation.",
+   "limit": "Gilbert (1909) and Culling (1960): gentle soil-mantled slopes; the flux grows faster than linearly near the angle of repose (see :func:`nonlinear_hillslope_flux`).",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "nonlinear_hillslope_flux",
+   "title": "Nonlinear soil flux that diverges at a critical gradient",
+   "params": [
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "gradient",
+     "unit": "1, the elevation gradient dz/dx",
+     "kind": "magnitude less than critical_gradient"
+    },
+    {
+     "name": "critical_gradient",
+     "unit": "1, about 1.25 on soil-mantled slopes",
+     "kind": "positive"
+    }
+   ],
+   "expr": "-diffusivity * gradient / (1 - (gradient / critical_gradient)**2)",
+   "args": [
+    0.01,
+    0.5,
+    1.0
+   ],
+   "expected": "-0.005 / 0.75",
+   "why": "Steep slopes shed soil far faster than linear creep predicts, which is why hillslopes near their threshold angle become planar.",
+   "limit": "Roering, Kirchner and Dietrich (1999): reduces to :func:`diffusive_hillslope_flux` on gentle slopes; landslides take over at the critical gradient.",
+   "extra": "",
+   "output_unit": "m^2/s"
+  },
+  {
+   "name": "scarp_elevation",
+   "title": "Elevation across a fault scarp degraded by linear diffusion",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m from the scarp midpoint, positive toward the upthrown side",
+     "kind": "real"
+    },
+    {
+     "name": "half_offset",
+     "unit": "m, half the vertical offset of the initial step",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "time",
+     "unit": "s since the scarp formed",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "far_field_gradient",
+     "unit": "1, the regional slope on both sides",
+     "kind": "real"
+    }
+   ],
+   "expr": "half_offset * erf(distance / (2 * np.sqrt(diffusivity * time))) + far_field_gradient * distance",
+   "args": [
+    1,
+    2,
+    0.25,
+    1,
+    0.1
+   ],
+   "expected": "2 * 0.8427007929497149 + 0.1",
+   "why": "A fresh step in the land rounds off at a rate set by the hillslope diffusivity, so its shape records its age.",
+   "limit": "Culling (1960) and Hanks et al. (1984): a vertical step on a uniform slope degraded by linear diffusion without base-level change; a fresh step (``diffusivity * time = 0``) is returned exactly.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "scarp_maximum_gradient",
+   "title": "Steepest gradient of a diffusively degraded fault scarp",
+   "params": [
+    {
+     "name": "half_offset",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "time",
+     "unit": "s",
+     "kind": "positive"
+    },
+    {
+     "name": "far_field_gradient",
+     "unit": "1",
+     "kind": "real"
+    }
+   ],
+   "expr": "half_offset / np.sqrt(np.pi * diffusivity * time) + far_field_gradient",
+   "args": [
+    2,
+    0.25,
+    4,
+    0.1
+   ],
+   "expected": "2 / np.sqrt(np.pi) + 0.1",
+   "why": "The midpoint slope of a scarp falls as the inverse square root of its age, the measurement behind morphologic dating.",
+   "limit": "Hanks et al. (1984), the derivative of :func:`scarp_elevation` at its midpoint; same assumptions.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "soil_production_rate",
+   "title": "Exponential soil production function",
+   "params": [
+    {
+     "name": "soil_depth",
+     "unit": "m, vertical thickness of mobile soil",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "maximum_rate",
+     "unit": "m/s of bedrock lowering under bare ground",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_depth",
+     "unit": "m, about 0.5 m",
+     "kind": "positive"
+    }
+   ],
+   "expr": "maximum_rate * np.exp(-soil_depth / decay_depth)",
+   "args": [
+    0.5,
+    1e-11,
+    0.5
+   ],
+   "expected": "1e-11 * np.exp(-1)",
+   "why": "Bedrock turns into soil fastest where it is bare and more slowly under a thick soil that shields it, which keeps soil-mantled hillslopes in balance.",
+   "limit": "Heimsath et al. (1997), from cosmogenic nuclides under soils of a few metres at most; some sites show a humped function with a maximum under a thin soil.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "hilltop_curvature",
+   "title": "Hilltop curvature of a diffusive hillslope in steady state",
+   "params": [
+    {
+     "name": "erosion_rate",
+     "unit": "m/s of bedrock lowering",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diffusivity",
+     "unit": "m^2/s",
+     "kind": "positive"
+    },
+    {
+     "name": "rock_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "soil_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    }
+   ],
+   "expr": "-rock_density * erosion_rate / (soil_density * diffusivity)",
+   "args": [
+    1e-12,
+    1e-10,
+    2600,
+    1300
+   ],
+   "expected": "-0.02",
+   "why": "Where creep balances uniform lowering, faster erosion makes sharper ridges, so the curvature of a hilltop measures its erosion rate.",
+   "limit": "Roering, Perron and Kirchner (2007): steady state with linear creep at the divide, where the gradient is small.",
+   "extra": "",
+   "output_unit": "1/m"
+  },
+  {
+   "name": "stream_power_erosion",
+   "title": "Bedrock incision rate of the stream-power law",
+   "params": [
+    {
+     "name": "drainage_area",
+     "unit": "m^2, the area upstream, a proxy for discharge",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "1, tangent of the channel slope",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "erodibility",
+     "unit": "m^(1 - 2 area_exponent)/s for a slope exponent of 1",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "area_exponent",
+     "unit": "1, ``m``, about 0.5",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "slope_exponent",
+     "unit": "1, ``n``, about 1",
+     "kind": "positive"
+    }
+   ],
+   "expr": "erodibility * drainage_area**area_exponent * slope**slope_exponent",
+   "args": [
+    1000000.0,
+    0.01,
+    1e-10,
+    0.5,
+    1
+   ],
+   "expected": "1e-9",
+   "why": "A river cuts its bed faster where it carries more water down a steeper slope, the rule behind most models of mountain landscapes.",
+   "limit": "Howard and Kerby (1983): detachment-limited bedrock channels, with discharge and width folded into powers of the area; no threshold, sediment cover or tools effect.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "steady_state_slope",
+   "title": "Channel slope at which stream-power incision balances uplift",
+   "params": [
+    {
+     "name": "uplift_rate",
+     "unit": "m/s relative to base level",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "drainage_area",
+     "unit": "m^2",
+     "kind": "positive"
+    },
+    {
+     "name": "erodibility",
+     "unit": "m^(1 - 2 area_exponent)/s for a slope exponent of 1",
+     "kind": "positive"
+    },
+    {
+     "name": "area_exponent",
+     "unit": "1",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "slope_exponent",
+     "unit": "1",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(uplift_rate / (erodibility * drainage_area**area_exponent))**(1 / slope_exponent)",
+   "args": [
+    1e-09,
+    1000000.0,
+    1e-10,
+    0.5,
+    1
+   ],
+   "expected": "0.01",
+   "why": "A graded bedrock river steepens until it cuts down as fast as the rock rises, so its slope falls with drainage area along a concave profile.",
+   "limit": "Steady state of :func:`stream_power_erosion` under uniform uplift; the slope follows Flint's law with concavity ``area_exponent / slope_exponent``.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "knickpoint_celerity",
+   "title": "Upstream migration speed of a knickpoint under stream power",
+   "params": [
+    {
+     "name": "drainage_area",
+     "unit": "m^2",
+     "kind": "positive"
+    },
+    {
+     "name": "slope",
+     "unit": "1, the channel slope at the knickpoint",
+     "kind": "positive"
+    },
+    {
+     "name": "erodibility",
+     "unit": "m^(1 - 2 area_exponent)/s for a slope exponent of 1",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "area_exponent",
+     "unit": "1",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "slope_exponent",
+     "unit": "1",
+     "kind": "positive"
+    }
+   ],
+   "expr": "erodibility * drainage_area**area_exponent * slope**(slope_exponent - 1)",
+   "args": [
+    1000000.0,
+    0.01,
+    1e-10,
+    0.5,
+    1
+   ],
+   "expected": "1e-7",
+   "why": "A drop in base level travels up a river as a step that moves fastest on the large trunk streams and slows as it climbs into the headwaters.",
+   "limit": "Whipple and Tucker (1999), the characteristic speed of :func:`stream_power_erosion`; independent of the slope only when ``slope_exponent = 1``, where knickpoints keep their shape.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "flint_slope",
+   "title": "Flint's power law of channel slope against drainage area",
+   "params": [
+    {
+     "name": "drainage_area",
+     "unit": "m^2",
+     "kind": "positive"
+    },
+    {
+     "name": "steepness_index",
+     "unit": "m^(2 concavity), the channel steepness",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "concavity",
+     "unit": "1, about 0.4-0.6",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "steepness_index * drainage_area**(-concavity)",
+   "args": [
+    1000000.0,
+    10,
+    0.5
+   ],
+   "expected": "0.01",
+   "why": "Along almost every river the slope falls as a power of the area drained, so a log-log plot of slope against area is a straight line whose slope is the concavity.",
+   "limit": "Flint (1974): below the colluvial-fluvial transition at about 1 km^2, in rivers without knickpoints or changes of lithology.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "chi_coordinate",
+   "title": "The chi coordinate of a river long profile",
+   "params": [
+    {
+     "name": "distance",
+     "unit": "m upstream from the outlet",
+     "kind": "strictly increasing vector"
+    },
+    {
+     "name": "drainage_area",
+     "unit": "m^2 at each node",
+     "kind": "positive vector"
+    },
+    {
+     "name": "reference_area",
+     "unit": "m^2",
+     "kind": "positive scalar"
+    },
+    {
+     "name": "concavity",
+     "unit": "1",
+     "kind": "nonnegative scalar"
+    }
+   ],
+   "expr": "chi = integral of (reference_area / drainage_area)**concavity d distance",
+   "args": [
+    [
+     0,
+     1000,
+     2000
+    ],
+    [
+     4000000.0,
+     1000000.0,
+     250000.0
+    ],
+    1000000.0,
+    0.5
+   ],
+   "expected": "[0, 750, 2250]",
+   "why": "Rescaling distance by drainage area turns a graded profile into a straight line, so tributaries that share a base level and erosion rate plot on top of each other.",
+   "limit": "Perron and Royden (2013), integrated by the trapezoidal rule between nodes; in steady state with :func:`steady_state_slope` the elevation is linear in chi.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "hack_length",
+   "title": "Hack's law of main-stream length against drainage area",
+   "params": [
+    {
+     "name": "drainage_area",
+     "unit": "m^2",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "coefficient",
+     "unit": "m^(1 - 2 exponent), about 0.32 for an exponent of 0.6 in SI (1.4 in miles)",
+     "kind": "positive"
+    },
+    {
+     "name": "exponent",
+     "unit": "1, about 0.6",
+     "kind": "positive"
+    }
+   ],
+   "expr": "coefficient * drainage_area**exponent",
+   "args": [
+    1000000.0,
+    0.32,
+    0.6
+   ],
+   "expected": "0.32 * 1e6 ** 0.6",
+   "why": "Larger basins are longer than they are wide, because the main stream grows faster than the square root of the area it drains.",
+   "limit": "Hack (1957), from basins in Virginia and Maryland; the exponent drifts toward 0.5 in the largest basins.",
+   "extra": "",
+   "output_unit": "m"
+  },
+  {
+   "name": "strahler_order",
+   "title": "Strahler order of every link in a river network",
+   "params": [
+    {
+     "name": "downstream",
+     "unit": "Index of the link each link drains into, -1 at an outlet",
+     "kind": "integer vector forming a tree"
+    }
+   ],
+   "expr": "order = max(upstream orders) + (count of that maximum >= 2)",
+   "args": [
+    [
+     2,
+     2,
+     4,
+     4,
+     -1,
+     3
+    ]
+   ],
+   "expected": "[1, 1, 2, 1, 2, 1]",
+   "why": "Ordering streams from the headwaters down, rising by one only where two streams of equal order meet, gives the network a hierarchy whose counts and lengths follow Horton's laws.",
+   "limit": "Strahler (1952, 1957): a link takes the highest order among those draining into it, plus one when two or more share that highest order; several outlets are allowed.",
+   "extra": "",
+   "output_unit": "1"
+  },
+  {
+   "name": "downstream_hydraulic_geometry",
+   "title": "Width, depth and velocity of a channel as powers of discharge",
+   "params": [
+    {
+     "name": "discharge",
+     "unit": "m^3/s, the bankfull or mean discharge",
+     "kind": "positive"
+    },
+    {
+     "name": "width_coefficient",
+     "unit": "m^(1 - 3 width_exponent) s^width_exponent",
+     "kind": "positive"
+    },
+    {
+     "name": "width_exponent",
+     "unit": "1, about 0.5 downstream",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "depth_coefficient",
+     "unit": "m^(1 - 3 depth_exponent) s^depth_exponent",
+     "kind": "positive"
+    },
+    {
+     "name": "depth_exponent",
+     "unit": "1, about 0.4 downstream",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "width = a * Q**b; depth = c * Q**f; velocity = Q / (width * depth)",
+   "args": [
+    100,
+    4,
+    0.5,
+    0.25,
+    0.4
+   ],
+   "expected": "[40, 0.25 * 100 ** 0.4, 100 / (40 * 0.25 * 100 ** 0.4)]",
+   "why": "Rivers adjust their shape to the water they carry, widening fastest, deepening more slowly and speeding up least.",
+   "limit": "Leopold and Maddock (1953): power laws fitted to gauging stations, with the velocity from continuity so that its coefficient and exponent are ``1 / (a c)`` and ``1 - b - f``.",
+   "extra": "",
+   "output_unit": "width m; depth m; velocity m/s"
+  },
+  {
+   "name": "effective_discharge",
+   "title": "Effective discharge that carries the most sediment over time",
+   "params": [
+    {
+     "name": "median_discharge",
+     "unit": "m^3/s",
+     "kind": "positive"
+    },
+    {
+     "name": "log_standard_deviation",
+     "unit": "1, standard deviation of the natural logarithm of discharge",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "rating_exponent",
+     "unit": "1, ``b`` in the sediment rating ``Qs = a Q**b``, usually 1.5-3",
+     "kind": "nonnegative"
+    }
+   ],
+   "expr": "median_discharge * np.exp((rating_exponent - 1) * log_standard_deviation**2)",
+   "args": [
+    50,
+    1,
+    2
+   ],
+   "expected": "50 * np.exp(1)",
+   "why": "Rare floods move the most sediment per event but ordinary flows happen far more often; their product peaks at a moderate, frequent flood that does most of the geomorphic work.",
+   "limit": "Wolman and Miller (1960), with a lognormal frequency of discharge and a power-law sediment rating; the maximum of ``Q**b`` times the lognormal density.",
+   "extra": "",
+   "output_unit": "m^3/s"
+  },
+  {
+   "name": "threshold_shear_velocity",
+   "title": "Fluid threshold shear velocity for wind to lift sand",
+   "params": [
+    {
+     "name": "diameter",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "sediment_density",
+     "unit": "kg/m^3",
+     "kind": "greater than air_density"
+    },
+    {
+     "name": "air_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "coefficient",
+     "unit": "1, about 0.1 for the fluid threshold and 0.08 for the lower impact threshold",
+     "kind": "positive"
+    }
+   ],
+   "expr": "coefficient * np.sqrt((sediment_density - air_density) / air_density * gravity * diameter)",
+   "args": [
+    0.00025,
+    2650,
+    1.2,
+    9.81,
+    0.1
+   ],
+   "expected": "0.1 * np.sqrt(2648.8 / 1.2 * 9.81 * 2.5e-4)",
+   "why": "Wind starts to move sand once the drag on a grain overcomes its weight, which takes a stronger wind for coarser grains.",
+   "limit": "Bagnold (1941): dry cohesionless sand coarser than about 0.1 mm; moisture, crusts and fine grains raise the threshold.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "bagnold_sand_flux",
+   "title": "Bagnold's saltation mass flux of blown sand",
+   "params": [
+    {
+     "name": "shear_velocity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "diameter",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "air_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "coefficient",
+     "unit": "1, 1.5 for uniform, 1.8 for naturally graded and 2.8 for poorly sorted sand",
+     "kind": "positive"
+    }
+   ],
+   "expr": "coefficient * np.sqrt(diameter / 2.5e-4) * air_density / gravity * shear_velocity**3",
+   "args": [
+    0.5,
+    0.00025,
+    1.2,
+    9.81,
+    1.8
+   ],
+   "expected": "1.8 * 1.2 / 9.81 * 0.125",
+   "why": "The mass of sand carried by the wind grows as the cube of the shear velocity, so a few storms move most of a desert's sand.",
+   "limit": "Bagnold (1941), referred to a 0.25 mm sand; well above the threshold, since it has no threshold term (see :func:`kawamura_sand_flux`).",
+   "extra": "",
+   "output_unit": "kg/(m s)"
+  },
+  {
+   "name": "kawamura_sand_flux",
+   "title": "Kawamura's saltation mass flux with a threshold",
+   "params": [
+    {
+     "name": "shear_velocity",
+     "unit": "m/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "threshold_shear_velocity",
+     "unit": "m/s, from :func:`threshold_shear_velocity`",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "air_density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "gravity",
+     "unit": "m/s^2",
+     "kind": "positive"
+    },
+    {
+     "name": "coefficient",
+     "unit": "1, about 2.78",
+     "kind": "positive"
+    }
+   ],
+   "expr": "coefficient * air_density / gravity * np.maximum(u - ut, 0) * (u + ut)**2; u = shear_velocity; ut = threshold_shear_velocity",
+   "args": [
+    0.5,
+    0.2,
+    1.2,
+    9.81,
+    2.78
+   ],
+   "expected": "2.78 * 1.2 / 9.81 * 0.3 * 0.49",
+   "why": "Below the threshold the wind moves no sand at all, and just above it only a little, which Bagnold's cube law misses.",
+   "limit": "Kawamura (1951): steady saltation over a flat dry sand bed; tends to the cube law far above the threshold.",
+   "extra": "",
+   "output_unit": "kg/(m s)"
+  },
+  {
+   "name": "dune_migration_rate",
+   "title": "Migration rate of a dune that keeps its shape",
+   "params": [
+    {
+     "name": "sand_flux",
+     "unit": "kg/(m s) across the crest",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "dune_height",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "bulk_density",
+     "unit": "kg/m^3 of the deposited sand, about 1600",
+     "kind": "positive"
+    }
+   ],
+   "expr": "sand_flux / (bulk_density * dune_height)",
+   "args": [
+    0.016,
+    10,
+    1600
+   ],
+   "expected": "1e-6",
+   "why": "Sand blown over the crest settles on the lee face, so a dune advances by the sand flux divided by its height; small dunes outrun large ones.",
+   "limit": "Bagnold (1941): a two-dimensional dune of constant shape that traps all the sand crossing its crest.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "cosmogenic_production_at_depth",
+   "title": "Cosmogenic-nuclide production rate beneath the surface",
+   "params": [
+    {
+     "name": "surface_production_rate",
+     "unit": "atoms/(kg s), at the surface",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "depth",
+     "unit": "m",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3 of the overburden",
+     "kind": "positive"
+    },
+    {
+     "name": "attenuation_length",
+     "unit": "kg/m^2, about 1600 (160 g/cm^2) for spallation",
+     "kind": "positive"
+    }
+   ],
+   "expr": "surface_production_rate * np.exp(-density * depth / attenuation_length)",
+   "args": [
+    10,
+    1,
+    2000,
+    1600
+   ],
+   "expected": "10 * np.exp(-1.25)",
+   "why": "Cosmic-ray neutrons are absorbed within the top two metres of rock, so a grain begins to accumulate nuclides only as erosion brings it close to the surface.",
+   "limit": "Lal (1991): neutron spallation only, on a flat surface; muons dominate below a few metres.",
+   "extra": "",
+   "output_unit": "atoms/(kg s)"
+  },
+  {
+   "name": "cosmogenic_concentration",
+   "title": "Concentration of a cosmogenic nuclide in an eroding surface",
+   "params": [
+    {
+     "name": "time",
+     "unit": "s of exposure, starting from zero concentration",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "production_rate",
+     "unit": "atoms/(kg s), at the surface",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s, ``LAMBDA_BE10`` for beryllium-10",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "erosion_rate",
+     "unit": "m/s, steady",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "attenuation_length",
+     "unit": "kg/m^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "production_rate / r * (1 - np.exp(-r * time)); r = decay_constant + density * erosion_rate / attenuation_length",
+   "args": [
+    0.1,
+    10,
+    0.05,
+    0,
+    2000,
+    1600
+   ],
+   "expected": "10 / 0.05 * (1 - np.exp(-0.005))",
+   "why": "Nuclides build up until decay and erosion remove them as fast as cosmic rays make them, so a surface's concentration records either its exposure age or its erosion rate.",
+   "limit": "Lal (1991): steady erosion and production, spallation only, no inheritance; ``production_rate * time`` when neither decay nor erosion removes nuclides.",
+   "extra": "",
+   "output_unit": "atoms/kg"
+  },
+  {
+   "name": "steady_state_erosion_rate",
+   "title": "Erosion rate from a steady-state cosmogenic-nuclide concentration",
+   "params": [
+    {
+     "name": "concentration",
+     "unit": "atoms/kg",
+     "kind": "positive, at most production_rate / decay_constant"
+    },
+    {
+     "name": "production_rate",
+     "unit": "atoms/(kg s)",
+     "kind": "positive"
+    },
+    {
+     "name": "decay_constant",
+     "unit": "1/s",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "density",
+     "unit": "kg/m^3",
+     "kind": "positive"
+    },
+    {
+     "name": "attenuation_length",
+     "unit": "kg/m^2",
+     "kind": "positive"
+    }
+   ],
+   "expr": "(production_rate / concentration - decay_constant) * attenuation_length / density",
+   "args": [
+    100,
+    10,
+    0.05,
+    2000,
+    1600
+   ],
+   "expected": "0.04",
+   "why": "A surface that has eroded steadily for long enough carries a concentration inversely proportional to its erosion rate, the basis of catchment-wide denudation rates from river sand.",
+   "limit": "Lal (1991), the inverse of :func:`cosmogenic_concentration` at long times; valid once the surface has been exposed for several times ``attenuation_length / (density * erosion_rate)``.",
+   "extra": "",
+   "output_unit": "m/s"
+  },
+  {
+   "name": "morphologic_age",
+   "title": "Morphologic age of a fault scarp from its steepest gradient",
+   "params": [
+    {
+     "name": "half_offset",
+     "unit": "m",
+     "kind": "positive"
+    },
+    {
+     "name": "maximum_gradient",
+     "unit": "1",
+     "kind": "greater than far_field_gradient"
+    },
+    {
+     "name": "far_field_gradient",
+     "unit": "1",
+     "kind": "real"
+    }
+   ],
+   "expr": "half_offset**2 / (np.pi * (maximum_gradient - far_field_gradient)**2)",
+   "args": [
+    2,
+    0.6,
+    0.1
+   ],
+   "expected": "4 / (np.pi * 0.25)",
+   "why": "Measuring a scarp's height and steepest slope gives the product of diffusivity and age, which dates the earthquake once the diffusivity is calibrated.",
+   "limit": "Hanks et al. (1984), inverting :func:`scarp_maximum_gradient`: one rupture, linear diffusion and no base-level change at the foot.",
+   "extra": "",
+   "output_unit": "m^2"
+  },
+  {
+   "name": "luminescence_age",
+   "title": "Luminescence burial age of a sediment",
+   "params": [
+    {
+     "name": "equivalent_dose",
+     "unit": "Gy, the laboratory dose that reproduces the natural signal",
+     "kind": "nonnegative"
+    },
+    {
+     "name": "dose_rate",
+     "unit": "Gy/s from the surrounding sediment and cosmic rays",
+     "kind": "positive"
+    }
+   ],
+   "expr": "equivalent_dose / dose_rate",
+   "args": [
+    50,
+    2e-11
+   ],
+   "expected": "2.5e12",
+   "why": "Quartz and feldspar grains store the radiation dose received since sunlight last emptied their traps, which dates when a dune or flood deposit was buried.",
+   "limit": "Aitken (1985): complete bleaching at deposition, a constant dose rate and no fading or saturation of the signal.",
+   "extra": "",
+   "output_unit": "s"
   }
  ]
 }

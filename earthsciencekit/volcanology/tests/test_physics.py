@@ -174,3 +174,69 @@ def test_eruption_column_reaches_mtt_height_and_settles():
     assert result.values[0, 0] == 0 and result.time[0] == 5
     with pytest.raises(ValueError):
         simulate_eruption_column(1, [1, 2], 1, frequency, time)
+
+
+def test_scriven_growth_constant_limits_and_closed_form():
+    from scipy.special import erfcx
+
+    from earthsciencekit.volcanology import scriven_growth_constant
+
+    # Without advection (gas as dense as the melt) the integral has a closed form.
+    beta = np.array([0.05, 0.2, 0.7, 2.0, 6.0])
+    supersaturation = 2 * beta**2 - 2 * np.sqrt(np.pi) * beta**3 * erfcx(beta)
+    np.testing.assert_allclose(scriven_growth_constant(supersaturation, 1), beta, rtol=1e-9)
+    np.testing.assert_allclose(scriven_growth_constant(1e-6, [0, 0.5, 1]), np.sqrt(0.5e-6), rtol=1e-3)
+    # A light gas at large supersaturation follows Plesset and Zwick's sqrt(3 / pi) law.
+    np.testing.assert_allclose(scriven_growth_constant(300, 0), np.sqrt(3 / np.pi) * 300, rtol=2e-3)
+    assert np.all(np.diff(scriven_growth_constant(np.linspace(0.1, 5, 12), 0.05)) > 0)
+
+
+def test_bubble_cell_grows_like_scriven_then_saturates():
+    from earthsciencekit.constants import R_VAPOR
+    from earthsciencekit.volcanology import (
+        diffusive_supersaturation,
+        scriven_bubble_radius,
+        scriven_growth_constant,
+        simulate_bubble_growth,
+        water_solubility,
+    )
+
+    pressure, temperature, water = 5e7, 1100.0, 0.058
+    surface = water_solubility(pressure, 4.1e-6)
+    gas = pressure / (R_VAPOR * temperature)
+    supersaturation = diffusive_supersaturation(water, surface, 2300, gas)
+    time = np.linspace(0, 20, 11)
+    # A huge melt shell is never depleted, so the quasi-static growth follows R**2 = R0**2 + 2 phi D t.
+    unbounded = simulate_bubble_growth(1e-9, 1.0, water, pressure, temperature, time)
+    np.testing.assert_allclose(unbounded.values[:, 0] ** 2, 1e-18 + 2 * supersaturation * 1e-11 * time, rtol=1e-6)
+    # Scriven's full solution approaches it only when the supersaturation is small; here it grows 70 % faster.
+    beta = scriven_growth_constant(supersaturation, gas / 2300)
+    np.testing.assert_allclose(scriven_bubble_radius(time[1:], 1e-11, beta) / unbounded.values[1:, 0], 1.70, rtol=0.01)
+    slight = simulate_bubble_growth(1e-9, 1.0, surface + 5e-4, pressure, temperature, time)
+    beta = scriven_growth_constant(diffusive_supersaturation(surface + 5e-4, surface, 2300, gas), gas / 2300)
+    np.testing.assert_allclose(scriven_bubble_radius(time[1:], 1e-11, beta), slight.values[1:, 0], rtol=0.08)
+    cell = simulate_bubble_growth(1e-6, 6.2e-5, water, pressure, temperature, np.linspace(0, 5000, 51))
+    radius, dissolved, vesicularity = cell.values.T
+    assert np.all(np.diff(radius) > -1e-12) and np.isclose(dissolved[-1], surface, rtol=1e-6)
+    # Water lost from the melt is gained by the bubble.
+    melt_mass = 2300 * (6.2e-5**3 - 1e-6**3)
+    np.testing.assert_allclose(melt_mass * (water - dissolved), gas * (radius**3 - 1e-6**3), rtol=1e-10)
+    final = (1e-6**3 + melt_mass * (water - surface) / gas) ** (1 / 3)
+    np.testing.assert_allclose(radius[-1], final, rtol=1e-6)
+    assert 0 < vesicularity[0] < vesicularity[-1] < 1 and cell.names == ("radius", "dissolved_water", "vesicularity")
+
+
+@pytest.mark.parametrize(
+    "args",
+    [
+        (1e-6, 1e-7, 0.05, 5e7, 1100, [0, 1]),
+        (1e-6, 1e-4, 0.01, 5e7, 1100, [0, 1]),
+        ([1e-6, 2e-6], 1e-4, 0.05, 5e7, 1100, [0, 1]),
+        (1e-6, 1e-4, 1.0, 5e7, 1100, [0, 1]),
+    ],
+)
+def test_bubble_growth_rejects_bad_setup(args):
+    from earthsciencekit.volcanology import simulate_bubble_growth
+
+    with pytest.raises(ValueError):
+        simulate_bubble_growth(*args)

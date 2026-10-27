@@ -39,6 +39,12 @@ def saturation_vapor_pressure(temperature):
     Equation: ``611.2 * np.exp((2.5e6 / R_VAPOR) * (1 / 273.15 - 1 / temperature))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import saturation_vapor_pressure
+    >>> float(saturation_vapor_pressure(273.15))
+    611.2
     """
     temperature = quantity("temperature", temperature, lower=180, upper=330)
     return 611.2 * np.exp((2.5e6 / R_VAPOR) * (1 / 273.15 - 1 / temperature))
@@ -68,6 +74,12 @@ def mixing_ratio(vapor_pressure, total_pressure):
     Equation: ``EPSILON_WATER * vapor_pressure / (total_pressure - vapor_pressure)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import mixing_ratio
+    >>> round(float(mixing_ratio(1000, 100000)), 8)
+    0.00628276
     """
     vapor_pressure = quantity("vapor_pressure", vapor_pressure, lower=0)
     total_pressure = quantity("total_pressure", total_pressure, lower=0, strict_lower=True)
@@ -97,6 +109,12 @@ def specific_humidity(mixing_ratio):
     Equation: ``mixing_ratio / (1 + mixing_ratio)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import specific_humidity
+    >>> float(specific_humidity(1))
+    0.5
     """
     mixing_ratio = quantity("mixing_ratio", mixing_ratio, lower=0)
     return mixing_ratio / (1 + mixing_ratio)
@@ -126,6 +144,12 @@ def virtual_temperature(temperature, specific_humidity):
     Equation: ``temperature * (1 + (1 / EPSILON_WATER - 1) * specific_humidity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import virtual_temperature
+    >>> float(virtual_temperature(300, 0))
+    300.0
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     specific_humidity = quantity("specific_humidity", specific_humidity, lower=0, upper=1)
@@ -156,6 +180,12 @@ def relative_humidity(vapor_pressure, saturation_pressure):
     Equation: ``vapor_pressure / saturation_pressure``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import relative_humidity
+    >>> float(relative_humidity(500, 1000))
+    0.5
     """
     vapor_pressure = quantity("vapor_pressure", vapor_pressure, lower=0)
     saturation_pressure = quantity("saturation_pressure", saturation_pressure, lower=0, strict_lower=True)

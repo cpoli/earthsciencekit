@@ -41,6 +41,12 @@ def spreading_age(distance, half_spreading_rate):
     Equation: ``distance / half_spreading_rate``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import spreading_age
+    >>> float(spreading_age(100, 2))
+    50.0
     """
     distance = quantity("distance", distance, lower=0)
     half_spreading_rate = quantity("half_spreading_rate", half_spreading_rate, lower=0, strict_lower=True)
@@ -69,6 +75,12 @@ def full_spreading_rate(half_spreading_rate):
     Equation: ``2 * half_spreading_rate``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import full_spreading_rate
+    >>> float(full_spreading_rate(0.001))
+    0.002
     """
     half_spreading_rate = quantity("half_spreading_rate", half_spreading_rate, lower=0)
     return 2 * half_spreading_rate
@@ -98,6 +110,12 @@ def convergence_rate(relative_speed, obliquity):
     Equation: ``relative_speed * np.cos(obliquity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import convergence_rate
+    >>> round(float(convergence_rate(2, 1.0471975511965976)), 5)
+    1.0
     """
     relative_speed = quantity("relative_speed", relative_speed, lower=0)
     obliquity = quantity("obliquity", obliquity, lower=0, upper=2 * np.pi)
@@ -128,6 +146,12 @@ def fault_slip_rate(relative_speed, obliquity):
     Equation: ``relative_speed * np.sin(obliquity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import fault_slip_rate
+    >>> round(float(fault_slip_rate(2, 0.5235987755982988)), 6)
+    1.0
     """
     relative_speed = quantity("relative_speed", relative_speed, lower=0)
     obliquity = quantity("obliquity", obliquity, lower=0, upper=2 * np.pi)
@@ -160,6 +184,12 @@ def subduction_travel_time(vertical_depth, slab_speed, dip):
     Equation: ``vertical_depth / (slab_speed * np.sin(dip))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import subduction_travel_time
+    >>> round(float(subduction_travel_time(100, 2, 0.5235987755982988)), 3)
+    100.0
     """
     vertical_depth = quantity("vertical_depth", vertical_depth, lower=0)
     slab_speed = quantity("slab_speed", slab_speed, lower=0, strict_lower=True)
@@ -194,6 +224,12 @@ def slab_pull_force(density_excess, slab_volume, gravity):
     Equation: ``density_excess * slab_volume * gravity``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import slab_pull_force
+    >>> float(slab_pull_force(100, 1000000000.0, 10))
+    1000000000000.0
     """
     density_excess = quantity("density_excess", density_excess, lower=0)
     slab_volume = quantity("slab_volume", slab_volume, lower=0)

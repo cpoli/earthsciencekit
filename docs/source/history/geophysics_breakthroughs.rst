@@ -329,6 +329,28 @@ Earth's magnetic field," *Science* 144 (1964): 1537-1543. J. G. Ogg,
 
 .. minigallery:: ../../examples/geophysics/plot_15_cox_doell_dalrymple_polarity_timescale.py
 
+1968 -- The International Geomagnetic Reference Field
+-----------------------------------------------------
+
+In 1968 the International Association of Geomagnetism and Aeronomy adopted
+one set of Gauss coefficients, for epoch 1965.0, as the reference model of
+the main field. Revised every five years since, the IGRF gives the field
+anywhere from a short table of ``g`` and ``h`` coefficients. Its non-zonal
+terms tilt the dipole, weaken the field over the South Atlantic and turn the
+compass away from geographic north.
+
+*Implementation:* :func:`~earthsciencekit.geophysics.schmidt_legendre`
+(*new*) and :func:`~earthsciencekit.geophysics.geomagnetic_field` (*new*),
+which sums Schmidt semi-normalized harmonics of any degree and order. The
+example maps the intensity and declination of IGRF-13 for 2020 to degree 3.
+
+*References:* IAGA Commission 2, Working Group 4, "International Geomagnetic
+Reference Field 1965.0," *Journal of Geophysical Research* 74 (1969):
+4407-4408. P. Alken et al., "International Geomagnetic Reference Field: the
+thirteenth generation," *Earth, Planets and Space* 73 (2021): 49.
+
+.. minigallery:: ../../examples/geophysics/plot_16_igrf_reference_field.py
+
 2002 -- GRACE Gravity Changes
 -----------------------------
 
@@ -349,7 +371,7 @@ detection using GRACE," *Journal of Geophysical Research* 103 (1998):
 M. M. Watkins, "GRACE measurements of mass variability in the Earth system,"
 *Science* 305 (2004): 503-505.
 
-.. minigallery:: ../../examples/geophysics/plot_16_grace_gravity_changes.py
+.. minigallery:: ../../examples/geophysics/plot_17_grace_gravity_changes.py
 
 See also
 --------
@@ -358,5 +380,5 @@ See also
 - :doc:`/history/plate_tectonics_breakthroughs`, whose magnetic stripes and
   isostasy rest on these results.
 - `MIT: Essentials of Geophysics lecture notes <https://ocw.mit.edu/courses/12-201-essentials-of-geophysics-fall-2004/pages/lecture-notes/>`_
-- `NOAA NCEI: Geomagnetism <https://www.ncei.noaa.gov/products/geomagnetism>`_
+- `NOAA NCEI: Geomagnetism <https://www.ncei.noaa.gov/products/geomagnetic-data>`_
 - `NASA: GRACE <https://grace.jpl.nasa.gov/>`_

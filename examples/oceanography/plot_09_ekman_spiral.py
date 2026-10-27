@@ -11,6 +11,7 @@ and the net transport is at right angles to it.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import trapezoid
 
 from earthsciencekit.atmosphere import coriolis_parameter
 from earthsciencekit.oceanography import ekman_spiral_velocity, ekman_transport
@@ -20,7 +21,7 @@ f = coriolis_parameter(np.radians(60))
 depth = np.linspace(0, 400, 4001)
 velocity = ekman_spiral_velocity(depth, stress, density, viscosity, f)
 assert np.isclose(np.degrees(np.arctan2(velocity[0, 1], velocity[0, 0])), 45)
-assert np.isclose(np.trapezoid(velocity[:, 1], depth), ekman_transport(stress, density, f), rtol=1e-4)
+assert np.isclose(trapezoid(velocity[:, 1], depth), ekman_transport(stress, density, f), rtol=1e-4)
 
 fig, ax = plt.subplots()
 ax.plot(velocity[:, 1], velocity[:, 0])

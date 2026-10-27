@@ -42,6 +42,12 @@ def magnetic_reynolds_number(speed, length, conductivity):
     Equation: ``MU0 * conductivity * speed * length``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import magnetic_reynolds_number
+    >>> float(magnetic_reynolds_number(2, 3, 795774.7154594767))
+    6.0
     """
     speed = quantity("speed", speed, lower=0)
     length = quantity("length", length, lower=0, strict_lower=True)
@@ -73,6 +79,12 @@ def magnetic_decay_time(radius, conductivity):
     Equation: ``MU0 * conductivity * radius**2 / np.pi**2``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import magnetic_decay_time
+    >>> float(magnetic_decay_time(3.141592653589793, 795774.7154594767))
+    1.0
     """
     radius = quantity("radius", radius, lower=0, strict_lower=True)
     conductivity = quantity("conductivity", conductivity, lower=0, strict_lower=True)
@@ -104,6 +116,13 @@ def rikitake_fixed_point(mu, k):
     Equation: ``[k, 1 / k, mu * k**2]``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.geophysics import rikitake_fixed_point
+    >>> np.round(rikitake_fixed_point(3, 2), 4).tolist()
+    [2.0, 0.5, 12.0]
     """
     mu = quantity("mu", mu, lower=0, strict_lower=True)
     k = quantity("k", k, lower=0, strict_lower=True)

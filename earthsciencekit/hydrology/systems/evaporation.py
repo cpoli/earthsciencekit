@@ -47,6 +47,12 @@ def dalton_evaporation(saturation_vapor_pressure, vapor_pressure, transfer_coeff
     Equation: ``transfer_coefficient * (saturation_vapor_pressure - vapor_pressure)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import dalton_evaporation
+    >>> round(float(dalton_evaporation(3000, 1000, 1e-09)), 11)
+    2e-06
     """
     saturation_vapor_pressure = quantity("saturation_vapor_pressure", saturation_vapor_pressure, lower=0)
     vapor_pressure = quantity("vapor_pressure", vapor_pressure, lower=0)
@@ -77,6 +83,12 @@ def saturation_slope(temperature):
     Equation: ``saturation_vapor_pressure(temperature) * LATENT_HEAT_VAPORIZATION / (R_VAPOR * temperature**2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import saturation_slope
+    >>> round(float(saturation_slope(273.15)), 4)
+    44.3761
     """
     temperature = quantity("temperature", temperature, lower=180, upper=330)
     return saturation_vapor_pressure(temperature) * LATENT_HEAT_VAPORIZATION / (R_VAPOR * temperature**2)
@@ -105,6 +117,12 @@ def psychrometric_constant(pressure):
     Equation: ``CP_DRY_AIR * pressure / (EPSILON_WATER * LATENT_HEAT_VAPORIZATION)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import psychrometric_constant
+    >>> round(float(psychrometric_constant(101325)), 4)
+    65.4221
     """
     pressure = quantity("pressure", pressure, lower=0, strict_lower=True)
     return CP_DRY_AIR * pressure / (EPSILON_WATER * LATENT_HEAT_VAPORIZATION)
@@ -142,6 +160,12 @@ def penman_evaporation(net_radiation, temperature, aerodynamic_evaporation, pres
     * aerodynamic_evaporation) / (saturation_slope(temperature) + psychrometric_constant(pressure))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import penman_evaporation
+    >>> round(float(penman_evaporation(0, 273.15, 1e-05, 101325)), 11)
+    5.95839e-06
     """
     net_radiation = quantity("net_radiation", net_radiation)
     temperature = quantity("temperature", temperature, lower=180, upper=330)
@@ -184,6 +208,12 @@ def aerodynamic_resistance(wind_speed, measurement_height, displacement_height, 
     displacement_height) / vapor_roughness) / (VON_KARMAN**2 * wind_speed)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import aerodynamic_resistance
+    >>> float(aerodynamic_resistance(5.948839976204641, 2, 0, 0.7357588823428847, 0.2706705664732254))
+    2.0
     """
     wind_speed = quantity("wind_speed", wind_speed, lower=0, strict_lower=True)
     measurement_height = quantity("measurement_height", measurement_height, lower=0, strict_lower=True)
@@ -219,6 +249,12 @@ def bulk_surface_resistance(stomatal_resistance, active_leaf_area_index):
     Equation: ``stomatal_resistance / active_leaf_area_index``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import bulk_surface_resistance
+    >>> float(bulk_surface_resistance(100, 2))
+    50.0
     """
     stomatal_resistance = quantity("stomatal_resistance", stomatal_resistance, lower=0)
     active_leaf_area_index = quantity("active_leaf_area_index", active_leaf_area_index, lower=0, strict_lower=True)
@@ -265,6 +301,12 @@ def penman_monteith_evaporation(
     (LATENT_HEAT_VAPORIZATION * (Delta + gamma * (1 + surface_resistance / aerodynamic_resistance)))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import penman_monteith_evaporation
+    >>> round(float(penman_monteith_evaporation(0, 273.15, 1000, 1, 1004, 1004, 101325)), 11)
+    2.28284e-06
     """
     available_energy = quantity("available_energy", available_energy)
     temperature = quantity("temperature", temperature, lower=180, upper=330)

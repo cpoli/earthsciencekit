@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from scipy.integrate import quad
 
-from earthsciencekit.constants import SECONDS_PER_YEAR
+from earthsciencekit.constants import ICE_DENSITY, R_GAS, SECONDS_PER_YEAR
 from earthsciencekit.glaciology import (
     dansgaard_delta,
     dansgaard_johnsen_age,
@@ -12,18 +12,24 @@ from earthsciencekit.glaciology import (
     dansgaard_temperature,
     driving_stress,
     effective_viscosity,
+    expected_positive_degree_days,
     flotation_thickness,
+    gas_age_difference,
     glen_rate_factor,
     glen_strain_rate,
     glen_stress,
     glen_surface_velocity,
     glen_velocity_profile,
     haskell_viscosity,
+    herron_langway_density,
+    herron_langway_depth,
+    herron_langway_mean_density,
     ice_shelf_strain_rate,
     linear_mass_balance,
     nye_age,
     nye_crevasse_depth,
     nye_plastic_profile,
+    pdd_surface_melt,
     rebound_uplift_rate,
     remaining_depression,
     schoof_grounding_line_flux,
@@ -186,3 +192,61 @@ def test_raising_the_equilibrium_line_shrinks_the_glacier():
 def test_flowline_glacier_rejects_bad_setups(args, kwargs):
     with pytest.raises(ValueError):
         simulate_flowline_glacier(*args, **kwargs)
+
+
+FIRN = (248.15, 1e-09, 350.0)
+
+
+def test_herron_langway_profile_rises_continuously_to_ice_and_inverts():
+    depth = np.linspace(0, 400, 4001)
+    density = herron_langway_density(depth, *FIRN)
+    assert density[0] == pytest.approx(350) and np.all(np.diff(density[:1000]) > 0) and density[-1] == pytest.approx(ICE_DENSITY)
+    critical = herron_langway_depth(550, *FIRN)
+    assert herron_langway_density(critical * (1 + 1e-9), *FIRN) == pytest.approx(550)
+    targets = np.array([350, 450, 550, 700, 830, 900])
+    np.testing.assert_allclose(herron_langway_density(herron_langway_depth(targets, *FIRN), *FIRN), targets, rtol=1e-12)
+
+
+def test_herron_langway_first_stage_ignores_accumulation_and_close_off_deepens_when_cold_and_dry():
+    shallow = herron_langway_density(5.0, 248.15, [1e-10, 1e-09, 1e-08], 350)
+    np.testing.assert_allclose(shallow, shallow[0], rtol=1e-12)
+    summit = herron_langway_depth(830, 241, 0.24 / SECONDS_PER_YEAR, 330)
+    vostok = herron_langway_depth(830, 218, 0.024 / SECONDS_PER_YEAR, 330)
+    assert 70 < summit < 100 and 80 < vostok < 120 and herron_langway_depth(830, 263, 1e-08, 330) < summit
+
+
+def test_herron_langway_mean_density_integrates_the_profile_and_reaches_ice_at_depth():
+    critical = float(herron_langway_depth(550, *FIRN))
+    for depth in (5.0, critical, 60.0, 300.0):
+        mass = quad(lambda h: float(herron_langway_density(h, *FIRN)), 0, depth, points=[critical] if depth > critical else None)[0]
+        assert herron_langway_mean_density(depth, *FIRN) == pytest.approx(mass / depth, rel=1e-9)
+    assert herron_langway_mean_density(1e5, *FIRN) == pytest.approx(ICE_DENSITY, rel=1e-3)
+
+
+def test_gas_age_difference_from_herron_langway_is_their_age_equation():
+    temperature, accumulation, surface = FIRN
+    close_off = herron_langway_depth(830, *FIRN)
+    delta = gas_age_difference(close_off, herron_langway_mean_density(close_off, *FIRN), ICE_DENSITY, accumulation) / SECONDS_PER_YEAR
+    k0 = 11 * np.exp(-10160 / (R_GAS * temperature))
+    k1 = 575 * np.exp(-21400 / (R_GAS * temperature))
+    water, ice = accumulation * SECONDS_PER_YEAR * ICE_DENSITY / 1000, ICE_DENSITY / 1000
+    age = np.log((ice - surface / 1000) / (ice - 0.55)) / (k0 * water) + np.log((ice - 0.55) / (ice - 0.83)) / (k1 * np.sqrt(water))
+    assert delta == pytest.approx(age, rel=1e-10)
+
+
+def test_expected_positive_degree_days_is_the_normal_expectation_and_tends_to_the_positive_mean():
+    for mean in (263.15, 273.15, 278.15):
+        expectation = quad(lambda t: (t - 273.15) * np.exp(-((t - mean) ** 2) / 50) / np.sqrt(50 * np.pi), 273.15, mean + 60)[0]
+        assert expected_positive_degree_days(mean, 5, 1) == pytest.approx(expectation, rel=1e-9)
+        assert expected_positive_degree_days(mean, 1e-3, 86400) == pytest.approx(max(mean - 273.15, 0) * 86400, abs=1e-3 * 86400)
+    assert expected_positive_degree_days(268.15, 5, 86400) > 0
+
+
+def test_pdd_melt_takes_snow_first_and_refreezing_caps_runoff():
+    day, snow_factor, ice_factor = 86400.0, 3e-3 / 86400, 8e-3 / 86400
+    pdd = np.array([0, 50, 1000 / 6, 500]) * day
+    snow, ice, runoff = pdd_surface_melt(pdd, 0.5, snow_factor, ice_factor, 0.6).T
+    np.testing.assert_allclose(snow, [0, 0.15, 0.5, 0.5])
+    np.testing.assert_allclose(ice, [0, 0, 0, 8 / 3], atol=1e-12)
+    np.testing.assert_allclose(runoff, np.maximum(snow + ice - 0.3, 0), atol=1e-12)
+    np.testing.assert_allclose(pdd_surface_melt(pdd, 0.5, snow_factor, ice_factor, 0)[:, 2], snow + ice)

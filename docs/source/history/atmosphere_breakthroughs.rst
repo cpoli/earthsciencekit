@@ -7,11 +7,14 @@ Atmospheric science began with the discovery that air has weight. The
 barometer of the 1640s led to hydrostatic balance and the logarithmic fall of
 pressure with height, and the gas laws of the next two centuries added
 adiabatic cooling, partial pressures and the saturation of water vapour.
-Rotation entered with Hadley's trade winds and Buys Ballot's rule. After 1900,
+Espy and Hertz followed rising air through condensation, the start of the
+theory of moist convection. Rotation entered with Hadley's trade winds and
+Buys Ballot's rule. After 1900,
 balloon soundings revealed the stratosphere, and Bjerknes recast forecasting
 as a problem in physics. Richardson's failed hand forecast and the stability
 and wave theories of the 1920s and 1930s prepared the barotropic vorticity
-forecast that ran on the ENIAC in 1950. This chronology traces the results
+forecast that ran on the ENIAC in 1950, and convective energy was named
+CAPE in 1976. This chronology traces the results
 behind :mod:`earthsciencekit.atmosphere`. Every example uses deterministic
 synthetic inputs; none inverts real observations.
 
@@ -129,6 +132,28 @@ checks the linear cooling and the constant potential temperature.
 
 .. minigallery:: ../../examples/atmosphere/plot_06_poisson_adiabat.py
 
+1841 -- Espy's Cloud Base
+-------------------------
+
+James Pollard Espy argued that storms are driven from below. Rising air cools
+by expansion until its vapour condenses, and the latent heat set free keeps
+the cloud rising. Cloud base is where the cooling parcel reaches its dew
+point, so its height can be read from the surface dew-point depression,
+about 125 m per kelvin.
+
+*Implementation:* :func:`~earthsciencekit.atmosphere.lcl_temperature`
+(*new*), Bolton's (1980) condensation temperature,
+:func:`~earthsciencekit.atmosphere.lcl_pressure` (*new*) and
+:func:`~earthsciencekit.atmosphere.lcl_height` (*new*). The example checks the
+rule of thumb and finds cloud base where the parcel's temperature and dew point
+meet.
+
+*References:* J. P. Espy, *The Philosophy of Storms* (Boston: Charles C.
+Little and James Brown, 1841). D. Bolton, "The computation of equivalent
+potential temperature," *Monthly Weather Review* 108 (1980): 1046-1053.
+
+.. minigallery:: ../../examples/atmosphere/plot_07_espy_cloud_base.py
+
 1844 -- Magnus's Vapour-Pressure Formula
 ----------------------------------------
 
@@ -146,7 +171,7 @@ with a modern Magnus fit.
 *References:* G. Magnus, "Versuche über die Spannkräfte des Wasserdampfs,"
 *Annalen der Physik und Chemie* 137 (1844): 225-247.
 
-.. minigallery:: ../../examples/atmosphere/plot_07_magnus_vapour_pressure.py
+.. minigallery:: ../../examples/atmosphere/plot_08_magnus_vapour_pressure.py
 
 1857 -- Buys Ballot's Law
 -------------------------
@@ -165,7 +190,28 @@ keeps the low on its left.
 la direction du vent avec les écarts simultanés du baromètre," *Comptes Rendus
 de l'Académie des Sciences* 45 (1857): 765-768.
 
-.. minigallery:: ../../examples/atmosphere/plot_08_buys_ballot_law.py
+.. minigallery:: ../../examples/atmosphere/plot_09_buys_ballot_law.py
+
+1884 -- Hertz's Moist Adiabats
+------------------------------
+
+Heinrich Hertz drew the first thermodynamic diagram for moist air. From it
+the state of a rising parcel could be read as it passes through saturation,
+condensation and freezing. Above cloud base the parcel cools more slowly
+than the dry adiabat because condensation releases latent heat. The gap
+closes in cold air, which holds little vapour.
+
+*Implementation:* :func:`~earthsciencekit.atmosphere.moist_adiabatic_lapse_rate`
+(*new*), :func:`~earthsciencekit.atmosphere.parcel_temperature_profile`
+(*new*) and :func:`~earthsciencekit.atmosphere.simulate_moist_ascent`
+(*new*), with the condensate removed at once (the pseudo-adiabat). The example
+draws dry and moist adiabats and follows a parcel through cloud base.
+
+*References:* H. Hertz, "Graphische Methode zur Bestimmung der adiabatischen
+Zustandsänderungen feuchter Luft," *Meteorologische Zeitschrift* 1 (1884):
+421-431.
+
+.. minigallery:: ../../examples/atmosphere/plot_10_hertz_moist_adiabats.py
 
 1888 -- von Bezold's Potential Temperature
 ------------------------------------------
@@ -182,7 +228,7 @@ and :func:`~earthsciencekit.atmosphere.temperature_from_potential`.
 *Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften zu
 Berlin* (1888): 485-522.
 
-.. minigallery:: ../../examples/atmosphere/plot_09_von_bezold_potential_temperature.py
+.. minigallery:: ../../examples/atmosphere/plot_11_von_bezold_potential_temperature.py
 
 1902 -- Teisserenc de Bort's Stratosphere
 -----------------------------------------
@@ -200,7 +246,7 @@ recovers the standard-atmosphere pressure at 11 km.
 libre dans la zone comprise entre 8 km et 13 km d'altitude," *Comptes Rendus
 de l'Académie des Sciences* 134 (1902): 987-989.
 
-.. minigallery:: ../../examples/atmosphere/plot_10_teisserenc_de_bort_stratosphere.py
+.. minigallery:: ../../examples/atmosphere/plot_12_teisserenc_de_bort_stratosphere.py
 
 1904 -- Bjerknes's Forecasting Programme
 ----------------------------------------
@@ -220,7 +266,7 @@ that the moist density equals the sum of Dalton's partial densities.
 Standpunkte der Mechanik und der Physik," *Meteorologische Zeitschrift* 21
 (1904): 1-7.
 
-.. minigallery:: ../../examples/atmosphere/plot_11_bjerknes_forecasting_programme.py
+.. minigallery:: ../../examples/atmosphere/plot_13_bjerknes_forecasting_programme.py
 
 1920 -- Richardson's Turbulence Criterion
 -----------------------------------------
@@ -237,7 +283,7 @@ that a stratified shear flow can be unstable only where it falls below 1/4.
 *References:* L. F. Richardson, "The supply of energy from and to atmospheric
 eddies," *Proceedings of the Royal Society of London A* 97 (1920): 354-373.
 
-.. minigallery:: ../../examples/atmosphere/plot_12_richardson_turbulence_criterion.py
+.. minigallery:: ../../examples/atmosphere/plot_14_richardson_turbulence_criterion.py
 
 1922 -- Richardson's Numerical Forecast
 ---------------------------------------
@@ -255,7 +301,7 @@ than the true one.
 *References:* L. F. Richardson, *Weather Prediction by Numerical Process*
 (Cambridge: Cambridge University Press, 1922).
 
-.. minigallery:: ../../examples/atmosphere/plot_13_richardson_numerical_forecast.py
+.. minigallery:: ../../examples/atmosphere/plot_15_richardson_numerical_forecast.py
 
 1925 -- Väisälä and Brunt's Buoyancy Frequency
 ----------------------------------------------
@@ -274,7 +320,7 @@ Pilotbeobachtungen," *Commentationes Physico-Mathematicae* 2, no. 19 (1925);
 D. Brunt, "The period of simple vertical oscillations in the atmosphere,"
 *Quarterly Journal of the Royal Meteorological Society* 53 (1927): 30-32.
 
-.. minigallery:: ../../examples/atmosphere/plot_14_vaisala_brunt_buoyancy_frequency.py
+.. minigallery:: ../../examples/atmosphere/plot_16_vaisala_brunt_buoyancy_frequency.py
 
 1939 -- Rossby's Planetary Waves
 --------------------------------
@@ -294,7 +340,7 @@ the intensity of the zonal circulation of the atmosphere and the displacements
 of the semi-permanent centers of action," *Journal of Marine Research* 2
 (1939): 38-55.
 
-.. minigallery:: ../../examples/atmosphere/plot_15_rossby_planetary_waves.py
+.. minigallery:: ../../examples/atmosphere/plot_17_rossby_planetary_waves.py
 
 1950 -- Charney, Fjørtoft and von Neumann's ENIAC Forecast
 ----------------------------------------------------------
@@ -313,7 +359,31 @@ modes keeps its enstrophy.
 *References:* J. G. Charney, R. Fjørtoft and J. von Neumann, "Numerical
 integration of the barotropic vorticity equation," *Tellus* 2 (1950): 237-254.
 
-.. minigallery:: ../../examples/atmosphere/plot_16_charney_eniac_forecast.py
+.. minigallery:: ../../examples/atmosphere/plot_18_charney_eniac_forecast.py
+
+1976 -- Moncrieff and Miller's CAPE
+-----------------------------------
+
+Mitchell Moncrieff and Martin Miller modelled tropical cumulonimbus and squall
+lines. They named the energy that drives them the convective available
+potential energy (CAPE): the work done by buoyancy on a parcel lifted from the
+surface, the area between the parcel curve and the sounding. A stable layer
+below the level of free convection costs energy instead, the convective
+inhibition (CIN). If all of CAPE became kinetic energy, the updraught would
+reach ``sqrt(2 CAPE)``.
+
+*Implementation:* :func:`~earthsciencekit.atmosphere.convective_available_potential_energy`
+(*new*) and :func:`~earthsciencekit.atmosphere.convective_inhibition` (*new*).
+The example lifts a surface parcel through the analytic sounding of Weisman
+and Klemp (1982).
+
+*References:* M. W. Moncrieff and M. J. Miller, "The dynamics and simulation
+of tropical cumulonimbus and squall lines," *Quarterly Journal of the Royal
+Meteorological Society* 102 (1976): 373-394. M. L. Weisman and J. B. Klemp,
+"The dependence of numerically simulated convective storms on vertical wind
+shear and buoyancy," *Monthly Weather Review* 110 (1982): 504-520.
+
+.. minigallery:: ../../examples/atmosphere/plot_19_moncrieff_miller_cape.py
 
 See also
 --------

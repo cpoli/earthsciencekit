@@ -1,5 +1,7 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+import math
+
 import numpy as np
 import pytest
 
@@ -483,3 +485,51 @@ def test_volcanic_explosivity_index_physical_bound(index, value):
     args[index] = value
     with pytest.raises(ValueError):
         domain.volcanic_explosivity_index(*args)
+
+
+_BUBBLE_CASES = {
+    "diffusive_supersaturation": ([0.05, 0.03, 2300, 100], 0.46),
+    "scriven_growth_constant": ([2 - 2 * np.sqrt(np.pi) * np.e * math.erfc(1), 1], 1.0),
+    "scriven_bubble_radius": ([4, 1, 0.5], 2.0),
+}
+
+
+@pytest.mark.parametrize("name", sorted(_BUBBLE_CASES))
+def test_bubble_reference(name):
+    args, expected = _BUBBLE_CASES[name]
+    np.testing.assert_allclose(getattr(domain, name)(*args), expected, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+@pytest.mark.parametrize("name", sorted(_BUBBLE_CASES))
+def test_bubble_rejects_invalid(name, bad):
+    args = list(_BUBBLE_CASES[name][0])
+    args[0] = bad
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+@pytest.mark.parametrize(
+    "name,args",
+    [
+        ("diffusive_supersaturation", [0.02, 0.03, 2300, 100]),
+        ("diffusive_supersaturation", [0.05, 0.03, 0, 100]),
+        ("diffusive_supersaturation", [1.5, 0.03, 2300, 100]),
+        ("scriven_growth_constant", [0, 0.1]),
+        ("scriven_growth_constant", [1, 1.5]),
+        ("scriven_growth_constant", [2, 0.5]),
+        ("scriven_growth_constant", [1.99999999, 0.5]),
+        ("scriven_bubble_radius", [-1, 1, 0.5]),
+        ("scriven_bubble_radius", [4, 0, 0.5]),
+        ("scriven_bubble_radius", [4, 1, -0.5]),
+    ],
+)
+def test_bubble_physical_bound(name, args):
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+def test_scriven_growth_constant_broadcasting():
+    result = domain.scriven_growth_constant([[0.5], [1.5]], [0, 0.01, 0.5])
+    assert result.shape == (2, 3)
+    np.testing.assert_allclose(result[0, 0], domain.scriven_growth_constant(0.5, 0))

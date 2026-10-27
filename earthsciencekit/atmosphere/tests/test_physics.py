@@ -79,3 +79,91 @@ def test_richardson_and_rossby_limits():
     assert rossby_wave_speed(wind, 0, 1e-6) == wind
     assert np.isclose(surface_pressure_tendency(-1e-6, 1e5) * 21600, 2160)
     assert np.isclose(barometer_column_height(101325, 13595.1, 9.80665), 0.76, rtol=1e-4)
+
+
+def test_lcl_is_where_the_lifted_parcel_saturates():
+    from earthsciencekit.atmosphere import lcl_height, lcl_pressure, lcl_temperature, mixing_ratio, saturation_vapor_pressure
+
+    temperature, dewpoint = np.array([300.0, 290.0, 280.0]), np.array([290.0, 289.0, 260.0])
+    base = lcl_temperature(temperature, dewpoint)
+    vapor = mixing_ratio(saturation_vapor_pressure(dewpoint), 1e5)
+    at_base = mixing_ratio(saturation_vapor_pressure(base), lcl_pressure(1e5, temperature, base))
+    # Bolton's fit is within about 0.1 K of saturation with this package's vapour-pressure formula.
+    np.testing.assert_allclose(at_base, vapor, rtol=0.02)
+    assert lcl_temperature(300, 300) == 300 and lcl_height(300, 300) == 0
+    np.testing.assert_allclose(lcl_height(temperature, base) / (temperature - dewpoint), 125, rtol=0.03)
+
+
+def test_moist_lapse_rate_tends_to_dry_rate_when_cold_and_is_smaller_when_warm():
+    from earthsciencekit.atmosphere import dry_adiabatic_lapse_rate, moist_adiabatic_lapse_rate
+
+    dry = dry_adiabatic_lapse_rate(9.80665, 1004)
+    assert np.isclose(moist_adiabatic_lapse_rate(190, 1e5), dry, rtol=1e-3)
+    rates = moist_adiabatic_lapse_rate(np.array([300, 280, 260, 240]), 1e5)
+    assert np.all(np.diff(rates) > 0) and rates[0] < 0.4 * dry
+
+
+def test_moist_ascent_follows_dry_adiabat_then_pseudo_adiabat():
+    from earthsciencekit.atmosphere import lcl_pressure, lcl_temperature, parcel_temperature_profile, simulate_moist_ascent
+
+    time = np.linspace(0, 2400, 121)
+    result = simulate_moist_ascent(300, 293, 1e5, 5, time)
+    temperature, pressure, vapor, condensed = result.values.T
+    np.testing.assert_allclose(vapor + condensed, vapor[0], rtol=1e-12)
+    assert condensed[0] == 0 and np.all(np.diff(condensed) >= -1e-15) and condensed[-1] > 0.01
+    base = lcl_pressure(1e5, 300, lcl_temperature(300, 293))
+    dry = pressure > base
+    np.testing.assert_allclose(potential_temperature(temperature[dry], pressure[dry], 1e5), 300, rtol=1e-8)
+    np.testing.assert_allclose(condensed[pressure > base * 1.01], 0)
+    profile = parcel_temperature_profile(pressure, 300, 293)
+    np.testing.assert_allclose(temperature, profile, atol=0.15)
+    assert result.names[2:] == ("mixing_ratio", "condensed_water") and result.units[2] == "kg/kg"
+
+
+@pytest.mark.parametrize(
+    "args",
+    [
+        (300, 301, 1e5, 1, [0, 1]),
+        (300, 290, 1e5, 0, [0, 1]),
+        (300, 290, [1e5, 9e4], 1, [0, 1]),
+        (400, 290, 1e5, 1, [0, 1]),
+    ],
+)
+def test_moist_ascent_rejects_bad_setup(args):
+    from earthsciencekit.atmosphere import simulate_moist_ascent
+
+    with pytest.raises(ValueError):
+        simulate_moist_ascent(*args)
+
+
+def test_cape_and_cin_split_the_buoyancy_integral():
+    from earthsciencekit.atmosphere import convective_available_potential_energy, convective_inhibition
+
+    height = np.linspace(0, 12000, 61)
+    environment = 300 - 0.0065 * height
+    rng = np.random.default_rng(3)
+    buoyancy_integral = []
+    for offset in (-3.0, 3.0):
+        parcel = environment + offset + rng.uniform(-1, 1, height.size)
+        buoyancy = 9.80665 * (parcel - environment) / environment
+        buoyancy_integral.append(np.sum((buoyancy[1:] + buoyancy[:-1]) / 2 * np.diff(height)))
+        cape = convective_available_potential_energy(height, parcel, environment)
+        cin = convective_inhibition(height, parcel, environment)
+        if offset < 0:
+            assert cape == 0 and np.isclose(cin, buoyancy_integral[-1])
+        else:
+            assert cin == 0 and np.isclose(cape, buoyancy_integral[-1])
+    # A stable layer above a buoyant surface parcel does not count once the parcel is free.
+    parcel = np.array([301.0, 299.0, 302.0, 299.0])
+    assert convective_inhibition([0, 1000, 2000, 3000], parcel, np.full(4, 300.0)) == 0
+
+
+def test_moist_ascent_saturated_start_and_dry_parcel():
+    from earthsciencekit.atmosphere import parcel_temperature_profile, simulate_moist_ascent
+
+    saturated = simulate_moist_ascent(290, 290, 9e4, 2, np.linspace(10, 610, 31))
+    assert saturated.values[1, 3] > 0
+    np.testing.assert_allclose(saturated.values[:, 0], parcel_temperature_profile(saturated.values[:, 1], 290, 290), atol=1e-6)
+    parched = simulate_moist_ascent(300, 180, 1e5, 1, np.linspace(0, 100, 11))
+    assert np.all(parched.values[:, 3] == 0)
+    np.testing.assert_allclose(parched.values[:, 0], 300 - 9.80665 / 1004 * np.linspace(0, 100, 11))

@@ -37,6 +37,12 @@ def thermal_expansion_sea_level(expansion_coefficient, depth, temperature_change
     Equation: ``expansion_coefficient * depth * temperature_change``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import thermal_expansion_sea_level
+    >>> float(thermal_expansion_sea_level(0.0002, 1000, 1))
+    0.2
     """
     expansion_coefficient = quantity("expansion_coefficient", expansion_coefficient, lower=0, strict_lower=True)
     depth = quantity("depth", depth, lower=0, strict_lower=True)
@@ -70,6 +76,12 @@ def water_equivalent_sea_level(water_mass, ocean_area, water_density):
     Equation: ``water_mass / (ocean_area * water_density)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import water_equivalent_sea_level
+    >>> float(water_equivalent_sea_level(1000000000000.0, 1000000000000.0, 1000))
+    0.001
     """
     water_mass = quantity("water_mass", water_mass, lower=0)
     ocean_area = quantity("ocean_area", ocean_area, lower=0, strict_lower=True)

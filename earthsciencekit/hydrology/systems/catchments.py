@@ -49,6 +49,12 @@ def water_balance(precipitation, evapotranspiration, runoff):
     Equation: ``precipitation - evapotranspiration - runoff``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import water_balance
+    >>> float(water_balance(3, 1, 0.5))
+    1.5
     """
     precipitation = quantity("precipitation", precipitation, lower=0)
     evapotranspiration = quantity("evapotranspiration", evapotranspiration, lower=0)
@@ -81,6 +87,12 @@ def runoff_coefficient(runoff, precipitation):
     Equation: ``runoff / precipitation``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import runoff_coefficient
+    >>> round(float(runoff_coefficient(1, 6)), 6)
+    0.166667
     """
     runoff = quantity("runoff", runoff, lower=0)
     precipitation = quantity("precipitation", precipitation, lower=0, strict_lower=True)
@@ -117,6 +129,12 @@ def nash_unit_hydrograph(time, reservoirs, storage_constant):
     scipy.special.gamma(reservoirs))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import nash_unit_hydrograph
+    >>> round(float(nash_unit_hydrograph(2, 2, 1)), 6)
+    0.270671
     """
     time = quantity("time", time, lower=0)
     reservoirs = quantity("reservoirs", reservoirs, lower=1)
@@ -151,6 +169,13 @@ def unit_hydrograph_convolution(excess_rainfall, unit_hydrograph):
     Sherman (1932): linear superposition and time invariance; baseflow and losses are removed beforehand.
     Equation: ``np.convolve(excess_rainfall, unit_hydrograph)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.hydrology import unit_hydrograph_convolution
+    >>> np.round(unit_hydrograph_convolution([1, 2], [3, 4, 5]), 4).tolist()
+    [3.0, 10.0, 13.0, 10.0]
     """
     excess_rainfall = quantity("excess_rainfall", excess_rainfall, lower=0)
     unit_hydrograph = quantity("unit_hydrograph", unit_hydrograph, lower=0)
@@ -185,6 +210,12 @@ def stream_number(order, highest_order, bifurcation_ratio):
     Equation: ``bifurcation_ratio**(highest_order - order)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import stream_number
+    >>> float(stream_number(1, 3, 4))
+    16.0
     """
     order = quantity("order", order, lower=1)
     highest_order = quantity("highest_order", highest_order, lower=1)
@@ -219,6 +250,12 @@ def stream_length(order, first_order_length, length_ratio):
     Equation: ``first_order_length * length_ratio**(order - 1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import stream_length
+    >>> float(stream_length(3, 100, 2))
+    400.0
     """
     order = quantity("order", order, lower=1)
     first_order_length = quantity("first_order_length", first_order_length, lower=0, strict_lower=True)
@@ -252,6 +289,12 @@ def topographic_index(specific_area, slope):
     Equation: ``np.log(specific_area / np.tan(slope))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import topographic_index
+    >>> float(topographic_index(2.718281828459045, 0.7853981633974483))
+    1.0
     """
     specific_area = quantity("specific_area", specific_area, lower=0, strict_lower=True)
     slope = quantity("slope", slope, lower=0, upper=np.pi / 2, strict_lower=True, strict_upper=True)
@@ -288,6 +331,12 @@ def topmodel_deficit(mean_deficit, topographic_index, mean_index, scaling_depth)
     Equation: ``mean_deficit + scaling_depth * (mean_index - topographic_index)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import topmodel_deficit
+    >>> float(topmodel_deficit(0.1, 7, 6, 0.05))
+    0.05
     """
     mean_deficit = quantity("mean_deficit", mean_deficit, lower=0)
     topographic_index = quantity("topographic_index", topographic_index)
@@ -324,6 +373,12 @@ def topmodel_baseflow(saturated_transmissivity, mean_index, mean_deficit, scalin
     Equation: ``saturated_transmissivity * np.exp(-mean_index) * np.exp(-mean_deficit / scaling_depth)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.hydrology import topmodel_baseflow
+    >>> round(float(topmodel_baseflow(2, 0, 1, 1)), 6)
+    0.735759
     """
     saturated_transmissivity = quantity("saturated_transmissivity", saturated_transmissivity, lower=0, strict_lower=True)
     mean_index = quantity("mean_index", mean_index)

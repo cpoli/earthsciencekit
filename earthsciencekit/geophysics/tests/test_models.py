@@ -1,5 +1,7 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+from typing import Any
+
 import numpy as np
 import pytest
 
@@ -20,7 +22,7 @@ def test_sphere_gravity_rejects_invalid(bad):
 
 
 def test_sphere_gravity_broadcasting():
-    args = [3, 4, 1, 447111334967.41797]
+    args: list[Any] = [3, 4, 1, 447111334967.41797]
     reference = domain.sphere_gravity(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.sphere_gravity(*args)
@@ -50,7 +52,7 @@ def test_bouguer_correction_rejects_invalid(bad):
 
 
 def test_bouguer_correction_broadcasting():
-    args = [2384593786.492896, 3]
+    args: list[Any] = [2384593786.492896, 3]
     reference = domain.bouguer_correction(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.bouguer_correction(*args)
@@ -80,7 +82,7 @@ def test_free_air_correction_rejects_invalid(bad):
 
 
 def test_free_air_correction_broadcasting():
-    args = [100, 9.8, 6400000]
+    args: list[Any] = [100, 9.8, 6400000]
     reference = domain.free_air_correction(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.free_air_correction(*args)
@@ -110,7 +112,7 @@ def test_bouguer_anomaly_rejects_invalid(bad):
 
 
 def test_bouguer_anomaly_broadcasting():
-    args = [9.81, 9.8, 100, 2384.5937864928956, 6400000]
+    args: list[Any] = [9.81, 9.8, 100, 2384.5937864928956, 6400000]
     reference = domain.bouguer_anomaly(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.bouguer_anomaly(*args)
@@ -140,7 +142,7 @@ def test_torsion_balance_gravitational_constant_rejects_invalid(bad):
 
 
 def test_torsion_balance_gravitational_constant_broadcasting():
-    args = [1, 2, 3, 4, 5]
+    args: list[Any] = [1, 2, 3, 4, 5]
     reference = domain.torsion_balance_gravitational_constant(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.torsion_balance_gravitational_constant(*args)
@@ -170,7 +172,7 @@ def test_earth_mean_density_rejects_invalid(bad):
 
 
 def test_earth_mean_density_broadcasting():
-    args = [12.566370614359172, 3, 1]
+    args: list[Any] = [12.566370614359172, 3, 1]
     reference = domain.earth_mean_density(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.earth_mean_density(*args)
@@ -200,7 +202,7 @@ def test_centrifugal_ratio_rejects_invalid(bad):
 
 
 def test_centrifugal_ratio_broadcasting():
-    args = [2, 3, 4]
+    args: list[Any] = [2, 3, 4]
     reference = domain.centrifugal_ratio(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.centrifugal_ratio(*args)
@@ -230,7 +232,7 @@ def test_homogeneous_flattening_rejects_invalid(bad):
 
 
 def test_homogeneous_flattening_broadcasting():
-    args = [0.08]
+    args: list[Any] = [0.08]
     reference = domain.homogeneous_flattening(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.homogeneous_flattening(*args)
@@ -260,7 +262,7 @@ def test_clairaut_gravity_rejects_invalid(bad):
 
 
 def test_clairaut_gravity_broadcasting():
-    args = [0.5235987755982988, 10, 0.003, 0.004]
+    args: list[Any] = [0.5235987755982988, 10, 0.003, 0.004]
     reference = domain.clairaut_gravity(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.clairaut_gravity(*args)
@@ -290,7 +292,7 @@ def test_normal_gravity_rejects_invalid(bad):
 
 
 def test_normal_gravity_broadcasting():
-    args = [1.5707963267948966]
+    args: list[Any] = [1.5707963267948966]
     reference = domain.normal_gravity(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.normal_gravity(*args)
@@ -320,7 +322,7 @@ def test_flattening_from_j2_rejects_invalid(bad):
 
 
 def test_flattening_from_j2_broadcasting():
-    args = [0.002, 0.004]
+    args: list[Any] = [0.002, 0.004]
     reference = domain.flattening_from_j2(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.flattening_from_j2(*args)
@@ -350,7 +352,7 @@ def test_nodal_precession_rate_rejects_invalid(bad):
 
 
 def test_nodal_precession_rate_broadcasting():
-    args = [2, 0, 0, 1, 1, 8]
+    args: list[Any] = [2, 0, 0, 1, 1, 8]
     reference = domain.nodal_precession_rate(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.nodal_precession_rate(*args)
@@ -380,7 +382,7 @@ def test_stokes_function_rejects_invalid(bad):
 
 
 def test_stokes_function_broadcasting():
-    args = [3.141592653589793]
+    args: list[Any] = [3.141592653589793]
     reference = domain.stokes_function(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.stokes_function(*args)
@@ -410,7 +412,7 @@ def test_degree_geoid_height_rejects_invalid(bad):
 
 
 def test_degree_geoid_height_broadcasting():
-    args = [6, 4, 2, 4]
+    args: list[Any] = [6, 4, 2, 4]
     reference = domain.degree_geoid_height(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.degree_geoid_height(*args)
@@ -440,7 +442,7 @@ def test_dipole_field_rejects_invalid(bad):
 
 
 def test_dipole_field_broadcasting():
-    args = [0, 1, 10000000]
+    args: list[Any] = [0, 1, 10000000]
     reference = domain.dipole_field(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.dipole_field(*args)
@@ -470,7 +472,7 @@ def test_dipole_inclination_rejects_invalid(bad):
 
 
 def test_dipole_inclination_broadcasting():
-    args = [0.7853981633974483]
+    args: list[Any] = [0.7853981633974483]
     reference = domain.dipole_inclination(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.dipole_inclination(*args)
@@ -500,7 +502,7 @@ def test_paleolatitude_rejects_invalid(bad):
 
 
 def test_paleolatitude_broadcasting():
-    args = [1.1071487177940906]
+    args: list[Any] = [1.1071487177940906]
     reference = domain.paleolatitude(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.paleolatitude(*args)
@@ -530,7 +532,7 @@ def test_zonal_field_rejects_invalid(bad):
 
 
 def test_zonal_field_broadcasting():
-    args = [0.5235987755982988, 1, 2, 1, 1]
+    args: list[Any] = [0.5235987755982988, 1, 2, 1, 1]
     reference = domain.zonal_field(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.zonal_field(*args)
@@ -560,7 +562,7 @@ def test_gauss_dipole_moment_rejects_invalid(bad):
 
 
 def test_gauss_dipole_moment_broadcasting():
-    args = [3, 4, 12, 1]
+    args: list[Any] = [3, 4, 12, 1]
     reference = domain.gauss_dipole_moment(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.gauss_dipole_moment(*args)
@@ -590,7 +592,7 @@ def test_field_elements_rejects_invalid(bad):
 
 
 def test_field_elements_broadcasting():
-    args = [1, 1, 1.4142135623730951]
+    args: list[Any] = [1, 1, 1.4142135623730951]
     reference = domain.field_elements(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.field_elements(*args)
@@ -612,7 +614,7 @@ def test_direction_angle_rejects_invalid(bad):
 
 
 def test_direction_angle_broadcasting():
-    args = [0, 0.5, 0, -0.5]
+    args: list[Any] = [0, 0.5, 0, -0.5]
     reference = domain.direction_angle(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.direction_angle(*args)
@@ -642,7 +644,7 @@ def test_virtual_geomagnetic_pole_rejects_invalid(bad):
 
 
 def test_virtual_geomagnetic_pole_broadcasting():
-    args = [0, 0, 1.5707963267948966, 0]
+    args: list[Any] = [0, 0, 1.5707963267948966, 0]
     reference = domain.virtual_geomagnetic_pole(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.virtual_geomagnetic_pole(*args)
@@ -672,7 +674,7 @@ def test_block_magnetic_anomaly_rejects_invalid(bad):
 
 
 def test_block_magnetic_anomaly_broadcasting():
-    args = [0, -1, 1, 1, 1.7320508075688772, 9549296.58551372]
+    args: list[Any] = [0, -1, 1, 1, 1.7320508075688772, 9549296.58551372]
     reference = domain.block_magnetic_anomaly(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.block_magnetic_anomaly(*args)
@@ -702,7 +704,7 @@ def test_magnetic_reynolds_number_rejects_invalid(bad):
 
 
 def test_magnetic_reynolds_number_broadcasting():
-    args = [2, 3, 795774.7154594767]
+    args: list[Any] = [2, 3, 795774.7154594767]
     reference = domain.magnetic_reynolds_number(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.magnetic_reynolds_number(*args)
@@ -732,7 +734,7 @@ def test_magnetic_decay_time_rejects_invalid(bad):
 
 
 def test_magnetic_decay_time_broadcasting():
-    args = [3.141592653589793, 795774.7154594767]
+    args: list[Any] = [3.141592653589793, 795774.7154594767]
     reference = domain.magnetic_decay_time(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.magnetic_decay_time(*args)
@@ -762,7 +764,7 @@ def test_rikitake_fixed_point_rejects_invalid(bad):
 
 
 def test_rikitake_fixed_point_broadcasting():
-    args = [3, 2]
+    args: list[Any] = [3, 2]
     reference = domain.rikitake_fixed_point(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.rikitake_fixed_point(*args)
@@ -792,7 +794,7 @@ def test_love_number_h2_rejects_invalid(bad):
 
 
 def test_love_number_h2_broadcasting():
-    args = [1.5, 1, 1, 9.5]
+    args: list[Any] = [1.5, 1, 1, 9.5]
     reference = domain.love_number_h2(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.love_number_h2(*args)
@@ -822,7 +824,7 @@ def test_love_number_k2_rejects_invalid(bad):
 
 
 def test_love_number_k2_broadcasting():
-    args = [1.5, 1, 1, 9.5]
+    args: list[Any] = [1.5, 1, 1, 9.5]
     reference = domain.love_number_k2(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.love_number_k2(*args)
@@ -852,7 +854,7 @@ def test_tidal_gravimetric_factor_rejects_invalid(bad):
 
 
 def test_tidal_gravimetric_factor_broadcasting():
-    args = [0.6, 0.3]
+    args: list[Any] = [0.6, 0.3]
     reference = domain.tidal_gravimetric_factor(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.tidal_gravimetric_factor(*args)
@@ -882,7 +884,7 @@ def test_equivalent_water_height_rejects_invalid(bad):
 
 
 def test_equivalent_water_height_broadcasting():
-    args = [2, 1, 0.5, 3, 3, 2]
+    args: list[Any] = [2, 1, 0.5, 3, 3, 2]
     reference = domain.equivalent_water_height(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.equivalent_water_height(*args)
@@ -896,3 +898,61 @@ def test_equivalent_water_height_physical_bound(index, value):
     args[index] = value
     with pytest.raises(ValueError):
         domain.equivalent_water_height(*args)
+
+
+def test_schmidt_legendre_reference():
+    result = domain.schmidt_legendre(*[2, 1, np.pi / 6])
+    np.testing.assert_allclose(result, 0.75, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+def test_schmidt_legendre_rejects_invalid(bad):
+    args = [2, 1, np.pi / 6]
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.schmidt_legendre(*args)
+
+
+@pytest.mark.parametrize("args", [[-1, 0, 0], [2, 3, 0], [2.5, 1, 0], [2, 0.5, 0], [2, 1, 2]])
+def test_schmidt_legendre_physical_bound(args):
+    with pytest.raises(ValueError):
+        domain.schmidt_legendre(*args)
+
+
+_EQUATORIAL_DIPOLE = [0, np.pi / 2, 1, [[0, 0], [0, 1]], [[0, 0], [0, 0]], 1]
+
+
+def test_geomagnetic_field_reference():
+    result = domain.geomagnetic_field(*_EQUATORIAL_DIPOLE)
+    np.testing.assert_allclose(result, [0, 1, 0], rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+def test_geomagnetic_field_rejects_invalid(bad):
+    args = list(_EQUATORIAL_DIPOLE)
+    args[0] = bad
+    with pytest.raises(ValueError):
+        domain.geomagnetic_field(*args)
+
+
+@pytest.mark.parametrize(
+    "index,value",
+    [
+        (0, np.pi / 2),
+        (2, 0),
+        (3, [[0, 0], [1, 0], [0, 0]]),
+        (3, [0, 1]),
+        (3, [[0]]),
+        (3, [[0, 1], [0, 1]]),
+        (3, [[1, 0], [0, 1]]),
+        (4, [[0, 0], [1, 0]]),
+        (4, [[0, 0, 0], [0, 0, 0], [0, 0, 0]]),
+        (5, [1, 1]),
+        (5, 0),
+    ],
+)
+def test_geomagnetic_field_physical_bound(index, value):
+    args = list(_EQUATORIAL_DIPOLE)
+    args[index] = value
+    with pytest.raises(ValueError):
+        domain.geomagnetic_field(*args)

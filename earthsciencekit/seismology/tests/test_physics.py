@@ -98,3 +98,61 @@ def test_vertical_travel_time_profiles():
     np.testing.assert_allclose(vertical_travel_time(depth, v0 + gradient * depth), np.log1p(gradient * depth / v0) / gradient)
     jump = vertical_travel_time([0, 1e4, 1e4, 2e4], [5e3, 5e3, 8e3, 8e3])
     np.testing.assert_allclose(jump, [0, 2, 2, 2 + 1.25])
+
+
+def test_layered_rays_in_a_uniform_sphere_are_chords():
+    from earthsciencekit.seismology import layered_ray_distance, layered_ray_travel_time
+
+    radius, speed = 6371e3, 8e3
+    p = np.linspace(10, 0.999 * radius / speed, 12).reshape(3, 4)
+    table = ([0, 0, 3e6, radius - 1e3], [speed] * 4, radius)
+    distance = layered_ray_distance(p, *table)
+    assert distance.shape == (3, 4)
+    np.testing.assert_allclose(distance, 2 * np.arccos(p * speed / radius), rtol=1e-12)
+    np.testing.assert_allclose(layered_ray_travel_time(p, *table), 2 * np.sqrt(radius**2 - (p * speed) ** 2) / speed, rtol=1e-12)
+
+
+def test_layered_rays_match_quadrature_and_benndorf_relation():
+    from scipy.integrate import quad
+    from scipy.optimize import brentq
+
+    from earthsciencekit.seismology import layered_ray_distance, layered_ray_travel_time
+
+    radius = 6371e3
+    depth, speed = np.array([0, 2000e3, 4000e3]), np.array([8e3, 11e3, 13e3])
+    b = np.log(speed[1:] / speed[:-1]) / np.log((radius - depth[1:]) / (radius - depth[:-1]))
+
+    def eta(r):
+        layer = 0 if r >= radius - depth[1] else 1
+        return r / (speed[layer] * (r / (radius - depth[layer])) ** b[layer])
+
+    p = 300.0
+    turning = brentq(lambda r: eta(r) - p, radius - depth[2], radius - depth[1])
+    width = (radius - depth[1] - turning, depth[1])
+
+    def integral(f, start, span):
+        # r = start + u**2 removes the inverse-square-root singularity at the turning radius.
+        return quad(lambda u: 2 * u * f(start + u**2) / ((start + u**2) * np.sqrt(eta(start + u**2) ** 2 - p**2)), 0, np.sqrt(span))[0]
+
+    integrals = [
+        integral(f, start, span) for f in (lambda r: p, lambda r: eta(r) ** 2) for start, span in zip((turning, radius - depth[1]), width)
+    ]
+    np.testing.assert_allclose(layered_ray_distance(p, depth, speed, radius), 2 * sum(integrals[:2]), rtol=1e-7)
+    np.testing.assert_allclose(layered_ray_travel_time(p, depth, speed, radius), 2 * sum(integrals[2:]), rtol=1e-7)
+    near = np.array([p - 0.01, p + 0.01])
+    slope = np.diff(layered_ray_travel_time(near, depth, speed, radius)) / np.diff(layered_ray_distance(near, depth, speed, radius))
+    np.testing.assert_allclose(slope, p, rtol=1e-6)
+
+
+def test_layered_rays_reproduce_the_two_shell_core_shadow():
+    from earthsciencekit.seismology import layered_ray_distance
+
+    R, rc, vm, vc = 6371e3, 3480e3, 13e3, 8e3
+    table = ([0, R - rc, R - rc, R - 1e3], [vm, vm, vc, vc], R)
+    p = np.linspace(1, 0.999 * R / vm, 2001)
+    expected = np.where(
+        p * vm >= rc,
+        2 * np.arccos(p * vm / R),
+        2 * (np.arccos(p * vm / R) - np.arccos(np.minimum(p * vm / rc, 1))) + np.pi - 2 * np.arcsin(np.minimum(p * vc / rc, 1)),
+    )
+    np.testing.assert_allclose(layered_ray_distance(p, *table), expected, rtol=1e-10)

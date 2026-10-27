@@ -2,6 +2,59 @@
 
 ## [Unreleased]
 
+- Releases (ROADMAP item 1): `CITATION.cff` and the README badge cite the
+  0.3.0 version DOI 10.5281/zenodo.23465493; a `zenodo-doi` job in
+  `release.yml` records each later release's version DOI automatically;
+  Dependabot keeps the GitHub Actions current; `pyproject.toml` has PyPI
+  classifiers and keywords.
+- Checks (ROADMAP item 10): mypy covers the whole package; coverage is
+  measured on branches as well as statements, still gated at 100%; CI tests
+  Python 3.14 and, in a separate job, Python 3.10 at the exact dependency
+  floors; `tests/test_catalog.py` ties `model_catalog.json` to each domain's
+  algebraic `__all__` and golden values; every algebraic model docstring has
+  a doctested `Examples` section, run by `docs.yml`; a weekly `linkcheck.yml`
+  checks the docs' external links. Tests and gallery examples use
+  `scipy.integrate.trapezoid` so that they run on NumPy 1.24.
+- Deeper models (ROADMAP item 8): 32 algebraic and six dynamic models, each
+  documented, tested, catalogued and with a doctested `Examples` section, and
+  15 new dated history entries with their own examples.
+  - `atmosphere`: Bolton's condensation level (`lcl_temperature`,
+    `lcl_pressure`, `lcl_height`), the pseudo-adiabatic lapse rate, parcel
+    profiles, CAPE and CIN, and `simulate_moist_ascent`.
+  - `oceanography`: the 75-term TEOS-10 density (`teos10_density`), checked
+    against the published check values.
+  - `climate`: the two-box response (`two_box_timescales`,
+    `two_box_fast_warming`, `simulate_two_box`) and North's diffusive
+    energy-balance model (`insolation_distribution`,
+    `north_temperature_profile`, `simulate_latitudinal_energy_balance`).
+  - `seismology`: rays in a radially layered sphere (`layered_ray_distance`,
+    `layered_ray_travel_time`), with the core shadow zone.
+  - `plate_tectonics`: finite rotations, their composition and interpolation.
+  - `geophysics`: Schmidt semi-normalized harmonics of any order and field
+    synthesis from Gauss coefficients (`geomagnetic_field`).
+  - `volcanology`: Scriven's diffusive bubble growth and
+    `simulate_bubble_growth`.
+  - `hydrology`: a transient Richards column (`simulate_richards_column`),
+    kinematic-wave routing and degree-day snowmelt.
+  - `glaciology`: Herron-Langway firn densification, which now computes the
+    Vostok gas-age difference, and Reeh's positive-degree-day melt
+    (`expected_positive_degree_days`, `pdd_surface_melt`).
+- New `geomorphology` domain (ROADMAP item 11): Stokes and Ferguson-Church
+  settling, bed shear stress and shear velocity, the Shields number,
+  dimensionless grain size and Soulsby-Whitehouse threshold, Keulegan's mean
+  velocity, the Rouse number and profile, Meyer-Peter and Müller bedload;
+  linear and nonlinear hillslope creep, Hanks's fault scarp and its steepest
+  gradient, soil production and hilltop curvature; stream-power erosion, the
+  steady-state slope, knickpoint celerity, Flint's slope-area law, the chi
+  coordinate, Hack's law, Strahler order, downstream hydraulic geometry and
+  the effective discharge; Bagnold's threshold and sand flux, Kawamura's flux
+  and dune migration; cosmogenic production, accumulation and steady-state
+  erosion rates, morphologic and luminescence ages: 36 algebraic models and
+  the dynamic `simulate_river_profile`. Its history is a dated chronology of
+  17 breakthroughs, from Playfair's accordant junctions (1802) to Lal's
+  cosmogenic erosion rates (1991), each with its own executed example.
+- New constant `LAMBDA_BE10`.
+
 ## [0.3.0] - 2026-10-18
 
 - New `hydrology` domain (ROADMAP item 4): the catchment water balance and

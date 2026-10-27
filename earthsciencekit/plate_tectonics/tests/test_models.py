@@ -1,5 +1,7 @@
 """Golden checks and invalid-input contracts for every public model."""
 
+from typing import Any
+
 import numpy as np
 import pytest
 
@@ -228,7 +230,7 @@ def test_halfspace_heat_flux_rejects_invalid(bad):
 
 
 def test_angular_speed_broadcasting():
-    args = [0.1, 10]
+    args: list[Any] = [0.1, 10]
     reference = domain.angular_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.angular_speed(*args)
@@ -244,7 +246,7 @@ def test_angular_speed_time_physical_bound():
 
 
 def test_plate_speed_broadcasting():
-    args = [1e-09, 6000000.0, 1.5707963267948966]
+    args: list[Any] = [1e-09, 6000000.0, 1.5707963267948966]
     reference = domain.plate_speed(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.plate_speed(*args)
@@ -274,7 +276,7 @@ def test_plate_speed_angular_distance_physical_bound():
 
 
 def test_euler_velocity_x_broadcasting():
-    args = [1, 2, 3, 4]
+    args: list[Any] = [1, 2, 3, 4]
     reference = domain.euler_velocity_x(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.euler_velocity_x(*args)
@@ -283,7 +285,7 @@ def test_euler_velocity_x_broadcasting():
 
 
 def test_euler_velocity_y_broadcasting():
-    args = [2, 1, 4, 3]
+    args: list[Any] = [2, 1, 4, 3]
     reference = domain.euler_velocity_y(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.euler_velocity_y(*args)
@@ -292,7 +294,7 @@ def test_euler_velocity_y_broadcasting():
 
 
 def test_euler_velocity_z_broadcasting():
-    args = [1, 2, 3, 4]
+    args: list[Any] = [1, 2, 3, 4]
     reference = domain.euler_velocity_z(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.euler_velocity_z(*args)
@@ -301,7 +303,7 @@ def test_euler_velocity_z_broadcasting():
 
 
 def test_plate_displacement_broadcasting():
-    args = [0.01, 100]
+    args: list[Any] = [0.01, 100]
     reference = domain.plate_displacement(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.plate_displacement(*args)
@@ -317,7 +319,7 @@ def test_plate_displacement_time_physical_bound():
 
 
 def test_spreading_age_broadcasting():
-    args = [100, 2]
+    args: list[Any] = [100, 2]
     reference = domain.spreading_age(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.spreading_age(*args)
@@ -340,7 +342,7 @@ def test_spreading_age_half_spreading_rate_physical_bound():
 
 
 def test_full_spreading_rate_broadcasting():
-    args = [0.001]
+    args: list[Any] = [0.001]
     reference = domain.full_spreading_rate(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.full_spreading_rate(*args)
@@ -356,7 +358,7 @@ def test_full_spreading_rate_half_spreading_rate_physical_bound():
 
 
 def test_convergence_rate_broadcasting():
-    args = [2, 1.0471975511965976]
+    args: list[Any] = [2, 1.0471975511965976]
     reference = domain.convergence_rate(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.convergence_rate(*args)
@@ -379,7 +381,7 @@ def test_convergence_rate_obliquity_physical_bound():
 
 
 def test_fault_slip_rate_broadcasting():
-    args = [2, 0.5235987755982988]
+    args: list[Any] = [2, 0.5235987755982988]
     reference = domain.fault_slip_rate(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.fault_slip_rate(*args)
@@ -402,7 +404,7 @@ def test_fault_slip_rate_obliquity_physical_bound():
 
 
 def test_subduction_travel_time_broadcasting():
-    args = [100, 2, 0.5235987755982988]
+    args: list[Any] = [100, 2, 0.5235987755982988]
     reference = domain.subduction_travel_time(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.subduction_travel_time(*args)
@@ -432,7 +434,7 @@ def test_subduction_travel_time_dip_physical_bound():
 
 
 def test_slab_pull_force_broadcasting():
-    args = [100, 1000000000.0, 10]
+    args: list[Any] = [100, 1000000000.0, 10]
     reference = domain.slab_pull_force(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.slab_pull_force(*args)
@@ -462,7 +464,7 @@ def test_slab_pull_force_gravity_physical_bound():
 
 
 def test_airy_root_broadcasting():
-    args = [1000, 2700, 3300]
+    args: list[Any] = [1000, 2700, 3300]
     reference = domain.airy_root(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.airy_root(*args)
@@ -492,7 +494,7 @@ def test_airy_root_mantle_density_physical_bound():
 
 
 def test_flexural_rigidity_broadcasting():
-    args = [12, 1, 0]
+    args: list[Any] = [12, 1, 0]
     reference = domain.flexural_rigidity(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.flexural_rigidity(*args)
@@ -515,14 +517,14 @@ def test_flexural_rigidity_elastic_thickness_physical_bound():
 
 
 def test_flexural_rigidity_poisson_ratio_physical_bound():
-    args = [12, 1, 0]
+    args: list[Any] = [12, 1, 0]
     args[2] = 0.5
     with pytest.raises(ValueError):
         domain.flexural_rigidity(*args)
 
 
 def test_flexural_parameter_broadcasting():
-    args = [4, 1, 1]
+    args: list[Any] = [4, 1, 1]
     reference = domain.flexural_parameter(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.flexural_parameter(*args)
@@ -552,7 +554,7 @@ def test_flexural_parameter_gravity_physical_bound():
 
 
 def test_halfspace_temperature_broadcasting():
-    args = [0, 1, 1, 300, 1300]
+    args: list[Any] = [0, 1, 1, 300, 1300]
     reference = domain.halfspace_temperature(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.halfspace_temperature(*args)
@@ -596,7 +598,7 @@ def test_halfspace_temperature_mantle_temperature_physical_bound():
 
 
 def test_halfspace_heat_flux_broadcasting():
-    args = [1, 1, 1, 300, 1300]
+    args: list[Any] = [1, 1, 1, 300, 1300]
     reference = domain.halfspace_heat_flux(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.halfspace_heat_flux(*args)
@@ -653,7 +655,7 @@ def test_mantle_rayleigh_number_rejects_invalid(bad):
 
 
 def test_mantle_rayleigh_number_broadcasting():
-    args = [1, 2, 3, 4, 5, 6, 7]
+    args: list[Any] = [1, 2, 3, 4, 5, 6, 7]
     reference = domain.mantle_rayleigh_number(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.mantle_rayleigh_number(*args)
@@ -724,7 +726,7 @@ def test_flexural_deflection_rejects_invalid(bad):
 
 
 def test_flexural_deflection_broadcasting():
-    args = [0, 8, 1, 4, 1]
+    args: list[Any] = [0, 8, 1, 4, 1]
     reference = domain.flexural_deflection(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.flexural_deflection(*args)
@@ -774,7 +776,7 @@ def test_hotspot_age_rejects_invalid(bad):
 
 
 def test_hotspot_age_broadcasting():
-    args = [6, 1, 2, 1.5707963267948966]
+    args: list[Any] = [6, 1, 2, 1.5707963267948966]
     reference = domain.hotspot_age(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.hotspot_age(*args)
@@ -824,7 +826,7 @@ def test_ocean_depth_rejects_invalid(bad):
 
 
 def test_ocean_depth_broadcasting():
-    args = [0.25 * np.pi, 2500, 2, 1, 0.5, 1, 300, 1300]
+    args: list[Any] = [0.25 * np.pi, 2500, 2, 1, 0.5, 1, 300, 1300]
     reference = domain.ocean_depth(*args)
     args[0] = np.full((2, 1), args[0])
     result = domain.ocean_depth(*args)
@@ -918,3 +920,53 @@ def test_compose_euler_vectors_requires_three_components(shape):
         domain.compose_euler_vectors(np.ones(shape), [1, 2, 3])
     with pytest.raises(ValueError):
         domain.compose_euler_vectors([1, 2, 3], np.ones(shape))
+
+
+_ROTATION_CASES: dict[str, tuple[list[Any], Any]] = {
+    "finite_rotation_matrix": ([np.pi / 2, 0, np.pi / 2], [[0, -1, 0], [1, 0, 0], [0, 0, 1]]),
+    "rotate_position": ([0, 0, np.pi / 2, 0, np.pi / 2], [0, np.pi / 2]),
+    "compose_finite_rotations": ([np.pi / 2, 0, np.pi / 2, np.pi / 2, 0, np.pi / 2], [np.pi / 2, 0, np.pi]),
+    "interpolate_finite_rotation": ([np.pi / 2, 0, 0, np.pi / 2, 0, 1, 0.5], [np.pi / 2, 0, 0.5]),
+}
+
+
+@pytest.mark.parametrize("name", sorted(_ROTATION_CASES))
+def test_finite_rotation_reference(name):
+    args, expected = _ROTATION_CASES[name]
+    np.testing.assert_allclose(getattr(domain, name)(*args), expected, rtol=1e-11, atol=1e-12)
+
+
+@pytest.mark.parametrize("bad", [np.nan, np.inf, -np.inf, [], "bad", True, 1j])
+@pytest.mark.parametrize("name", sorted(_ROTATION_CASES))
+def test_finite_rotation_rejects_invalid(name, bad):
+    args = list(_ROTATION_CASES[name][0])
+    args[0] = bad
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+@pytest.mark.parametrize(
+    "name,index,value",
+    [
+        ("finite_rotation_matrix", 0, 2),
+        ("rotate_position", 0, -2),
+        ("rotate_position", 2, 2),
+        ("compose_finite_rotations", 3, 2),
+        ("interpolate_finite_rotation", 3, -2),
+        ("interpolate_finite_rotation", 6, 1.5),
+        ("interpolate_finite_rotation", 6, -0.1),
+    ],
+)
+def test_finite_rotation_physical_bound(name, index, value):
+    args = list(_ROTATION_CASES[name][0])
+    args[index] = value
+    with pytest.raises(ValueError):
+        getattr(domain, name)(*args)
+
+
+def test_finite_rotation_broadcasting():
+    matrix = domain.finite_rotation_matrix([[0.1], [0.2]], [0, 1, 2], 0.5)
+    assert matrix.shape == (2, 3, 3, 3)
+    composite = domain.compose_finite_rotations([0.1, 0.2], 0, 1, 0, 0, [[1], [2], [3]])
+    assert composite.shape == (3, 2, 3)
+    assert domain.rotate_position([0, 0.1], 0, 0.3, 0.2, 0.1).shape == (2, 2)

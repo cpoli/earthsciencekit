@@ -17,6 +17,7 @@ from earthsciencekit.oceanography.systems.hydrography import (
     hydrostatic_pressure,
     linear_density,
     simplified_seawater_density,
+    teos10_density,
 )
 from earthsciencekit.oceanography.systems.inertial import (
     inertial_period,
@@ -56,6 +57,7 @@ __all__ = [
     "thermohaline_forcing",
     "abyssal_temperature",
     "simplified_seawater_density",
+    "teos10_density",
     "simulate_inertial_current",
     "simulate_thermohaline_boxes",
 ]

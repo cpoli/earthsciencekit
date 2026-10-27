@@ -25,3 +25,4 @@ LATENT_HEAT_VAPORIZATION = 2.5e6  # J/kg, water at 0 degC, as in atmosphere.satu
 VON_KARMAN = 0.41  # 1, von Karman constant of the logarithmic wind profile
 ICE_DENSITY = 917.0  # kg/m^3, glacier ice
 LATENT_HEAT_FUSION = 3.34e5  # J/kg, ice at 0 degC
+LAMBDA_BE10 = 0.6931471805599453 / (1.387e6 * SECONDS_PER_YEAR)  # 1/s, Chmeleff et al. (2010), Korschinek et al. (2010)

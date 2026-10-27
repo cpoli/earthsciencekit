@@ -40,6 +40,12 @@ def co2_forcing(concentration, reference_concentration, coefficient):
     Equation: ``coefficient * np.log(concentration / reference_concentration)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import co2_forcing
+    >>> round(float(co2_forcing(560, 280, 5.35)), 5)
+    3.70834
     """
     concentration = quantity("concentration", concentration, lower=0, strict_lower=True)
     reference_concentration = quantity("reference_concentration", reference_concentration, lower=0, strict_lower=True)
@@ -81,6 +87,12 @@ def methane_forcing(concentration, reference_concentration, nitrous_oxide):
     ``M0 = reference_concentration`` and ``N0 = nitrous_oxide``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import methane_forcing
+    >>> round(float(methane_forcing(900, 400, 1e-16)), 6)
+    0.36
     """
     concentration = quantity("concentration", concentration, lower=0, strict_lower=True)
     reference_concentration = quantity("reference_concentration", reference_concentration, lower=0, strict_lower=True)
@@ -116,6 +128,12 @@ def nitrous_oxide_forcing(concentration, reference_concentration, methane):
     ``N0 = reference_concentration`` and ``M0 = methane``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import nitrous_oxide_forcing
+    >>> round(float(nitrous_oxide_forcing(400, 100, 1e-16)), 5)
+    1.2
     """
     concentration = quantity("concentration", concentration, lower=0, strict_lower=True)
     reference_concentration = quantity("reference_concentration", reference_concentration, lower=0, strict_lower=True)

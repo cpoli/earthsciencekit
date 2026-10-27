@@ -14,7 +14,12 @@ north-east-down frame: ``dipole_field`` and ``zonal_field`` return the
 northward and downward components on the last axis, and ``field_elements``
 returns declination east of north, inclination positive downward and intensity.
 A positive dipole moment is today's polarity, whose field points down in the
-northern hemisphere; Gauss's ``g10`` is then negative.
+northern hemisphere; Gauss's ``g10`` is then negative. ``geomagnetic_field``
+returns the northward, eastward and downward components from square tables
+``g[n, m]`` and ``h[n, m]`` of Schmidt semi-normalized Gauss coefficients in
+tesla. Entries with ``m > n``, the row ``n = 0`` and ``h[:, 0]`` must be zero.
+Its latitude excludes the geographic poles, where the east component is
+undefined.
 
 The gravity reductions are first order and planar: ``free_air_correction`` is
 ``2 g h / R`` and ``bouguer_correction`` is an infinite slab, with no terrain
@@ -259,6 +264,32 @@ Output: **T**. Internal zonal sources only; last axis holds the northward and do
     x, n, a, r = np.sin(latitude), degree, reference_radius, distance
     (a / r) ** (n + 2) * coefficient * [lpmv(1, n, x), -(n + 1) * lpmv(0, n, x)]
 
+schmidt_legendre
+~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.geophysics.schmidt_legendre`
+
+Output: **1**. Schmidt semi-normalized, without the Condon-Shortley phase, as in the IGRF.
+
+.. code-block:: python
+
+    n, m = degree, order
+    np.sqrt((2 - (m == 0)) * factorial(n - m) / factorial(n + m)) * (-1)**m * lpmv(m, n, np.sin(latitude))
+
+geomagnetic_field
+~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.geophysics.geomagnetic_field`
+
+Output: **T**, north, east and down on the last axis. Internal sources on a spherical Earth; ``S`` is ``schmidt_legendre`` of the colatitude ``theta``, and the ``m = 0`` terms equal ``zonal_field``.
+
+.. code-block:: python
+
+    V = a * sum((a / r)**(n + 1) * (g[n, m] * cos(m lon) + h[n, m] * sin(m lon)) * S)
+    north, east, down = sum((a / r)**(n + 2) * [(g cos + h sin) dS/dtheta,
+                                                m (g sin - h cos) S / sin(theta),
+                                                -(n + 1) (g cos + h sin) S])
+
 gauss_dipole_moment
 ~~~~~~~~~~~~~~~~~~~
 
@@ -416,6 +447,9 @@ contracts. The domain suite adds physical checks: the Bouguer anomaly recovers a
 buried body from gravity on topography, Clairaut's formula matches Somigliana's
 normal gravity, the numerical Stokes integral of zonal anomalies gives the
 ``1 / (n - 1)`` law, the degree-1 zonal field equals the axial dipole, the
+Schmidt functions have the IGRF mean square ``1 / (2 n + 1)``, the full field
+is minus the numerical gradient of its potential and reduces to the zonal
+field and the axial dipole, the
 virtual geomagnetic pole of a tilted dipole returns its pole, an infinite
 magnetized layer has no external field, and the Rikitake fixed points are
 steady while the free flow reverses. See :doc:`/validation` for the exact

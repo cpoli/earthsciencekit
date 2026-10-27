@@ -50,6 +50,12 @@ def centrifugal_ratio(angular_speed, radius, gravity):
     Equation: ``angular_speed**2 * radius / gravity``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import centrifugal_ratio
+    >>> float(centrifugal_ratio(2, 3, 4))
+    3.0
     """
     angular_speed = quantity("angular_speed", angular_speed, lower=0)
     radius = quantity("radius", radius, lower=0, strict_lower=True)
@@ -79,6 +85,12 @@ def homogeneous_flattening(centrifugal_ratio):
     Equation: ``5 * centrifugal_ratio / 4``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import homogeneous_flattening
+    >>> float(homogeneous_flattening(0.08))
+    0.1
     """
     centrifugal_ratio = quantity("centrifugal_ratio", centrifugal_ratio, lower=0, upper=0.1)
     return 5 * centrifugal_ratio / 4
@@ -112,6 +124,12 @@ def clairaut_gravity(latitude, equatorial_gravity, flattening, centrifugal_ratio
     Equation: ``equatorial_gravity * (1 + (5 * centrifugal_ratio / 2 - flattening) * np.sin(latitude) ** 2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import clairaut_gravity
+    >>> round(float(clairaut_gravity(0.5235987755982988, 10, 0.003, 0.004)), 4)
+    10.0175
     """
     latitude = quantity("latitude", latitude, lower=-np.pi / 2, upper=np.pi / 2)
     equatorial_gravity = quantity("equatorial_gravity", equatorial_gravity, lower=0, strict_lower=True)
@@ -143,6 +161,12 @@ def normal_gravity(latitude):
     Equation: ``gamma_e * (1 + k * np.sin(latitude) ** 2) / np.sqrt(1 - e2 * np.sin(latitude) ** 2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import normal_gravity
+    >>> round(float(normal_gravity(1.5707963267948966)), 5)
+    9.83219
     """
     latitude = quantity("latitude", latitude, lower=-np.pi / 2, upper=np.pi / 2)
     sine_squared = np.sin(latitude) ** 2
@@ -174,6 +198,12 @@ def flattening_from_j2(j2, centrifugal_ratio):
     Equation: ``3 * j2 / 2 + centrifugal_ratio / 2``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import flattening_from_j2
+    >>> float(flattening_from_j2(0.002, 0.004))
+    0.005
     """
     j2 = quantity("j2", j2)
     centrifugal_ratio = quantity("centrifugal_ratio", centrifugal_ratio, lower=0)
@@ -213,6 +243,12 @@ def nodal_precession_rate(semi_major_axis, eccentricity, inclination, j2, radius
     with mean motion ``n = np.sqrt(gravitational_parameter / semi_major_axis**3)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import nodal_precession_rate
+    >>> float(nodal_precession_rate(2, 0, 0, 1, 1, 8))
+    -0.375
     """
     semi_major_axis = quantity("semi_major_axis", semi_major_axis, lower=0, strict_lower=True)
     eccentricity = quantity("eccentricity", eccentricity, lower=0, upper=1, strict_upper=True)
@@ -249,6 +285,12 @@ def stokes_function(spherical_distance):
     Equation: ``1 / s - 6 * s + 1 - 5 * np.cos(psi) - 3 * np.cos(psi) * np.log(s + s**2)`` with ``s = np.sin(psi / 2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import stokes_function
+    >>> round(float(stokes_function(3.141592653589793)), 5)
+    3.07944
     """
     psi = quantity("spherical_distance", spherical_distance, lower=0, upper=np.pi, strict_lower=True)
     s = np.sin(psi / 2)
@@ -283,6 +325,12 @@ def degree_geoid_height(anomaly_coefficient, degree, radius, gravity):
     Equation: ``radius * anomaly_coefficient / ((degree - 1) * gravity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.geophysics import degree_geoid_height
+    >>> float(degree_geoid_height(6, 4, 2, 4))
+    1.0
     """
     anomaly_coefficient = quantity("anomaly_coefficient", anomaly_coefficient)
     degree = quantity("degree", degree, lower=2)

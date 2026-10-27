@@ -44,6 +44,12 @@ def dansgaard_delta(temperature, slope, offset):
     Equation: ``slope * (temperature - 273.15) + offset``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import dansgaard_delta
+    >>> round(float(dansgaard_delta(253.15, 0.69, -13.6)), 4)
+    -27.4
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     slope = quantity("slope", slope, lower=0, strict_lower=True)
@@ -77,6 +83,12 @@ def dansgaard_temperature(delta, slope, offset):
     Equation: ``273.15 + (delta - offset) / slope``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import dansgaard_temperature
+    >>> round(float(dansgaard_temperature(-27.4, 0.69, -13.6)), 3)
+    253.15
     """
     delta = quantity("delta", delta)
     slope = quantity("slope", slope, lower=0, strict_lower=True)
@@ -112,6 +124,12 @@ def nye_age(depth, thickness, accumulation):
     Equation: ``thickness / accumulation * np.log(thickness / (thickness - depth))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import nye_age
+    >>> round(float(nye_age(2000, 3000, 1e-08)), 0)
+    329583686600.0
     """
     depth = quantity("depth", depth, lower=0)
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
@@ -151,6 +169,12 @@ def dansgaard_johnsen_downward_velocity(depth, thickness, kink_height, accumulat
     Equation: ``np.where(z >= h, accumulation * (2 * z - h) / (2 * thickness - h), accumulation * z**2 / (h * (2 * thickness - h)))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import dansgaard_johnsen_downward_velocity
+    >>> round(float(dansgaard_johnsen_downward_velocity(1000, 3000, 500, 1e-08)), 14)
+    6.36364e-09
     """
     depth = quantity("depth", depth, lower=0)
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
@@ -192,6 +216,12 @@ def dansgaard_johnsen_age(depth, thickness, kink_height, accumulation):
     Equation: ``s / (2 * a) * np.log(s / (2 * np.maximum(z, h) - h)) + h * s / a * (1 / np.minimum(z, h) - 1 / h)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import dansgaard_johnsen_age
+    >>> round(float(dansgaard_johnsen_age(2800, 3000, 500, 1e-08)), 0)
+    1484421200020.0
     """
     depth = quantity("depth", depth, lower=0)
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
@@ -236,6 +266,12 @@ def gas_age_difference(close_off_depth, mean_firn_density, ice_density, accumula
     Equation: ``close_off_depth * mean_firn_density / (ice_density * accumulation)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import gas_age_difference
+    >>> round(float(gas_age_difference(100, 600, 900, 1e-09)), 0)
+    66666666667.0
     """
     close_off_depth = quantity("close_off_depth", close_off_depth, lower=0)
     mean_firn_density = quantity("mean_firn_density", mean_firn_density, lower=0, strict_lower=True)

@@ -175,3 +175,105 @@ def test_light_rain_never_ponds():
     np.testing.assert_allclose(result.values[:, 2], 0)
     with pytest.raises(ValueError):
         simulate_infiltration(1e-6, [0.1, 0.2], 0.3, 5e-6, [0, 1])
+
+
+DAY = 86400.0
+
+
+@pytest.mark.parametrize("flux", [-4e-6, 0.0, 1e-7])
+def test_richards_column_relaxes_to_the_steady_gardner_profile(flux):
+    from earthsciencekit.hydrology import richards_steady_head, simulate_richards_column
+
+    result = simulate_richards_column(2.0, flux, 1e-5, 2.0, 0.4, 0.05, np.linspace(0, 400 * DAY, 5), nodes=80)
+    height = (np.arange(80) + 0.5) * 2.0 / 80
+    np.testing.assert_allclose(result.values[-1, 2:], richards_steady_head(height, flux, 1e-5, 2.0), atol=1e-6)
+    np.testing.assert_allclose(result.values[-1, 1], flux, atol=1e-6 * 1e-5)
+    assert result.names[:3] == ("storage", "water_table_flux", "pressure_head_0") and result.units[2] == "m"
+
+
+def test_richards_column_conserves_water_and_wets_from_the_top():
+    from scipy.integrate import trapezoid
+
+    from earthsciencekit.hydrology import exponential_water_content, simulate_richards_column
+
+    time = np.linspace(0, 20 * DAY, 2001)
+    result = simulate_richards_column(3.0, -5e-6, 1e-5, 3.0, 0.42, 0.04, time, nodes=60)
+    storage, bottom = result.values[:, 0], result.values[:, 1]
+    # Storage gains what enters at the surface minus what drains to the water table.
+    np.testing.assert_allclose(storage - storage[0], trapezoid_cumulative(bottom, time) + 5e-6 * time, atol=1e-5)
+    head = result.values[:, 2:]
+    assert head[-1, -1] > head[0, -1] and head[200, -1] > head[200, 30]
+    assert trapezoid(bottom, time) < 0
+    initial = exponential_water_content(-(np.arange(60) + 0.5) * 0.05, 0.42, 0.04, 3.0)
+    np.testing.assert_allclose(storage[0], np.sum(initial - 0.04) * 0.05, rtol=1e-12)
+
+
+def trapezoid_cumulative(values, time):
+    return np.concatenate([[0.0], np.cumsum((values[1:] + values[:-1]) / 2 * np.diff(time))])
+
+
+@pytest.mark.parametrize(
+    "args,kwargs",
+    [
+        ((2.0, -2e-5, 1e-5, 2.0, 0.4, 0.05), {}),
+        ((2.0, 0.0, 1e-5, 2.0, 0.04, 0.05), {}),
+        (([2.0, 1.0], 0.0, 1e-5, 2.0, 0.4, 0.05), {}),
+        ((2.0, 0.0, 1e-5, 2.0, 0.4, 0.05), {"nodes": 2}),
+        ((2.0, 0.0, 1e-5, 2.0, 0.4, 0.05), {"nodes": 5.0}),
+        ((2.0, 0.0, 1e-5, 2.0, 0.4, 0.05), {"initial_head": [-1.0, -1.0]}),
+        ((2.0, 0.0, 1e-5, 2.0, 0.4, 0.05), {"nodes": 3, "initial_head": [-1.0, 0.5, -1.0]}),
+    ],
+)
+def test_richards_column_rejects_bad_setup(args, kwargs):
+    from earthsciencekit.hydrology import simulate_richards_column
+
+    with pytest.raises(ValueError):
+        simulate_richards_column(*args, [0, 1], **kwargs)
+
+
+def test_kinematic_wave_is_steady_conserves_water_and_travels_at_its_celerity():
+    from earthsciencekit.hydrology import kinematic_wave_celerity, simulate_kinematic_wave
+
+    hour = 3600.0
+    time = np.linspace(0, 48 * hour, 481)
+    steady = simulate_kinematic_wave(np.full(time.size, 20.0), 1e4, 30, 0.03, 1e-3, time, nodes=20)
+    np.testing.assert_allclose(steady.values[:, 2:], 20.0, rtol=1e-8)
+    rating = np.sqrt(1e-3) / (0.03 * 30 ** (2 / 3))
+    np.testing.assert_allclose(steady.values[:, 1], 1e4 * (20 / rating) ** 0.6, rtol=1e-8)
+    inflow = 10 + 90 * np.exp(-(((time - 8 * hour) / (3 * hour)) ** 2))
+    flood = simulate_kinematic_wave(inflow, 5e4, 50, 0.035, 5e-4, time, nodes=200)
+    outflow, storage = flood.values[:, 0], flood.values[:, 1]
+    gained = np.concatenate([[0.0], np.cumsum(((inflow - outflow)[1:] + (inflow - outflow)[:-1]) / 2 * np.diff(time))])
+    np.testing.assert_allclose(storage - storage[0], gained, atol=1e-3 * storage[0])
+    velocity = 100 / (100 / (np.sqrt(5e-4) / (0.035 * 50 ** (2 / 3)))) ** 0.6
+    delay = time[np.argmax(outflow)] - 8 * hour
+    assert 0.9 < delay / (5e4 / kinematic_wave_celerity(velocity, 5 / 3)) < 1.25
+    assert 85 < outflow.max() < 100
+
+
+@pytest.mark.parametrize(
+    "inflow,kwargs",
+    [(np.zeros(3), {}), (np.ones(2), {}), (np.ones(3), {"nodes": 1}), (np.ones(3), {"nodes": True})],
+)
+def test_kinematic_wave_rejects_bad_setup(inflow, kwargs):
+    from earthsciencekit.hydrology import simulate_kinematic_wave
+
+    with pytest.raises(ValueError):
+        simulate_kinematic_wave(inflow, 1e3, 10, 0.03, 1e-3, [0, 1, 2], **kwargs)
+    with pytest.raises(ValueError):
+        simulate_kinematic_wave(np.ones(3), [1e3, 2e3], 10, 0.03, 1e-3, [0, 1, 2])
+
+
+def test_snowpack_conserves_water_and_melts_by_degree_days():
+    from earthsciencekit.hydrology import degree_day_melt, snowpack_water_equivalent
+
+    rng = np.random.default_rng(5)
+    days = np.arange(240)
+    temperature = 273.15 - 8 * np.cos(2 * np.pi * (days - 20) / 365) + rng.normal(0, 3, days.size) + 2
+    precipitation = rng.exponential(0.003, days.size)
+    pack = snowpack_water_equivalent(temperature, precipitation, 3e-3 / DAY, 273.15, DAY)
+    swe, released = pack.T
+    np.testing.assert_allclose(swe[-1] + released.sum(), precipitation.sum(), rtol=1e-12)
+    assert np.all(swe >= 0) and swe.max() > 0.05
+    melting = (temperature > 273.15) & (np.r_[0, swe[:-1]] > 0.02)
+    np.testing.assert_allclose(released[melting], degree_day_melt(temperature[melting], 3e-3 / DAY, 273.15) * DAY + precipitation[melting])

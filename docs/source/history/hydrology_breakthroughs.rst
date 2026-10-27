@@ -12,7 +12,9 @@ Green and Ampt's wetting front, Richards's equation and Horton's infiltration
 capacity; the catchment as a linear system, with Sherman's unit hydrograph and
 McCarthy's routing; the well, with Theis's solution and Cooper and Jacob's
 shortcut; the geometry of river networks; the physics of evaporation from
-water and leaves; and finally a model that maps where runoff forms. This
+water and leaves; kinematic flood waves and degree-day snowmelt; a model that
+maps where runoff forms; and a numerical solution of Richards's equation that
+conserves water. This
 chronology traces the results behind :mod:`earthsciencekit.hydrology`. Every
 example uses deterministic synthetic inputs; none inverts real measurements.
 
@@ -122,6 +124,27 @@ des eaux dans les canaux découverts et à travers les terrains perméables*,
 
 .. minigallery:: ../../examples/hydrology/plot_05_dupuit_unconfined_flow.py
 
+1887 -- Finsterwalder and Schunk's Degree-Day Melt
+--------------------------------------------------
+
+Sebastian Finsterwalder and Hans Schunk, surveying the Suldenferner in the
+Ortler Alps, related the glacier's melt to the sum of positive air
+temperatures. Nobody could then measure the full energy balance. Melt in
+proportion to positive degree-days, a few millimetres of water per degree per
+day for snow, is still the workhorse of snow hydrology wherever only air
+temperature is measured.
+
+*Implementation:* :func:`~earthsciencekit.hydrology.degree_day_melt` (*new*)
+and :func:`~earthsciencekit.hydrology.snowpack_water_equivalent` (*new*). The
+example builds up and melts a synthetic mountain snowpack.
+
+*References:* S. Finsterwalder and H. Schunk, "Der Suldenferner,"
+*Zeitschrift des Deutschen und Oesterreichischen Alpenvereins* 18 (1887):
+72-89. R. Hock, "Temperature index melt modelling in mountain areas," *Journal
+of Hydrology* 282 (2003): 104-115.
+
+.. minigallery:: ../../examples/hydrology/plot_06_finsterwalder_schunk_degree_day.py
+
 1889 -- Manning's Formula
 -------------------------
 
@@ -140,7 +163,7 @@ example shows how the Chézy coefficient varies with depth and bed.
 *Transactions of the Institution of Civil Engineers of Ireland* 20 (1891):
 161-207.
 
-.. minigallery:: ../../examples/hydrology/plot_06_manning_formula.py
+.. minigallery:: ../../examples/hydrology/plot_07_manning_formula.py
 
 1911 -- Green and Ampt's Infiltration
 -------------------------------------
@@ -162,7 +185,7 @@ The flow of air and water through soils," *Journal of Agricultural Science* 4
 (1911): 1-24; R. G. Mein and C. L. Larson, "Modeling infiltration during a
 steady rain," *Water Resources Research* 9 (1973): 384-394.
 
-.. minigallery:: ../../examples/hydrology/plot_07_green_ampt_infiltration.py
+.. minigallery:: ../../examples/hydrology/plot_08_green_ampt_infiltration.py
 
 1931 -- Richards's Equation
 ---------------------------
@@ -184,7 +207,7 @@ mediums," *Physics* 1 (1931): 318-333; W. R. Gardner, "Some steady-state
 solutions of the unsaturated moisture flow equation with application to
 evaporation from a water table," *Soil Science* 85 (1958): 228-232.
 
-.. minigallery:: ../../examples/hydrology/plot_08_richards_equation.py
+.. minigallery:: ../../examples/hydrology/plot_09_richards_equation.py
 
 1932 -- Sherman's Unit Hydrograph
 ---------------------------------
@@ -204,7 +227,7 @@ The example builds a storm hydrograph from three hours of rain.
 method," *Engineering News-Record* 108 (1932): 501-505; J. E. Nash, "The form
 of the instantaneous unit hydrograph," *IASH Publication* 45 (1957): 114-121.
 
-.. minigallery:: ../../examples/hydrology/plot_09_sherman_unit_hydrograph.py
+.. minigallery:: ../../examples/hydrology/plot_10_sherman_unit_hydrograph.py
 
 1933 -- Horton's Infiltration Capacity
 --------------------------------------
@@ -222,7 +245,7 @@ standard picture of how storms produce floods.
 *References:* R. E. Horton, "The role of infiltration in the hydrologic
 cycle," *Transactions, American Geophysical Union* 14 (1933): 446-460.
 
-.. minigallery:: ../../examples/hydrology/plot_10_horton_infiltration_capacity.py
+.. minigallery:: ../../examples/hydrology/plot_11_horton_infiltration_capacity.py
 
 1935 -- Theis's Well Solution
 -----------------------------
@@ -243,7 +266,7 @@ piezometric surface and the rate and duration of discharge of a well using
 ground-water storage," *Transactions, American Geophysical Union* 16 (1935):
 519-524.
 
-.. minigallery:: ../../examples/hydrology/plot_11_theis_well_solution.py
+.. minigallery:: ../../examples/hydrology/plot_12_theis_well_solution.py
 
 1938 -- McCarthy's Muskingum Routing
 ------------------------------------
@@ -262,7 +285,7 @@ example routes a flood through a reach for three weightings.
 unpublished paper, Conference of the North Atlantic Division, U.S. Army Corps
 of Engineers (1938).
 
-.. minigallery:: ../../examples/hydrology/plot_12_mccarthy_muskingum_routing.py
+.. minigallery:: ../../examples/hydrology/plot_13_mccarthy_muskingum_routing.py
 
 1945 -- Horton's Laws of Stream Numbers
 ---------------------------------------
@@ -281,7 +304,7 @@ fits both ratios to a synthetic fifth-order basin.
 drainage basins; hydrophysical approach to quantitative morphology,"
 *Geological Society of America Bulletin* 56 (1945): 275-370.
 
-.. minigallery:: ../../examples/hydrology/plot_13_horton_laws_of_stream_numbers.py
+.. minigallery:: ../../examples/hydrology/plot_14_horton_laws_of_stream_numbers.py
 
 1946 -- Cooper and Jacob's Straight-Line Method
 -----------------------------------------------
@@ -301,7 +324,7 @@ test.
 for evaluating formation constants and summarizing well-field history,"
 *Transactions, American Geophysical Union* 27 (1946): 526-534.
 
-.. minigallery:: ../../examples/hydrology/plot_14_cooper_jacob_straight_line_method.py
+.. minigallery:: ../../examples/hydrology/plot_15_cooper_jacob_straight_line_method.py
 
 1948 -- Penman's Evaporation
 ----------------------------
@@ -322,7 +345,27 @@ temperature.
 and grass," *Proceedings of the Royal Society of London A* 193 (1948):
 120-145.
 
-.. minigallery:: ../../examples/hydrology/plot_15_penman_evaporation.py
+.. minigallery:: ../../examples/hydrology/plot_16_penman_evaporation.py
+
+1955 -- Lighthill and Whitham's Kinematic Waves
+-----------------------------------------------
+
+James Lighthill and Gerald Whitham showed that a flood in a long river obeys
+continuity alone when friction balances the bed slope. Discharge is then a
+function of depth, and a flood crest travels at ``dQ/dA``, faster than the
+water itself: 5/3 of the mean velocity for Manning's law in a wide channel.
+The same theory later described traffic jams.
+
+*Implementation:* :func:`~earthsciencekit.hydrology.kinematic_wave_celerity`
+(*new*) and :func:`~earthsciencekit.hydrology.simulate_kinematic_wave`
+(*new*). The example routes a flood down a 50 km reach and compares it with
+Muskingum routing.
+
+*References:* M. J. Lighthill and G. B. Whitham, "On kinematic waves. I.
+Flood movement in long rivers," *Proceedings of the Royal Society of London
+A* 229 (1955): 281-316.
+
+.. minigallery:: ../../examples/hydrology/plot_17_lighthill_whitham_kinematic_waves.py
 
 1965 -- Monteith's Canopy Resistance
 ------------------------------------
@@ -343,7 +386,7 @@ Society for Experimental Biology* 19 (1965): 205-234; R. G. Allen, L. S.
 Pereira, D. Raes and M. Smith, *Crop evapotranspiration*, FAO Irrigation and
 Drainage Paper 56 (Rome: FAO, 1998).
 
-.. minigallery:: ../../examples/hydrology/plot_16_monteith_canopy_resistance.py
+.. minigallery:: ../../examples/hydrology/plot_18_monteith_canopy_resistance.py
 
 1979 -- Beven and Kirkby's TOPMODEL
 -----------------------------------
@@ -365,11 +408,32 @@ the catchment dries.
 contributing area model of basin hydrology," *Hydrological Sciences Bulletin*
 24 (1979): 43-69.
 
-.. minigallery:: ../../examples/hydrology/plot_17_beven_kirkby_topmodel.py
+.. minigallery:: ../../examples/hydrology/plot_19_beven_kirkby_topmodel.py
+
+1990 -- Celia's Mass-Conservative Richards Solver
+-------------------------------------------------
+
+Michael Celia, Efthimios Bouloutas and Rebecca Zarba explained why numerical
+solutions of Richards's equation created or destroyed water. Stepping the
+pressure head through the soil's capacity term cannot conserve mass over a
+finite time step. Writing the storage in water content, the mixed form, made
+the solution conserve water and opened the way to the unsaturated-zone models
+in use today.
+
+*Implementation:* :func:`~earthsciencekit.hydrology.exponential_water_content`
+(*new*) and :func:`~earthsciencekit.hydrology.simulate_richards_column`
+(*new*), with water content as the state of every cell. The example wets a
+column from the top and checks the water balance and the steady profile.
+
+*References:* M. A. Celia, E. T. Bouloutas and R. L. Zarba, "A general
+mass-conservative numerical solution for the unsaturated flow equation,"
+*Water Resources Research* 26 (1990): 1483-1496.
+
+.. minigallery:: ../../examples/hydrology/plot_20_celia_mass_conservative_richards.py
 
 See also
 --------
 
 - :doc:`/guides/hydrology` for conventions, equations and checks.
 - `USGS Water Science School <https://www.usgs.gov/special-topics/water-science-school>`_
-- `FAO Irrigation and Drainage Paper 56 <https://www.fao.org/3/x0490e/x0490e00.htm>`_
+- `FAO Irrigation and Drainage Paper 56 <https://www.fao.org/4/x0490e/x0490e00.htm>`_

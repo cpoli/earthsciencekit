@@ -36,6 +36,12 @@ def seismic_impedance(density, speed):
     Equation: ``density * speed``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import seismic_impedance
+    >>> float(seismic_impedance(2000, 3000))
+    6000000.0
     """
     density = quantity("density", density, lower=0, strict_lower=True)
     speed = quantity("speed", speed, lower=0, strict_lower=True)
@@ -66,6 +72,12 @@ def reflection_coefficient(impedance1, impedance2):
     Equation: ``(impedance2 - impedance1) / (impedance2 + impedance1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import reflection_coefficient
+    >>> float(reflection_coefficient(2, 6))
+    0.5
     """
     impedance1 = quantity("impedance1", impedance1, lower=0, strict_lower=True)
     impedance2 = quantity("impedance2", impedance2, lower=0, strict_lower=True)
@@ -96,6 +108,12 @@ def transmission_coefficient(impedance1, impedance2):
     Equation: ``2 * impedance2 / (impedance2 + impedance1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.seismology import transmission_coefficient
+    >>> float(transmission_coefficient(2, 6))
+    1.5
     """
     impedance1 = quantity("impedance1", impedance1, lower=0, strict_lower=True)
     impedance2 = quantity("impedance2", impedance2, lower=0, strict_lower=True)

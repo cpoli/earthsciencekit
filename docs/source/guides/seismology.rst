@@ -21,7 +21,12 @@ Layered models are flat (head waves, Love waves) or spherically symmetric
 (ray parameter, in s/rad with incidence measured from the radius). Local
 magnitude takes Wood-Anderson amplitude in m and hypocentral distance in m.
 Vertical travel time integrates a tabulated profile exactly for speeds that
-vary linearly between its depths.
+vary linearly between its depths. The layered ray tracer takes the same kind
+of table, starting at the surface, but lets the speed follow the Mohorovicic
+law ``v = a r**b`` between depths, which makes each layer's ray integrals exact.
+``radius / speed`` must decrease with depth within every layer; it may jump up
+at a discontinuity, as at the core-mantle boundary. Distances are surface to
+surface, in radians, and are not folded past the antipode.
 
 Input contracts
 ---------------
@@ -278,10 +283,34 @@ Output: **s**. Tabulated profile, speed linear between points; a repeated depth 
 
     cumsum(dz * np.log(v2 / v1) / (v2 - v1))  # dz / v1 where v2 == v1
 
+layered_ray_distance
+~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.seismology.layered_ray_distance`
+
+Output: **rad**. Mohorovicic-law layers; a ray turns where ``eta = r / v`` falls to the ray parameter, or at the top of a layer it cannot enter.
+
+.. code-block:: python
+
+    2 * sum(np.arccos(p / eta_top) - np.arccos(p / eta_bottom)) / (1 - b)  # eta_bottom = p in the turning layer
+
+layered_ray_travel_time
+~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.seismology.layered_ray_travel_time`
+
+Output: **s**. Same rays; the slope of the travel-time curve is the ray parameter.
+
+.. code-block:: python
+
+    2 * sum(np.sqrt(eta_top**2 - p**2) - np.sqrt(eta_bottom**2 - p**2)) / (1 - b)
+
 Independent validation
 ----------------------
 
 Every algebraic API has a fixed-value check, broadcasting check and invalid-input
-contracts. The shared suite adds cross-model identities, energy/conservation
+contracts. The layered rays are chords of a uniform sphere, agree with direct
+quadrature of the ray integrals, obey ``dT/d(distance) = p`` and reproduce the
+two-shell core shadow. The shared suite adds cross-model identities, energy/conservation
 checks and independent analytic solutions for dynamics. See :doc:`/validation`
 for the exact evidence and :doc:`/numerical_methods` for numerical conventions.

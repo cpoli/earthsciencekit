@@ -53,6 +53,12 @@ def viscous_slab_velocity(height, thickness, surface_slope, viscosity, density, 
     Equation: ``density * gravity * surface_slope * (2 * thickness * height - height**2) / (2 * viscosity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import viscous_slab_velocity
+    >>> float(viscous_slab_velocity(50, 100, 0.1, 10000000000000.0, 1000, 10))
+    3.75e-07
     """
     height = quantity("height", height, lower=0)
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
@@ -91,6 +97,12 @@ def glen_strain_rate(stress, rate_factor, exponent):
     Equation: ``rate_factor * stress**exponent``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import glen_strain_rate
+    >>> float(glen_strain_rate(100000.0, 2.4e-24, 3))
+    2.4e-09
     """
     stress = quantity("stress", stress, lower=0)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)
@@ -124,6 +136,12 @@ def glen_stress(strain_rate, rate_factor, exponent):
     Equation: ``(strain_rate / rate_factor) ** (1 / exponent)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import glen_stress
+    >>> round(float(glen_stress(2.4e-09, 2.4e-24, 3)), 0)
+    100000.0
     """
     strain_rate = quantity("strain_rate", strain_rate, lower=0)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)
@@ -160,6 +178,12 @@ def glen_rate_factor(temperature, reference_factor, activation_energy, reference
     Equation: ``reference_factor * np.exp(-activation_energy / R_GAS * (1 / temperature - 1 / reference_temperature))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import glen_rate_factor
+    >>> round(float(glen_rate_factor(263.15, 2.4e-24, 60000.0, 273.15)), 30)
+    8.79429e-25
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     reference_factor = quantity("reference_factor", reference_factor, lower=0, strict_lower=True)
@@ -194,6 +218,12 @@ def effective_viscosity(stress, rate_factor, exponent):
     Equation: ``1 / (2 * rate_factor * stress ** (exponent - 1))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import effective_viscosity
+    >>> round(float(effective_viscosity(100000.0, 2.4e-24, 3)), 0)
+    20833333333333.0
     """
     stress = quantity("stress", stress, lower=0, strict_lower=True)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)
@@ -237,6 +267,12 @@ def glen_velocity_profile(height, thickness, surface_slope, rate_factor, exponen
     - (thickness - height) ** (exponent + 1))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import glen_velocity_profile
+    >>> round(float(glen_velocity_profile(50, 100, 0.1, 1e-24, 3, 1000, 10)), 13)
+    4.6875e-08
     """
     height = quantity("height", height, lower=0)
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
@@ -283,6 +319,12 @@ def glen_surface_velocity(thickness, surface_slope, rate_factor, exponent, densi
     Equation: ``2 * rate_factor / (exponent + 1) * (density * gravity * surface_slope) ** exponent * thickness ** (exponent + 1)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import glen_surface_velocity
+    >>> round(float(glen_surface_velocity(100, 0.1, 1e-24, 3, 1000, 10)), 13)
+    5e-08
     """
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
     surface_slope = quantity("surface_slope", surface_slope, lower=0)
@@ -325,6 +367,12 @@ def nye_crevasse_depth(strain_rate, rate_factor, exponent, density, gravity):
     Equation: ``2 * (strain_rate / rate_factor) ** (1 / exponent) / (density * gravity)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import nye_crevasse_depth
+    >>> round(float(nye_crevasse_depth(1e-09, 1e-24, 3, 1000, 10)), 4)
+    20.0
     """
     strain_rate = quantity("strain_rate", strain_rate, lower=0)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)
@@ -371,6 +419,12 @@ def water_filled_crevasse_depth(strain_rate, rate_factor, exponent, water_depth,
     water_depth``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import water_filled_crevasse_depth
+    >>> round(float(water_filled_crevasse_depth(1e-09, 1e-24, 3, 10, 900, 1000, 10)), 4)
+    33.3333
     """
     strain_rate = quantity("strain_rate", strain_rate, lower=0)
     rate_factor = quantity("rate_factor", rate_factor, lower=0, strict_lower=True)

@@ -44,6 +44,12 @@ def stefan_ice_thickness(freezing_degree_time, conductivity, density, latent_hea
     Equation: ``np.sqrt(2 * conductivity * freezing_degree_time / (density * latent_heat))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import stefan_ice_thickness
+    >>> round(float(stefan_ice_thickness(260000000.0, 2.2, 917, 334000.0)), 5)
+    1.93266
     """
     freezing_degree_time = quantity("freezing_degree_time", freezing_degree_time, lower=0)
     conductivity = quantity("conductivity", conductivity, lower=0, strict_lower=True)
@@ -82,6 +88,12 @@ def stefan_growth_rate(thickness, temperature_difference, conductivity, density,
     Equation: ``conductivity * temperature_difference / (density * latent_heat * thickness)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import stefan_growth_rate
+    >>> float(stefan_growth_rate(1, 20, 2, 1000, 200000.0))
+    2e-07
     """
     thickness = quantity("thickness", thickness, lower=0, strict_lower=True)
     temperature_difference = quantity("temperature_difference", temperature_difference, lower=0)
@@ -118,6 +130,12 @@ def sea_ice_freeboard(thickness, ice_density, water_density):
     Equation: ``thickness * (1 - ice_density / water_density)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.glaciology import sea_ice_freeboard
+    >>> round(float(sea_ice_freeboard(2, 900, 1000)), 6)
+    0.2
     """
     thickness = quantity("thickness", thickness, lower=0)
     ice_density = quantity("ice_density", ice_density, lower=0, strict_lower=True)

@@ -38,6 +38,16 @@ positive density contrast meaning buoyant magma. The Mogi source returns
 ``[radial, vertical]`` displacements on the last axis, outward and upward
 positive, for a source small compared with its depth.
 
+Bubble growth treats water vapour as the only volatile. The supersaturation
+is ``melt_density * (initial_water - surface_water) / gas_density``, a ratio of
+volumes. Scriven's growth constant ``beta`` gives ``R = 2 beta sqrt(D t)`` for
+growth from zero radius in an unbounded melt. It needs the supersaturation
+below ``1 / density_ratio``, where ``density_ratio`` is the gas density over
+the melt density. ``simulate_bubble_growth`` follows one bubble in its own
+shell of melt at a fixed pressure after a sudden decompression. The wall stays
+at ``water_solubility`` and the gas density is ``pressure / (R_VAPOR *
+temperature)``.
+
 Plume buoyancy flux is ``reduced_gravity * velocity * radius**2`` without the
 factor pi, as in Morton, Taylor and Turner (1956) and Briggs (1969).
 ``column_height`` takes the heat flux in watts. The Volcanic Explosivity Index
@@ -298,6 +308,39 @@ Output: **1 (mass fraction)**. Square-root (Henry-type) law for pure water vapou
 
     solubility_constant * np.sqrt(pressure)
 
+diffusive_supersaturation
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.volcanology.diffusive_supersaturation`
+
+Output: **1**. The mass-transfer analogue of the Jakob number.
+
+.. code-block:: python
+
+    melt_density * (initial_water - surface_water) / gas_density
+
+scriven_growth_constant
+~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.volcanology.scriven_growth_constant`
+
+Output: **1**. Scriven (1959), with the radial flow driven by the expanding bubble (``e = 1 - density_ratio``), solved by root finding; ``np.sqrt(phi / 2)`` for small supersaturation ``phi`` and ``np.sqrt(3 / np.pi) * phi`` for a light gas at large ``phi``.
+
+.. code-block:: python
+
+    phi = 2 * beta**3 * np.exp(beta**2 + 2 * e * beta**2) * integral(x**-2 * np.exp(-x**2 - 2 * e * beta**3 / x), beta, inf)
+
+scriven_bubble_radius
+~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.volcanology.scriven_bubble_radius`
+
+Output: **m**. Growth from zero radius in an unbounded melt at constant supersaturation.
+
+.. code-block:: python
+
+    2 * growth_constant * np.sqrt(diffusivity * time)
+
 volcanic_explosivity_index
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -322,6 +365,21 @@ in a uniform atmosphere its top lies near ``plume_rise_height`` for the default
 entrainment 0.12. Past the top it continues as a fountain that falls back and
 oscillates about the neutral buoyancy level, an illustrative closure.
 
+Bubble growth
+~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.volcanology.simulate_bubble_growth` integrates the
+radius of one bubble in a melt shell of fixed mass. The growth is quasi-static
+diffusion driven by the shell's mean dissolved water ``c``, which falls as the
+bubble fills. It returns the radius, ``c`` and the vesicularity. Without
+depletion it gives ``R**2 = R0**2 + 2 phi D t``, Scriven's small-supersaturation
+limit, which underestimates the full solution by about 15 % at ``phi = 0.05``.
+The bubble stops growing when ``c`` reaches the solubility.
+
+.. code-block:: python
+
+    d(gas_density * R**3)/dt = 3 * R * melt_density * D * (c - c_s)
+
 Independent validation
 ----------------------
 
@@ -336,5 +394,8 @@ conserves mass and shares its initial slope with equilibrium crystallization,
 that lattice strain peaks at the optimal radius, that Shaw's lines share their
 pivot, that the Mogi uplift integrates to ``2 (1 - nu) dV``, and that the
 eruption column follows the pure-plume similarity solution and reaches the
-Morton-Taylor-Turner height. See :doc:`/validation` for the exact evidence and
+Morton-Taylor-Turner height. Scriven's growth constant matches its closed form
+without advection and the small- and large-supersaturation limits, and the
+bubble cell follows the quasi-static law, conserves water and saturates the
+melt. See :doc:`/validation` for the exact evidence and
 :doc:`/numerical_methods` for numerical conventions.

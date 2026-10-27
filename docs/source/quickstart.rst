@@ -8,7 +8,7 @@ Install from PyPI or an editable checkout::
     python -m pip install -e '.[dev]'
 
 The import name is ``earthsciencekit``. Version 0.3.0 contains nine domain
-subpackages; shared utilities support them.
+subpackages, and ``geomorphology`` is unreleased; shared utilities support them.
 
 Plate motion with explicit units
 --------------------------------

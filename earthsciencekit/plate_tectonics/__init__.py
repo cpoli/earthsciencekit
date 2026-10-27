@@ -31,6 +31,12 @@ from earthsciencekit.plate_tectonics.systems.kinematics import (
     plate_displacement,
     plate_speed,
 )
+from earthsciencekit.plate_tectonics.systems.rotations import (
+    compose_finite_rotations,
+    finite_rotation_matrix,
+    interpolate_finite_rotation,
+    rotate_position,
+)
 
 __all__ = [
     "angular_speed",
@@ -56,4 +62,8 @@ __all__ = [
     "ocean_depth",
     "compose_euler_vectors",
     "diffuse_temperature",
+    "finite_rotation_matrix",
+    "rotate_position",
+    "compose_finite_rotations",
+    "interpolate_finite_rotation",
 ]

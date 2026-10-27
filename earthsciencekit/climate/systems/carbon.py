@@ -37,6 +37,12 @@ def carbon_airborne_fraction(atmospheric_increase, emissions):
     Equation: ``atmospheric_increase / emissions``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import carbon_airborne_fraction
+    >>> float(carbon_airborne_fraction(4, 10))
+    0.4
     """
     atmospheric_increase = quantity("atmospheric_increase", atmospheric_increase, lower=0)
     emissions = quantity("emissions", emissions, lower=0, strict_lower=True)
@@ -69,6 +75,12 @@ def carbon_decay(initial_excess, timescale, time):
     Equation: ``initial_excess * np.exp(-time / timescale)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import carbon_decay
+    >>> float(carbon_decay(2, 1, 0.6931471805599453))
+    1.0
     """
     initial_excess = quantity("initial_excess", initial_excess, lower=0)
     timescale = quantity("timescale", timescale, lower=0, strict_lower=True)

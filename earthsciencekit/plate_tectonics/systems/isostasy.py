@@ -41,6 +41,12 @@ def airy_root(elevation, crust_density, mantle_density):
     Equation: ``elevation * crust_density / (mantle_density - crust_density)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import airy_root
+    >>> float(airy_root(1000, 2700, 3300))
+    4500.0
     """
     elevation = quantity("elevation", elevation, lower=0)
     crust_density = quantity("crust_density", crust_density, lower=0, strict_lower=True)
@@ -75,6 +81,12 @@ def flexural_rigidity(young_modulus, elastic_thickness, poisson_ratio):
     Equation: ``young_modulus * elastic_thickness**3 / (12 * (1 - poisson_ratio**2))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import flexural_rigidity
+    >>> float(flexural_rigidity(12, 1, 0))
+    1.0
     """
     young_modulus = quantity("young_modulus", young_modulus, lower=0, strict_lower=True)
     elastic_thickness = quantity("elastic_thickness", elastic_thickness, lower=0, strict_lower=True)
@@ -108,6 +120,12 @@ def flexural_parameter(rigidity, density_contrast, gravity):
     Equation: ``(4 * rigidity / (density_contrast * gravity))**0.25``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import flexural_parameter
+    >>> float(flexural_parameter(4, 1, 1))
+    2.0
     """
     rigidity = quantity("rigidity", rigidity, lower=0, strict_lower=True)
     density_contrast = quantity("density_contrast", density_contrast, lower=0, strict_lower=True)
@@ -146,6 +164,12 @@ def flexural_deflection(distance, line_load, rigidity, density_contrast, gravity
     with ``x = abs(distance) / alpha`` and ``alpha = (4 * rigidity / (density_contrast * gravity))**0.25``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.plate_tectonics import flexural_deflection
+    >>> float(flexural_deflection(0, 8, 1, 4, 1))
+    1.0
     """
     distance = quantity("distance", distance)
     line_load = quantity("line_load", line_load, lower=0)

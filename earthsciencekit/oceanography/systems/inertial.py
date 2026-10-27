@@ -35,6 +35,12 @@ def inertial_period(coriolis):
     Equation: ``2 * np.pi / np.abs(coriolis)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import inertial_period
+    >>> round(float(inertial_period(0.0001)), 1)
+    62831.9
     """
     coriolis = quantity("coriolis", coriolis)
     require(coriolis != 0, "coriolis must be nonzero")

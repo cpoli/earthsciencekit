@@ -46,6 +46,12 @@ def decay_constant(half_life):
     Equation: ``np.log(2) / half_life``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import decay_constant
+    >>> round(float(decay_constant(2)), 6)
+    0.346574
     """
     half_life = quantity("half_life", half_life, lower=0, strict_lower=True)
     return np.log(2) / half_life
@@ -75,6 +81,12 @@ def parent_fraction(decay_constant, time):
     Equation: ``np.exp(-decay_constant * time)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import parent_fraction
+    >>> float(parent_fraction(0.6931471805599453, 1))
+    0.5
     """
     decay_constant = quantity("decay_constant", decay_constant, lower=0, strict_lower=True)
     time = quantity("time", time, lower=0)
@@ -105,6 +117,12 @@ def radiometric_age(daughter_parent_ratio, decay_constant):
     Equation: ``np.log1p(daughter_parent_ratio) / decay_constant``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import radiometric_age
+    >>> float(radiometric_age(1.718281828459045, 2))
+    0.5
     """
     daughter_parent_ratio = quantity("daughter_parent_ratio", daughter_parent_ratio, lower=0)
     decay_constant = quantity("decay_constant", decay_constant, lower=0, strict_lower=True)
@@ -138,6 +156,12 @@ def radiogenic_daughter(parent, decay_constant, time):
     Equation: ``parent * np.expm1(decay_constant * time)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import radiogenic_daughter
+    >>> float(radiogenic_daughter(3, 0.6931471805599453, 1))
+    3.0
     """
     parent = quantity("parent", parent, lower=0)
     decay_constant = quantity("decay_constant", decay_constant, lower=0, strict_lower=True)
@@ -168,6 +192,12 @@ def radiocarbon_age(fraction_modern):
     Equation: ``-LIBBY_MEAN_LIFE * np.log(fraction_modern)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import radiocarbon_age
+    >>> round(float(radiocarbon_age(0.36787944117144233)), 0)
+    253502200800.0
     """
     fraction_modern = quantity("fraction_modern", fraction_modern, lower=0, strict_lower=True)
     return -LIBBY_MEAN_LIFE * np.log(fraction_modern)
@@ -197,6 +227,12 @@ def radiogenic_lead_ratio(time):
     Equation: ``np.expm1(LAMBDA_U235 * time) / (U238_U235 * np.expm1(LAMBDA_U238 * time))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import radiogenic_lead_ratio
+    >>> round(float(radiogenic_lead_ratio(1.4100926004988576e+17)), 6)
+    0.58385
     """
     time = quantity("time", time, lower=0, strict_lower=True)
     return np.expm1(LAMBDA_U235 * time) / (U238_U235 * np.expm1(LAMBDA_U238 * time))
@@ -224,6 +260,12 @@ def lead_lead_age(lead_ratio):
     Inverts radiogenic_lead_ratio by Brent's method between one year and 10 Ga; same closed-system assumptions.
     Equation: ``radiogenic_lead_ratio(age) = lead_ratio``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import lead_lead_age
+    >>> round(float(lead_lead_age(0.5838503844760619)), 0)
+    1.4100926004988581e+17
     """
     lead_ratio = quantity("lead_ratio", lead_ratio)
     require(lead_ratio >= radiogenic_lead_ratio(_YOUNGEST), "lead_ratio is below the ratio at one year")
@@ -258,6 +300,13 @@ def concordia_ratios(time):
     Equation: ``[np.expm1(LAMBDA_U235 * time), np.expm1(LAMBDA_U238 * time)]``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.volcanology import concordia_ratios
+    >>> np.round(concordia_ratios(1.4100926004988576e+17), 4).tolist()
+    [80.5013, 1.0]
     """
     time = quantity("time", time, lower=0)
     return np.stack([np.expm1(LAMBDA_U235 * time), np.expm1(LAMBDA_U238 * time)], axis=-1)
@@ -290,6 +339,13 @@ def isochron_fit(parent_ratio, daughter_ratio, decay_constant):
     squares without measurement-error weighting (a York fit would weight them). The slope must be positive.
     Equation: ``daughter_ratio = initial_ratio + parent_ratio * np.expm1(decay_constant * age)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.volcanology import isochron_fit
+    >>> np.round(isochron_fit([0, 1, 2], [0.7, 2.418281828459045, 4.13656365691809], 1), 5).tolist()
+    [1.0, 0.7]
     """
     parent_ratio = quantity("parent_ratio", parent_ratio, lower=0)
     daughter_ratio = quantity("daughter_ratio", daughter_ratio, lower=0)

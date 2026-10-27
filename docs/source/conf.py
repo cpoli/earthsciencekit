@@ -1,5 +1,6 @@
 """MathematicsKit-style domain hubs, cross-links and executed example galleries."""
 
+import os
 import sys
 from pathlib import Path
 
@@ -53,8 +54,9 @@ sitemap_excludes = [
 ]
 ogp_site_url = html_baseurl
 ogp_site_name = project
-ogp_image = html_baseurl + "_static/images/readme_hero.png"
+ogp_image = html_baseurl + "_static/images/earthsciencekit_logo.png"
 ogp_social_cards = {"enable": False}
+html_logo = "_static/images/earthsciencekit_logo_transparent.png"
 html_theme_options = {
     "github_url": "https://github.com/cpoli/earthsciencekit",
     "icon_links": [
@@ -64,11 +66,20 @@ html_theme_options = {
             "icon": "fa-brands fa-python",
             "type": "fontawesome",
         },
+        {
+            "name": "Charles Poli",
+            "url": "https://cpoli.github.io/",
+            "icon": "fa-solid fa-user",
+            "type": "fontawesome",
+        },
     ],
     "navbar_end": ["theme-switcher", "navbar-icon-links"],
     "show_toc_level": 2,
     "navigation_with_keys": True,
     "navigation_depth": 2,
+    "logo": {
+        "alt_text": "earthsciencekit logo",
+    },
 }
 exclude_patterns = [
     "_build",
@@ -79,6 +90,8 @@ exclude_patterns = [
     "_generated/grid_*.rst",
     "_generated/vars.rst",
 ]
+# The Smithsonian Global Volcanism Program answers automated requests with 403.
+linkcheck_ignore = [r"https://volcano\.si\.edu/"]
 
 SUBPACKAGES = [
     {
@@ -132,7 +145,16 @@ SUBPACKAGES = [
         "category": "Fluid Earth and Climate",
         "blurb": (
             "Glen's flow law, plastic and shallow-ice profiles, sliding, crevasses, mass balance, "
-            "sea-ice growth, postglacial rebound, ice-core dating and marine grounding lines."
+            "sea-ice growth, postglacial rebound, ice-core dating, firn densification, degree-day melt "
+            "and marine grounding lines."
+        ),
+    },
+    {
+        "name": "geomorphology",
+        "category": "Solid Earth",
+        "blurb": (
+            "Settling, the Shields threshold, suspension and bedload, hillslope creep and scarps, stream power "
+            "and river profiles, network scaling, blown sand and cosmogenic erosion rates."
         ),
     },
 ]
@@ -159,7 +181,15 @@ sphinx_gallery_conf = {
     # "Launch JupyterLite" button: runs the notebook in the browser on Pyodide,
     # which has NumPy, SciPy and Matplotlib, with no server.
     "jupyterlite": {"use_jupyter_lab": True, "notebook_modification_function": _jupyterlite_install_cell},
+    # Run the examples in one worker process per core; EARTHSCIENCEKIT_GALLERY_JOBS=1
+    # runs them one at a time in the Sphinx process instead.
+    "parallel": int(os.environ.get("EARTHSCIENCEKIT_GALLERY_JOBS", os.cpu_count() or 1)),
 }
+
+# The quickstart notebook also ships in the JupyterLite site, so the landing
+# page's JupyterLite link opens on it; sphinx-gallery appends its own notebooks
+# to this list. Its first code cell installs earthsciencekit with %pip, which works on Pyodide.
+jupyterlite_contents = ["../../notebooks/quickstart.ipynb"]
 
 
 def _cards(entries):

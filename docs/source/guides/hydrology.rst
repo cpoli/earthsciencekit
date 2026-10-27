@@ -31,6 +31,10 @@ at height zero; it rejects downward fluxes at or beyond the saturated
 conductivity and heights above the limit of capillary supply. Green-Ampt and
 Horton rates are infiltration capacities of a uniform soil; Green-Ampt times
 start when the surface ponds, and the suction head is a positive magnitude.
+``exponential_water_content`` is the retention curve that shares Gardner's
+exponent, and ``simulate_richards_column`` solves the transient Richards
+equation in that soil between the water table and a surface with a prescribed
+flux.
 
 Channel formulas are for steady uniform flow in SI units: Chézy's
 coefficient is in m^0.5/s and Manning's ``n`` in s/m^(1/3). The unit
@@ -39,6 +43,13 @@ takes excess rainfall depths per interval and ordinates in m^3/s per metre of
 excess at the same interval, and the Nash shape integrates to one per second.
 ``muskingum_coefficients`` returns ``[C0, C1, C2]`` on the last axis;
 ``muskingum_routing`` starts from a steady state and needs scalar parameters.
+``simulate_kinematic_wave`` routes an inflow hydrograph, sampled on its time
+grid, down a wide rectangular channel with Manning's rating. The kinematic
+celerity takes the exponent ``m`` of the rating ``Q = a A**m``. Degree-day
+factors are metres of water equivalent per kelvin per second, so
+``3e-3 / 86400`` is 3 mm per degC per day. ``snowpack_water_equivalent``
+returns the snow water equivalent and the water released in each step on the
+last axis.
 Stream orders follow Strahler (1952). TOPMODEL indices use the upslope area
 per unit contour width in metres, and nonpositive local deficits mark
 saturated ground.
@@ -332,6 +343,51 @@ Output: **m^3/s**. McCarthy (1938): ``O[j+1] = C0 I[j+1] + C1 I[j] + C2 O[j]``; 
 
     O[j + 1] = C0 * I[j + 1] + C1 * I[j] + C2 * O[j]
 
+kinematic_wave_celerity
+~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.hydrology.kinematic_wave_celerity`
+
+Output: **m/s**. Lighthill and Whitham (1955): ``dQ/dA`` of a rating ``Q = a A**m``; 5/3 for Manning and 3/2 for Chézy in a wide channel.
+
+.. code-block:: python
+
+    exponent * velocity
+
+degree_day_melt
+~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.hydrology.degree_day_melt`
+
+Output: **m/s** of water equivalent. Finsterwalder and Schunk (1887): periods of a day or longer with snow present.
+
+.. code-block:: python
+
+    degree_day_factor * np.maximum(temperature - threshold_temperature, 0)
+
+snowpack_water_equivalent
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.hydrology.snowpack_water_equivalent`
+
+Output: **m**, snow water equivalent and released water on the last axis. One threshold separates snowfall from rain and starts melt; no refreezing or liquid storage.
+
+.. code-block:: python
+
+    melt = min(swe + snowfall, degree_day_factor * max(T - T0, 0) * time_step)
+    swe = swe + snowfall - melt
+
+exponential_water_content
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.hydrology.exponential_water_content`
+
+Output: **1**. Russo's (1988) retention for Gardner's soil; no air entry or hysteresis.
+
+.. code-block:: python
+
+    residual_water_content + (saturated_water_content - residual_water_content) * np.exp(sorptive_number * pressure_head)
+
 stream_number
 ~~~~~~~~~~~~~
 
@@ -487,6 +543,36 @@ It returns the cumulative infiltration, the infiltration rate and the
 infiltration-excess runoff rate ``r - f``. Surface storage, redistribution and
 a water table are neglected.
 
+Transient Richards column
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.hydrology.simulate_richards_column` integrates the
+water content of equal cells between a water table (zero head) and a surface
+with a prescribed flux, in the mixed form of Celia et al. (1990), by the
+method of lines with SciPy's BDF integrator. In the exponential soil the flux
+is linear in ``u = exp(alpha h)``. The face fluxes are exponentially fitted and
+exact for steady flow, so the column relaxes to ``richards_steady_head``. It
+starts from hydrostatic equilibrium unless ``initial_head`` is given, and
+returns the water stored above the residual content, the flux across the water
+table and the head of every cell.
+
+.. code-block:: python
+
+    d(theta)/dt = -dq/dz,  q = -(K / alpha) du/dz - K u,  theta = theta_r + (theta_s - theta_r) u
+
+Kinematic-wave routing
+~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.hydrology.simulate_kinematic_wave` integrates the
+flow area of equal cells along a reach with first-order upwind differences,
+starting in uniform flow at the first inflow. It returns the outflow, the
+stored volume and the discharge of every cell. Upwinding adds a little
+numerical diffusion, which attenuates the peak; more cells reduce it.
+
+.. code-block:: python
+
+    dA/dt + dQ/dx = 0,  Q = np.sqrt(slope) / (roughness * width**(2 / 3)) * A**(5 / 3)
+
 Independent validation
 ----------------------
 
@@ -505,6 +591,9 @@ to one and routing conserves volume while delaying and lowering the peak,
 that Penman-Monteith with zero surface resistance is Penman and
 ``saturation_slope`` is the derivative of the saturation curve, that TOPMODEL
 deficits average to the mean and baseflow falls by ``e`` per scaling depth,
-and that ``simulate_infiltration`` matches the Mein-Larson closed form after
-ponding. See :doc:`/validation` for the exact evidence and
+that ``simulate_infiltration`` matches the Mein-Larson closed form after
+ponding, that the transient Richards column relaxes to the steady Gardner
+profile and conserves water, that the kinematic wave is steady under steady
+inflow, conserves water and carries a flood at its celerity, and that the
+snowpack conserves water and melts at the degree-day rate. See :doc:`/validation` for the exact evidence and
 :doc:`/numerical_methods` for numerical conventions.

@@ -4,7 +4,7 @@ Validation policy
 Validation has three separate goals: reject invalid inputs, verify numerical
 implementation and explain physical applicability. None substitutes for another.
 
-Tests include fixed reference values for all 237 algebraic models, elementwise
+Tests include fixed reference values for all 305 algebraic models, elementwise
 physical bounds, finite/real contracts and broadcasting. Cross-model tests cover
 Euler-vector tangency and circuit closure, the load balance of a flexed plate,
 ocean subsidence against integrated heat loss, wave-interface energy conservation, magnitude inversion,
@@ -42,6 +42,14 @@ accumulated snowfall, that Stefan's thickness grows at Stefan's rate, that
 Haskell's viscosity inverts the relaxation time, that the Dansgaard-Johnsen
 age integrates its velocity and tends to Nye's, and that Schoof's flux rises
 as the 4.75 power of the grounding thickness.
+Geomorphology tests check that the Ferguson-Church settling velocity tends to
+Stokes's law for fine grains, that Keulegan's velocity is the depth average of
+the log profile, that the Rouse profile balances settling and mixing, that the
+degraded scarp solves the diffusion equation and its morphologic age inverts,
+that the steady stream-power slope is Flint's law, that Strahler orders
+balanced and unbalanced trees, that the effective discharge maximizes rate
+times frequency and that steady cosmogenic concentrations invert to the
+erosion rate.
 
 Dynamic tests compare the seismic oscillator with its damped analytic solution,
 climate adjustment with its closed form, dry ascent with conserved potential
@@ -50,7 +58,8 @@ boxes with both steady states of their equilibrium curve, the Rikitake dynamo
 with its steady states and spontaneous reversals, the eruption column with the
 pure-plume similarity solution and the Morton-Taylor-Turner height, Green-Ampt
 infiltration under rain with the Mein-Larson ponding time and closed form, the
-flowline glacier with a steady flux equal to the mass balance accumulated upstream, and periodic diffusion
+flowline glacier with a steady flux equal to the mass balance accumulated upstream, the river profile
+with its discrete steady state and a knickpoint moving at the stream-power celerity, and periodic diffusion
 with a discrete Fourier eigenmode and conserved mean. Plot labels, result
 immutability, summaries and GIF export are exercised.
 

@@ -42,6 +42,12 @@ def potential_temperature(temperature, pressure, reference_pressure):
     Equation: ``temperature * (reference_pressure / pressure)**(R_DRY_AIR / CP_DRY_AIR)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import potential_temperature
+    >>> float(potential_temperature(300, 100000.0, 100000.0))
+    300.0
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     pressure = quantity("pressure", pressure, lower=0, strict_lower=True)
@@ -75,6 +81,12 @@ def temperature_from_potential(potential_temperature, pressure, reference_pressu
     Equation: ``potential_temperature * (pressure / reference_pressure)**(R_DRY_AIR / CP_DRY_AIR)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import temperature_from_potential
+    >>> float(temperature_from_potential(300, 100000.0, 100000.0))
+    300.0
     """
     potential_temperature = quantity("potential_temperature", potential_temperature, lower=0, strict_lower=True)
     pressure = quantity("pressure", pressure, lower=0, strict_lower=True)
@@ -106,6 +118,12 @@ def dry_adiabatic_lapse_rate(gravity, heat_capacity):
     Equation: ``gravity / heat_capacity``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import dry_adiabatic_lapse_rate
+    >>> float(dry_adiabatic_lapse_rate(10, 1000))
+    0.01
     """
     gravity = quantity("gravity", gravity, lower=0, strict_lower=True)
     heat_capacity = quantity("heat_capacity", heat_capacity, lower=0, strict_lower=True)
@@ -138,6 +156,12 @@ def brunt_vaisala_squared(potential_temperature, vertical_gradient, gravity):
     Equation: ``gravity * vertical_gradient / potential_temperature``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import brunt_vaisala_squared
+    >>> round(float(brunt_vaisala_squared(300, 0.003, 10)), 9)
+    0.0001
     """
     potential_temperature = quantity("potential_temperature", potential_temperature, lower=0, strict_lower=True)
     vertical_gradient = quantity("vertical_gradient", vertical_gradient)
@@ -169,6 +193,12 @@ def richardson_number(brunt_vaisala_squared, shear):
     Equation: ``brunt_vaisala_squared / shear**2``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.atmosphere import richardson_number
+    >>> float(richardson_number(0.0001, 0.02))
+    0.25
     """
     brunt_vaisala_squared = quantity("brunt_vaisala_squared", brunt_vaisala_squared)
     shear = quantity("shear", shear)

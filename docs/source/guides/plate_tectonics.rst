@@ -23,6 +23,15 @@ distance of the hotspot from that pole. Euler vectors passed to
 ``compose_euler_vectors`` carry their three Cartesian components on the last
 axis; ``omega_ab`` is the motion of plate A relative to plate B.
 
+Finite rotations take a pole latitude and longitude and an angle, all in
+radians, with the angle positive counterclockwise seen from above the pole.
+The matrices act on geocentric unit vectors (x towards 0 degE on the equator,
+z north). Composite and interpolated rotations are returned as pole latitude,
+longitude and angle on the last axis, with the angle in ``[0, pi]`` and the
+pole flipped to match. ``compose_finite_rotations`` applies the first rotation
+and then the second. To get the stage rotation from one reconstruction to the
+next, pass the first with its angle negated.
+
 Input contracts
 ---------------
 
@@ -280,10 +289,58 @@ Output: **rad/s**. Instantaneous rotations only; inputs and output have three Ca
 
     omega_ab + omega_bc
 
+finite_rotation_matrix
+~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.plate_tectonics.finite_rotation_matrix`
+
+Output: **1**, shape (..., 3, 3). Rodrigues's formula; ``n`` is the pole's unit vector and ``[n]x`` its cross-product matrix.
+
+.. code-block:: python
+
+    np.cos(angle) * I + np.sin(angle) * [n]x + (1 - np.cos(angle)) * n n^T
+
+rotate_position
+~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.plate_tectonics.rotate_position`
+
+Output: **rad**, latitude and longitude on the last axis. Rigid rotation of a point on a sphere.
+
+.. code-block:: python
+
+    R(pole, angle) @ [np.cos(lat) * np.cos(lon), np.cos(lat) * np.sin(lon), np.sin(lat)]
+
+compose_finite_rotations
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.plate_tectonics.compose_finite_rotations`
+
+Output: **rad**, pole latitude, longitude and angle on the last axis. ``R2 @ R1`` with unit quaternions ``q = [cos(angle / 2), sin(angle / 2) n]``; finite rotations do not commute.
+
+.. code-block:: python
+
+    pole_and_angle(q2 * q1)
+
+interpolate_finite_rotation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:py:func:`earthsciencekit.plate_tectonics.interpolate_finite_rotation`
+
+Output: **rad**, pole latitude, longitude and angle on the last axis. A constant-rate turn about the stage pole of ``R2 @ R1^-1``, the shorter way round.
+
+.. code-block:: python
+
+    pole_and_angle((q2 * conj(q1))**fraction * q1)
+
 Independent validation
 ----------------------
 
 Every algebraic API has a fixed-value check, broadcasting check and invalid-input
-contracts. The shared suite adds cross-model identities, energy/conservation
+contracts. The finite-rotation matrices are orthogonal with unit determinant,
+fix their pole and move points along small circles about it. Composite
+rotations equal the matrix products and do not commute, and a rotation
+composed with its inverse is the identity. Interpolated rotations meet both
+ends and turn at a steady rate about the stage pole. The shared suite adds cross-model identities, energy/conservation
 checks and independent analytic solutions for dynamics. See :doc:`/validation`
 for the exact evidence and :doc:`/numerical_methods` for numerical conventions.

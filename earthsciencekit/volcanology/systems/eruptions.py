@@ -42,6 +42,12 @@ def plume_rise_height(buoyancy_flux, buoyancy_frequency):
     Equation: ``5.0 * buoyancy_flux**0.25 * buoyancy_frequency**-0.75``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import plume_rise_height
+    >>> float(plume_rise_height(16, 0.0625))
+    80.0
     """
     buoyancy_flux = quantity("buoyancy_flux", buoyancy_flux, lower=0, strict_lower=True)
     buoyancy_frequency = quantity("buoyancy_frequency", buoyancy_frequency, lower=0, strict_lower=True)
@@ -71,6 +77,12 @@ def column_height(heat_flux):
     Equation: ``8.2 * heat_flux**0.25``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import column_height
+    >>> float(column_height(1000000000000.0))
+    8200.0
     """
     heat_flux = quantity("heat_flux", heat_flux, lower=0, strict_lower=True)
     return 8.2 * heat_flux**0.25
@@ -100,6 +112,12 @@ def volcanic_explosivity_index(erupted_volume):
     np.clip(np.floor(np.log10(erupted_volume)) - 4, 2, 8)))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.volcanology import volcanic_explosivity_index
+    >>> float(volcanic_explosivity_index(50000000.0))
+    3.0
     """
     erupted_volume = quantity("erupted_volume", erupted_volume, lower=0)
     steps = np.clip(np.floor(np.log10(np.maximum(erupted_volume, 1e6))) - 4, 2, 8)

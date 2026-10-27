@@ -268,6 +268,32 @@ Earthquake Research Institute* 36 (1958): 99-134.
 
 .. minigallery:: ../../examples/volcanology/plot_12_mogi_point_source.py
 
+1959 -- Scriven's Bubble Growth
+-------------------------------
+
+L. E. Scriven solved the growth of a sphere of vapour or gas that feeds on
+heat or solute diffusing to it from the surrounding liquid. The radius grows
+as the square root of time, ``2 beta sqrt(D t)``. The constant ``beta`` depends
+on the supersaturation and on the radial flow the expanding bubble drives in
+the liquid. Decompression leaves a magma supersaturated in water, and
+diffusion then sets how fast its bubbles grow, how much gas they hold, and so
+whether the magma erupts explosively.
+
+*Implementation:* :func:`~earthsciencekit.volcanology.diffusive_supersaturation`
+(*new*), :func:`~earthsciencekit.volcanology.scriven_growth_constant` (*new*),
+:func:`~earthsciencekit.volcanology.scriven_bubble_radius` (*new*) and
+:func:`~earthsciencekit.volcanology.simulate_bubble_growth` (*new*). The
+simulation follows one bubble in its own shell of melt, coupled to
+:func:`~earthsciencekit.volcanology.water_solubility`. The example decompresses
+a rhyolite from 200 to 50 MPa.
+
+*References:* L. E. Scriven, "On the dynamics of phase growth," *Chemical
+Engineering Science* 10 (1959): 1-13. A. A. Proussevitch, D. L. Sahagian and
+A. T. Anderson, "Dynamics of diffusive bubble growth in magmas: isothermal
+case," *Journal of Geophysical Research* 98 (1993): 22283-22307.
+
+.. minigallery:: ../../examples/volcanology/plot_13_scriven_bubble_growth.py
+
 1961 -- Nicolaysen's Isochron
 -----------------------------
 
@@ -284,7 +310,7 @@ The example fits a synthetic Rb-Sr mineral isochron.
 measurements on metamorphic rocks," *Annals of the New York Academy of
 Sciences* 91 (1961): 198-206.
 
-.. minigallery:: ../../examples/volcanology/plot_13_nicolaysen_isochron.py
+.. minigallery:: ../../examples/volcanology/plot_14_nicolaysen_isochron.py
 
 1972 -- Shaw's Magma Viscosity
 ------------------------------
@@ -304,7 +330,7 @@ Arrhenius law.
 empirical method of prediction," *American Journal of Science* 272 (1972):
 870-893.
 
-.. minigallery:: ../../examples/volcanology/plot_14_shaw_magma_viscosity.py
+.. minigallery:: ../../examples/volcanology/plot_15_shaw_magma_viscosity.py
 
 1978 -- Wilson, Sparks, Huang and Watkins's Eruption Columns
 ------------------------------------------------------------
@@ -323,7 +349,7 @@ flux in the atmosphere.
 control of volcanic column heights by eruption energetics and dynamics,"
 *Journal of Geophysical Research* 83 (1978): 1829-1836.
 
-.. minigallery:: ../../examples/volcanology/plot_15_wilson_sparks_eruption_columns.py
+.. minigallery:: ../../examples/volcanology/plot_16_wilson_sparks_eruption_columns.py
 
 1981 -- Wilson and Head's Magma Ascent in Dikes
 -----------------------------------------------
@@ -342,7 +368,7 @@ starts to exsolve bubbles.
 on the Earth and Moon," *Journal of Geophysical Research* 86 (1981):
 2971-3001.
 
-.. minigallery:: ../../examples/volcanology/plot_16_wilson_head_dike_ascent.py
+.. minigallery:: ../../examples/volcanology/plot_17_wilson_head_dike_ascent.py
 
 1982 -- Newhall and Self's Volcanic Explosivity Index
 -----------------------------------------------------
@@ -360,7 +386,7 @@ eruptions on the scale.
 (VEI): an estimate of explosive magnitude for historical volcanism," *Journal
 of Geophysical Research* 87 (1982): 1231-1238.
 
-.. minigallery:: ../../examples/volcanology/plot_17_newhall_self_volcanic_explosivity_index.py
+.. minigallery:: ../../examples/volcanology/plot_18_newhall_self_volcanic_explosivity_index.py
 
 See also
 --------

@@ -12,6 +12,7 @@ capacity.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.integrate import trapezoid
 
 from earthsciencekit.hydrology import horton_cumulative_infiltration, horton_infiltration_rate
 
@@ -19,9 +20,9 @@ time = np.linspace(0, 3 * 3600, 361)
 capacity = horton_infiltration_rate(time, 25 / 3.6e6, 4 / 3.6e6, 1 / 1800)  # mm/h converted to m/s
 rain = np.full_like(time, 12 / 3.6e6)
 infiltration = np.minimum(rain, capacity)
-runoff_depth = np.trapezoid(rain - infiltration, time)
+runoff_depth = trapezoid(rain - infiltration, time)
 total = horton_cumulative_infiltration(time[-1], 25 / 3.6e6, 4 / 3.6e6, 1 / 1800)
-assert np.isclose(total, np.trapezoid(capacity, time), rtol=1e-4) and runoff_depth > 0
+assert np.isclose(total, trapezoid(capacity, time), rtol=1e-4) and runoff_depth > 0
 
 fig, ax = plt.subplots()
 ax.plot(time / 3600, capacity * 3.6e6, label="infiltration capacity")

@@ -47,6 +47,12 @@ def planck_feedback(temperature, emissivity):
     Equation: ``4 * emissivity * SIGMA_SB * temperature**3``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import planck_feedback
+    >>> round(float(planck_feedback(300, 1)), 5)
+    6.124
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     emissivity = quantity("emissivity", emissivity, lower=0, upper=1, strict_lower=True)
@@ -77,6 +83,12 @@ def equilibrium_warming(forcing, restoring):
     Equation: ``forcing / restoring``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import equilibrium_warming
+    >>> float(equilibrium_warming(4, 2))
+    2.0
     """
     forcing = quantity("forcing", forcing)
     restoring = quantity("restoring", restoring, lower=0, strict_lower=True)
@@ -109,6 +121,12 @@ def heat_capacity_column(density, heat_capacity, depth):
     Equation: ``density * heat_capacity * depth``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import heat_capacity_column
+    >>> float(heat_capacity_column(1000, 4000, 50))
+    200000000.0
     """
     density = quantity("density", density, lower=0, strict_lower=True)
     heat_capacity = quantity("heat_capacity", heat_capacity, lower=0, strict_lower=True)
@@ -140,6 +158,12 @@ def response_timescale(areal_heat_capacity, restoring):
     Equation: ``areal_heat_capacity / restoring``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import response_timescale
+    >>> float(response_timescale(200000000.0, 2))
+    100000000.0
     """
     areal_heat_capacity = quantity("areal_heat_capacity", areal_heat_capacity, lower=0, strict_lower=True)
     restoring = quantity("restoring", restoring, lower=0, strict_lower=True)
@@ -174,6 +198,12 @@ def step_temperature(forcing, restoring, areal_heat_capacity, time):
     Equation: ``forcing / restoring * (-np.expm1(-restoring * time / areal_heat_capacity))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import step_temperature
+    >>> float(step_temperature(4, 2, 2, 0))
+    0.0
     """
     forcing = quantity("forcing", forcing)
     restoring = quantity("restoring", restoring, lower=0, strict_lower=True)
@@ -206,6 +236,12 @@ def heat_uptake(areal_heat_capacity, temperature_change):
     Equation: ``areal_heat_capacity * temperature_change``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import heat_uptake
+    >>> float(heat_uptake(200000000.0, 2))
+    400000000.0
     """
     areal_heat_capacity = quantity("areal_heat_capacity", areal_heat_capacity, lower=0, strict_lower=True)
     temperature_change = quantity("temperature_change", temperature_change)
@@ -242,6 +278,12 @@ def ice_albedo(temperature, cold_albedo, warm_albedo, transition_temperature, wi
     Equation: ``warm_albedo + (cold_albedo - warm_albedo) * (1 - np.tanh((temperature - transition_temperature) / width)) / 2``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import ice_albedo
+    >>> float(ice_albedo(273, 0.6, 0.2, 273, 5))
+    0.4
     """
     temperature = quantity("temperature", temperature, lower=0, strict_lower=True)
     cold_albedo = quantity("cold_albedo", cold_albedo, lower=0, upper=1)
@@ -284,6 +326,12 @@ def equilibrium_solar_constant(temperature, emissivity, cold_albedo, warm_albedo
     Equation: ``4 * emissivity * SIGMA_SB * temperature**4 / (1 - albedo)``, with ``albedo`` from ice_albedo.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import equilibrium_solar_constant
+    >>> round(float(equilibrium_solar_constant(288, 1, 0.6, 0.2, 288, 5)), 2)
+    2600.7
     """
     emissivity = quantity("emissivity", emissivity, lower=0, upper=1, strict_lower=True)
     require(quantity("cold_albedo", cold_albedo) < 1, "cold albedo must be below one")
@@ -320,6 +368,12 @@ def red_noise_spectrum(frequency, forcing_spectrum, restoring, areal_heat_capaci
     Equation: ``forcing_spectrum / (restoring**2 + (2 * np.pi * frequency * areal_heat_capacity)**2)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.climate import red_noise_spectrum
+    >>> float(red_noise_spectrum(0, 4, 2, 1))
+    1.0
     """
     frequency = quantity("frequency", frequency)
     forcing_spectrum = quantity("forcing_spectrum", forcing_spectrum, lower=0)
@@ -351,6 +405,13 @@ def gregory_regression(temperature_change, imbalance):
     Assumes N = F - lambda T with constant F and lambda; equilibrium warming is forcing / restoring.
     Equation: ``imbalance = forcing - restoring * temperature_change`` (ordinary least squares).
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.climate import gregory_regression
+    >>> np.round(gregory_regression([0, 1, 2], [4, 2.8, 1.6]), 5).tolist()
+    [4.0, 1.2]
     """
     temperature_change = quantity("temperature_change", temperature_change)
     imbalance = quantity("imbalance", imbalance)

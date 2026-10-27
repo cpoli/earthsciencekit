@@ -46,6 +46,12 @@ def geostrophic_current(surface_slope, coriolis, gravity):
     Equation: ``gravity * surface_slope / coriolis``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import geostrophic_current
+    >>> float(geostrophic_current(1e-05, 0.0001, 10))
+    1.0
     """
     surface_slope = quantity("surface_slope", surface_slope)
     coriolis = quantity("coriolis", coriolis)
@@ -80,6 +86,12 @@ def ekman_transport(wind_stress, density, coriolis):
     Equation: ``wind_stress / (density * coriolis)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import ekman_transport
+    >>> float(ekman_transport(0.1, 1000, 0.0001))
+    1.0
     """
     wind_stress = quantity("wind_stress", wind_stress)
     density = quantity("density", density, lower=0, strict_lower=True)
@@ -122,6 +134,13 @@ def ekman_spiral_velocity(depth, wind_stress, density, eddy_viscosity, coriolis)
     ``v0 = wind_stress / (density * np.sqrt(eddy_viscosity * abs(coriolis)))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from earthsciencekit.oceanography import ekman_spiral_velocity
+    >>> np.round(ekman_spiral_velocity(0, 1, 1, 0.5, 2), 6).tolist()
+    [0.707107, 0.707107]
     """
     depth = quantity("depth", depth, lower=0)
     wind_stress = quantity("wind_stress", wind_stress)
@@ -161,6 +180,12 @@ def volume_transport(speed, width, depth):
     Equation: ``speed * width * depth``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import volume_transport
+    >>> float(volume_transport(1, 1000, 100))
+    100000.0
     """
     speed = quantity("speed", speed)
     width = quantity("width", width, lower=0, strict_lower=True)
@@ -195,6 +220,12 @@ def sverdrup_transport(wind_stress_curl, density, beta):
     Equation: ``wind_stress_curl / (density * beta)``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import sverdrup_transport
+    >>> float(sverdrup_transport(6, 2, 3))
+    1.0
     """
     wind_stress_curl = quantity("wind_stress_curl", wind_stress_curl)
     density = quantity("density", density, lower=0, strict_lower=True)
@@ -243,6 +274,12 @@ def stommel_streamfunction(x, y, wind_stress, basin_width, basin_length, density
     ``m1, m2 = (-beta +/- np.sqrt(beta**2 + 4 * friction**2 * k**2)) / (2 * friction)`` and ``k = np.pi / basin_length``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import stommel_streamfunction
+    >>> round(float(stommel_streamfunction(1, 1.5707963267948966, 1, 2, 3.141592653589793, 1, 0, 1)), 6)
+    0.351946
     """
     x = quantity("x", x, lower=0)
     y = quantity("y", y, lower=0)
@@ -290,6 +327,12 @@ def rossby_radius(buoyancy_frequency, depth, coriolis):
     Equation: ``buoyancy_frequency * depth / (np.pi * np.abs(coriolis))``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import rossby_radius
+    >>> round(float(rossby_radius(0.01, 1000, 0.0001)), 1)
+    31831.0
     """
     buoyancy_frequency = quantity("buoyancy_frequency", buoyancy_frequency, lower=0, strict_lower=True)
     depth = quantity("depth", depth, lower=0, strict_lower=True)
@@ -326,6 +369,12 @@ def thermohaline_forcing(flow, thermal_flow, haline_coefficient):
     Equation: ``np.abs(flow) * (thermal_flow - flow) / haline_coefficient``.
     Invalid, empty, nonreal or nonfinite inputs raise ValueError.
     NumPy broadcasting applies; singular and overflowing outputs raise ValueError.
+
+    Examples
+    --------
+    >>> from earthsciencekit.oceanography import thermohaline_forcing
+    >>> float(thermohaline_forcing(-1, 2, 3))
+    1.0
     """
     flow = quantity("flow", flow)
     thermal_flow = quantity("thermal_flow", thermal_flow, lower=0, strict_lower=True)
