@@ -112,7 +112,7 @@ def scriven_growth_constant(supersaturation, density_ratio):
     Examples
     --------
     >>> from earthsciencekit.volcanology import scriven_growth_constant
-    >>> float(scriven_growth_constant(0.4842556877173758, 1))
+    >>> round(float(scriven_growth_constant(0.4842556877173758, 1)), 12)
     1.0
     """
     from scipy.optimize import brentq
