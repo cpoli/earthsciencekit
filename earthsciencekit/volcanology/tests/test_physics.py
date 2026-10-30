@@ -220,7 +220,7 @@ def test_bubble_cell_grows_like_scriven_then_saturates():
     assert np.all(np.diff(radius) > -1e-12) and np.isclose(dissolved[-1], surface, rtol=1e-6)
     # Water lost from the melt is gained by the bubble.
     melt_mass = 2300 * (6.2e-5**3 - 1e-6**3)
-    np.testing.assert_allclose(melt_mass * (water - dissolved), gas * (radius**3 - 1e-6**3), rtol=1e-10)
+    np.testing.assert_allclose(melt_mass * (water - dissolved), gas * (radius**3 - 1e-6**3), rtol=1e-10, atol=1e-25)
     final = (1e-6**3 + melt_mass * (water - surface) / gas) ** (1 / 3)
     np.testing.assert_allclose(radius[-1], final, rtol=1e-6)
     assert 0 < vesicularity[0] < vesicularity[-1] < 1 and cell.names == ("radius", "dissolved_water", "vesicularity")

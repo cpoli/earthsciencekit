@@ -55,7 +55,9 @@ def test_head_wave_crosses_direct_wave_and_starts_at_reflection():
     h, v1, v2 = 30e3, 6e3, 8e3
     x_cross = crossover_distance(h, v1, v2)
     assert np.isclose(head_wave_travel_time(x_cross, h, v1, v2), travel_time(x_cross, v1))
-    x_crit = 2 * h * np.tan(critical_angle(v1, v2))
+    # The closed form the model checks against; tan(critical_angle) can round just below it.
+    x_crit = 2 * h * v1 / np.sqrt(v2**2 - v1**2)
+    assert np.isclose(x_crit, 2 * h * np.tan(critical_angle(v1, v2)), rtol=1e-14)
     assert np.isclose(head_wave_travel_time(x_crit, h, v1, v2), np.hypot(x_crit, 2 * h) / v1)
     x = np.array([2e5, 3e5])
     assert np.isclose(np.diff(head_wave_travel_time(x, h, v1, v2))[0], 1e5 / v2)
