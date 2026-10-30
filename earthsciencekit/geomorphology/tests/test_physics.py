@@ -86,7 +86,7 @@ def test_rouse_profile_balances_settling_and_turbulent_mixing():
     diffusivity = VON_KARMAN * shear * height * (1 - height / depth)
     flux = settling * concentration + diffusivity * np.gradient(concentration, height)
     assert np.all(np.abs(flux[1:-1]) < 1e-3 * settling * concentration[1:-1])
-    assert rouse_concentration(reference, depth, reference, 3.0, number) == 3.0
+    assert np.isclose(rouse_concentration(reference, depth, reference, 3.0, number), 3.0, rtol=1e-14, atol=0)
     assert rouse_concentration(depth, depth, reference, 3.0, number) == 0.0
     np.testing.assert_allclose(rouse_concentration(height, depth, reference, 3.0, 0), 3.0)
 
