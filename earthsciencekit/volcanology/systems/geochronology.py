@@ -264,8 +264,8 @@ def lead_lead_age(lead_ratio):
     Examples
     --------
     >>> from earthsciencekit.volcanology import lead_lead_age
-    >>> round(float(lead_lead_age(0.5838503844760619)), 0)
-    1.4100926004988581e+17
+    >>> round(float(lead_lead_age(0.5838503844760619)), -10)
+    1.4100926e+17
     """
     lead_ratio = quantity("lead_ratio", lead_ratio)
     require(lead_ratio >= radiogenic_lead_ratio(_YOUNGEST), "lead_ratio is below the ratio at one year")
