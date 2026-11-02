@@ -28,7 +28,7 @@ Climate
 -------
 
 - `MIT: Global Warming Science <https://ocw.mit.edu/courses/12-340x-global-warming-science-spring-2020/>`_
-- `MIT: Thermodynamics and Climate Change textbook <https://ocw.mit.edu/courses/res-2-008-thermodynamics-and-climate-change-summer-2020/pages/open-textbook/>`_
+- `MIT: Thermodynamics and Climate Change textbook <https://ocw.mit.edu/courses/res-2-008-thermodynamics-and-climate-change-summer-2020/resources/mitres-2-008su22_book/>`_
 
 Oceanography
 ------------

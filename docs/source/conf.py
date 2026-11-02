@@ -101,7 +101,8 @@ exclude_patterns = [
     "_generated/vars.rst",
 ]
 # The Smithsonian Global Volcanism Program answers automated requests with 403.
-linkcheck_ignore = [r"https://volcano\.si\.edu/"]
+# The JupyterLite site under lite/ only exists in the html build.
+linkcheck_ignore = [r"https://volcano\.si\.edu/", r"(\.\./)*lite/"]
 
 SUBPACKAGES = [
     {
