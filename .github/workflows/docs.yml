@@ -19,7 +19,7 @@ jobs:
       # hit means a passing build already ran this exact gallery and
       # sphinx-gallery skips every example; any change runs them all.
       - name: Restore executed gallery
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             docs/source/api/gallery
